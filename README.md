@@ -1,8 +1,6 @@
 # Yomitan Frequency Combiner
 
-A static web app to combine multiple Yomitan dictionary `.zip` files into a single archive for easy download.
-
-No backend — everything runs in the browser.
+Allows multiple yomitan `.zip` files to be combined into a single combined frequency list. This allows customizability in the frequencies that yomitan displays rather than being restricted by the available yomitan dictionaries. Also works for kanji dictionaries.
 
 ## Development
 
@@ -17,11 +15,5 @@ npm run dev
 ```bash
 cd frontend
 npm run build
-# output in frontend/dist/
 ```
 
-## Deploy
-
-Push to GitHub and connect to [Netlify](https://netlify.com), [Vercel](https://vercel.com), or [Cloudflare Pages](https://pages.cloudflare.com) with:
-- **Build command:** `npm run build`
-- **Publish directory:** `frontend/dist`
