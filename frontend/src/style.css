@@ -51,6 +51,38 @@ header p {
   font-size: 0.9rem;
 }
 
+/* Page tabs */
+#page-tabs {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.3rem;
+}
+
+.tab {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 7px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.tab:hover {
+  color: var(--text);
+}
+
+.tab.active {
+  background: var(--accent);
+  color: #fff;
+}
+
 /* Drop zone */
 #drop-zone {
   border: 2px dashed var(--border);
@@ -162,7 +194,8 @@ header p {
 #options {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.75rem;
+  margin-top: 1rem;
 }
 
 #options label {
@@ -209,6 +242,7 @@ header p {
 
 /* Combine button */
 #combine-btn {
+  margin-top: 0.75rem;
   width: 100%;
   padding: 0.75rem;
   border: none;

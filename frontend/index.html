@@ -8,9 +8,14 @@
   <body>
     <div id="app">
       <header>
-        <h1>Yomitan Frequency Combiner</h1>
-        <p>Upload multiple Yomitan dictionary zips and download them as a single archive.</p>
+        <h1>Yomitan Dictionary Combiner</h1>
+        <p id="subtitle">Combine multiple Yomitan frequency dictionary zips into a single archive.</p>
       </header>
+
+      <nav id="page-tabs">
+        <button class="tab active" data-tab="frequency">Frequency</button>
+        <button class="tab" data-tab="kanji">Kanji</button>
+      </nav>
 
       <main>
         <section id="drop-zone" role="button" tabindex="0" aria-label="Drop zip files here or click to browse">

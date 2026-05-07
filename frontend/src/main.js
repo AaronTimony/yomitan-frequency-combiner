@@ -1,4 +1,17 @@
 import "./style.css";
+const subtitle = document.getElementById("subtitle");
+const tabSubtitles = {
+    frequency: "Combine multiple Yomitan frequency dictionary zips into a single archive.",
+    kanji: "Combine multiple Yomitan kanji dictionary zips into a single archive.",
+};
+document.getElementById("page-tabs").addEventListener("click", (e) => {
+    const tab = e.target.closest(".tab");
+    if (!tab)
+        return;
+    document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+    tab.classList.add("active");
+    subtitle.textContent = tabSubtitles[tab.dataset.tab ?? "frequency"];
+});
 const dropZone = document.getElementById("drop-zone");
 const fileInput = document.getElementById("file-input");
 const fileListSection = document.getElementById("file-list-section");

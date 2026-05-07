@@ -1,5 +1,20 @@
 import "./style.css";
 
+const subtitle = document.getElementById("subtitle") as HTMLElement;
+
+const tabSubtitles: Record<string, string> = {
+  frequency: "Combine multiple Yomitan frequency dictionary zips into a single archive.",
+  kanji: "Combine multiple Yomitan kanji dictionary zips into a single archive.",
+};
+
+document.getElementById("page-tabs")!.addEventListener("click", (e) => {
+  const tab = (e.target as Element).closest<HTMLButtonElement>(".tab");
+  if (!tab) return;
+  document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+  tab.classList.add("active");
+  subtitle.textContent = tabSubtitles[tab.dataset.tab ?? "frequency"];
+});
+
 const dropZone = document.getElementById("drop-zone") as HTMLElement;
 const fileInput = document.getElementById("file-input") as HTMLInputElement;
 const fileListSection = document.getElementById("file-list-section") as HTMLElement;
