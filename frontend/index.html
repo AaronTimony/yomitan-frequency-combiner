@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yomitan Frequency Combiner</title>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>Yomitan Frequency Combiner</h1>
+        <p>Upload multiple Yomitan dictionary zips and download them as a single archive.</p>
+      </header>
+
+      <main>
+        <section id="drop-zone" role="button" tabindex="0" aria-label="Drop zip files here or click to browse">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          <p>Drag &amp; drop <code>.zip</code> files here, or <label for="file-input" id="browse-label">browse</label></p>
+          <input id="file-input" type="file" accept=".zip" multiple hidden />
+        </section>
+
+        <section id="file-list-section" hidden>
+          <h2>Selected files</h2>
+          <ul id="file-list"></ul>
+        </section>
+
+        <section id="options">
+          <label for="output-name">Output filename</label>
+          <div id="name-row">
+            <input id="output-name" type="text" placeholder="combined" maxlength="128" />
+            <span class="ext">.zip</span>
+          </div>
+        </section>
+
+        <button id="combine-btn" disabled>Combine &amp; Download</button>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

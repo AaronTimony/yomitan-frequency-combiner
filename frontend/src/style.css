@@ -1,0 +1,231 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0f0f13;
+  --surface: #1a1a24;
+  --border: #2e2e3e;
+  --accent: #7c6af7;
+  --accent-hover: #9a8cff;
+  --text: #e8e8f0;
+  --text-muted: #7878a0;
+  --danger: #f76a6a;
+  --radius: 10px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+#app {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+header {
+  text-align: center;
+}
+
+header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+header p {
+  margin-top: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Drop zone */
+#drop-zone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  background: var(--surface);
+}
+
+#drop-zone:hover,
+#drop-zone.drag-over {
+  border-color: var(--accent);
+  background: #1e1a30;
+}
+
+#drop-zone svg {
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  transition: color 0.15s;
+}
+
+#drop-zone:hover svg,
+#drop-zone.drag-over svg {
+  color: var(--accent);
+}
+
+#drop-zone p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+#browse-label {
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+#browse-label:hover {
+  color: var(--accent-hover);
+}
+
+/* File list */
+#file-list-section h2 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+
+#file-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.file-item .file-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.file-item .file-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-item .file-size {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.file-item .remove-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 1rem;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+
+.file-item .remove-btn:hover {
+  color: var(--danger);
+}
+
+/* Output name */
+#options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+#options label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+#name-row {
+  display: flex;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+#name-row:focus-within {
+  border-color: var(--accent);
+}
+
+#output-name {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: 0.95rem;
+  padding: 0.6rem 0.75rem;
+}
+
+#output-name::placeholder {
+  color: var(--text-muted);
+}
+
+.ext {
+  padding: 0 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  border-left: 1px solid var(--border);
+  line-height: 2.4rem;
+}
+
+/* Combine button */
+#combine-btn {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+#combine-btn:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+#combine-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
