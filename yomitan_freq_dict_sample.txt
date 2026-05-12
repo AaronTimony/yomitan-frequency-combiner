@@ -1,0 +1,194 @@
+================================================================================
+Yomitan Frequency Dictionary Sample
+Source: jiten_freq_Drama.zip (Jiten — Drama)
+================================================================================
+
+A Yomitan freq dict zip contains exactly two kinds of file:
+
+  index.json              <- metadata (one file)
+  term_meta_bank_N.json   <- entry data (one or more files, numbered from 1)
+
+For this dict:
+  index.json            (414 bytes)
+  term_meta_bank_1.json (~23.5 MB, ~180k+ entries)
+
+
+================================================================================
+1. index.json (full contents)
+================================================================================
+
+{
+  "title": "Jiten (Drama)",
+  "format": 3,
+  "revision": "Jiten (Drama) 26-05-05",
+  "isUpdatable": true,
+  "indexUrl": "https://api.jiten.moe/api/frequency-list/index?mediaType=Drama",
+  "downloadUrl": "https://api.jiten.moe/api/frequency-list/download?mediaType=Drama",
+  "sequenced": false,
+  "frequencyMode": "rank-based",
+  "author": "Jiten",
+  "url": "https://jiten.moe",
+  "description": "Dictionary based on frequency data of Drama from jiten.moe"
+}
+
+Field notes:
+  title           Required. Shown in Yomitan UI.
+  format          Required. Yomitan dictionary schema version (3 = current).
+  revision        Required. String Yomitan uses to detect updates.
+  frequencyMode   "rank-based" (1 = most common) or "occurrence-based" (raw counts).
+  isUpdatable     If true with indexUrl/downloadUrl set, Yomitan auto-updates.
+  indexUrl        Endpoint Yomitan polls to check for a new revision.
+  downloadUrl     Endpoint Yomitan downloads from when updating.
+  sequenced       Indexing hint, usually false for freq dicts.
+  author/url      Attribution.
+  description     Free text, shown in dict info.
+
+
+================================================================================
+2. term_meta_bank_1.json — structure
+================================================================================
+
+The whole file is ONE JSON array. Each element is a 3-tuple:
+
+  [ term, type, data ]
+
+  term  string  the surface form (kana or kanji)
+  type  string  always "freq" for freq dicts
+  data  object  the frequency info; one of two shapes (see below)
+
+Two data shapes:
+
+  SHAPE A — kana-only (term itself is the kana form):
+    { "value": <number>, "displayValue": <string> }
+
+  SHAPE B — kanji form with separate reading:
+    { "reading": <kana>, "frequency": { "value": <number>, "displayValue": <string> } }
+
+  value         numeric rank (used for sorting; lower = more common)
+  displayValue  what Yomitan SHOWS in the popup. Often the same number with a
+                marker suffix. Jiten uses "㋕" (circled カ) to indicate the
+                rank comes from a "frequent enough" subset; entries without
+                the suffix were ranked but didn't meet that threshold.
+
+
+================================================================================
+3. First ~60 entries (head of term_meta_bank_1.json)
+================================================================================
+
+[
+  ["の",     "freq", {"value": 1,  "displayValue": "1㋕"}],
+  ["乃",     "freq", {"reading": "の", "frequency": {"value": 1,  "displayValue": "1㋕"}}],
+  ["之",     "freq", {"reading": "の", "frequency": {"value": 1,  "displayValue": "1㋕"}}],
+  ["は",     "freq", {"value": 2,  "displayValue": "2㋕"}],
+  ["に",     "freq", {"value": 3,  "displayValue": "3㋕"}],
+  ["が",     "freq", {"value": 4,  "displayValue": "4㋕"}],
+  ["を",     "freq", {"value": 5,  "displayValue": "5㋕"}],
+  ["と",     "freq", {"value": 6,  "displayValue": "6㋕"}],
+  ["で",     "freq", {"value": 7,  "displayValue": "7㋕"}],
+  ["です",   "freq", {"value": 8,  "displayValue": "8㋕"}],
+  ["も",     "freq", {"value": 9,  "displayValue": "9㋕"}],
+  ["だ",     "freq", {"value": 10, "displayValue": "10㋕"}],
+  ["よ",     "freq", {"value": 11, "displayValue": "11㋕"}],
+  ["か",     "freq", {"value": 12, "displayValue": "12㋕"}],
+  ["から",   "freq", {"value": 13, "displayValue": "13㋕"}],
+  ["為る",   "freq", {"reading": "する", "frequency": {"value": 14, "displayValue": "14㋕"}}],
+  ["する",   "freq", {"value": 14, "displayValue": "14㋕"}],
+  ["さん",   "freq", {"value": 15, "displayValue": "15㋕"}],
+  ["ね",     "freq", {"value": 16, "displayValue": "16㋕"}],
+  ["な",     "freq", {"value": 17, "displayValue": "17㋕"}],
+  ["って",   "freq", {"value": 18, "displayValue": "18㋕"}],
+  ["私",     "freq", {"reading": "わたし", "frequency": {"value": 19, "displayValue": "19"}}],
+  ["んだ",   "freq", {"value": 20, "displayValue": "20㋕"}],
+  ["ある",   "freq", {"value": 21, "displayValue": "21㋕"}],
+  ["有る",   "freq", {"reading": "ある", "frequency": {"value": 21, "displayValue": "21㋕"}}],
+  ["在る",   "freq", {"reading": "ある", "frequency": {"value": 21, "displayValue": "21㋕"}}],
+  ["はい",   "freq", {"value": 22, "displayValue": "22㋕"}],
+  ["んです", "freq", {"value": 23, "displayValue": "23㋕"}],
+  ["ん",     "freq", {"value": 24, "displayValue": "24㋕"}],
+  ["言う",   "freq", {"reading": "いう", "frequency": {"value": 25, "displayValue": "25"}}],
+  ["成る",   "freq", {"reading": "なる", "frequency": {"value": 26, "displayValue": "26㋕"}}],
+  ["為る",   "freq", {"reading": "なる", "frequency": {"value": 26, "displayValue": "26㋕"}}],
+  ["なる",   "freq", {"value": 26, "displayValue": "26㋕"}],
+  ["これ",   "freq", {"value": 27, "displayValue": "27㋕"}],
+  ["此れ",   "freq", {"reading": "これ", "frequency": {"value": 27, "displayValue": "27㋕"}}],
+  ["是",     "freq", {"reading": "これ", "frequency": {"value": 27, "displayValue": "27㋕"}}],
+  ["維",     "freq", {"reading": "これ", "frequency": {"value": 27, "displayValue": "27㋕"}}],
+  ["惟",     "freq", {"reading": "これ", "frequency": {"value": 27, "displayValue": "27㋕"}}],
+  ["此",     "freq", {"reading": "これ", "frequency": {"value": 27, "displayValue": "27㋕"}}],
+  ["是れ",   "freq", {"reading": "これ", "frequency": {"value": 27, "displayValue": "27㋕"}}],
+  ["之",     "freq", {"reading": "これ", "frequency": {"value": 27, "displayValue": "27㋕"}}],
+  ["それ",   "freq", {"value": 28, "displayValue": "28㋕"}],
+  ["其れ",   "freq", {"reading": "それ", "frequency": {"value": 28, "displayValue": "28㋕"}}],
+  ["其",     "freq", {"reading": "それ", "frequency": {"value": 28, "displayValue": "28㋕"}}],
+  ["事",     "freq", {"reading": "こと", "frequency": {"value": 29, "displayValue": "29㋕"}}],
+  ["こと",   "freq", {"value": 29, "displayValue": "29㋕"}],
+  ["いい",   "freq", {"value": 30, "displayValue": "30㋕"}],
+  ["でも",   "freq", {"value": 31, "displayValue": "31㋕"}],
+  ["思う",   "freq", {"reading": "おもう", "frequency": {"value": 32, "displayValue": "32"}}],
+  ["斯の",   "freq", {"reading": "この", "frequency": {"value": 33, "displayValue": "33㋕"}}],
+  ["此の",   "freq", {"reading": "この", "frequency": {"value": 33, "displayValue": "33㋕"}}],
+  ["この",   "freq", {"value": 33, "displayValue": "33㋕"}],
+  ["じゃ無い","freq", {"reading": "じゃない", "frequency": {"value": 34, "displayValue": "34㋕"}}],
+  ["じゃない","freq", {"value": 34, "displayValue": "34㋕"}],
+  ["もう",   "freq", {"value": 35, "displayValue": "35㋕"}],
+  ["そう",   "freq", {"value": 36, "displayValue": "36㋕"}],
+  ["けど",   "freq", {"value": 37, "displayValue": "37㋕"}],
+  ["ですか", "freq", {"value": 38, "displayValue": "38㋕"}],
+  ["お",     "freq", {"value": 39, "displayValue": "39㋕"}],
+  ["御",     "freq", {"reading": "お", "frequency": {"value": 39, "displayValue": "39㋕"}}],
+  ...
+]
+
+
+================================================================================
+4. Last ~25 entries (tail of term_meta_bank_1.json)
+================================================================================
+
+  ...
+  ["葡萄の木", "freq", {"reading": "ぶどうのき", "frequency": {"value": 180195, "displayValue": "180195"}}],
+  ["玉入れ",   "freq", {"reading": "たまいれ", "frequency": {"value": 180195, "displayValue": "180195㋕"}}],
+  ["ふゆき",   "freq", {"value": 180195, "displayValue": "180195㋕"}],
+  ["冬木",     "freq", {"reading": "ふゆき", "frequency": {"value": 180195, "displayValue": "180195㋕"}}],
+  ["せいわ",   "freq", {"value": 180195, "displayValue": "180195㋕"}],
+  ["清和",     "freq", {"reading": "せいわ", "frequency": {"value": 180195, "displayValue": "180195㋕"}}],
+  ["バラ科",   "freq", {"reading": "バラか", "frequency": {"value": 180195, "displayValue": "180195㋕"}}],
+  ["バラか",   "freq", {"value": 180195, "displayValue": "180195㋕"}],
+  ["りきゅう", "freq", {"value": 180195, "displayValue": "180195㋕"}],
+  ["てふき",   "freq", {"value": 180195, "displayValue": "180195㋕"}],
+  ["離宮",     "freq", {"reading": "りきゅう", "frequency": {"value": 180195, "displayValue": "180195㋕"}}],
+  ["はんじん", "freq", {"value": 180195, "displayValue": "180195㋕"}],
+  ["高考",     "freq", {"reading": "こうこう", "frequency": {"value": 180195, "displayValue": "180195"}}],
+  ["半人",     "freq", {"reading": "はんじん", "frequency": {"value": 180195, "displayValue": "180195㋕"}}],
+  ["指手",     "freq", {"reading": "さして", "frequency": {"value": 180195, "displayValue": "180195"}}],
+  ["エーさん", "freq", {"value": 180195, "displayValue": "180195㋕"}],
+  ["Ａ３",     "freq", {"reading": "エーさん", "frequency": {"value": 180195, "displayValue": "180195㋕"}}],
+  ["又貸し",   "freq", {"reading": "またがし", "frequency": {"value": 180195, "displayValue": "180195"}}],
+  ["とうつう", "freq", {"value": 180195, "displayValue": "180195㋕"}],
+  ["疼痛",     "freq", {"reading": "とうつう", "frequency": {"value": 180195, "displayValue": "180195㋕"}}],
+  ["ばぶぅ",   "freq", {"value": 180195, "displayValue": "180195㋕"}],
+  ["典彦",     "freq", {"reading": "つねひこ", "frequency": {"value": 180195, "displayValue": "180195"}}]
+]
+
+
+================================================================================
+5. Patterns to notice
+================================================================================
+
+- Same lexical word, many surface forms, SAME rank value.
+  Word "の" has rank 1. Three entries for it: kana の (shape A), and kanji
+  variants 乃 / 之 (shape B with reading "の"). All share value: 1.
+
+- Word "これ" has rank 27 with EIGHT surface forms: kana これ + 此れ, 是, 維,
+  惟, 此, 是れ, 之 (kanji forms all reading これ).
+
+- Many entries can share the same rank — ranks here are not unique. Toward the
+  tail, hundreds of words share rank 180195 (the "everything beyond the
+  reliably-ranked region" bucket).
+
+- Note 之 appears TWICE in the dict: once at rank 1 (as a kanji of の) and
+  again at rank 27 (as a kanji of これ). Same kanji, different readings,
+  different ranks — so identity must be (term, reading), not term alone.
+
+- "displayValue" with the ㋕ suffix means "frequent" in Jiten's classification;
+  without the suffix means "ranked but below frequent threshold". The numeric
+  value is the same — the suffix is purely a UI hint shown in Yomitan popups.

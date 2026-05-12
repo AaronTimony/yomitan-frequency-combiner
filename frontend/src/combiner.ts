@@ -1,7 +1,5 @@
 import JSZip from "jszip";
 
-type FreqEntry = [string, string, unknown];
-
 interface IndexJson {
   title: string;
   format: number;
@@ -13,14 +11,13 @@ export async function combineZips(files: readonly File[], title: string): Promis
   if (files.length === 0) throw new Error("No files to combine");
 
   let baseIndex: IndexJson | null = null;
-  const mergedEntries: FreqEntry[] = [];
+  const allEntries: unknown[] = [];
 
   for (const file of files) {
     const zip = await JSZip.loadAsync(file);
 
     const indexFile = zip.file("index.json");
     if (!indexFile) throw new Error(`${file.name}: missing index.json`);
-
     if (!baseIndex) {
       baseIndex = JSON.parse(await indexFile.async("string")) as IndexJson;
     }
@@ -35,8 +32,8 @@ export async function combineZips(files: readonly File[], title: string): Promis
 
     for (const bankName of bankFiles) {
       const text = await zip.file(bankName)!.async("string");
-      const entries = JSON.parse(text) as FreqEntry[];
-      mergedEntries.push(...entries);
+      const entries = JSON.parse(text) as unknown[];
+      allEntries.push(...entries);
     }
   }
 
@@ -48,7 +45,7 @@ export async function combineZips(files: readonly File[], title: string): Promis
 
   const out = new JSZip();
   out.file("index.json", JSON.stringify(outIndex));
-  out.file("term_meta_bank_1.json", JSON.stringify(mergedEntries));
+  out.file("term_meta_bank_1.json", JSON.stringify(allEntries));
 
   return out.generateAsync({ type: "blob", compression: "DEFLATE" });
 }
