@@ -12,6 +12,8 @@
     "vite": "^5.2.11"
   },
   "dependencies": {
-    "jszip": "^3.10.1"
+    "@tailwindcss/vite": "^4.3.0",
+    "jszip": "^3.10.1",
+    "tailwindcss": "^4.3.0"
   }
 }

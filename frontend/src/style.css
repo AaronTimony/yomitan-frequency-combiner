@@ -1,303 +1,46 @@
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@import "tailwindcss";
 
-:root {
-  --bg: #2a2a2a;
-  --surface: #4a4a4a;
-  --surface-alt: #3a3a3a;
-  --divider: #5a5a5a;
-  --text: #E6FAFC;
-  --text-muted: rgba(230, 250, 252, 0.4);
-  --accent: #FB923C;
-  --accent-soft: rgba(251, 146, 60, 0.1);
-  --green-from: #7deda4;
-  --green-to: #1abc7e;
-  --green-glow: rgba(26, 188, 126, 0.4);
-  --green-glow-strong: rgba(26, 188, 126, 0.6);
-  --red-from: #fb7185;
-  --red-to: #be123c;
-  --radius: 16px;
-  --radius-sm: 10px;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 1rem;
-  -webkit-font-smoothing: antialiased;
-}
-
-#app {
-  width: 100%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
-}
-
-/* Header */
-header {
-  text-align: center;
-}
-
-header h1 {
-  font-size: 2rem;
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  color: var(--text);
-}
-
-header p {
-  margin-top: 0.5rem;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-}
-
-/* Page tabs */
-#page-tabs {
-  display: flex;
-  gap: 0.4rem;
-  background: var(--surface);
-  border: 2px solid var(--divider);
-  border-radius: var(--radius);
-  padding: 0.4rem;
-}
-
-.tab {
-  flex: 1;
-  padding: 0.6rem 1rem;
-  background: transparent;
-  border: none;
-  border-radius: 10px;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s;
-}
-
-.tab:hover {
-  color: var(--text);
-  background: var(--surface-alt);
-}
-
+/* Active tab — toggled by JS */
 .tab.active {
-  background: linear-gradient(to bottom, var(--green-from), var(--green-to));
+  background: linear-gradient(to bottom, #7deda4, #1abc7e);
   color: #fff;
-  box-shadow: 0 4px 15px var(--green-glow);
+  box-shadow: 0 4px 15px rgba(26, 188, 126, 0.4);
 }
 
-/* Drop zone */
-#drop-zone {
-  background: var(--surface);
-  border: 2px dashed var(--divider);
-  border-radius: var(--radius);
-  padding: 2.75rem 1.5rem;
-  text-align: center;
-  cursor: pointer;
-  transition: border-color 0.2s, background 0.2s, transform 0.2s;
-}
-
+/* Drop zone hover & JS-toggled drag-over class */
 #drop-zone:hover,
 #drop-zone.drag-over {
-  border-color: var(--accent);
-  background: var(--surface-alt);
+  border-color: #FB923C;
+  background-color: #3a3a3a;
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(251, 146, 60, 0.1);
 }
 
-#drop-zone svg {
-  color: var(--text-muted);
-  margin-bottom: 0.85rem;
-  transition: color 0.2s;
-}
-
 #drop-zone:hover svg,
 #drop-zone.drag-over svg {
-  color: var(--accent);
+  color: #FB923C;
 }
 
-#drop-zone p {
-  font-size: 0.95rem;
-  color: var(--text);
-  font-weight: 500;
-}
-
-#browse-label {
-  color: var(--accent);
-  cursor: pointer;
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-#browse-label:hover {
-  color: #fdba74;
-}
-
-/* File list */
-#file-list-section h2 {
-  color: var(--accent);
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-bottom: 0.7rem;
-}
-
-#file-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.file-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: var(--surface);
-  border: 2px solid var(--divider);
-  border-radius: var(--radius-sm);
-  padding: 0.65rem 0.85rem;
-  font-size: 0.9rem;
-  transition: border-color 0.15s, transform 0.15s;
-}
-
+/* File item — class toggled via DOM in fileManager */
 .file-item:hover {
   border-color: rgba(251, 146, 60, 0.3);
   transform: translateY(-1px);
 }
 
-.file-item .file-icon {
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
-
-.file-item .file-name {
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: var(--text);
-  font-weight: 600;
-}
-
-.file-item .file-size {
-  color: var(--text-muted);
-  font-size: 0.8rem;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-.file-item .remove-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text-muted);
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  line-height: 1;
-  flex-shrink: 0;
-  transition: color 0.15s, background 0.15s;
-}
-
-.file-item .remove-btn:hover {
-  color: var(--red-from);
-  background: rgba(190, 18, 60, 0.15);
-}
-
-/* Output name */
-#options {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  margin-top: 0.25rem;
-}
-
-#options label {
-  color: var(--accent);
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
-#name-row {
-  display: flex;
-  align-items: center;
-  background: var(--surface);
-  border: 2px solid var(--divider);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  transition: border-color 0.15s;
+.remove-btn:hover {
+  color: #fb7185;
+  background-color: rgba(190, 18, 60, 0.15);
 }
 
 #name-row:focus-within {
-  border-color: var(--accent);
-}
-
-#output-name {
-  flex: 1;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: var(--text);
-  font-size: 0.95rem;
-  font-weight: 500;
-  padding: 0.7rem 0.85rem;
-}
-
-#output-name::placeholder {
-  color: var(--text-muted);
-}
-
-.ext {
-  padding: 0 0.85rem;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  font-weight: 700;
-  border-left: 2px solid var(--divider);
-  line-height: 2.7rem;
-}
-
-/* Combine button */
-#combine-btn {
-  margin-top: 0.5rem;
-  width: 100%;
-  padding: 0.95rem;
-  border: none;
-  border-radius: var(--radius);
-  background: linear-gradient(to bottom, var(--green-from), var(--green-to));
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: 0.01em;
-  cursor: pointer;
-  box-shadow: 0 4px 15px var(--green-glow);
-  transition: box-shadow 0.2s, transform 0.05s, background 0.2s;
+  border-color: #FB923C;
 }
 
 #combine-btn:hover:not(:disabled) {
   background: linear-gradient(to bottom, #8ff5b3, #1fd98d);
-  box-shadow: 0 4px 20px var(--green-glow-strong);
+  box-shadow: 0 4px 20px rgba(26, 188, 126, 0.6);
 }
 
 #combine-btn:active:not(:disabled) {
   transform: translateY(1px);
-}
-
-#combine-btn:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-  box-shadow: none;
 }

@@ -5,44 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yomitan Frequency Combiner</title>
   </head>
-  <body>
-    <div id="app">
-      <header>
-        <h1>Yomitan Dictionary Combiner</h1>
-        <p id="subtitle">Combine multiple Yomitan frequency dictionary zips into a single archive.</p>
+  <body class="bg-[#2a2a2a] text-[#E6FAFC] min-h-dvh flex items-center justify-center px-4 py-8 antialiased font-sans">
+    <div id="app" class="w-full max-w-[600px] flex flex-col gap-7">
+
+      <header class="text-center">
+        <h1 class="text-4xl font-black tracking-tight">Yomitan Dictionary Combiner</h1>
+        <p id="subtitle" class="mt-2 text-[rgba(230,250,252,0.4)] text-[0.95rem]">Combine multiple Yomitan frequency dictionary zips into a single archive.</p>
       </header>
 
-      <nav id="page-tabs">
-        <button class="tab active" data-tab="frequency">Frequency</button>
-        <button class="tab" data-tab="kanji">Kanji</button>
+      <nav id="page-tabs" class="flex gap-1.5 bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl p-1.5">
+        <button class="tab active flex-1 py-2.5 px-4 bg-transparent border-0 rounded-xl text-[rgba(230,250,252,0.4)] text-[0.9rem] font-bold cursor-pointer transition-all duration-150 hover:text-[#E6FAFC] hover:bg-[#3a3a3a]" data-tab="frequency">Frequency</button>
+        <button class="tab flex-1 py-2.5 px-4 bg-transparent border-0 rounded-xl text-[rgba(230,250,252,0.4)] text-[0.9rem] font-bold cursor-pointer transition-all duration-150 hover:text-[#E6FAFC] hover:bg-[#3a3a3a]" data-tab="kanji">Kanji</button>
       </nav>
 
-      <main>
-        <section id="drop-zone" role="button" tabindex="0" aria-label="Drop zip files here or click to browse">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <main class="flex flex-col gap-7">
+        <section id="drop-zone" role="button" tabindex="0" aria-label="Drop zip files here or click to browse"
+          class="bg-[#4a4a4a] border-2 border-dashed border-[#5a5a5a] rounded-2xl py-11 px-6 text-center cursor-pointer transition-all duration-200">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-[rgba(230,250,252,0.4)] mx-auto mb-3.5 transition-colors duration-200">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
             <polyline points="17 8 12 3 7 8"/>
             <line x1="12" y1="3" x2="12" y2="15"/>
           </svg>
-          <p>Drag &amp; drop <code>.zip</code> files here, or <label for="file-input" id="browse-label">browse</label></p>
-          <input id="file-input" type="file" accept=".zip" multiple hidden />
+          <p class="text-[0.95rem] font-medium">Drag &amp; drop <code class="font-mono">.zip</code> files here, or <span id="browse-label" class="text-[#FB923C] cursor-pointer font-bold underline underline-offset-[3px] hover:text-[#fdba74]">browse</span></p>
+          <input id="file-input" type="file" accept=".zip" multiple class="hidden" />
         </section>
 
         <section id="file-list-section" hidden>
-          <h2>Selected files</h2>
-          <ul id="file-list"></ul>
+          <h2 class="text-[#FB923C] text-[0.7rem] font-bold uppercase tracking-[0.12em] mb-2.5">Selected files</h2>
+          <ul id="file-list" class="list-none flex flex-col gap-2"></ul>
         </section>
 
-        <section id="options">
-          <label for="output-name">Output filename</label>
-          <div id="name-row">
-            <input id="output-name" type="text" placeholder="combined" maxlength="128" />
-            <span class="ext">.zip</span>
+        <section id="options" class="flex flex-col gap-2.5">
+          <label for="output-name" class="text-[#FB923C] text-[0.7rem] font-bold uppercase tracking-[0.12em]">Output filename</label>
+          <div id="name-row" class="flex items-center bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-xl overflow-hidden transition-colors duration-150">
+            <input id="output-name" type="text" placeholder="combined" maxlength="128"
+              class="flex-1 bg-transparent border-0 outline-none text-[#E6FAFC] text-[0.95rem] font-medium py-3 px-3.5 placeholder:text-[rgba(230,250,252,0.4)]" />
+            <span class="px-3.5 text-[rgba(230,250,252,0.4)] text-[0.9rem] font-bold border-l-2 border-[#5a5a5a] leading-[2.7rem]">.zip</span>
           </div>
         </section>
 
-        <button id="combine-btn" disabled>Combine &amp; Download</button>
+        <div id="action-row" class="flex flex-col gap-2">
+          <button id="combine-btn" disabled
+            class="mt-2 w-full py-[0.95rem] border-0 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-base font-extrabold tracking-[0.01em] cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none">
+            Combine &amp; Download
+          </button>
+          <button id="preview-btn" disabled
+            class="w-full py-3 border-2 border-[#5a5a5a] rounded-2xl bg-[#4a4a4a] text-[#E6FAFC] text-sm font-bold cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.3)] disabled:opacity-40 disabled:cursor-not-allowed">
+            Preview freq entries
+          </button>
+          <button id="term-bank-btn" disabled
+            class="w-full py-3 border-2 border-[#5a5a5a] rounded-2xl bg-[#4a4a4a] text-[#E6FAFC] text-sm font-bold cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.3)] disabled:opacity-40 disabled:cursor-not-allowed">
+            Preview term bank
+          </button>
+        </div>
       </main>
+
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

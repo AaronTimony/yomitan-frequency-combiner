@@ -22,6 +22,11 @@ export class FileManager {
     return this.files;
   }
 
+  reset(): void {
+    this.files = [];
+    this.render();
+  }
+
   private add(incoming: FileList | File[]): void {
     const existing = new Set(this.files.map((f) => f.name));
 
@@ -74,9 +79,7 @@ export class FileManager {
 
   private bindRemove(): void {
     this.el.fileList.addEventListener("click", (e) => {
-      const btn = (e.target as Element).closest<HTMLButtonElement>(
-        ".remove-btn",
-      );
+      const btn = (e.target as Element).closest<HTMLButtonElement>(".remove-btn");
       if (!btn) return;
       this.remove(Number(btn.dataset.index));
     });
@@ -95,23 +98,25 @@ export class FileManager {
 
 function renderItem(file: File, index: number): HTMLLIElement {
   const li = document.createElement("li");
-  li.className = "file-item";
+  li.className =
+    "file-item flex items-center gap-3 bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-xl px-3.5 py-2.5 text-[0.9rem] transition-all duration-150";
 
   const icon = document.createElement("span");
-  icon.className = "file-icon";
+  icon.className = "text-lg shrink-0";
   icon.textContent = "📦";
 
   const name = document.createElement("span");
-  name.className = "file-name";
+  name.className = "flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-[#E6FAFC] font-semibold";
   name.title = file.name;
   name.textContent = file.name;
 
   const size = document.createElement("span");
-  size.className = "file-size";
+  size.className = "text-[rgba(230,250,252,0.4)] text-xs font-bold shrink-0";
   size.textContent = formatBytes(file.size);
 
   const remove = document.createElement("button");
-  remove.className = "remove-btn";
+  remove.className =
+    "remove-btn bg-transparent border-0 cursor-pointer text-[rgba(230,250,252,0.4)] px-2 py-1 rounded-md text-lg leading-none shrink-0 transition-all duration-150";
   remove.dataset.index = String(index);
   remove.setAttribute("aria-label", `Remove ${file.name}`);
   remove.textContent = "✕";
