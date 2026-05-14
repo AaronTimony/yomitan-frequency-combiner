@@ -40,12 +40,19 @@ export function setupPages(navEl: HTMLElement): void {
     if (key) activate(key);
   });
 
-  prevBtn?.addEventListener("click", () => {
+  function nearCenter(e: MouseEvent, btn: HTMLButtonElement): boolean {
+    const rect = btn.getBoundingClientRect();
+    return Math.abs(e.clientY - (rect.top + rect.height / 2)) < 80;
+  }
+
+  prevBtn?.addEventListener("click", (e) => {
+    if (!nearCenter(e, prevBtn)) return;
     const idx = ORDER.indexOf(currentKey());
     if (idx > 0) activate(ORDER[idx - 1]);
   });
 
-  nextBtn?.addEventListener("click", () => {
+  nextBtn?.addEventListener("click", (e) => {
+    if (!nearCenter(e, nextBtn)) return;
     const idx = ORDER.indexOf(currentKey());
     if (idx < ORDER.length - 1) activate(ORDER[idx + 1]);
   });
