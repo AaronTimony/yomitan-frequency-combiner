@@ -3,12 +3,12 @@ import JSZip from "jszip";
 // Key format for kanji entries with kana marker (㋕):  "expression\treading\t㋕"
 // Key format for standalone kana entries:              "expression"
 // The ㋕ suffix distinguishes kanji-rank from kana-rank entries for the same expression+reading pair.
-function entryKey(expression, reading, hasMarker) {
+export function entryKey(expression, reading, hasMarker) {
     if (reading === null)
         return expression;
     return hasMarker ? `${expression}\t${reading}\t㋕` : `${expression}\t${reading}`;
 }
-function parseKey(key) {
+export function parseKey(key) {
     const parts = key.split("\t");
     if (parts.length === 1)
         return { expression: parts[0], reading: null, hasMarker: false };
@@ -16,7 +16,7 @@ function parseKey(key) {
         return { expression: parts[0], reading: parts[1], hasMarker: true };
     return { expression: parts[0], reading: parts[1], hasMarker: false };
 }
-function parseRawEntry(term, data) {
+export function parseRawEntry(term, data) {
     if ("reading" in data) {
         const hasMarker = data.frequency.displayValue.includes("㋕");
         return {

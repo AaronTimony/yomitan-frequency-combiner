@@ -31,19 +31,19 @@ export interface FrequencyData {
 // Key format for kanji entries with kana marker (㋕):  "expression\treading\t㋕"
 // Key format for standalone kana entries:              "expression"
 // The ㋕ suffix distinguishes kanji-rank from kana-rank entries for the same expression+reading pair.
-function entryKey(expression: string, reading: string | null, hasMarker: boolean): string {
+export function entryKey(expression: string, reading: string | null, hasMarker: boolean): string {
   if (reading === null) return expression;
   return hasMarker ? `${expression}\t${reading}\t㋕` : `${expression}\t${reading}`;
 }
 
-function parseKey(key: string): { expression: string; reading: string | null; hasMarker: boolean } {
+export function parseKey(key: string): { expression: string; reading: string | null; hasMarker: boolean } {
   const parts = key.split("\t");
   if (parts.length === 1) return { expression: parts[0], reading: null, hasMarker: false };
   if (parts.length === 3 && parts[2] === "㋕") return { expression: parts[0], reading: parts[1], hasMarker: true };
   return { expression: parts[0], reading: parts[1], hasMarker: false };
 }
 
-function parseRawEntry(
+export function parseRawEntry(
   term: string,
   data: RawFreqData,
 ): { key: string; expression: string; reading: string | null; value: number; hasMarker: boolean } {
