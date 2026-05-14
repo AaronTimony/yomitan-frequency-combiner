@@ -1,21 +1,39 @@
 import JSZip from "jszip";
-function entryKey(expression, reading) {
-    return reading !== null ? `${expression}\t${reading}` : expression;
+// Key format for kanji entries without kana marker: "expression\treading"
+// Key format for kanji entries with kana marker (㋕):  "expression\treading\t㋕"
+// Key format for standalone kana entries:              "expression"
+// The ㋕ suffix distinguishes kanji-rank from kana-rank entries for the same expression+reading pair.
+function entryKey(expression, reading, hasMarker) {
+    if (reading === null)
+        return expression;
+    return hasMarker ? `${expression}\t${reading}\t㋕` : `${expression}\t${reading}`;
+}
+function parseKey(key) {
+    const parts = key.split("\t");
+    if (parts.length === 1)
+        return { expression: parts[0], reading: null, hasMarker: false };
+    if (parts.length === 3 && parts[2] === "㋕")
+        return { expression: parts[0], reading: parts[1], hasMarker: true };
+    return { expression: parts[0], reading: parts[1], hasMarker: false };
 }
 function parseRawEntry(term, data) {
     if ("reading" in data) {
+        const hasMarker = data.frequency.displayValue.includes("㋕");
         return {
-            key: entryKey(term, data.reading),
+            key: entryKey(term, data.reading, hasMarker),
             expression: term,
             reading: data.reading,
             value: data.frequency.value,
+            hasMarker,
         };
     }
+    const hasMarker = data.displayValue.includes("㋕");
     return {
-        key: entryKey(term, null),
+        key: entryKey(term, null, hasMarker),
         expression: term,
         reading: null,
         value: data.value,
+        hasMarker,
     };
 }
 export async function readFrequencies(files) {
@@ -44,11 +62,8 @@ export async function readFrequencies(files) {
             const rawEntries = JSON.parse(text);
             for (const [term, , data, seq] of rawEntries) {
                 const parsed = parseRawEntry(term, data);
-                const hasMarker = "reading" in data
-                    ? data.frequency.displayValue.includes("㋕")
-                    : data.displayValue.includes("㋕");
                 if (!dictMap.has(parsed.key)) {
-                    dictMap.set(parsed.key, { value: parsed.value, sequence: seq ?? null, hasMarker });
+                    dictMap.set(parsed.key, { value: parsed.value, sequence: seq ?? null, hasMarker: parsed.hasMarker });
                 }
             }
         }
@@ -59,20 +74,14 @@ export async function readFrequencies(files) {
     for (let dictIdx = 0; dictIdx < numDicts; dictIdx++) {
         for (const [key, { value, sequence, hasMarker }] of perDictMaps[dictIdx]) {
             if (!entries.has(key)) {
-                const tabIdx = key.indexOf("\t");
-                const expression = tabIdx >= 0 ? key.slice(0, tabIdx) : key;
-                const reading = tabIdx >= 0 ? key.slice(tabIdx + 1) : null;
+                const { expression, reading, hasMarker: keyHasMarker } = parseKey(key);
                 entries.set(key, {
                     expression,
                     reading,
                     freqs: new Array(numDicts).fill(null),
                     sequence,
-                    hasMarker,
+                    hasMarker: keyHasMarker || hasMarker,
                 });
-            }
-            else if (hasMarker) {
-                // Any dict marking it as frequent is enough to keep the marker
-                entries.get(key).hasMarker = true;
             }
             entries.get(key).freqs[dictIdx] = value;
         }
@@ -112,7 +121,7 @@ function buildAveragedEntries(data) {
             continue;
         const avg = Math.round(defined.reduce((a, b) => a + b, 0) / defined.length);
         if (entry.reading !== null) {
-            pushOut(outEntries, entry.expression, { reading: entry.reading, frequency: { value: avg, displayValue: String(avg) } }, entry.sequence);
+            pushOut(outEntries, entry.expression, { reading: entry.reading, frequency: { value: avg, displayValue: entry.hasMarker ? `${avg}㋕` : String(avg) } }, entry.sequence);
         }
         else {
             pushOut(outEntries, entry.expression, { value: avg, displayValue: `${avg}㋕` }, entry.sequence);
