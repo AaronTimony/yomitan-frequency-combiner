@@ -2,8 +2,10 @@ import "./style.css";
 import { $ } from "./dom";
 import { FileManager } from "./fileManager";
 import { setupTabs } from "./tabs";
+import { setupPages } from "./pages";
 import { averageZips, previewAveraged, previewTermBank, downloadBlob } from "./combiner";
 
+setupPages($("top-nav"));
 setupTabs($("page-tabs"), $("subtitle"));
 
 const fileManager = new FileManager({
