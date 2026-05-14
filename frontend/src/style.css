@@ -4,17 +4,19 @@ html {
   scrollbar-gutter: stable;
 }
 
-/* Side nav arrows — full-height edge strip with fading orange on hover */
+/* Side nav arrows — soft fading glow on hover (no hard rectangle edges) */
 .page-arrow {
   transition: background 0.3s ease, color 0.25s ease;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
 }
 
 #page-prev:hover {
-  background: linear-gradient(to right, rgba(251, 146, 60, 0.22), rgba(251, 146, 60, 0.05) 60%, transparent);
+  background: linear-gradient(to right, rgba(251, 146, 60, 0.28), transparent 60%);
 }
 
 #page-next:hover {
-  background: linear-gradient(to left, rgba(251, 146, 60, 0.22), rgba(251, 146, 60, 0.05) 60%, transparent);
+  background: linear-gradient(to left, rgba(251, 146, 60, 0.28), transparent 60%);
 }
 
 /* Top nav active page — clean pill, matching arrow orange */
