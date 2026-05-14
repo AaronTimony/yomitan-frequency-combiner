@@ -3,7 +3,7 @@ import { $ } from "./dom";
 import { FileManager } from "./fileManager";
 import { setupTabs } from "./tabs";
 import { setupPages } from "./pages";
-import { averageZips, previewAveraged, previewTermBank, downloadBlob } from "./combiner";
+import { averageZips, downloadBlob } from "./combiner";
 
 setupPages($("top-nav"));
 setupTabs($("page-tabs"), $("subtitle"));
@@ -17,15 +17,7 @@ const fileManager = new FileManager({
 });
 
 const combineBtn = $<HTMLButtonElement>("combine-btn");
-const previewBtn = $<HTMLButtonElement>("preview-btn");
-const termBankBtn = $<HTMLButtonElement>("term-bank-btn");
 const outputName = $<HTMLInputElement>("output-name");
-
-// Keep preview buttons in sync with combine button's enabled state
-new MutationObserver(() => {
-  previewBtn.disabled = combineBtn.disabled;
-  termBankBtn.disabled = combineBtn.disabled;
-}).observe(combineBtn, { attributes: true, attributeFilter: ["disabled"] });
 
 combineBtn.addEventListener("click", async () => {
   const files = fileManager.getFiles();
@@ -46,43 +38,5 @@ combineBtn.addEventListener("click", async () => {
   } finally {
     combineBtn.textContent = originalLabel;
     combineBtn.disabled = fileManager.getFiles().length === 0;
-  }
-});
-
-previewBtn.addEventListener("click", async () => {
-  const files = fileManager.getFiles();
-  if (files.length === 0) return;
-
-  const originalLabel = previewBtn.textContent;
-  previewBtn.disabled = true;
-  previewBtn.textContent = "Generating…";
-
-  try {
-    await previewAveraged(files);
-  } catch (err) {
-    console.error(err);
-    alert(`Failed to preview: ${err instanceof Error ? err.message : String(err)}`);
-  } finally {
-    previewBtn.textContent = originalLabel;
-    previewBtn.disabled = files.length === 0;
-  }
-});
-
-termBankBtn.addEventListener("click", async () => {
-  const files = fileManager.getFiles();
-  if (files.length === 0) return;
-
-  const originalLabel = termBankBtn.textContent;
-  termBankBtn.disabled = true;
-  termBankBtn.textContent = "Generating…";
-
-  try {
-    await previewTermBank(files);
-  } catch (err) {
-    console.error(err);
-    alert(`Failed to preview term bank: ${err instanceof Error ? err.message : String(err)}`);
-  } finally {
-    termBankBtn.textContent = originalLabel;
-    termBankBtn.disabled = files.length === 0;
   }
 });
