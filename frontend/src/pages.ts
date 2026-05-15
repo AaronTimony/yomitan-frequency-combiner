@@ -2,6 +2,11 @@ export type PageKey = "recommended" | "combiner" | "search";
 
 const ORDER: PageKey[] = ["recommended", "combiner", "search"];
 
+function pathKey(): PageKey {
+  const segment = location.pathname.replace(/^\//, "") as PageKey;
+  return ORDER.includes(segment) ? segment : "combiner";
+}
+
 export function setupPages(navEl: HTMLElement): void {
   const pages = new Map<PageKey, HTMLElement>();
   for (const key of ORDER) {
@@ -12,7 +17,9 @@ export function setupPages(navEl: HTMLElement): void {
   const prevBtn = document.getElementById("page-prev") as HTMLButtonElement | null;
   const nextBtn = document.getElementById("page-next") as HTMLButtonElement | null;
 
-  function activate(key: PageKey): void {
+  // push=true  → pushState (adds history entry; back button returns here)
+  // push=false → replaceState (reflect state without a new history entry)
+  function activate(key: PageKey, push = true): void {
     if (!pages.has(key)) return;
 
     navEl
@@ -26,11 +33,9 @@ export function setupPages(navEl: HTMLElement): void {
     const idx = ORDER.indexOf(key);
     if (prevBtn) prevBtn.hidden = idx <= 0;
     if (nextBtn) nextBtn.hidden = idx >= ORDER.length - 1;
-  }
 
-  function currentKey(): PageKey {
-    const active = navEl.querySelector<HTMLButtonElement>(".page-tab.active");
-    return (active?.dataset.page as PageKey) ?? "combiner";
+    if (push) history.pushState(null, "", `/${key}`);
+    else history.replaceState(null, "", `/${key}`);
   }
 
   navEl.addEventListener("click", (e) => {
@@ -47,15 +52,19 @@ export function setupPages(navEl: HTMLElement): void {
 
   prevBtn?.addEventListener("click", (e) => {
     if (!nearCenter(e, prevBtn)) return;
-    const idx = ORDER.indexOf(currentKey());
+    const idx = ORDER.indexOf(pathKey());
     if (idx > 0) activate(ORDER[idx - 1]);
   });
 
   nextBtn?.addEventListener("click", (e) => {
     if (!nearCenter(e, nextBtn)) return;
-    const idx = ORDER.indexOf(currentKey());
+    const idx = ORDER.indexOf(pathKey());
     if (idx < ORDER.length - 1) activate(ORDER[idx + 1]);
   });
 
-  activate(currentKey());
+  // Sync to hash on browser back/forward.
+  window.addEventListener("popstate", () => activate(pathKey(), false));
+
+  // Initial load: read hash from URL, update URL to normalise it (replaceState).
+  activate(pathKey(), false);
 }

@@ -1,4 +1,8 @@
 const ORDER = ["recommended", "combiner", "search"];
+function pathKey() {
+    const segment = location.pathname.replace(/^\//, "");
+    return ORDER.includes(segment) ? segment : "combiner";
+}
 export function setupPages(navEl) {
     const pages = new Map();
     for (const key of ORDER) {
@@ -8,7 +12,9 @@ export function setupPages(navEl) {
     }
     const prevBtn = document.getElementById("page-prev");
     const nextBtn = document.getElementById("page-next");
-    function activate(key) {
+    // push=true  → pushState (adds history entry; back button returns here)
+    // push=false → replaceState (reflect state without a new history entry)
+    function activate(key, push = true) {
         if (!pages.has(key))
             return;
         navEl
@@ -22,10 +28,10 @@ export function setupPages(navEl) {
             prevBtn.hidden = idx <= 0;
         if (nextBtn)
             nextBtn.hidden = idx >= ORDER.length - 1;
-    }
-    function currentKey() {
-        const active = navEl.querySelector(".page-tab.active");
-        return active?.dataset.page ?? "combiner";
+        if (push)
+            history.pushState(null, "", `/${key}`);
+        else
+            history.replaceState(null, "", `/${key}`);
     }
     navEl.addEventListener("click", (e) => {
         const btn = e.target.closest(".page-tab");
@@ -42,16 +48,19 @@ export function setupPages(navEl) {
     prevBtn?.addEventListener("click", (e) => {
         if (!nearCenter(e, prevBtn))
             return;
-        const idx = ORDER.indexOf(currentKey());
+        const idx = ORDER.indexOf(pathKey());
         if (idx > 0)
             activate(ORDER[idx - 1]);
     });
     nextBtn?.addEventListener("click", (e) => {
         if (!nearCenter(e, nextBtn))
             return;
-        const idx = ORDER.indexOf(currentKey());
+        const idx = ORDER.indexOf(pathKey());
         if (idx < ORDER.length - 1)
             activate(ORDER[idx + 1]);
     });
-    activate(currentKey());
+    // Sync to hash on browser back/forward.
+    window.addEventListener("popstate", () => activate(pathKey(), false));
+    // Initial load: read hash from URL, update URL to normalise it (replaceState).
+    activate(pathKey(), false);
 }

@@ -3,10 +3,12 @@ import { $ } from "./dom";
 import { FileManager } from "./fileManager";
 import { setupTabs } from "./tabs";
 import { setupPages } from "./pages";
+import { setupSearchPage } from "./searchPage";
 import { averageZips, downloadBlob } from "./combiner";
 
 setupPages($("top-nav"));
 setupTabs($("page-tabs"), $("subtitle"));
+setupSearchPage($("page-search"));
 
 const fileManager = new FileManager({
   dropZone: $("drop-zone"),
