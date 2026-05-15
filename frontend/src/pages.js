@@ -28,10 +28,17 @@ export function setupPages(navEl) {
             prevBtn.hidden = idx <= 0;
         if (nextBtn)
             nextBtn.hidden = idx >= ORDER.length - 1;
-        if (push)
-            history.pushState(null, "", `/${key}`);
-        else
-            history.replaceState(null, "", `/${key}`);
+        if (push) {
+            // When navigating to the create page, restore the last saved search params
+            // so the user's filters survive in-app navigation (not just refresh).
+            const savedSearch = key === "create" ? (sessionStorage.getItem("create-search") ?? "") : "";
+            history.pushState(null, "", `/${key}${savedSearch}`);
+        }
+        else {
+            // On initial load / popstate: preserve whatever search params are already
+            // in the URL — this is what makes refresh work.
+            history.replaceState(null, "", `/${key}${location.search}`);
+        }
     }
     navEl.addEventListener("click", (e) => {
         const btn = e.target.closest(".page-tab");

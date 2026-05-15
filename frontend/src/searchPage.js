@@ -80,14 +80,43 @@ export function setupCreatePage(searchEl) {
         mergeBtn: searchEl.querySelector("#merge-btn"),
         mergeHint: searchEl.querySelector("#merge-hint"),
     };
-    let currentQuery = "";
-    let currentMediaType = undefined;
-    let currentTitleLang = "original";
+    // Restore state from URL so a page refresh doesn't reset filters/search/page.
+    const initParams = new URLSearchParams(location.search);
+    const initQuery = initParams.get("q") ?? "";
+    const initMtRaw = initParams.get("mediaType");
+    const initMediaType = initMtRaw ? parseInt(initMtRaw) : undefined;
+    const initLang = initParams.get("lang") ?? "original";
+    const initPage = parseInt(initParams.get("page") ?? "1") || 1;
+    let currentQuery = initQuery;
+    let currentMediaType = initMediaType;
+    let currentTitleLang = initLang;
     let currentDecks = [];
+    let currentPage = initPage;
+    function syncUrl() {
+        const params = new URLSearchParams();
+        if (currentQuery)
+            params.set("q", currentQuery);
+        if (currentMediaType !== undefined)
+            params.set("mediaType", String(currentMediaType));
+        if (currentTitleLang !== "original")
+            params.set("lang", currentTitleLang);
+        if (currentPage > 1)
+            params.set("page", String(currentPage));
+        // Preserve ?api= override used by developers to point at a local backend.
+        const apiOverride = new URLSearchParams(location.search).get("api");
+        if (apiOverride)
+            params.set("api", apiOverride);
+        const s = params.toString();
+        const search = s ? `?${s}` : "";
+        sessionStorage.setItem("create-search", search);
+        history.replaceState(null, "", `/create${search}`);
+    }
     function goToPage(page, scroll = true) {
+        currentPage = page;
         if (scroll)
             window.scrollTo({ top: 0, behavior: "smooth" });
         cardResets.clear();
+        syncUrl();
         loadDecks(currentQuery, page, currentMediaType, currentTitleLang, grid, paginationEl, addedDecks, cardResets, panel, mc, goToPage, (decks) => { currentDecks = decks; });
     }
     resetAllBtn.addEventListener("click", () => {
@@ -99,14 +128,22 @@ export function setupCreatePage(searchEl) {
         currentMediaType = mediaType;
         goToPage(1);
     });
+    if (initMediaType !== undefined) {
+        setActiveChip(chipsEl, "mediaType", String(initMediaType));
+    }
     buildTitleLangChips(titleLangChipsEl, (lang) => {
         currentTitleLang = lang;
+        syncUrl();
         syncPanel(panel, addedDecks, cardResets, mc, lang);
         // Re-render existing cards in-place — no fetch, no skeleton
         cardResets.clear();
         grid.replaceChildren(...currentDecks.map((d) => makeDeckCard(d, addedDecks, cardResets, panel, mc, lang)));
     });
-    goToPage(1, false);
+    if (initLang !== "original") {
+        setActiveChip(titleLangChipsEl, "titleLang", initLang);
+    }
+    input.value = initQuery;
+    goToPage(initPage, false);
     let debounce;
     input.addEventListener("input", () => {
         clearTimeout(debounce);
@@ -176,10 +213,12 @@ function makeDeckCard(deck, addedDecks, cardResets, panel, mc, titleLang) {
     function markAdded() {
         addBtn.className = `${baseClasses} ${redClasses}`;
         addBtn.innerHTML = minusIcon();
+        addBtn.title = "Remove from selected decks";
     }
     function markRemoved() {
         addBtn.className = `${baseClasses} ${greenClasses}`;
         addBtn.innerHTML = plusIcon();
+        addBtn.title = "Add to selected decks";
     }
     if (addedDecks.some((d) => d.deckId === deck.deckId)) {
         markAdded();
