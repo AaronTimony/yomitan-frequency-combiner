@@ -91,11 +91,9 @@ export function setupSearchPage(searchEl: HTMLElement): void {
   let currentQuery = "";
   let currentMediaType: number | undefined = undefined;
   let currentTitleLang: TitleLang = "original";
-  let currentPage = 1;
   let currentDecks: JitenDeck[] = [];
 
   function goToPage(page: number, scroll = true): void {
-    currentPage = page;
     if (scroll) window.scrollTo({ top: 0, behavior: "smooth" });
     cardResets.clear();
     loadDecks(currentQuery, page, currentMediaType, currentTitleLang, grid, paginationEl, addedDecks, cardResets, panel, mc, goToPage, (decks) => { currentDecks = decks; });
@@ -114,8 +112,10 @@ export function setupSearchPage(searchEl: HTMLElement): void {
 
   buildTitleLangChips(titleLangChipsEl, (lang) => {
     currentTitleLang = lang;
-    syncPanel(panel, addedDecks, cardResets, mc, currentTitleLang);
-    goToPage(currentPage, false);
+    syncPanel(panel, addedDecks, cardResets, mc, lang);
+    // Re-render existing cards in-place — no fetch, no skeleton
+    cardResets.clear();
+    grid.replaceChildren(...currentDecks.map((d) => makeDeckCard(d, addedDecks, cardResets, panel, mc, lang)));
   });
 
   goToPage(1, false);
@@ -149,11 +149,13 @@ async function loadDecks(
   panel: HTMLElement,
   mc: MergeControls,
   onPageChange: (page: number) => void,
+  setDecks: (decks: JitenDeck[]) => void,
 ): Promise<void> {
   grid.replaceChildren(...Array.from({ length: 10 }, makeSkeletonCard));
   paginationEl.replaceChildren();
   try {
     const result: FetchDecksResult = await fetchDecks(query, page, mediaType);
+    setDecks(result.decks);
     if (result.decks.length === 0 && page === 1) {
       grid.innerHTML = `<div class="col-span-full text-[rgba(230,250,252,0.6)] text-sm">No results.</div>`;
     } else {
@@ -177,9 +179,8 @@ function makeDeckCard(
 
   const card = document.createElement("div");
   card.className = [
-    "group relative bg-[#4a4a4a] border-2 border-[#3a3a3a] rounded-xl overflow-hidden",
+    "deck-card group relative bg-[#4a4a4a] border-2 border-[#3a3a3a] rounded-xl overflow-hidden",
     "transition-all duration-200 hover:-translate-y-0.5",
-    "hover:border-[#FB923C]/30 hover:shadow-[0_8px_24px_rgba(251,146,60,0.1)]",
   ].join(" ");
 
   const titleRow = document.createElement("div");
@@ -305,14 +306,14 @@ function updateMergeControls(mc: MergeControls, addedDecks: JitenDeck[]): void {
   mc.totalWordsEl.textContent = total.toLocaleString();
 
   let color: string;
-  if (total === 0) color = "rgba(230,250,252,0.3)";
+  if (total === 0) color = "var(--count-zero)";
   else if (total < MIN_WORDS) color = "#f87171";
   else if (total < REC_WORDS) color = "#FB923C";
   else color = "#7deda4";
 
   mc.totalWordsEl.style.color = color;
   mc.progressFill.style.width = `${pct}%`;
-  mc.progressFill.style.backgroundColor = total === 0 ? "rgba(230,250,252,0.15)" : color;
+  mc.progressFill.style.backgroundColor = total === 0 ? "var(--progress-zero)" : color;
   mc.mergeBtn.disabled = total < MIN_WORDS;
 
   if (total === 0) mc.mergeHint.textContent = "Add decks to reach the 1M word minimum.";
@@ -358,7 +359,7 @@ function makeAddedRow(
 
   const removeBtn = document.createElement("button");
   removeBtn.className =
-    "shrink-0 w-6 h-6 flex items-center justify-center rounded-full border-0 bg-[#5a5a5a] hover:bg-[#be123c] cursor-pointer transition-colors duration-150";
+    "panel-remove-btn shrink-0 w-6 h-6 flex items-center justify-center rounded-full border-0 bg-[#5a5a5a] cursor-pointer transition-all duration-150";
   removeBtn.title = "Remove";
   removeBtn.innerHTML = `<svg width="10" height="2" viewBox="0 0 10 2" fill="none"><rect width="10" height="2" rx="1" fill="rgba(255,255,255,0.85)"/></svg>`;
   removeBtn.addEventListener("click", () => {

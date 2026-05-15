@@ -5,6 +5,61 @@ html {
   scrollbar-gutter: stable;
 }
 
+:root {
+  --count-zero: rgba(230,250,252,0.3);
+  --progress-zero: rgba(230,250,252,0.15);
+}
+
+html.light {
+  --count-zero: rgba(0,0,0,0.2);
+  --progress-zero: rgba(0,0,0,0.08);
+}
+
+/* Light mode — background overrides */
+html.light .bg-\[\#2a2a2a\] { background-color: #f0f2f5; }
+html.light .bg-\[\#3a3a3a\] { background-color: #e4e7eb; }
+html.light .bg-\[\#4a4a4a\] { background-color: #ffffff; }
+html.light .bg-\[\#5a5a5a\] { background-color: #d1d5db; }
+html.light .bg-\[rgba\(230\,250\,252\,0\.2\)\] { background-color: rgba(0,0,0,0.06); }
+html.light .bg-\[rgba\(230\,250\,252\,0\.25\)\] { background-color: rgba(0,0,0,0.1); }
+
+/* Light mode — text overrides */
+html.light .text-\[\#E6FAFC\] { color: #1a1a1a; }
+html.light .text-\[rgba\(230\,250\,252\,0\.85\)\] { color: rgba(0,0,0,0.75); }
+html.light .text-\[rgba\(230\,250\,252\,0\.75\)\] { color: rgba(0,0,0,0.65); }
+html.light .text-\[rgba\(230\,250\,252\,0\.7\)\] { color: rgba(0,0,0,0.6); }
+html.light .text-\[rgba\(230\,250\,252\,0\.65\)\] { color: rgba(0,0,0,0.55); }
+html.light .text-\[rgba\(230\,250\,252\,0\.6\)\] { color: rgba(0,0,0,0.5); }
+html.light .text-\[rgba\(230\,250\,252\,0\.55\)\] { color: rgba(0,0,0,0.45); }
+html.light .text-\[rgba\(230\,250\,252\,0\.4\)\] { color: rgba(0,0,0,0.35); }
+html.light .text-\[rgba\(230\,250\,252\,0\.35\)\] { color: rgba(0,0,0,0.3); }
+html.light .text-\[rgba\(230\,250\,252\,0\.3\)\] { color: rgba(0,0,0,0.25); }
+
+/* Light mode — border overrides */
+html.light .border-\[\#3a3a3a\] { border-color: #e0e3e8; }
+html.light .border-\[\#5a5a5a\] { border-color: #d1d5db; }
+html.light .border-\[rgba\(230\,250\,252\,0\.1\)\] { border-color: rgba(0,0,0,0.1); }
+
+/* Light mode — divide overrides */
+html.light :where(.divide-\[\#5a5a5a\]>:not(:last-child)) { border-color: #d1d5db; }
+
+/* Light mode — hover overrides */
+html.light .hover\:bg-\[\#3a3a3a\]:hover { background-color: #e4e7eb; }
+html.light .hover\:bg-\[\#5a5a5a\]:hover { background-color: #d1d5db; }
+html.light .hover\:text-\[\#E6FAFC\]:hover { color: #1a1a1a; }
+
+/* Light mode — placeholder */
+html.light .placeholder\:text-\[rgba\(230\,250\,252\,0\.4\)\]::placeholder { color: rgba(0,0,0,0.35); }
+
+/* Light mode — drop zone */
+html.light #drop-zone:hover,
+html.light #drop-zone.drag-over { background-color: #e4e7eb; }
+
+/* Light mode — selected decks scrollbar */
+html.light #added-panel { scrollbar-color: #aaa #f0f2f5; }
+html.light #added-panel::-webkit-scrollbar-track { background: #f0f2f5; }
+html.light #added-panel::-webkit-scrollbar-thumb { background: #aaa; }
+
 /* Side nav arrows — soft fading glow on hover (no hard rectangle edges) */
 .page-arrow {
   transition: background 0.3s ease, color 0.25s ease;
@@ -32,6 +87,37 @@ html {
   background: linear-gradient(to bottom, #7deda4, #1abc7e);
   color: #fff;
   box-shadow: 0 4px 15px rgba(26, 188, 126, 0.4);
+}
+
+/* Deck card hover — orange border + glow */
+.deck-card:hover {
+  border-color: rgba(251, 146, 60, 0.55);
+  box-shadow: 0 8px 24px rgba(251, 146, 60, 0.12);
+}
+
+/* Remove button in Selected Decks panel */
+.panel-remove-btn:hover {
+  background-color: #be123c;
+  transform: scale(1.15);
+}
+
+/*
+ * Light-mode hover fixes.
+ * html.light .border-[...] has specificity 0,2,1 which beats plain :hover rules (0,2,0).
+ * Adding html.light to these hover rules bumps them to 0,3,1 so they win.
+ */
+html.light .deck-card:hover {
+  border-color: rgba(251, 146, 60, 0.55);
+  box-shadow: 0 8px 24px rgba(251, 146, 60, 0.12);
+}
+
+html.light .panel-remove-btn:hover {
+  background-color: #be123c;
+  transform: scale(1.15);
+}
+
+html.light .rec-article:hover {
+  border-color: rgba(251, 146, 60, 0.45);
 }
 
 /* Drop zone hover & JS-toggled drag-over class */
