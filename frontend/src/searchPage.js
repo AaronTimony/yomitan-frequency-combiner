@@ -18,13 +18,13 @@ export function setupSearchPage(searchEl) {
     <div class="flex gap-6 flex-1 min-h-0">
       <div class="flex flex-col gap-4 flex-1 min-w-0">
         <div class="flex items-stretch bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl overflow-hidden">
-          <div class="flex flex-col gap-2 px-3 py-2.5 flex-1">
-            <span class="text-[#FB923C] text-[0.65rem] font-bold uppercase tracking-[0.12em]">Media Type</span>
+          <div class="flex flex-col gap-2 px-3 py-2.5">
+            <span class="text-[#FB923C] text-[0.65rem] font-bold">Media Type</span>
             <div id="media-type-chips" class="flex flex-wrap gap-1.5"></div>
           </div>
           <div class="w-px bg-[#5a5a5a] shrink-0"></div>
           <div class="flex flex-col gap-2 px-3 py-2.5 shrink-0">
-            <span class="text-[#FB923C] text-[0.65rem] font-bold uppercase tracking-[0.12em]">Title Language</span>
+            <span class="text-[#FB923C] text-[0.65rem] font-bold">Title Language</span>
             <div id="title-lang-chips" class="flex gap-1.5"></div>
           </div>
         </div>
@@ -36,7 +36,10 @@ export function setupSearchPage(searchEl) {
         <div id="pagination"></div>
       </div>
       <div style="flex: 0 0 22rem; min-width: 0;" class="sticky top-6 self-start max-h-[calc(100vh-3rem)] flex flex-col gap-3 overflow-hidden">
-        <h2 class="text-[#FB923C] text-[0.7rem] font-bold uppercase tracking-[0.12em] shrink-0">Selected Decks</h2>
+        <div class="flex items-center justify-between shrink-0">
+          <h2 class="text-[#FB923C] text-[0.7rem] font-bold">Selected Decks</h2>
+          <button id="reset-all-btn" class="text-xs text-[rgba(230,250,252,0.35)] hover:text-[#fb7185] font-semibold cursor-pointer border-0 bg-transparent p-0 transition-colors duration-150">Reset All</button>
+        </div>
         <div id="added-panel" class="flex flex-col gap-2 overflow-y-auto flex-1 min-h-0 bg-[#2a2a2a]">
           <span class="text-[rgba(230,250,252,0.4)] text-sm">No decks selected.</span>
         </div>
@@ -70,6 +73,7 @@ export function setupSearchPage(searchEl) {
     const panel = searchEl.querySelector("#added-panel");
     const chipsEl = searchEl.querySelector("#media-type-chips");
     const titleLangChipsEl = searchEl.querySelector("#title-lang-chips");
+    const resetAllBtn = searchEl.querySelector("#reset-all-btn");
     const mc = {
         totalWordsEl: searchEl.querySelector("#total-words"),
         progressFill: searchEl.querySelector("#progress-fill"),
@@ -87,6 +91,11 @@ export function setupSearchPage(searchEl) {
         cardResets.clear();
         loadDecks(currentQuery, page, currentMediaType, currentTitleLang, grid, paginationEl, addedDecks, cardResets, panel, mc, goToPage);
     }
+    resetAllBtn.addEventListener("click", () => {
+        cardResets.forEach((reset) => reset());
+        addedDecks.length = 0;
+        syncPanel(panel, addedDecks, cardResets, mc, currentTitleLang);
+    });
     buildMediaTypeChips(chipsEl, (mediaType) => {
         currentMediaType = mediaType;
         goToPage(1);

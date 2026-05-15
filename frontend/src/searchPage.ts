@@ -41,7 +41,10 @@ export function setupSearchPage(searchEl: HTMLElement): void {
         <div id="pagination"></div>
       </div>
       <div style="flex: 0 0 22rem; min-width: 0;" class="sticky top-6 self-start max-h-[calc(100vh-3rem)] flex flex-col gap-3 overflow-hidden">
-        <h2 class="text-[#FB923C] text-[0.7rem] font-bold uppercase tracking-[0.12em] shrink-0">Selected Decks</h2>
+        <div class="flex items-center justify-between shrink-0">
+          <h2 class="text-[#FB923C] text-[0.7rem] font-bold">Selected Decks</h2>
+          <button id="reset-all-btn" class="text-xs text-[rgba(230,250,252,0.35)] hover:text-[#fb7185] font-semibold cursor-pointer border-0 bg-transparent p-0 transition-colors duration-150">Reset All</button>
+        </div>
         <div id="added-panel" class="flex flex-col gap-2 overflow-y-auto flex-1 min-h-0 bg-[#2a2a2a]">
           <span class="text-[rgba(230,250,252,0.4)] text-sm">No decks selected.</span>
         </div>
@@ -76,6 +79,7 @@ export function setupSearchPage(searchEl: HTMLElement): void {
   const panel = searchEl.querySelector<HTMLDivElement>("#added-panel")!;
   const chipsEl = searchEl.querySelector<HTMLDivElement>("#media-type-chips")!;
   const titleLangChipsEl = searchEl.querySelector<HTMLDivElement>("#title-lang-chips")!;
+  const resetAllBtn = searchEl.querySelector<HTMLButtonElement>("#reset-all-btn")!;
 
   const mc: MergeControls = {
     totalWordsEl: searchEl.querySelector<HTMLElement>("#total-words")!,
@@ -88,13 +92,20 @@ export function setupSearchPage(searchEl: HTMLElement): void {
   let currentMediaType: number | undefined = undefined;
   let currentTitleLang: TitleLang = "original";
   let currentPage = 1;
+  let currentDecks: JitenDeck[] = [];
 
   function goToPage(page: number, scroll = true): void {
     currentPage = page;
     if (scroll) window.scrollTo({ top: 0, behavior: "smooth" });
     cardResets.clear();
-    loadDecks(currentQuery, page, currentMediaType, currentTitleLang, grid, paginationEl, addedDecks, cardResets, panel, mc, goToPage);
+    loadDecks(currentQuery, page, currentMediaType, currentTitleLang, grid, paginationEl, addedDecks, cardResets, panel, mc, goToPage, (decks) => { currentDecks = decks; });
   }
+
+  resetAllBtn.addEventListener("click", () => {
+    cardResets.forEach((reset) => reset());
+    addedDecks.length = 0;
+    syncPanel(panel, addedDecks, cardResets, mc, currentTitleLang);
+  });
 
   buildMediaTypeChips(chipsEl, (mediaType) => {
     currentMediaType = mediaType;
