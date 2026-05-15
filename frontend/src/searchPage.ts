@@ -1,8 +1,10 @@
 import { downloadBlob } from "./combiner";
-import { deckTitle, fetchDecks, fetchDeckYomitanZip, mediaTypeLabel, type JitenDeck } from "./jitenApi";
+import { deckTitle, fetchDecks, fetchDeckYomitanZip, mediaTypeLabel, type FetchDecksResult, type JitenDeck } from "./jitenApi";
 
 export function setupSearchPage(searchEl: HTMLElement): void {
   const addedDecks: JitenDeck[] = [];
+  // Keyed by deckId — reverts a card's add button to the green + state.
+  const cardResets = new Map<number, () => void>();
 
   searchEl.innerHTML = `
     <header class="text-center">
@@ -13,61 +15,113 @@ export function setupSearchPage(searchEl: HTMLElement): void {
       <div class="flex flex-col gap-4 flex-1 min-w-0">
         <input id="jiten-search" type="text" placeholder="Search decks…"
           class="w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-xl py-3 px-4 text-[#E6FAFC] text-[0.95rem] placeholder:text-[rgba(230,250,252,0.4)] outline-none focus:border-[#FB923C]/60 transition-colors duration-150" />
-        <div id="deck-grid" class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">
+        <div id="deck-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           <div class="col-span-full text-[rgba(230,250,252,0.6)] text-sm">Loading…</div>
         </div>
+        <div id="pagination"></div>
       </div>
-      <div class="w-64 shrink-0 flex flex-col gap-3">
-        <h2 class="text-[#FB923C] text-[0.7rem] font-bold uppercase tracking-[0.12em]">Selected Decks</h2>
-        <div id="added-panel" class="flex flex-col gap-2">
-          <span id="added-empty" class="text-[rgba(230,250,252,0.4)] text-sm">No decks selected.</span>
+      <div style="flex: 0 0 22rem; min-width: 0;" class="sticky top-6 self-start max-h-[calc(100vh-3rem)] flex flex-col gap-3 overflow-hidden">
+        <h2 class="text-[#FB923C] text-[0.7rem] font-bold uppercase tracking-[0.12em] shrink-0">Selected Decks</h2>
+        <div id="added-panel" class="flex flex-col gap-2 overflow-y-auto flex-1 min-h-0">
+          <span class="text-[rgba(230,250,252,0.4)] text-sm">No decks selected.</span>
+        </div>
+        <div class="flex flex-col gap-2.5 border-t border-[#5a5a5a] pt-3 shrink-0">
+          <div class="flex flex-col gap-1.5">
+            <div class="flex items-baseline justify-between gap-2">
+              <span id="total-words" class="text-2xl font-black text-[rgba(230,250,252,0.3)] transition-colors duration-300">0</span>
+              <span class="text-[rgba(230,250,252,0.55)] text-sm shrink-0">Total Words</span>
+            </div>
+            <div class="relative h-1.5 bg-[#3a3a3a] rounded-full overflow-visible">
+              <div id="progress-fill" class="h-full rounded-full transition-all duration-300 bg-[rgba(230,250,252,0.2)]" style="width:0%"></div>
+              <div class="absolute top-1/2 -translate-y-1/2 w-px h-3 bg-[rgba(230,250,252,0.25)]" style="left:20%"></div>
+            </div>
+            <div class="flex justify-between text-xs text-[rgba(230,250,252,0.55)] font-medium">
+              <span>Min. 1M</span>
+              <span>Recommended 5M</span>
+            </div>
+          </div>
+          <button id="merge-btn" disabled
+            class="w-full py-3 border-0 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-[0.01em] cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none">
+            Merge &amp; Download
+          </button>
+          <p id="merge-hint" class="text-xs text-[rgba(230,250,252,0.55)] text-center -mt-1">Add decks to reach the 1M word minimum.</p>
         </div>
       </div>
     </div>
   `;
 
   const grid = searchEl.querySelector<HTMLDivElement>("#deck-grid")!;
+  const paginationEl = searchEl.querySelector<HTMLDivElement>("#pagination")!;
   const input = searchEl.querySelector<HTMLInputElement>("#jiten-search")!;
   const panel = searchEl.querySelector<HTMLDivElement>("#added-panel")!;
+  const totalWordsEl = searchEl.querySelector<HTMLElement>("#total-words")!;
+  const progressFill = searchEl.querySelector<HTMLElement>("#progress-fill")!;
+  const mergeBtn = searchEl.querySelector<HTMLButtonElement>("#merge-btn")!;
+  const mergeHint = searchEl.querySelector<HTMLElement>("#merge-hint")!;
 
-  loadDecks("", grid, addedDecks, panel);
+  let currentQuery = "";
+
+  function goToPage(page: number): void {
+    cardResets.clear();
+    loadDecks(currentQuery, page, grid, paginationEl, addedDecks, cardResets, panel, totalWordsEl, progressFill, mergeBtn, mergeHint, goToPage);
+  }
+
+  goToPage(1);
 
   let debounce: ReturnType<typeof setTimeout>;
   input.addEventListener("input", () => {
     clearTimeout(debounce);
-    debounce = setTimeout(() => loadDecks(input.value.trim(), grid, addedDecks, panel), 300);
+    debounce = setTimeout(() => {
+      currentQuery = input.value.trim();
+      goToPage(1);
+    }, 300);
   });
 }
 
+type MergeControls = {
+  totalWordsEl: HTMLElement;
+  progressFill: HTMLElement;
+  mergeBtn: HTMLButtonElement;
+  mergeHint: HTMLElement;
+};
+
 async function loadDecks(
   query: string,
+  page: number,
   grid: HTMLElement,
+  paginationEl: HTMLElement,
   addedDecks: JitenDeck[],
+  cardResets: Map<number, () => void>,
   panel: HTMLElement,
+  totalWordsEl: HTMLElement,
+  progressFill: HTMLElement,
+  mergeBtn: HTMLButtonElement,
+  mergeHint: HTMLElement,
+  onPageChange: (page: number) => void,
 ): Promise<void> {
-  grid.innerHTML = `<div class="col-span-full text-[rgba(230,250,252,0.6)] text-sm">Loading…</div>`;
+  const mc: MergeControls = { totalWordsEl, progressFill, mergeBtn, mergeHint };
+  grid.replaceChildren(...Array.from({ length: 10 }, makeSkeletonCard));
+  paginationEl.replaceChildren();
   try {
-    const decks = await fetchDecks(query, 10);
-    renderGrid(grid, decks, addedDecks, panel);
+    const result: FetchDecksResult = await fetchDecks(query, page);
+    if (result.decks.length === 0 && page === 1) {
+      grid.innerHTML = `<div class="col-span-full text-[rgba(230,250,252,0.6)] text-sm">No results.</div>`;
+    } else {
+      grid.replaceChildren(...result.decks.map((d) => makeDeckCard(d, addedDecks, cardResets, panel, mc)));
+    }
+    paginationEl.replaceChildren(makePagination(page, result.hasMore, onPageChange));
   } catch (err) {
     grid.innerHTML = `<div class="col-span-full text-[#f87171] text-sm">${escapeHtml(String(err))}</div>`;
   }
 }
 
-function renderGrid(
-  grid: HTMLElement,
-  decks: JitenDeck[],
+function makeDeckCard(
+  deck: JitenDeck,
   addedDecks: JitenDeck[],
+  cardResets: Map<number, () => void>,
   panel: HTMLElement,
-): void {
-  if (decks.length === 0) {
-    grid.innerHTML = `<div class="col-span-full text-[rgba(230,250,252,0.6)] text-sm">No results.</div>`;
-    return;
-  }
-  grid.replaceChildren(...decks.map((d) => makeDeckCard(d, addedDecks, panel)));
-}
-
-function makeDeckCard(deck: JitenDeck, addedDecks: JitenDeck[], panel: HTMLElement): HTMLElement {
+  mc: MergeControls,
+): HTMLElement {
   const title = deckTitle(deck);
 
   const card = document.createElement("div");
@@ -85,7 +139,7 @@ function makeDeckCard(deck: JitenDeck, addedDecks: JitenDeck[], panel: HTMLEleme
   titleEl.textContent = title;
   titleRow.append(titleEl);
 
-  // Image + overlay
+  // Image
   const imgWrap = document.createElement("div");
   imgWrap.className = "relative w-full aspect-[2/3] overflow-hidden bg-[#3a3a3a]";
 
@@ -103,29 +157,50 @@ function makeDeckCard(deck: JitenDeck, addedDecks: JitenDeck[], panel: HTMLEleme
     imgWrap.append(ph);
   }
 
+  // Hover overlay + add button
   const overlay = document.createElement("div");
-  overlay.className = "absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/30 transition-all duration-200";
+  overlay.className =
+    "absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/30 transition-all duration-200";
 
   const addBtn = document.createElement("button");
-  addBtn.className = [
-    "rounded-full w-12 h-12 cursor-pointer flex items-center justify-center border-none",
+  const baseClasses = [
+    "rounded-full w-[3.75rem] h-[3.75rem] flex items-center justify-center border-none",
     "opacity-0 group-hover:opacity-100 transition-all duration-200",
-    "bg-gradient-to-b from-[#7deda4] to-[#1abc7e]",
-    "hover:from-[#8ff5b3] hover:to-[#1fd98d]",
-    "shadow-[0_4px_15px_rgba(26,188,126,0.4)] hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)]",
   ].join(" ");
-  addBtn.innerHTML = plusIcon();
+  const greenClasses =
+    "cursor-pointer bg-gradient-to-b from-[#7deda4] to-[#1abc7e] hover:from-[#8ff5b3] hover:to-[#1fd98d] shadow-[0_4px_15px_rgba(26,188,126,0.4)] hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)]";
+  const redClasses =
+    "cursor-pointer bg-gradient-to-b from-[#fb7185] to-[#be123c] hover:from-[#f43f5e] hover:to-[#9f1239] shadow-[0_4px_15px_rgba(190,18,60,0.35)] hover:shadow-[0_4px_20px_rgba(190,18,60,0.5)]";
+
+  function markAdded(): void {
+    addBtn.className = `${baseClasses} ${redClasses}`;
+    addBtn.innerHTML = minusIcon();
+  }
+  function markRemoved(): void {
+    addBtn.className = `${baseClasses} ${greenClasses}`;
+    addBtn.innerHTML = plusIcon();
+  }
+
+  if (addedDecks.some((d) => d.deckId === deck.deckId)) {
+    markAdded();
+  } else {
+    markRemoved();
+  }
+
+  cardResets.set(deck.deckId, markRemoved);
 
   addBtn.addEventListener("click", (e) => {
     e.stopPropagation();
-    if (addedDecks.some((d) => d.deckId === deck.deckId)) return;
-    addedDecks.push(deck);
-    syncPanel(panel, addedDecks);
-    // Switch to checkmark
-    addBtn.innerHTML = checkIcon();
-    addBtn.classList.replace("from-[#7deda4]", "from-[#6b7280]");
-    addBtn.classList.replace("to-[#1abc7e]", "to-[#4b5563]");
-    addBtn.classList.add("cursor-not-allowed");
+    if (addedDecks.some((d) => d.deckId === deck.deckId)) {
+      const idx = addedDecks.findIndex((d) => d.deckId === deck.deckId);
+      if (idx !== -1) addedDecks.splice(idx, 1);
+      markRemoved();
+      syncPanel(panel, addedDecks, cardResets, mc);
+    } else {
+      addedDecks.push(deck);
+      markAdded();
+      syncPanel(panel, addedDecks, cardResets, mc);
+    }
   });
 
   overlay.append(addBtn);
@@ -154,28 +229,77 @@ function statItem(label: string, value: string): HTMLElement {
   return el;
 }
 
-function syncPanel(panel: HTMLElement, addedDecks: JitenDeck[]): void {
+const MIN_WORDS = 1_000_000;
+const REC_WORDS = 5_000_000;
+
+function syncPanel(
+  panel: HTMLElement,
+  addedDecks: JitenDeck[],
+  cardResets: Map<number, () => void>,
+  mc: MergeControls,
+): void {
   panel.replaceChildren();
   if (addedDecks.length === 0) {
     const empty = document.createElement("span");
-    empty.id = "added-empty";
     empty.className = "text-[rgba(230,250,252,0.4)] text-sm";
     empty.textContent = "No decks selected.";
     panel.append(empty);
-    return;
+  } else {
+    for (const deck of addedDecks) {
+      panel.append(makeAddedRow(deck, addedDecks, cardResets, panel, mc));
+    }
   }
-  for (const deck of addedDecks) {
-    panel.append(makeAddedRow(deck, addedDecks, panel));
+  updateMergeControls(mc, addedDecks);
+}
+
+function updateMergeControls(mc: MergeControls, addedDecks: JitenDeck[]): void {
+  const total = addedDecks.reduce((sum, d) => sum + d.wordCount, 0);
+  const pct = Math.min(total / REC_WORDS, 1) * 100;
+
+  mc.totalWordsEl.textContent = total.toLocaleString();
+
+  let color: string;
+  if (total === 0) {
+    color = "rgba(230,250,252,0.3)";
+  } else if (total < MIN_WORDS) {
+    color = "#f87171";
+  } else if (total < REC_WORDS) {
+    color = "#FB923C";
+  } else {
+    color = "#7deda4";
+  }
+  mc.totalWordsEl.style.color = color;
+
+  mc.progressFill.style.width = `${pct}%`;
+  mc.progressFill.style.backgroundColor = total === 0 ? "rgba(230,250,252,0.15)" : color;
+
+  const meetsMin = total >= MIN_WORDS;
+  mc.mergeBtn.disabled = !meetsMin;
+
+  if (total === 0) {
+    mc.mergeHint.textContent = "Add decks to reach the 1M word minimum.";
+  } else if (!meetsMin) {
+    const needed = (MIN_WORDS - total).toLocaleString();
+    mc.mergeHint.textContent = `${needed} more words needed to unlock.`;
+  } else if (total < REC_WORDS) {
+    mc.mergeHint.textContent = `Good — recommended is ${REC_WORDS.toLocaleString()} words.`;
+  } else {
+    mc.mergeHint.textContent = "Recommended word count reached!";
   }
 }
 
-function makeAddedRow(deck: JitenDeck, addedDecks: JitenDeck[], panel: HTMLElement): HTMLElement {
+function makeAddedRow(
+  deck: JitenDeck,
+  addedDecks: JitenDeck[],
+  cardResets: Map<number, () => void>,
+  panel: HTMLElement,
+  mc: MergeControls,
+): HTMLElement {
   const title = deckTitle(deck);
 
   const row = document.createElement("div");
   row.className = "flex items-center gap-2 bg-[#4a4a4a] border border-[#5a5a5a] rounded-xl px-3 py-2.5";
 
-  // Thumbnail
   if (deck.coverName) {
     const thumb = document.createElement("img");
     thumb.src = deck.coverName;
@@ -188,23 +312,26 @@ function makeAddedRow(deck: JitenDeck, addedDecks: JitenDeck[], panel: HTMLEleme
   info.className = "flex flex-col gap-0.5 min-w-0 flex-1";
   info.innerHTML = `
     <span class="text-[#E6FAFC] text-xs font-bold truncate">${escapeHtml(title)}</span>
-    <span class="text-[rgba(230,250,252,0.5)] text-[10px]">${escapeHtml(mediaTypeLabel(deck.mediaType))}</span>
+    <span class="text-[rgba(230,250,252,0.7)] text-xs">${escapeHtml(mediaTypeLabel(deck.mediaType))} · ${deck.wordCount.toLocaleString()} words</span>
   `;
 
   const dlBtn = document.createElement("button");
-  dlBtn.className = "shrink-0 py-1.5 px-2.5 border-0 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-[0.75rem] font-bold cursor-pointer disabled:opacity-40";
+  dlBtn.className =
+    "shrink-0 py-1.5 px-2.5 border-0 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-[0.75rem] font-bold cursor-pointer disabled:opacity-40";
   dlBtn.title = "Download Yomitan";
   dlBtn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M5 15l7 7 7-7"/><line x1="3" y1="22" x2="21" y2="22"/></svg>`;
   dlBtn.addEventListener("click", () => downloadDeck(dlBtn, deck, title));
 
   const removeBtn = document.createElement("button");
-  removeBtn.className = "shrink-0 w-6 h-6 flex items-center justify-center rounded-full border-0 bg-[#5a5a5a] hover:bg-[#be123c] cursor-pointer transition-colors duration-150";
+  removeBtn.className =
+    "shrink-0 w-6 h-6 flex items-center justify-center rounded-full border-0 bg-[#5a5a5a] hover:bg-[#be123c] cursor-pointer transition-colors duration-150";
   removeBtn.title = "Remove";
   removeBtn.innerHTML = `<svg width="10" height="2" viewBox="0 0 10 2" fill="none"><rect width="10" height="2" rx="1" fill="rgba(255,255,255,0.85)"/></svg>`;
   removeBtn.addEventListener("click", () => {
     const idx = addedDecks.findIndex((d) => d.deckId === deck.deckId);
     if (idx !== -1) addedDecks.splice(idx, 1);
-    syncPanel(panel, addedDecks);
+    cardResets.get(deck.deckId)?.();
+    syncPanel(panel, addedDecks, cardResets, mc);
   });
 
   row.append(info, dlBtn, removeBtn);
@@ -214,7 +341,7 @@ function makeAddedRow(deck: JitenDeck, addedDecks: JitenDeck[], panel: HTMLEleme
 async function downloadDeck(btn: HTMLButtonElement, deck: JitenDeck, title: string): Promise<void> {
   const prev = btn.innerHTML;
   btn.disabled = true;
-  btn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="animate-spin"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0"/></svg>`;
+  btn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" stroke-dasharray="56" stroke-dashoffset="14"/></svg>`;
   try {
     const blob = await fetchDeckYomitanZip(deck);
     downloadBlob(blob, `freq_${safeFilename(title)}.zip`);
@@ -226,12 +353,97 @@ async function downloadDeck(btn: HTMLButtonElement, deck: JitenDeck, title: stri
   }
 }
 
-function plusIcon(): string {
-  return `<svg width="20" height="20" viewBox="0 0 40 40" fill="none"><rect x="18" y="6" width="4" height="28" rx="2" fill="rgba(255,255,255,0.85)"/><rect x="6" y="18" width="28" height="4" rx="2" fill="rgba(255,255,255,0.85)"/></svg>`;
+function makeSkeletonCard(): HTMLElement {
+  const card = document.createElement("div");
+  card.className =
+    "bg-[#4a4a4a] border-2 border-[#3a3a3a] rounded-2xl overflow-hidden animate-pulse";
+
+  // Title bar
+  const titleBar = document.createElement("div");
+  titleBar.className = "px-4 py-3 flex items-center gap-2";
+  const titlePh = document.createElement("div");
+  titlePh.className = "h-4 bg-[#5a5a5a] rounded-md flex-1";
+  titleBar.append(titlePh);
+
+  // Image
+  const imgPh = document.createElement("div");
+  imgPh.className = "w-full aspect-[2/3] bg-[#3a3a3a]";
+
+  // Stats row — 3 cols matching our real cards
+  const statsRow = document.createElement("div");
+  statsRow.className = "grid grid-cols-3 divide-x divide-[#5a5a5a] border-t border-[#5a5a5a]";
+  for (let i = 0; i < 3; i++) {
+    const cell = document.createElement("div");
+    cell.className = "flex flex-col items-center justify-center py-2 px-1 gap-1";
+    const label = document.createElement("div");
+    label.className = "h-2 w-8 bg-[#5a5a5a] rounded-sm";
+    const value = document.createElement("div");
+    value.className = "h-3 w-10 bg-[#5a5a5a] rounded-sm";
+    cell.append(label, value);
+    statsRow.append(cell);
+  }
+
+  card.append(titleBar, imgPh, statsRow);
+  return card;
 }
 
-function checkIcon(): string {
-  return `<svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M5 14.5L11 20.5L23 8" stroke="rgba(255,255,255,0.9)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+function makePagination(curPage: number, hasMore: boolean, onPageChange: (page: number) => void): HTMLElement {
+  const nav = document.createElement("div");
+  nav.className = "flex items-center justify-center gap-3 py-6";
+
+  let pages: number[];
+  if (curPage <= 3) {
+    pages = Array.from({ length: curPage }, (_, i) => i + 1);
+  } else {
+    pages = [curPage - 2, curPage - 1, curPage];
+  }
+
+  if (curPage > 1) {
+    const prev = document.createElement("button");
+    prev.className =
+      "px-5 py-2.5 rounded-full bg-[#4a4a4a] text-[rgba(230,250,252,0.7)] hover:bg-[#FB923C] hover:text-white transition-all font-semibold border-0 cursor-pointer";
+    prev.textContent = "← Prev";
+    prev.addEventListener("click", () => onPageChange(curPage - 1));
+    nav.append(prev);
+  }
+
+  for (const page of pages) {
+    const btn = document.createElement("button");
+    const active = page === curPage;
+    btn.className = [
+      "w-11 h-11 rounded-full flex items-center justify-center font-bold transition-all border-0",
+      active
+        ? "bg-[#FB923C] text-white shadow-[0_4px_15px_rgba(251,146,60,0.4)] cursor-default"
+        : "bg-[#4a4a4a] text-[rgba(230,250,252,0.7)] hover:bg-[#FB923C]/30 hover:text-[#E6FAFC] cursor-pointer",
+    ].join(" ");
+    btn.textContent = String(page);
+    if (!active) btn.addEventListener("click", () => onPageChange(page));
+    nav.append(btn);
+  }
+
+  if (hasMore) {
+    const dots = document.createElement("span");
+    dots.className = "text-[rgba(230,250,252,0.3)] font-bold";
+    dots.textContent = "...";
+    nav.append(dots);
+
+    const next = document.createElement("button");
+    next.className =
+      "px-5 py-2.5 rounded-full bg-[#4a4a4a] text-[rgba(230,250,252,0.7)] hover:bg-[#FB923C] hover:text-white transition-all font-semibold border-0 cursor-pointer";
+    next.textContent = "Next →";
+    next.addEventListener("click", () => onPageChange(curPage + 1));
+    nav.append(next);
+  }
+
+  return nav;
+}
+
+function plusIcon(): string {
+  return `<svg width="26" height="26" viewBox="0 0 40 40" fill="none"><rect x="18" y="6" width="4" height="28" rx="2" fill="rgba(255,255,255,0.85)"/><rect x="6" y="18" width="28" height="4" rx="2" fill="rgba(255,255,255,0.85)"/></svg>`;
+}
+
+function minusIcon(): string {
+  return `<svg width="26" height="26" viewBox="0 0 40 40" fill="none"><rect x="8" y="18" width="24" height="4" rx="2" fill="rgba(255,255,255,0.9)"/></svg>`;
 }
 
 function safeFilename(name: string): string {

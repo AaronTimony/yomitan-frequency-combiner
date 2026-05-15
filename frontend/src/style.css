@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source "../src/searchPage.ts";
 
 html {
   scrollbar-gutter: stable;

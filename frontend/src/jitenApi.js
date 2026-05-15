@@ -25,16 +25,23 @@ const MEDIA_TYPE_LABELS = {
 export function mediaTypeLabel(mediaType) {
     return MEDIA_TYPE_LABELS[mediaType] ?? "Unknown";
 }
-/** Fetch the first `limit` media decks from the Jiten API. */
-export async function fetchDecks(limit = 10) {
-    const res = await fetch(`${apiBase()}/media-deck/get-media-decks`, {
+export const PAGE_SIZE = 25;
+/** Fetch one page of media decks, optionally filtered by `query`. */
+export async function fetchDecks(query = "", page = 1) {
+    const params = new URLSearchParams();
+    if (query)
+        params.set("titleFilter", query);
+    params.set("offset", String((page - 1) * PAGE_SIZE));
+    const res = await fetch(`${apiBase()}/media-deck/get-media-decks?${params}`, {
         headers: { Accept: "application/json" },
     });
     if (!res.ok) {
         throw new Error(`Failed to fetch decks (HTTP ${res.status})`);
     }
     const body = (await res.json());
-    return (body.data ?? []).slice(0, limit);
+    const decks = (body.data ?? []).slice(0, PAGE_SIZE);
+    const hasMore = page * PAGE_SIZE < body.totalItems;
+    return { decks, hasMore };
 }
 /**
  * Download a deck's Yomitan frequency dictionary.

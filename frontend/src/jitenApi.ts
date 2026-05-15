@@ -48,10 +48,18 @@ interface PaginatedDecks {
   currentOffset: number;
 }
 
-/** Fetch up to `limit` media decks, optionally filtered by `query`. */
-export async function fetchDecks(query = "", limit = 10): Promise<JitenDeck[]> {
+export const PAGE_SIZE = 25;
+
+export interface FetchDecksResult {
+  decks: JitenDeck[];
+  hasMore: boolean;
+}
+
+/** Fetch one page of media decks, optionally filtered by `query`. */
+export async function fetchDecks(query = "", page = 1): Promise<FetchDecksResult> {
   const params = new URLSearchParams();
   if (query) params.set("titleFilter", query);
+  params.set("offset", String((page - 1) * PAGE_SIZE));
   const res = await fetch(`${apiBase()}/media-deck/get-media-decks?${params}`, {
     headers: { Accept: "application/json" },
   });
@@ -59,7 +67,9 @@ export async function fetchDecks(query = "", limit = 10): Promise<JitenDeck[]> {
     throw new Error(`Failed to fetch decks (HTTP ${res.status})`);
   }
   const body = (await res.json()) as PaginatedDecks;
-  return (body.data ?? []).slice(0, limit);
+  const decks = (body.data ?? []).slice(0, PAGE_SIZE);
+  const hasMore = page * PAGE_SIZE < body.totalItems;
+  return { decks, hasMore };
 }
 
 /**

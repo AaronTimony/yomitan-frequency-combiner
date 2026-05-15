@@ -7,18 +7,8 @@
   </head>
   <body class="bg-[#2a2a2a] text-[#E6FAFC] min-h-dvh flex items-start justify-center px-4 pt-1 pb-8 antialiased font-sans">
 
-    <button id="page-prev" aria-label="Previous page"
-      class="page-arrow fixed left-0 top-1/2 -translate-y-1/2 z-40 h-[55vh] w-44 flex items-center justify-start pl-3 bg-transparent border-0 text-[rgba(230,250,252,0.3)] hover:text-[#FB923C] cursor-pointer">
-      <svg width="48" height="140" viewBox="0 0 48 140" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="34 14 14 70 34 126"/>
-      </svg>
-    </button>
-    <button id="page-next" aria-label="Next page"
-      class="page-arrow fixed right-0 top-1/2 -translate-y-1/2 z-40 h-[55vh] w-44 flex items-center justify-end pr-3 bg-transparent border-0 text-[rgba(230,250,252,0.3)] hover:text-[#FB923C] cursor-pointer">
-      <svg width="48" height="140" viewBox="0 0 48 140" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="14 14 34 70 14 126"/>
-      </svg>
-    </button>
+    <button id="page-prev" aria-label="Previous page" hidden></button>
+    <button id="page-next" aria-label="Next page" hidden></button>
 
     <div id="app" class="w-full flex flex-col gap-7">
 
