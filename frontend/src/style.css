@@ -71,3 +71,12 @@ html {
 #combine-btn:active:not(:disabled) {
   transform: translateY(1px);
 }
+
+/* Selected decks panel scrollbar — keep it dark to match the app background */
+#added-panel {
+  scrollbar-color: #5a5a5a #2a2a2a;
+  scrollbar-width: thin;
+}
+#added-panel::-webkit-scrollbar { width: 6px; }
+#added-panel::-webkit-scrollbar-track { background: #2a2a2a; }
+#added-panel::-webkit-scrollbar-thumb { background: #5a5a5a; border-radius: 3px; }

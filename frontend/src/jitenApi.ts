@@ -12,18 +12,22 @@ export function apiBase(): string {
   return (override ?? DEFAULT_API_BASE).replace(/\/+$/, "");
 }
 
-const MEDIA_TYPE_LABELS: Record<number, string> = {
-  1: "Anime",
-  2: "Drama",
-  3: "Movie",
-  4: "Novel",
-  5: "Non-Fiction",
-  6: "Video Game",
-  7: "Visual Novel",
-  8: "Web Novel",
-  9: "Manga",
-  10: "Audio",
-};
+export const MEDIA_TYPES: Array<{ id: number; label: string }> = [
+  { id: 1, label: "Anime" },
+  { id: 2, label: "Drama" },
+  { id: 3, label: "Movie" },
+  { id: 4, label: "Novel" },
+  { id: 5, label: "Non-Fiction" },
+  { id: 6, label: "Video Game" },
+  { id: 7, label: "Visual Novel" },
+  { id: 8, label: "Web Novel" },
+  { id: 9, label: "Manga" },
+  { id: 10, label: "Audio" },
+];
+
+const MEDIA_TYPE_LABELS: Record<number, string> = Object.fromEntries(
+  MEDIA_TYPES.map(({ id, label }) => [id, label]),
+);
 
 export function mediaTypeLabel(mediaType: number): string {
   return MEDIA_TYPE_LABELS[mediaType] ?? "Unknown";
@@ -55,10 +59,11 @@ export interface FetchDecksResult {
   hasMore: boolean;
 }
 
-/** Fetch one page of media decks, optionally filtered by `query`. */
-export async function fetchDecks(query = "", page = 1): Promise<FetchDecksResult> {
+/** Fetch one page of media decks, optionally filtered by `query` and/or `mediaType`. */
+export async function fetchDecks(query = "", page = 1, mediaType?: number): Promise<FetchDecksResult> {
   const params = new URLSearchParams();
   if (query) params.set("titleFilter", query);
+  if (mediaType !== undefined) params.set("mediaType", String(mediaType));
   params.set("offset", String((page - 1) * PAGE_SIZE));
   const res = await fetch(`${apiBase()}/media-deck/get-media-decks?${params}`, {
     headers: { Accept: "application/json" },

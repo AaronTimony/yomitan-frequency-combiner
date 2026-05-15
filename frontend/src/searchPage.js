@@ -1,5 +1,5 @@
 import { downloadBlob } from "./combiner";
-import { deckTitle, fetchDecks, fetchDeckYomitanZip, mediaTypeLabel } from "./jitenApi";
+import { MEDIA_TYPES, deckTitle, fetchDecks, fetchDeckYomitanZip, mediaTypeLabel } from "./jitenApi";
 export function setupSearchPage(searchEl) {
     const addedDecks = [];
     // Keyed by deckId — reverts a card's add button to the green + state.
@@ -11,6 +11,7 @@ export function setupSearchPage(searchEl) {
     </header>
     <div class="flex gap-6 flex-1 min-h-0">
       <div class="flex flex-col gap-4 flex-1 min-w-0">
+        <div id="media-type-chips" class="flex flex-wrap gap-2"></div>
         <input id="jiten-search" type="text" placeholder="Search decks…"
           class="w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-xl py-3 px-4 text-[#E6FAFC] text-[0.95rem] placeholder:text-[rgba(230,250,252,0.4)] outline-none focus:border-[#FB923C]/60 transition-colors duration-150" />
         <div id="deck-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
@@ -20,7 +21,7 @@ export function setupSearchPage(searchEl) {
       </div>
       <div style="flex: 0 0 22rem; min-width: 0;" class="sticky top-6 self-start max-h-[calc(100vh-3rem)] flex flex-col gap-3 overflow-hidden">
         <h2 class="text-[#FB923C] text-[0.7rem] font-bold uppercase tracking-[0.12em] shrink-0">Selected Decks</h2>
-        <div id="added-panel" class="flex flex-col gap-2 overflow-y-auto flex-1 min-h-0">
+        <div id="added-panel" class="flex flex-col gap-2 overflow-y-auto flex-1 min-h-0 bg-[#2a2a2a]">
           <span class="text-[rgba(230,250,252,0.4)] text-sm">No decks selected.</span>
         </div>
         <div class="flex flex-col gap-2.5 border-t border-[#5a5a5a] pt-3 shrink-0">
@@ -55,27 +56,36 @@ export function setupSearchPage(searchEl) {
     const progressFill = searchEl.querySelector("#progress-fill");
     const mergeBtn = searchEl.querySelector("#merge-btn");
     const mergeHint = searchEl.querySelector("#merge-hint");
+    const chipsEl = searchEl.querySelector("#media-type-chips");
     let currentQuery = "";
-    function goToPage(page) {
+    let currentMediaType = undefined;
+    // scroll=false on initial load and search-input resets; true on pagination/filter clicks
+    function goToPage(page, scroll = true) {
+        if (scroll)
+            window.scrollTo({ top: 0, behavior: "smooth" });
         cardResets.clear();
-        loadDecks(currentQuery, page, grid, paginationEl, addedDecks, cardResets, panel, totalWordsEl, progressFill, mergeBtn, mergeHint, goToPage);
+        loadDecks(currentQuery, page, currentMediaType, grid, paginationEl, addedDecks, cardResets, panel, totalWordsEl, progressFill, mergeBtn, mergeHint, goToPage);
     }
-    goToPage(1);
+    buildMediaTypeChips(chipsEl, (mediaType) => {
+        currentMediaType = mediaType;
+        goToPage(1);
+    });
+    goToPage(1, false);
     let debounce;
     input.addEventListener("input", () => {
         clearTimeout(debounce);
         debounce = setTimeout(() => {
             currentQuery = input.value.trim();
-            goToPage(1);
+            goToPage(1, false);
         }, 300);
     });
 }
-async function loadDecks(query, page, grid, paginationEl, addedDecks, cardResets, panel, totalWordsEl, progressFill, mergeBtn, mergeHint, onPageChange) {
+async function loadDecks(query, page, mediaType, grid, paginationEl, addedDecks, cardResets, panel, totalWordsEl, progressFill, mergeBtn, mergeHint, onPageChange) {
     const mc = { totalWordsEl, progressFill, mergeBtn, mergeHint };
     grid.replaceChildren(...Array.from({ length: 10 }, makeSkeletonCard));
     paginationEl.replaceChildren();
     try {
-        const result = await fetchDecks(query, page);
+        const result = await fetchDecks(query, page, mediaType);
         if (result.decks.length === 0 && page === 1) {
             grid.innerHTML = `<div class="col-span-full text-[rgba(230,250,252,0.6)] text-sm">No results.</div>`;
         }
@@ -314,6 +324,36 @@ function makeSkeletonCard() {
     }
     card.append(titleBar, imgPh, statsRow);
     return card;
+}
+function buildMediaTypeChips(container, onSelect) {
+    console.log("[chips] buildMediaTypeChips called, container:", container, "MEDIA_TYPES:", MEDIA_TYPES);
+    const allTypes = [
+        { id: undefined, label: "All" },
+        ...MEDIA_TYPES,
+    ];
+    for (const { id, label } of allTypes) {
+        const btn = document.createElement("button");
+        btn.dataset.mediaType = id !== undefined ? String(id) : "";
+        btn.textContent = label;
+        btn.className = chipClass(id === undefined);
+        btn.addEventListener("click", () => {
+            setActiveChip(container, id);
+            onSelect(id);
+        });
+        container.append(btn);
+    }
+}
+function setActiveChip(container, mediaType) {
+    const target = mediaType !== undefined ? String(mediaType) : "";
+    container.querySelectorAll("button[data-media-type]").forEach((btn) => {
+        btn.className = chipClass(btn.dataset.mediaType === target);
+    });
+}
+function chipClass(active) {
+    const base = "px-3.5 py-1.5 rounded-full text-sm font-semibold border-0 cursor-pointer transition-all duration-150 whitespace-nowrap";
+    return active
+        ? `${base} bg-[#FB923C] text-white shadow-[0_2px_10px_rgba(251,146,60,0.35)]`
+        : `${base} bg-[#4a4a4a] text-[rgba(230,250,252,0.65)] hover:bg-[#5a5a5a] hover:text-[#E6FAFC]`;
 }
 function makePagination(curPage, hasMore, onPageChange) {
     const nav = document.createElement("div");
