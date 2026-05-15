@@ -7,13 +7,13 @@ function deckTitleByLang(deck, lang) {
         case "english": return deck.englishTitle || deck.romajiTitle || deck.originalTitle || `Deck ${deck.deckId}`;
     }
 }
-export function setupSearchPage(searchEl) {
+export function setupCreatePage(searchEl) {
     const addedDecks = [];
     const cardResets = new Map();
     searchEl.innerHTML = `
     <header class="text-center">
-      <h1 class="text-4xl font-black tracking-tight">Search Decks</h1>
-      <p class="mt-3 text-[rgba(230,250,252,0.85)] text-[1.15rem]">Find decks and add their Yomitan frequency dictionaries.</p>
+      <h1 class="text-4xl font-black tracking-tight">Create Dictionary</h1>
+      <p class="mt-3 text-[rgba(230,250,252,0.85)] text-[1.15rem]">Select media decks to build a combined Yomitan frequency dictionary.</p>
     </header>
     <div class="flex gap-6 flex-1 min-h-0">
       <div class="flex flex-col gap-4 flex-1 min-w-0">
@@ -398,7 +398,7 @@ function makePagination(curPage, hasMore, onPageChange) {
     if (curPage > 1) {
         const prev = document.createElement("button");
         prev.className =
-            "px-5 py-2.5 rounded-full bg-[#4a4a4a] text-[rgba(230,250,252,0.7)] hover:bg-[#FB923C] hover:text-white transition-all font-semibold border-0 cursor-pointer";
+            "pagination-nav-btn px-5 py-2.5 rounded-full bg-[#4a4a4a] text-[rgba(230,250,252,0.7)] hover:bg-[rgba(251,146,60,0.3)] hover:text-[#E6FAFC] transition-all font-semibold border-0 cursor-pointer";
         prev.textContent = "← Prev";
         prev.addEventListener("click", () => onPageChange(curPage - 1));
         nav.append(prev);
@@ -410,7 +410,7 @@ function makePagination(curPage, hasMore, onPageChange) {
             "w-11 h-11 rounded-full flex items-center justify-center font-bold transition-all border-0",
             active
                 ? "bg-[#FB923C] text-white shadow-[0_4px_15px_rgba(251,146,60,0.4)] cursor-default"
-                : "bg-[#4a4a4a] text-[rgba(230,250,252,0.7)] hover:bg-[#FB923C]/30 hover:text-[#E6FAFC] cursor-pointer",
+                : "pagination-page-btn bg-[#4a4a4a] text-[rgba(230,250,252,0.7)] hover:bg-[rgba(251,146,60,0.3)] hover:text-[#E6FAFC] cursor-pointer",
         ].join(" ");
         btn.textContent = String(page);
         if (!active)
@@ -424,7 +424,7 @@ function makePagination(curPage, hasMore, onPageChange) {
         nav.append(dots);
         const next = document.createElement("button");
         next.className =
-            "px-5 py-2.5 rounded-full bg-[#4a4a4a] text-[rgba(230,250,252,0.7)] hover:bg-[#FB923C] hover:text-white transition-all font-semibold border-0 cursor-pointer";
+            "pagination-nav-btn px-5 py-2.5 rounded-full bg-[#4a4a4a] text-[rgba(230,250,252,0.7)] hover:bg-[rgba(251,146,60,0.3)] hover:text-[#E6FAFC] transition-all font-semibold border-0 cursor-pointer";
         next.textContent = "Next →";
         next.addEventListener("click", () => onPageChange(curPage + 1));
         nav.append(next);

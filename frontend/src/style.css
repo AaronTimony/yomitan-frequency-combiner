@@ -120,6 +120,11 @@ html.light .rec-article:hover {
   border-color: rgba(251, 146, 60, 0.45);
 }
 
+html.light .pagination-nav-btn:hover,
+html.light .pagination-page-btn:hover {
+  background-color: rgba(251, 146, 60, 0.3);
+}
+
 /* Drop zone hover & JS-toggled drag-over class */
 #drop-zone:hover,
 #drop-zone.drag-over {

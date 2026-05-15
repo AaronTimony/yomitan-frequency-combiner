@@ -1,10 +1,10 @@
-export type PageKey = "recommended" | "combiner" | "search";
+export type PageKey = "recommended" | "create" | "combiner";
 
-const ORDER: PageKey[] = ["recommended", "combiner", "search"];
+const ORDER: PageKey[] = ["recommended", "create", "combiner"];
 
 function pathKey(): PageKey {
   const segment = location.pathname.replace(/^\//, "") as PageKey;
-  return ORDER.includes(segment) ? segment : "combiner";
+  return ORDER.includes(segment) ? segment : "create";
 }
 
 export function setupPages(navEl: HTMLElement): void {

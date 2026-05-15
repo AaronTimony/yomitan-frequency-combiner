@@ -1,7 +1,7 @@
-const ORDER = ["recommended", "combiner", "search"];
+const ORDER = ["recommended", "create", "combiner"];
 function pathKey() {
     const segment = location.pathname.replace(/^\//, "");
-    return ORDER.includes(segment) ? segment : "combiner";
+    return ORDER.includes(segment) ? segment : "create";
 }
 export function setupPages(navEl) {
     const pages = new Map();
