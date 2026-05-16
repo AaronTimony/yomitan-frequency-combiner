@@ -165,6 +165,47 @@ function pushOut(
   }
 }
 
+function buildSummedAndRankedEntries(data: FrequencyData): OutEntry[] {
+  const summed = [...data.entries].map(([, entry]) => ({
+    entry,
+    sum: entry.freqs.reduce<number>((acc, f) => acc + (f ?? 0), 0),
+  }));
+
+  summed.sort((a, b) => b.sum - a.sum);
+
+  const outEntries: OutEntry[] = [];
+  for (let i = 0; i < summed.length; i++) {
+    const rank = i + 1;
+    const { entry } = summed[i];
+    if (entry.reading !== null) {
+      pushOut(
+        outEntries,
+        entry.expression,
+        { reading: entry.reading, frequency: { value: rank, displayValue: entry.hasMarker ? `${rank}㋕` : String(rank) } },
+        entry.sequence,
+      );
+    } else {
+      pushOut(outEntries, entry.expression, { value: rank, displayValue: `${rank}㋕` }, entry.sequence);
+    }
+  }
+  return outEntries;
+}
+
+export async function mergeJitenDecks(files: readonly File[], title: string): Promise<Blob> {
+  if (files.length === 0) throw new Error("No files to merge");
+  const data = await readFrequencies(files);
+  const outEntries = buildSummedAndRankedEntries(data);
+  const outIndex: IndexJson = {
+    ...data.baseIndex,
+    title,
+    revision: `${title} ${new Date().toISOString().slice(0, 10)}`,
+  };
+  const out = new JSZip();
+  out.file("index.json", JSON.stringify(outIndex));
+  out.file("term_meta_bank_1.json", JSON.stringify(outEntries));
+  return out.generateAsync({ type: "blob", compression: "DEFLATE" });
+}
+
 function buildAveragedEntries(data: FrequencyData): OutEntry[] {
   const outEntries: OutEntry[] = [];
 
