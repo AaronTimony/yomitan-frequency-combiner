@@ -5,7 +5,9 @@
 // origin, so this works from the Vite dev server without running the backend
 // locally. Override with a `?api=` query param
 // (e.g. `?api=https://localhost:7299/api`) to point at a local Jiten.Api.
-const DEFAULT_API_BASE = "https://api.jiten.moe/api";
+const DEFAULT_API_BASE = location.hostname === "localhost" || location.hostname === "127.0.0.1"
+    ? "https://api.jiten.moe/api"
+    : "/api";
 export function apiBase() {
     const override = new URLSearchParams(location.search).get("api");
     return (override ?? DEFAULT_API_BASE).replace(/\/+$/, "");

@@ -1,4 +1,4 @@
-import { downloadBlob } from "./combiner";
+import { downloadBlob, mergeJitenDecks } from "./combiner";
 import { MEDIA_TYPES, fetchDecks, fetchDeckYomitanZip, mediaTypeLabel } from "./jitenApi";
 function deckTitleByLang(deck, lang) {
     switch (lang) {
@@ -58,6 +58,8 @@ export function setupCreatePage(searchEl) {
               <span>Recommended 5M</span>
             </div>
           </div>
+          <input id="dict-title" type="text" placeholder="Dictionary name…" maxlength="80"
+            class="w-full bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl py-2 px-3 text-[#E6FAFC] text-sm placeholder:text-[rgba(230,250,252,0.3)] outline-none focus:border-[#FB923C]/60 transition-colors duration-150" />
           <button id="merge-btn" disabled
             class="w-full py-3 border-0 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-[0.01em] cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none">
             Merge &amp; Download
@@ -80,6 +82,11 @@ export function setupCreatePage(searchEl) {
         mergeBtn: searchEl.querySelector("#merge-btn"),
         mergeHint: searchEl.querySelector("#merge-hint"),
     };
+    const dictTitleInput = searchEl.querySelector("#dict-title");
+    mc.mergeBtn.addEventListener("click", () => {
+        const title = dictTitleInput.value.trim() || "Combined Frequency";
+        void mergeDeckSelection(mc, addedDecks, title);
+    });
     // Restore state from URL so a page refresh doesn't reset filters/search/page.
     const initParams = new URLSearchParams(location.search);
     const initQuery = initParams.get("q") ?? "";
@@ -334,6 +341,26 @@ function makeAddedRow(deck, addedDecks, cardResets, panel, mc, titleLang) {
     });
     row.append(info, dlBtn, removeBtn);
     return row;
+}
+async function mergeDeckSelection(mc, decks, title) {
+    if (decks.length === 0)
+        return;
+    mc.mergeBtn.disabled = true;
+    mc.mergeBtn.textContent = "Downloading…";
+    try {
+        const blobs = await Promise.all(decks.map((d) => fetchDeckYomitanZip(d)));
+        const files = blobs.map((blob, i) => new File([blob], `deck_${decks[i].deckId}.zip`));
+        mc.mergeBtn.textContent = "Merging…";
+        const blob = await mergeJitenDecks(files, title);
+        downloadBlob(blob, `${safeFilename(title)}.zip`);
+    }
+    catch (err) {
+        alert(`Merge failed: ${err instanceof Error ? err.message : String(err)}`);
+    }
+    finally {
+        mc.mergeBtn.textContent = "Merge & Download";
+        updateMergeControls(mc, decks);
+    }
 }
 async function downloadDeck(btn, deck, title) {
     const prev = btn.innerHTML;
