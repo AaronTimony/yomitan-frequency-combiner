@@ -4,7 +4,11 @@ const ORDER: PageKey[] = ["recommended", "create", "combiner"];
 
 function pathKey(): PageKey {
   const segment = location.pathname.replace(/^\//, "") as PageKey;
-  return ORDER.includes(segment) ? segment : "create";
+  if (ORDER.includes(segment)) return segment;
+  // If the server redirected us to / (losing the original path), fall back to
+  // whatever page was last active so a refresh doesn't silently switch pages.
+  const stored = sessionStorage.getItem("active-page") as PageKey | null;
+  return stored && ORDER.includes(stored) ? stored : "create";
 }
 
 export function setupPages(navEl: HTMLElement): void {
@@ -21,6 +25,7 @@ export function setupPages(navEl: HTMLElement): void {
   // push=false → replaceState (reflect state without a new history entry)
   function activate(key: PageKey, push = true): void {
     if (!pages.has(key)) return;
+    sessionStorage.setItem("active-page", key);
 
     navEl
       .querySelectorAll<HTMLButtonElement>(".page-tab")

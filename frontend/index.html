@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yomitan Frequency Combiner</title>
+    <script>
+      (function () {
+        var stored = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'light' || (stored === null && !prefersDark)) {
+          document.documentElement.classList.add('light');
+        }
+      })();
+    </script>
   </head>
   <body class="bg-[#2a2a2a] text-[#E6FAFC] min-h-dvh flex items-start justify-center px-4 pt-1 pb-8 antialiased font-sans">
 

@@ -1,7 +1,12 @@
 const ORDER = ["recommended", "create", "combiner"];
 function pathKey() {
     const segment = location.pathname.replace(/^\//, "");
-    return ORDER.includes(segment) ? segment : "create";
+    if (ORDER.includes(segment))
+        return segment;
+    // If the server redirected us to / (losing the original path), fall back to
+    // whatever page was last active so a refresh doesn't silently switch pages.
+    const stored = sessionStorage.getItem("active-page");
+    return stored && ORDER.includes(stored) ? stored : "create";
 }
 export function setupPages(navEl) {
     const pages = new Map();
@@ -17,6 +22,7 @@ export function setupPages(navEl) {
     function activate(key, push = true) {
         if (!pages.has(key))
             return;
+        sessionStorage.setItem("active-page", key);
         navEl
             .querySelectorAll(".page-tab")
             .forEach((t) => t.classList.toggle("active", t.dataset.page === key));

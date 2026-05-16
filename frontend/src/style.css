@@ -16,9 +16,9 @@ html.light {
 }
 
 /* Light mode — background overrides */
-html.light .bg-\[\#2a2a2a\] { background-color: #f0f2f5; }
-html.light .bg-\[\#3a3a3a\] { background-color: #e4e7eb; }
-html.light .bg-\[\#4a4a4a\] { background-color: #ffffff; }
+html.light .bg-\[\#2a2a2a\] { background-color: #ffffff; }
+html.light .bg-\[\#3a3a3a\] { background-color: #e8ecf0; }
+html.light .bg-\[\#4a4a4a\] { background-color: #f0f2f5; }
 html.light .bg-\[\#5a5a5a\] { background-color: #d1d5db; }
 html.light .bg-\[rgba\(230\,250\,252\,0\.2\)\] { background-color: rgba(0,0,0,0.06); }
 html.light .bg-\[rgba\(230\,250\,252\,0\.25\)\] { background-color: rgba(0,0,0,0.1); }
@@ -53,11 +53,11 @@ html.light .placeholder\:text-\[rgba\(230\,250\,252\,0\.4\)\]::placeholder { col
 
 /* Light mode — drop zone */
 html.light #drop-zone:hover,
-html.light #drop-zone.drag-over { background-color: #e4e7eb; }
+html.light #drop-zone.drag-over { background-color: #e8ecf0; }
 
 /* Light mode — selected decks scrollbar */
-html.light #added-panel { scrollbar-color: #aaa #f0f2f5; }
-html.light #added-panel::-webkit-scrollbar-track { background: #f0f2f5; }
+html.light #added-panel { scrollbar-color: #aaa #ffffff; }
+html.light #added-panel::-webkit-scrollbar-track { background: #ffffff; }
 html.light #added-panel::-webkit-scrollbar-thumb { background: #aaa; }
 
 /* Side nav arrows — soft fading glow on hover (no hard rectangle edges) */
@@ -114,6 +114,10 @@ html.light .deck-card:hover {
 html.light .panel-remove-btn:hover {
   background-color: #be123c;
   transform: scale(1.15);
+}
+
+html.light #reset-all-btn:hover {
+  color: #fb7185;
 }
 
 html.light .rec-article:hover {
