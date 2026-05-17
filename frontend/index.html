@@ -28,8 +28,8 @@
           <button class="page-tab justify-self-start py-3 px-14 bg-transparent border-0 rounded-full text-[rgba(230,250,252,0.75)] text-[1.2rem] font-bold cursor-pointer hover:text-[#E6FAFC]" data-page="combiner">Combiner</button>
         </div>
         <a href="https://github.com/AaronTimony/yomitan-frequency-combiner" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository"
-          class="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-xl text-[rgba(230,250,252,0.7)] hover:text-[#E6FAFC] transition-colors duration-150">
-          <svg width="38" height="38" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.744 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+          class="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-xl text-[rgba(230,250,252,0.7)] hover:text-[#E6FAFC] transition-colors duration-150">
+          <svg width="54" height="54" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.744 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
         </a>
         <button id="theme-toggle" aria-label="Toggle light/dark mode"
           class="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-xl bg-transparent border-0 cursor-pointer text-[rgba(230,250,252,0.7)] hover:text-[#E6FAFC] transition-colors duration-150"></button>
@@ -44,120 +44,65 @@
 
         <div class="flex flex-col gap-4">
 
-          <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex items-center justify-between gap-8 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
-            <div class="flex flex-col gap-2.5 min-w-0">
-              <div class="flex items-center gap-3">
-                <h3 class="text-[#E6FAFC] text-xl font-bold">Anime &amp; Drama Frequency</h3>
-                <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest shrink-0">
-                  <span class="w-2 h-2 rounded-full bg-[#1abc7e]"></span>
-                  <span class="text-[#1abc7e]">High</span>
-                </span>
-              </div>
-              <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Combined from JPDB, Anime, and Kaishi frequency lists. Weighted average across spoken and written sources.</p>
-              <div class="flex gap-2 flex-wrap mt-1">
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">Anime</span>
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">Drama</span>
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">JPDB</span>
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">Kaishi</span>
-              </div>
-            </div>
-            <a href="#" download class="shrink-0 px-7 py-3 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-wide cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] hover:from-[#8ff5b3] hover:to-[#1fd98d] no-underline">Download</a>
-          </article>
-
-          <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex items-center justify-between gap-8 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
-            <div class="flex flex-col gap-2.5 min-w-0">
-              <div class="flex items-center gap-3">
+          <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex flex-col gap-5 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
+            <div class="flex items-center justify-between gap-8">
+              <div class="flex flex-col gap-2 min-w-0">
                 <h3 class="text-[#E6FAFC] text-xl font-bold">Jiten Global Frequency</h3>
-                <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest shrink-0">
-                  <span class="w-2 h-2 rounded-full bg-[#1abc7e]"></span>
-                  <span class="text-[#1abc7e]">High</span>
-                </span>
+                <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Combined from all Jiten frequency sources. Broad coverage across novels, web text, subtitles, and more.</p>
               </div>
-              <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Combined from Narou, Aozora, and BCCWJ frequency lists. Optimised for reading light novels and books.</p>
-              <div class="flex gap-2 flex-wrap mt-1">
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">Jiten</span>
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">Novels</span>
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">Aozora</span>
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">BCCWJ</span>
+              <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/jiten_freq_global.zip" download class="shrink-0 px-7 py-3 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-wide cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] hover:from-[#8ff5b3] hover:to-[#1fd98d] no-underline">Download</a>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-[rgba(230,250,252,0.3)] uppercase tracking-widest mb-4">Jiten Dicts By Media</p>
+              <div class="grid grid-cols-5 gap-2.5">
+                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
+                  <span class="text-[#E6FAFC] text-sm font-semibold">Anime</span>
+                  <a href="#" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
+                </div>
+                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
+                  <span class="text-[#E6FAFC] text-sm font-semibold">Audio</span>
+                  <a href="#" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
+                </div>
+                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
+                  <span class="text-[#E6FAFC] text-sm font-semibold">Drama</span>
+                  <a href="#" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
+                </div>
+                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
+                  <span class="text-[#E6FAFC] text-sm font-semibold">Manga</span>
+                  <a href="#" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
+                </div>
+                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
+                  <span class="text-[#E6FAFC] text-sm font-semibold">Movie</span>
+                  <a href="#" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
+                </div>
+                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
+                  <span class="text-[#E6FAFC] text-sm font-semibold">Non-Fiction</span>
+                  <a href="#" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
+                </div>
+                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
+                  <span class="text-[#E6FAFC] text-sm font-semibold">Novel</span>
+                  <a href="#" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
+                </div>
+                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
+                  <span class="text-[#E6FAFC] text-sm font-semibold">Video Game</span>
+                  <a href="#" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
+                </div>
+                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
+                  <span class="text-[#E6FAFC] text-sm font-semibold">Visual Novel</span>
+                  <a href="#" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
+                </div>
+                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
+                  <span class="text-[#E6FAFC] text-sm font-semibold">Web Novel</span>
+                  <a href="#" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
+                </div>
               </div>
             </div>
-            <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/jiten_freq_global.zip" download class="shrink-0 px-7 py-3 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-wide cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] hover:from-[#8ff5b3] hover:to-[#1fd98d] no-underline">Download</a>
           </article>
 
           <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex items-center justify-between gap-8 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
-            <div class="flex flex-col gap-2.5 min-w-0">
-              <div class="flex items-center gap-3">
-                <h3 class="text-[#E6FAFC] text-xl font-bold">General Purpose Frequency</h3>
-                <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest shrink-0">
-                  <span class="w-2 h-2 rounded-full bg-[#FB923C]"></span>
-                  <span class="text-[#FB923C]">Medium</span>
-                </span>
-              </div>
-              <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Broad combined dictionary spanning anime, novels, news, and web text. Good default if unsure which to pick.</p>
-              <div class="flex gap-2 flex-wrap mt-1">
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">Anime</span>
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">Novels</span>
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">News</span>
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">Web</span>
-              </div>
-            </div>
-            <a href="#" download class="shrink-0 px-7 py-3 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-wide cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] hover:from-[#8ff5b3] hover:to-[#1fd98d] no-underline">Download</a>
-          </article>
-
-          <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex items-center justify-between gap-8 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
-            <div class="flex flex-col gap-2.5 min-w-0">
-              <div class="flex items-center gap-3">
-                <h3 class="text-[#E6FAFC] text-xl font-bold">Novels &amp; Literature Frequency</h3>
-                <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest shrink-0">
-                  <span class="w-2 h-2 rounded-full bg-[#1abc7e]"></span>
-                  <span class="text-[#1abc7e]">High</span>
-                </span>
-              </div>
-              <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Sourced from Aozora Bunko and web novel platforms. Best suited for reading fiction and light novels.</p>
-              <div class="flex gap-2 flex-wrap mt-1">
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">Novels</span>
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">Aozora</span>
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">Literature</span>
-              </div>
-            </div>
-            <a href="#" download class="shrink-0 px-7 py-3 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-wide cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] hover:from-[#8ff5b3] hover:to-[#1fd98d] no-underline">Download</a>
-          </article>
-
-          <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex items-center justify-between gap-8 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
-            <div class="flex flex-col gap-2.5 min-w-0">
-              <div class="flex items-center gap-3">
-                <h3 class="text-[#E6FAFC] text-xl font-bold">News &amp; Web Frequency</h3>
-                <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest shrink-0">
-                  <span class="w-2 h-2 rounded-full bg-[#FB923C]"></span>
-                  <span class="text-[#FB923C]">Medium</span>
-                </span>
-              </div>
-              <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Derived from news corpora and web text. Useful for reading articles, Twitter, and online Japanese content.</p>
-              <div class="flex gap-2 flex-wrap mt-1">
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">News</span>
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">Web</span>
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">BCCWJ</span>
-              </div>
-            </div>
-            <a href="#" download class="shrink-0 px-7 py-3 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-wide cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] hover:from-[#8ff5b3] hover:to-[#1fd98d] no-underline">Download</a>
-          </article>
-
-          <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex items-center justify-between gap-8 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
-            <div class="flex flex-col gap-2.5 min-w-0">
-              <div class="flex items-center gap-3">
-                <h3 class="text-[#E6FAFC] text-xl font-bold">JPDB Frequency</h3>
-                <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest shrink-0">
-                  <span class="w-2 h-2 rounded-full bg-[#fb7185]"></span>
-                  <span class="text-[#fb7185]">Low</span>
-                </span>
-              </div>
-              <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Directly sourced from JPDB's frequency data. Strong coverage of anime, manga, and visual novel vocabulary.</p>
-              <div class="flex gap-2 flex-wrap mt-1">
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">JPDB</span>
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">Anime</span>
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">Manga</span>
-                <span class="px-3 py-1 rounded-full bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.6)] text-xs font-medium">Visual Novels</span>
-              </div>
+            <div class="flex flex-col gap-2 min-w-0">
+              <h3 class="text-[#E6FAFC] text-xl font-bold">JPDB v2.2 Frequency Kana</h3>
+              <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Sourced from JPDB's global frequency data. Strong coverage of anime, manga, visual novel, and light novel vocabulary.</p>
             </div>
             <a href="#" download class="shrink-0 px-7 py-3 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-wide cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] hover:from-[#8ff5b3] hover:to-[#1fd98d] no-underline">Download</a>
           </article>
