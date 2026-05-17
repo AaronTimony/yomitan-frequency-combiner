@@ -3,6 +3,8 @@ import { $ } from "./dom";
 import { FileManager } from "./fileManager";
 import { setupPages } from "./pages";
 import { setupCreatePage } from "./searchPage";
+import { setupGenrePage } from "./genrePage";
+import { setupRecommendedPage } from "./recommendedPage";
 import { averageZips, downloadBlob } from "./combiner";
 
 const SUN_ICON = `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>`;
@@ -26,6 +28,8 @@ document.getElementById("theme-toggle")?.addEventListener("click", () => {
 
 setupPages($("top-nav"));
 setupCreatePage($("page-create"));
+setupGenrePage($("page-genre"));
+setupRecommendedPage();
 
 const fileManager = new FileManager({
   dropZone: $("drop-zone"),

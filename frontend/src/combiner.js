@@ -132,7 +132,7 @@ function buildSummedAndRankedEntries(data) {
     }
     return outEntries;
 }
-export async function mergeJitenDecks(files, title) {
+export async function mergeJitenDecks(files, title, sources) {
     if (files.length === 0)
         throw new Error("No files to merge");
     const data = await readFrequencies(files);
@@ -141,6 +141,10 @@ export async function mergeJitenDecks(files, title) {
         ...data.baseIndex,
         title,
         revision: `${title} ${new Date().toISOString().slice(0, 10)}`,
+        ...(sources && {
+            sources,
+            totalWords: sources.reduce((sum, s) => sum + s.wordCount, 0),
+        }),
     };
     const out = new JSZip();
     out.file("index.json", JSON.stringify(outIndex));

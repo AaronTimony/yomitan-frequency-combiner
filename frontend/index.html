@@ -22,10 +22,11 @@
     <div id="app" class="w-full flex flex-col gap-7">
 
       <nav id="top-nav" class="relative w-full pt-4 pb-4 border-b border-[rgba(230,250,252,0.1)]">
-        <div class="grid grid-cols-3 items-center max-w-[860px] mx-auto">
-          <button class="page-tab justify-self-end py-3 px-14 bg-transparent border-0 rounded-full text-[rgba(230,250,252,0.75)] text-[1.2rem] font-bold cursor-pointer hover:text-[#E6FAFC]" data-page="recommended">Recommended</button>
-          <button class="page-tab active justify-self-center py-3 px-14 bg-transparent border-0 rounded-full text-[rgba(230,250,252,0.75)] text-[1.2rem] font-bold cursor-pointer hover:text-[#E6FAFC]" data-page="create">Create</button>
-          <button class="page-tab justify-self-start py-3 px-14 bg-transparent border-0 rounded-full text-[rgba(230,250,252,0.75)] text-[1.2rem] font-bold cursor-pointer hover:text-[#E6FAFC]" data-page="combiner">Combiner</button>
+        <div class="flex items-center justify-center gap-2 max-w-[960px] mx-auto">
+          <button class="page-tab py-3 px-10 bg-transparent border-0 rounded-full text-[rgba(230,250,252,0.75)] text-[1.2rem] font-bold cursor-pointer hover:text-[#E6FAFC]" data-page="recommended">Recommended</button>
+          <button class="page-tab active py-3 px-10 bg-transparent border-0 rounded-full text-[rgba(230,250,252,0.75)] text-[1.2rem] font-bold cursor-pointer hover:text-[#E6FAFC]" data-page="create">Create</button>
+          <button class="page-tab py-3 px-10 bg-transparent border-0 rounded-full text-[rgba(230,250,252,0.75)] text-[1.2rem] font-bold cursor-pointer hover:text-[#E6FAFC]" data-page="combiner">Combiner</button>
+          <button class="page-tab py-3 px-10 bg-transparent border-0 rounded-full text-[rgba(230,250,252,0.75)] text-[1.2rem] font-bold cursor-pointer hover:text-[#E6FAFC]" data-page="genre">Genre</button>
         </div>
         <a href="https://github.com/AaronTimony/yomitan-frequency-combiner" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository"
           class="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-xl text-[rgba(230,250,252,0.7)] hover:text-[#E6FAFC] transition-colors duration-150">
@@ -98,6 +99,16 @@
             </div>
           </article>
 
+          <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex flex-col gap-4 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]" data-sources-url="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/Slice.of.Life.Anime_sources.json">
+            <div class="flex items-center justify-between gap-8">
+              <div class="flex flex-col gap-2 min-w-0">
+                <h3 class="text-[#E6FAFC] text-xl font-bold">Slice of Life Anime</h3>
+                <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Combined from all Jiten Slice of Life anime decks. Great for everyday conversational vocabulary.</p>
+              </div>
+              <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/Slice.of.Life.Anime.zip" download class="shrink-0 px-7 py-3 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-wide cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] hover:from-[#8ff5b3] hover:to-[#1fd98d] no-underline">Download</a>
+            </div>
+          </article>
+
           <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex items-center justify-between gap-8 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
             <div class="flex flex-col gap-2 min-w-0">
               <h3 class="text-[#E6FAFC] text-xl font-bold">JPDB v2.2 Frequency Kana</h3>
@@ -153,6 +164,8 @@
       </section>
 
       <section id="page-create" class="page flex flex-col gap-7" hidden></section>
+
+      <section id="page-genre" class="page flex flex-col gap-7 px-8" hidden></section>
 
     </div>
     <script type="module" src="/src/main.ts"></script>

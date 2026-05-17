@@ -1,5 +1,10 @@
 import JSZip from "jszip";
 
+export interface DictSource {
+  title: string;
+  wordCount: number;
+}
+
 interface IndexJson {
   title: string;
   format: number;
@@ -191,7 +196,7 @@ function buildSummedAndRankedEntries(data: FrequencyData): OutEntry[] {
   return outEntries;
 }
 
-export async function mergeJitenDecks(files: readonly File[], title: string): Promise<Blob> {
+export async function mergeJitenDecks(files: readonly File[], title: string, sources?: DictSource[]): Promise<Blob> {
   if (files.length === 0) throw new Error("No files to merge");
   const data = await readFrequencies(files);
   const outEntries = buildSummedAndRankedEntries(data);
@@ -199,6 +204,10 @@ export async function mergeJitenDecks(files: readonly File[], title: string): Pr
     ...data.baseIndex,
     title,
     revision: `${title} ${new Date().toISOString().slice(0, 10)}`,
+    ...(sources && {
+      sources,
+      totalWords: sources.reduce((sum, s) => sum + s.wordCount, 0),
+    }),
   };
   const out = new JSZip();
   out.file("index.json", JSON.stringify(outIndex));

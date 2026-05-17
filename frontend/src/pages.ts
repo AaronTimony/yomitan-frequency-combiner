@@ -1,6 +1,6 @@
-export type PageKey = "recommended" | "create" | "combiner";
+export type PageKey = "recommended" | "create" | "combiner" | "genre";
 
-const ORDER: PageKey[] = ["recommended", "create", "combiner"];
+const ORDER: PageKey[] = ["recommended", "create", "combiner", "genre"];
 
 function pathKey(): PageKey {
   const segment = location.pathname.replace(/^\//, "") as PageKey;
