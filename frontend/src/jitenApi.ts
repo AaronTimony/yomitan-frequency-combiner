@@ -80,6 +80,11 @@ export async function fetchDecks(query = "", page = 1, mediaType?: number): Prom
   return { decks, hasMore };
 }
 
+const sleep = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms));
+
+// Status codes worth retrying: rate limit + transient server/gateway errors.
+const RETRYABLE = new Set([429, 500, 502, 503, 504]);
+
 /**
  * Download a deck's Yomitan frequency dictionary.
  *
@@ -87,17 +92,73 @@ export async function fetchDecks(query = "", page = 1, mediaType?: number): Prom
  * `POST /api/media-deck/{id}/download` with `{ format: DeckFormat.Yomitan }`
  * (DeckFormat.Yomitan === 5), so it cannot be a plain `<a href>` link — the
  * request body is required. Returns the resulting zip as a Blob.
+ *
+ * The endpoint rate-limits under bursty load, so this retries on 429/5xx with
+ * exponential backoff, honoring the `Retry-After` header when present.
  */
-export async function fetchDeckYomitanZip(deck: JitenDeck): Promise<Blob> {
-  const res = await fetch(`${apiBase()}/media-deck/${deck.deckId}/download`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ format: 5 /* DeckFormat.Yomitan */ }),
-  });
-  if (!res.ok) {
+export async function fetchDeckYomitanZip(deck: JitenDeck, attempts = 5): Promise<Blob> {
+  for (let attempt = 1; ; attempt++) {
+    let res: Response;
+    try {
+      res = await fetch(`${apiBase()}/media-deck/${deck.deckId}/download`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ format: 5 /* DeckFormat.Yomitan */ }),
+      });
+    } catch (err) {
+      // Network error / connection reset — retry like a transient failure.
+      if (attempt >= attempts) throw err;
+      await sleep(backoffMs(attempt));
+      continue;
+    }
+
+    if (res.ok) return res.blob();
+
+    if (RETRYABLE.has(res.status) && attempt < attempts) {
+      const retryAfter = Number(res.headers.get("Retry-After"));
+      const waitMs = Number.isFinite(retryAfter) && retryAfter > 0
+        ? retryAfter * 1000
+        : backoffMs(attempt);
+      await sleep(waitMs);
+      continue;
+    }
+
     throw new Error(`Failed to download (HTTP ${res.status})`);
   }
-  return res.blob();
+}
+
+// 1s, 2s, 4s, 8s … capped at 15s, with jitter to avoid thundering herd.
+function backoffMs(attempt: number): number {
+  return Math.min(2 ** (attempt - 1) * 1000, 15000) + Math.random() * 500;
+}
+
+/**
+ * Map over `items` running at most `limit` async tasks at once, preserving
+ * input order in the result. Stops and rejects on the first task that throws
+ * after its own retries are exhausted. `onProgress` fires as each item settles.
+ */
+export async function mapPool<T, R>(
+  items: T[],
+  limit: number,
+  fn: (item: T, index: number) => Promise<R>,
+  onProgress?: (done: number, total: number) => void,
+): Promise<R[]> {
+  const results = new Array<R>(items.length);
+  let next = 0;
+  let done = 0;
+
+  async function worker(): Promise<void> {
+    while (next < items.length) {
+      const i = next++;
+      results[i] = await fn(items[i], i);
+      done++;
+      onProgress?.(done, items.length);
+    }
+  }
+
+  const workers = Array.from({ length: Math.min(limit, items.length) }, worker);
+  await Promise.all(workers);
+  return results;
 }
 
 /** Best human-readable title for a deck. */

@@ -1,10 +1,12 @@
-import { writeFileSync, mkdirSync } from "fs";
+import { writeFileSync, mkdirSync, readdirSync, readFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import JSZip from "jszip";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT_DIR = join(__dirname, "../../output_freq_dicts");
+const PUBLIC_SOURCES_DIR = join(__dirname, "../public/sources");
+const PUBLIC_DICTS_DIR = join(__dirname, "../public/dicts");
 const JITEN_API = "https://api.jiten.moe/api";
 
 const MEDIA_CONFIG = {
@@ -157,6 +159,7 @@ async function fetchAniListPage(genre, anilistType, page, attempt = 0) {
       await sleep(retryAfter * 1000);
       return fetchAniListPage(genre, anilistType, page, attempt + 1);
     }
+    if (res.status === 400) return { media: [], hasNextPage: false };
     if (!res.ok) throw new Error(`AniList HTTP ${res.status}`);
     const json = await res.json();
     const p = json.data.Page;
@@ -170,24 +173,48 @@ async function fetchAniListPage(genre, anilistType, page, attempt = 0) {
   }
 }
 
-async function searchJiten(title, jitenMediaType, attempt = 0) {
-  try {
+async function fetchAllJitenDecks(jitenMediaType) {
+  const allDecks = [];
+  let offset = 0;
+  let totalItems = Infinity;
+
+  while (offset < totalItems) {
     const params = new URLSearchParams({
-      titleFilter: title,
       mediaType: String(jitenMediaType),
-      offset: "0",
+      offset: String(offset),
     });
     const res = await fetch(`${JITEN_API}/media-deck/get-media-decks?${params}`, {
       headers: { Accept: "application/json" },
     });
     if (!res.ok) throw new Error(`Jiten HTTP ${res.status}`);
     const body = await res.json();
-    return body.data?.[0] ?? null;
-  } catch {
-    if (attempt >= 4) return null;
-    await sleep(3000 * (attempt + 1));
-    return searchJiten(title, jitenMediaType, attempt + 1);
+    totalItems = body.totalItems;
+    allDecks.push(...(body.data ?? []));
+    offset += 25;
+    process.stdout.write(`\rFetched ${allDecks.length} / ${totalItems} Jiten decks...`);
+    if (offset < totalItems) await sleep(300);
   }
+  console.log();
+  return allDecks;
+}
+
+function buildJitenIndex(decks) {
+  const index = new Map();
+  for (const deck of decks) {
+    for (const title of [deck.originalTitle, deck.romajiTitle, deck.englishTitle]) {
+      if (title) index.set(title.toLowerCase().trim(), deck);
+    }
+  }
+  return index;
+}
+
+function findMatch(searchTitle, index) {
+  const needle = searchTitle.toLowerCase().trim();
+  if (index.has(needle)) return index.get(needle);
+  for (const [key, deck] of index) {
+    if (key.includes(needle) || needle.includes(key)) return deck;
+  }
+  return null;
 }
 
 async function downloadDeckZip(deckId, attempt = 0) {
@@ -206,6 +233,25 @@ async function downloadDeckZip(deckId, attempt = 0) {
   }
 }
 
+function matchCachePath(baseName) {
+  return join(OUTPUT_DIR, `${baseName}_match.json`);
+}
+
+// Find a previously-saved match cache for this media type, if any. The match
+// (AniList ↔ Jiten) is the slow, flaky part; once it's on disk we can resume
+// straight to zip downloads without hitting AniList or Jiten again.
+function loadMatchCache(label) {
+  try {
+    const file = readdirSync(OUTPUT_DIR).find((f) => f.endsWith(`_${label}_match.json`));
+    if (!file) return null;
+    const data = JSON.parse(readFileSync(join(OUTPUT_DIR, file), "utf8"));
+    if (!Array.isArray(data.matched) || data.matched.length === 0) return null;
+    return data;
+  } catch {
+    return null;
+  }
+}
+
 async function main() {
   const mediaArg = process.argv[2]?.toLowerCase();
   if (!mediaArg || !MEDIA_CONFIG[mediaArg]) {
@@ -215,75 +261,138 @@ async function main() {
 
   const { anilistType, jitenMediaType, label } = MEDIA_CONFIG[mediaArg];
   mkdirSync(OUTPUT_DIR, { recursive: true });
+  mkdirSync(PUBLIC_SOURCES_DIR, { recursive: true });
+  mkdirSync(PUBLIC_DICTS_DIR, { recursive: true });
 
-  console.log("Fetching genres from AniList...");
-  const genres = await fetchGenres();
-  console.log(`Available genres: ${genres.join(", ")}`);
+  const fresh = process.argv.includes("--fresh");
+  const cache = fresh ? null : loadMatchCache(label);
 
-  const genre = genres[0];
-  console.log(`\nUsing first genre: "${genre}"`);
+  let genre;
+  let searchedCount;
+  let matched;
+  let totalWords;
 
-  console.log(`Fetching ${anilistType} page 1 for genre "${genre}"...`);
-  const page = await fetchAniListPage(genre, anilistType, 1);
-  console.log(`Got ${page.media.length} titles`);
+  if (cache) {
+    genre = cache.genre;
+    searchedCount = cache.searched;
+    totalWords = cache.totalWords;
+    matched = cache.matched.map((m) => ({ display: m.display, deck: m.deck }));
+    console.log(`Found cached match for "${genre}" ${label}: ${matched.length} decks, ${totalWords.toLocaleString()} words.`);
+    console.log("Skipping AniList + Jiten matching (pass --fresh to rebuild it).\n");
+  } else {
+    console.log("Fetching genres from AniList...");
+    const genres = await fetchGenres();
+    console.log(`Available genres: ${genres.join(", ")}`);
 
-  const titles = page.media.slice(0, 10);
-  const matched = [];
-  let totalWords = 0;
+    genre = genres[0];
+    console.log(`\nUsing first genre: "${genre}"`);
 
-  for (let i = 0; i < titles.length; i++) {
-    const item = titles[i];
-    const searchTitle = item.title.romaji ?? item.title.english ?? "";
-    process.stdout.write(`[${i + 1}/${titles.length}] "${searchTitle}" → `);
+    const allTitles = [];
+    let aniPage = 1;
+    let hasNextPage = true;
+    while (hasNextPage && aniPage <= 100) {
+      console.log(`Fetching ${anilistType} page ${aniPage} for genre "${genre}"...`);
+      const page = await fetchAniListPage(genre, anilistType, aniPage);
+      allTitles.push(...page.media);
+      hasNextPage = page.hasNextPage;
+      aniPage++;
+      if (hasNextPage) await sleep(1000);
+    }
+    console.log(`Got ${allTitles.length} titles total\n`);
 
-    const deck = await searchJiten(searchTitle, jitenMediaType);
-    if (deck) {
-      const display = item.title.english ?? item.title.romaji ?? "Unknown";
-      matched.push({ display, deck });
-      totalWords += deck.wordCount;
-      console.log(`matched "${deck.originalTitle || deck.englishTitle}" (${deck.wordCount.toLocaleString()} words)`);
-    } else {
-      console.log("no match");
+    console.log("Fetching all Jiten decks...");
+    const jitenDecks = await fetchAllJitenDecks(jitenMediaType);
+    const jitenIndex = buildJitenIndex(jitenDecks);
+    console.log(`Built index of ${jitenIndex.size} titles\n`);
+
+    matched = [];
+    totalWords = 0;
+    const seen = new Set();
+
+    for (const item of allTitles) {
+      const searchTitle = item.title.romaji ?? item.title.english ?? "";
+      const deck = findMatch(searchTitle, jitenIndex)
+        ?? findMatch(item.title.english ?? "", jitenIndex)
+        ?? findMatch(item.title.native ?? "", jitenIndex);
+
+      if (deck && !seen.has(deck.deckId)) {
+        seen.add(deck.deckId);
+        const display = item.title.english ?? item.title.romaji ?? "Unknown";
+        matched.push({ display, deck });
+        totalWords += deck.wordCount;
+      }
     }
 
-    await sleep(500);
+    searchedCount = allTitles.length;
+    console.log(`Matched ${matched.length} / ${searchedCount} — ${totalWords.toLocaleString()} total words`);
+
+    if (matched.length === 0) {
+      console.log("No matches — nothing to save.");
+      return;
+    }
   }
 
-  console.log(`\nMatched ${matched.length} / ${titles.length} — ${totalWords.toLocaleString()} total words`);
+  const baseName = `${genre.replace(/\s+/g, "_")}_${label}`;
+  const sources = matched.map((m) => ({ title: m.display, wordCount: m.deck.wordCount }));
+  const sourcesJson = JSON.stringify(
+    { genre, mediaType: label, totalWords, searched: searchedCount, matched: matched.length, sources },
+    null,
+    2,
+  );
 
-  if (matched.length === 0) {
-    console.log("No matches — nothing to save.");
-    return;
+  const sourcesPath = join(OUTPUT_DIR, `${baseName}_sources.json`);
+  const publicSourcesPath = join(PUBLIC_SOURCES_DIR, `${baseName}_sources.json`);
+
+  // Persist the match (with deck IDs) and the sources JSON BEFORE the slow zip
+  // downloads. If a download fails or is slow, a re-run reads this back and
+  // resumes straight to downloading instead of redoing AniList + Jiten.
+  if (!cache) {
+    const matchCache = {
+      genre,
+      mediaType: label,
+      jitenMediaType,
+      searched: searchedCount,
+      totalWords,
+      matched: matched.map((m) => ({
+        display: m.display,
+        deck: {
+          deckId: m.deck.deckId,
+          wordCount: m.deck.wordCount,
+          originalTitle: m.deck.originalTitle ?? "",
+          englishTitle: m.deck.englishTitle ?? "",
+        },
+      })),
+    };
+    writeFileSync(matchCachePath(baseName), JSON.stringify(matchCache, null, 2));
+    console.log(`\nSaved match cache: ${matchCachePath(baseName)}`);
   }
+  writeFileSync(sourcesPath, sourcesJson);
+  writeFileSync(publicSourcesPath, sourcesJson);
+  console.log(`Saved sources: ${sourcesPath}`);
+  console.log(`Saved sources: ${publicSourcesPath} (served with app)\n`);
 
-  console.log("\nDownloading deck zips...");
+  console.log("Downloading deck zips...");
   const buffers = [];
   for (let i = 0; i < matched.length; i++) {
     const { deck } = matched[i];
     process.stdout.write(`[${i + 1}/${matched.length}] ${deck.originalTitle || deck.englishTitle}... `);
     buffers.push(await downloadDeckZip(deck.deckId));
     console.log("done");
-    if (i < matched.length - 1) await sleep(2500);
+    if (i < matched.length - 1) await sleep(6000);
   }
 
   console.log("\nMerging...");
   const dictTitle = `${genre} ${label} Frequency`;
-  const sources = matched.map((m) => ({ title: m.display, wordCount: m.deck.wordCount }));
   const outBuffer = await mergeDecks(buffers, dictTitle, sources);
 
-  const baseName = `${genre.replace(/\s+/g, "_")}_${label}`;
   const zipPath = join(OUTPUT_DIR, `${baseName}.zip`);
-  const sourcesPath = join(OUTPUT_DIR, `${baseName}_sources.json`);
-
+  const publicZipPath = join(PUBLIC_DICTS_DIR, `${baseName}.zip`);
   writeFileSync(zipPath, outBuffer);
-  writeFileSync(
-    sourcesPath,
-    JSON.stringify({ genre, mediaType: label, totalWords, searched: titles.length, matched: matched.length, sources }, null, 2),
-  );
+  writeFileSync(publicZipPath, outBuffer);
 
   console.log(`\nSaved:`);
   console.log(`  ${zipPath}`);
-  console.log(`  ${sourcesPath}`);
+  console.log(`  ${publicZipPath} (served with app)`);
 }
 
 main().catch((err) => {

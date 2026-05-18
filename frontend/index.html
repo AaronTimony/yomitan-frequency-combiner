@@ -99,22 +99,60 @@
             </div>
           </article>
 
-          <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex flex-col gap-4 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]" data-sources-url="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/Slice.of.Life.Anime_sources.json">
-            <div class="flex items-center justify-between gap-8">
-              <div class="flex flex-col gap-2 min-w-0">
-                <h3 class="text-[#E6FAFC] text-xl font-bold">Slice of Life Anime</h3>
-                <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Combined from all Jiten Slice of Life anime decks. Great for everyday conversational vocabulary.</p>
-              </div>
-              <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/Slice.of.Life.Anime.zip" download class="shrink-0 px-7 py-3 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-wide cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] hover:from-[#8ff5b3] hover:to-[#1fd98d] no-underline">Download</a>
-            </div>
-          </article>
-
           <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex items-center justify-between gap-8 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
             <div class="flex flex-col gap-2 min-w-0">
               <h3 class="text-[#E6FAFC] text-xl font-bold">JPDB v2.2 Frequency Kana</h3>
               <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Sourced from JPDB's global frequency data. Strong coverage of anime, manga, visual novel, and light novel vocabulary.</p>
             </div>
             <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/JPDB_v2.2_Frequency_Kana_2024-10-13.zip" download class="shrink-0 px-7 py-3 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-wide cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] hover:from-[#8ff5b3] hover:to-[#1fd98d] no-underline">Download</a>
+          </article>
+
+          <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex flex-col gap-5 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
+            <div class="flex items-center justify-between gap-8">
+              <div class="flex flex-col gap-2 min-w-0">
+                <h3 class="text-[#E6FAFC] text-xl font-bold">Anime by Genre</h3>
+                <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Genre-specific frequency dictionaries built from top Jiten anime decks.</p>
+              </div>
+              <button data-media-toggle="anime-genre-list" class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.85)] text-sm font-bold cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.5)] hover:text-[#FB923C]">
+                <span data-toggle-label>Browse genres</span>
+                <svg data-toggle-chevron xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+            </div>
+            <div id="anime-genre-list" class="hidden gap-6">
+
+              <div id="genre-rows" class="flex flex-col gap-2 flex-1 min-w-0">
+
+                <div class="grid grid-cols-[1fr_auto_auto_auto_auto] items-center gap-x-6 px-4 py-3 rounded-xl bg-[#3a3a3a] border border-[#5a5a5a]" data-genre-url="/sources/Action_Anime_sources.json" data-zip-url="/dicts/Action_Anime.zip">
+                  <span data-genre-name class="text-[#E6FAFC] font-semibold text-sm">Action</span>
+                  <div class="flex flex-col items-end gap-0.5">
+                    <span class="text-[#FB923C] text-[0.6rem] font-bold uppercase tracking-wider">Words</span>
+                    <span data-stat="words" class="text-[#E6FAFC] font-bold text-sm">…</span>
+                  </div>
+                  <div class="flex flex-col items-end gap-0.5">
+                    <span class="text-[#FB923C] text-[0.6rem] font-bold uppercase tracking-wider">Decks</span>
+                    <span data-stat="decks" class="text-[#E6FAFC] font-bold text-sm">…</span>
+                  </div>
+                  <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/Action_Anime.zip" download class="text-xs font-bold text-center px-4 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
+                  <button data-add-genre disabled class="text-xs font-bold text-center px-4 py-1.5 rounded-lg bg-[#4a4a4a] border border-[#5a5a5a] text-[rgba(230,250,252,0.85)] cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.6)] hover:text-[#FB923C] disabled:opacity-40 disabled:cursor-not-allowed">Add to list</button>
+                </div>
+
+                <div class="grid grid-cols-[1fr_auto_auto_auto_auto] items-center gap-x-6 px-4 py-3 rounded-xl bg-[#3a3a3a] border border-[#5a5a5a]" data-genre-url="/sources/Slice_of_Life_Anime_sources.json" data-zip-url="/dicts/Slice_of_Life_Anime.zip">
+                  <span data-genre-name class="text-[#E6FAFC] font-semibold text-sm">Slice of Life</span>
+                  <div class="flex flex-col items-end gap-0.5">
+                    <span class="text-[#FB923C] text-[0.6rem] font-bold uppercase tracking-wider">Words</span>
+                    <span data-stat="words" class="text-[#E6FAFC] font-bold text-sm">…</span>
+                  </div>
+                  <div class="flex flex-col items-end gap-0.5">
+                    <span class="text-[#FB923C] text-[0.6rem] font-bold uppercase tracking-wider">Decks</span>
+                    <span data-stat="decks" class="text-[#E6FAFC] font-bold text-sm">…</span>
+                  </div>
+                  <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/Slice.of.Life.Anime.zip" download class="text-xs font-bold text-center px-4 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
+                  <button data-add-genre disabled class="text-xs font-bold text-center px-4 py-1.5 rounded-lg bg-[#4a4a4a] border border-[#5a5a5a] text-[rgba(230,250,252,0.85)] cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.6)] hover:text-[#FB923C] disabled:opacity-40 disabled:cursor-not-allowed">Add to list</button>
+                </div>
+
+              </div>
+
+            </div>
           </article>
 
         </div>

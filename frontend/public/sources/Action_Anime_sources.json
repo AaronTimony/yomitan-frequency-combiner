@@ -1,0 +1,5977 @@
+{
+  "genre": "Action",
+  "mediaType": "Anime",
+  "totalWords": 46174671,
+  "searched": 5000,
+  "matched": 1492,
+  "sources": [
+    {
+      "title": "Attack on Titan",
+      "wordCount": 40985
+    },
+    {
+      "title": "Demon Slayer: Kimetsu no Yaiba",
+      "wordCount": 36614
+    },
+    {
+      "title": "JUJUTSU KAISEN",
+      "wordCount": 42199
+    },
+    {
+      "title": "My Hero Academia",
+      "wordCount": 21262
+    },
+    {
+      "title": "Hunter x Hunter (2011)",
+      "wordCount": 231317
+    },
+    {
+      "title": "One-Punch Man",
+      "wordCount": 19651
+    },
+    {
+      "title": "Tokyo Ghoul",
+      "wordCount": 17794
+    },
+    {
+      "title": "ONE PIECE",
+      "wordCount": 1458227
+    },
+    {
+      "title": "Attack on Titan Season 2",
+      "wordCount": 17631
+    },
+    {
+      "title": "Fullmetal Alchemist: Brotherhood",
+      "wordCount": 90912
+    },
+    {
+      "title": "Naruto",
+      "wordCount": 172695
+    },
+    {
+      "title": "Sword Art Online",
+      "wordCount": 34078
+    },
+    {
+      "title": "My Hero Academia Season 2",
+      "wordCount": 45501
+    },
+    {
+      "title": "Attack on Titan Final Season",
+      "wordCount": 28969
+    },
+    {
+      "title": "Assassination Classroom",
+      "wordCount": 48541
+    },
+    {
+      "title": "Mob Psycho 100",
+      "wordCount": 23441
+    },
+    {
+      "title": "Chainsaw Man",
+      "wordCount": 19095
+    },
+    {
+      "title": "Re:ZERO -Starting Life in Another World-",
+      "wordCount": 56067
+    },
+    {
+      "title": "Naruto: Shippuden",
+      "wordCount": 756525
+    },
+    {
+      "title": "My Hero Academia Season 3",
+      "wordCount": 48933
+    },
+    {
+      "title": "Black Clover",
+      "wordCount": 289938
+    },
+    {
+      "title": "SPY x FAMILY",
+      "wordCount": 23169
+    },
+    {
+      "title": "Dr. STONE",
+      "wordCount": 41135
+    },
+    {
+      "title": "Noragami",
+      "wordCount": 26753
+    },
+    {
+      "title": "Akame ga Kill!",
+      "wordCount": 44100
+    },
+    {
+      "title": "Vinland Saga",
+      "wordCount": 32669
+    },
+    {
+      "title": "My Hero Academia Season 4",
+      "wordCount": 46591
+    },
+    {
+      "title": "The Seven Deadly Sins",
+      "wordCount": 43032
+    },
+    {
+      "title": "Demon Slayer -Kimetsu no Yaiba- The Movie: Mugen Train",
+      "wordCount": 6437
+    },
+    {
+      "title": "Parasyte -the maxim-",
+      "wordCount": 35200
+    },
+    {
+      "title": "Bleach",
+      "wordCount": 475910
+    },
+    {
+      "title": "DARLING in the FRANXX",
+      "wordCount": 39199
+    },
+    {
+      "title": "Code Geass: Lelouch of the Rebellion",
+      "wordCount": 55701
+    },
+    {
+      "title": "Neon Genesis Evangelion",
+      "wordCount": 48786
+    },
+    {
+      "title": "Fire Force",
+      "wordCount": 36106
+    },
+    {
+      "title": "Demon Slayer: Kimetsu no Yaiba Entertainment District Arc",
+      "wordCount": 16117
+    },
+    {
+      "title": "JoJo's Bizarre Adventure (TV)",
+      "wordCount": 44028
+    },
+    {
+      "title": "JUJUTSU KAISEN Season 2",
+      "wordCount": 30187
+    },
+    {
+      "title": "One-Punch Man Season 2",
+      "wordCount": 23097
+    },
+    {
+      "title": "Cowboy Bebop",
+      "wordCount": 31412
+    },
+    {
+      "title": "Blue Exorcist",
+      "wordCount": 87068
+    },
+    {
+      "title": "The Rising of the Shield Hero",
+      "wordCount": 41190
+    },
+    {
+      "title": "Sword Art Online II",
+      "wordCount": 37211
+    },
+    {
+      "title": "That Time I Got Reincarnated as a Slime",
+      "wordCount": 40349
+    },
+    {
+      "title": "Mob Psycho 100 II",
+      "wordCount": 26259
+    },
+    {
+      "title": "Angel Beats!",
+      "wordCount": 24924
+    },
+    {
+      "title": "Tokyo Revengers",
+      "wordCount": 34009
+    },
+    {
+      "title": "The Future Diary",
+      "wordCount": 44755
+    },
+    {
+      "title": "Attack on Titan Final Season Part 2",
+      "wordCount": 17902
+    },
+    {
+      "title": "JUJUTSU KAISEN 0",
+      "wordCount": 6622
+    },
+    {
+      "title": "Solo Leveling",
+      "wordCount": 19529
+    },
+    {
+      "title": "Bungo Stray Dogs",
+      "wordCount": 22551
+    },
+    {
+      "title": "Kill la Kill",
+      "wordCount": 44370
+    },
+    {
+      "title": "My Hero Academia Season 5",
+      "wordCount": 42998
+    },
+    {
+      "title": "Tokyo Ghoul √A",
+      "wordCount": 10979
+    },
+    {
+      "title": "Overlord",
+      "wordCount": 23488
+    },
+    {
+      "title": "Is It Wrong to Try to Pick Up Girls in a Dungeon?",
+      "wordCount": 20886
+    },
+    {
+      "title": "Soul Eater",
+      "wordCount": 20421
+    },
+    {
+      "title": "Fairy Tail",
+      "wordCount": 265827
+    },
+    {
+      "title": "Gurren Lagann",
+      "wordCount": 41697
+    },
+    {
+      "title": "Dororo",
+      "wordCount": 28828
+    },
+    {
+      "title": "Re:ZERO -Starting Life in Another World- Season 2",
+      "wordCount": 30842
+    },
+    {
+      "title": "DAN DA DAN",
+      "wordCount": 21577
+    },
+    {
+      "title": "Demon Slayer: Kimetsu no Yaiba Swordsmith Village Arc",
+      "wordCount": 12103
+    },
+    {
+      "title": "Cyberpunk: Edgerunners",
+      "wordCount": 18826
+    },
+    {
+      "title": "Code Geass: Lelouch of the Rebellion R2",
+      "wordCount": 54935
+    },
+    {
+      "title": "PSYCHO-PASS",
+      "wordCount": 38041
+    },
+    {
+      "title": "Demon Slayer: Kimetsu no Yaiba Mugen Train Arc",
+      "wordCount": 8606
+    },
+    {
+      "title": "Devilman Crybaby",
+      "wordCount": 12821
+    },
+    {
+      "title": "Fate/Zero",
+      "wordCount": 27945
+    },
+    {
+      "title": "Hell’s Paradise",
+      "wordCount": 22073
+    },
+    {
+      "title": "JoJo's Bizarre Adventure: Stardust Crusaders",
+      "wordCount": 44057
+    },
+    {
+      "title": "Tower of God",
+      "wordCount": 21486
+    },
+    {
+      "title": "Dr. STONE: STONE WARS",
+      "wordCount": 18486
+    },
+    {
+      "title": "Seraph of the End: Vampire Reign",
+      "wordCount": 34528
+    },
+    {
+      "title": "The Promised Neverland Season 2",
+      "wordCount": 16076
+    },
+    {
+      "title": "Puella Magi Madoka Magica",
+      "wordCount": 19167
+    },
+    {
+      "title": "Noragami Aragoto",
+      "wordCount": 27866
+    },
+    {
+      "title": "That Time I Got Reincarnated as a Slime Season 2",
+      "wordCount": 20964
+    },
+    {
+      "title": "BLUE LOCK",
+      "wordCount": 47420
+    },
+    {
+      "title": "JoJo's Bizarre Adventure: Diamond is Unbreakable",
+      "wordCount": 77268
+    },
+    {
+      "title": "86 EIGHTY-SIX",
+      "wordCount": 19622
+    },
+    {
+      "title": "BANANA FISH",
+      "wordCount": 47417
+    },
+    {
+      "title": "Tokyo Ghoul:re",
+      "wordCount": 17636
+    },
+    {
+      "title": "GOBLIN SLAYER",
+      "wordCount": 20502
+    },
+    {
+      "title": "Princess Mononoke",
+      "wordCount": 7119
+    },
+    {
+      "title": "Fire Force Season 2",
+      "wordCount": 33188
+    },
+    {
+      "title": "The Eminence in Shadow",
+      "wordCount": 32083
+    },
+    {
+      "title": "JoJo's Bizarre Adventure: Golden Wind",
+      "wordCount": 73379
+    },
+    {
+      "title": "Re:ZERO -Starting Life in Another World- Season 2 Part 2",
+      "wordCount": 29310
+    },
+    {
+      "title": "Durarara!!",
+      "wordCount": 48883
+    },
+    {
+      "title": "Gintama",
+      "wordCount": 785126
+    },
+    {
+      "title": "JoJo's Bizarre Adventure: Stardust Crusaders - Battle in Egypt",
+      "wordCount": 42423
+    },
+    {
+      "title": "Sword Art Online: Alicization",
+      "wordCount": 43406
+    },
+    {
+      "title": "Solo Leveling Season 2 -Arise from the Shadow-",
+      "wordCount": 22763
+    },
+    {
+      "title": "The Seven Deadly Sins: Revival of the Commandments",
+      "wordCount": 43407
+    },
+    {
+      "title": "WONDER EGG PRIORITY",
+      "wordCount": 14773
+    },
+    {
+      "title": "High School of the Dead",
+      "wordCount": 17912
+    },
+    {
+      "title": "Samurai Champloo",
+      "wordCount": 32906
+    },
+    {
+      "title": "MASHLE: MAGIC AND MUSCLES",
+      "wordCount": 19453
+    },
+    {
+      "title": "Elfen Lied",
+      "wordCount": 2057
+    },
+    {
+      "title": "Kaiju No. 8",
+      "wordCount": 16597
+    },
+    {
+      "title": "Saga of Tanya the Evil",
+      "wordCount": 20697
+    },
+    {
+      "title": "Fate/stay night: Unlimited Blade Works",
+      "wordCount": 27109
+    },
+    {
+      "title": "Fullmetal Alchemist",
+      "wordCount": 77591
+    },
+    {
+      "title": "Vinland Saga Season 2",
+      "wordCount": 28121
+    },
+    {
+      "title": "Overlord II",
+      "wordCount": 24833
+    },
+    {
+      "title": "The Misfit of Demon King Academy: History’s Strongest Demon King Reincarnates and Goes to School with His Descendants",
+      "wordCount": 22556
+    },
+    {
+      "title": "Demon Slayer: Kimetsu no Yaiba Hashira Training Arc",
+      "wordCount": 14234
+    },
+    {
+      "title": "That Time I Got Reincarnated as a Slime Season 2 Part 2",
+      "wordCount": 24025
+    },
+    {
+      "title": "My Hero Academia Season 6",
+      "wordCount": 40375
+    },
+    {
+      "title": "Black Butler",
+      "wordCount": 38255
+    },
+    {
+      "title": "The Irregular at Magic High School",
+      "wordCount": 47885
+    },
+    {
+      "title": "Mob Psycho 100 III",
+      "wordCount": 21318
+    },
+    {
+      "title": "Dragon Ball Z",
+      "wordCount": 313299
+    },
+    {
+      "title": "Deadman Wonderland",
+      "wordCount": 18965
+    },
+    {
+      "title": "Neon Genesis Evangelion: The End of Evangelion",
+      "wordCount": 5153
+    },
+    {
+      "title": "Black Lagoon",
+      "wordCount": 21359
+    },
+    {
+      "title": "Fate/Zero Season 2",
+      "wordCount": 16872
+    },
+    {
+      "title": "Date A Live",
+      "wordCount": 20243
+    },
+    {
+      "title": "Overlord III",
+      "wordCount": 25736
+    },
+    {
+      "title": "The Rising of the Shield Hero Season 2",
+      "wordCount": 21961
+    },
+    {
+      "title": "Is It Wrong to Try to Pick Up Girls in a Dungeon? II",
+      "wordCount": 20041
+    },
+    {
+      "title": "Guilty Crown",
+      "wordCount": 29359
+    },
+    {
+      "title": "Attack on Titan Final Season THE FINAL CHAPTERS Special 1",
+      "wordCount": 3506
+    },
+    {
+      "title": "Chivalry of a Failed Knight",
+      "wordCount": 29367
+    },
+    {
+      "title": "KONOSUBA -God's blessing on this wonderful world!- Legend of Crimson",
+      "wordCount": 8106
+    },
+    {
+      "title": "Bungo Stray Dogs 2",
+      "wordCount": 23583
+    },
+    {
+      "title": "Toilet-bound Hanako-kun",
+      "wordCount": 20341
+    },
+    {
+      "title": "Log Horizon",
+      "wordCount": 50670
+    },
+    {
+      "title": "SK8 the Infinity",
+      "wordCount": 19920
+    },
+    {
+      "title": "Tokyo Ghoul:re 2",
+      "wordCount": 13068
+    },
+    {
+      "title": "Magi: The Labyrinth of Magic",
+      "wordCount": 43839
+    },
+    {
+      "title": "Dragon Ball",
+      "wordCount": 219102
+    },
+    {
+      "title": "Great Pretender",
+      "wordCount": 37867
+    },
+    {
+      "title": "No Game, No Life Zero",
+      "wordCount": 6862
+    },
+    {
+      "title": "SPY x FAMILY Season 2",
+      "wordCount": 17612
+    },
+    {
+      "title": "Blood Blockade Battlefront",
+      "wordCount": 18982
+    },
+    {
+      "title": "Akira",
+      "wordCount": 6451
+    },
+    {
+      "title": "Gachiakuta",
+      "wordCount": 17695
+    },
+    {
+      "title": "Boruto: Naruto Next Generations",
+      "wordCount": 470426
+    },
+    {
+      "title": "Arifureta: From Commonplace to World's Strongest",
+      "wordCount": 15966
+    },
+    {
+      "title": "My Hero Academia: Two Heroes",
+      "wordCount": 7262
+    },
+    {
+      "title": "Ranking of Kings",
+      "wordCount": 22578
+    },
+    {
+      "title": "Sword Art Online: Alicization - War of Underworld",
+      "wordCount": 18462
+    },
+    {
+      "title": "Summer Time Rendering",
+      "wordCount": 42223
+    },
+    {
+      "title": "Angels of Death",
+      "wordCount": 20754
+    },
+    {
+      "title": "Yona of the Dawn",
+      "wordCount": 39047
+    },
+    {
+      "title": "Dragon Ball Super",
+      "wordCount": 209196
+    },
+    {
+      "title": "DAN DA DAN Season 2",
+      "wordCount": 15890
+    },
+    {
+      "title": "Lycoris Recoil",
+      "wordCount": 22585
+    },
+    {
+      "title": "SAKAMOTO DAYS",
+      "wordCount": 18959
+    },
+    {
+      "title": "FLCL",
+      "wordCount": 10483
+    },
+    {
+      "title": "The Case Study of Vanitas",
+      "wordCount": 20303
+    },
+    {
+      "title": "Fate/stay night: Unlimited Blade Works 2nd Season",
+      "wordCount": 21188
+    },
+    {
+      "title": "Cells at Work!",
+      "wordCount": 17132
+    },
+    {
+      "title": "Chainsaw Man – The Movie: Reze Arc",
+      "wordCount": 4401
+    },
+    {
+      "title": "The Seven Deadly Sins: Imperial Wrath of the Gods",
+      "wordCount": 36561
+    },
+    {
+      "title": "91 Days",
+      "wordCount": 12948
+    },
+    {
+      "title": "Bungo Stray Dogs 3",
+      "wordCount": 20891
+    },
+    {
+      "title": "Seraph of the End: Battle in Nagoya",
+      "wordCount": 19038
+    },
+    {
+      "title": "Is It Wrong to Try to Pick Up Girls in a Dungeon? III",
+      "wordCount": 18733
+    },
+    {
+      "title": "Black Bullet",
+      "wordCount": 20379
+    },
+    {
+      "title": "Akashic Records of Bastard Magic Instructor",
+      "wordCount": 28686
+    },
+    {
+      "title": "Cautious Hero: The Hero Is Overpowered but Overly Cautious",
+      "wordCount": 27583
+    },
+    {
+      "title": "High School DxD NEW",
+      "wordCount": 5856
+    },
+    {
+      "title": "BLEACH: Thousand-Year Blood War",
+      "wordCount": 21148
+    },
+    {
+      "title": "TRINITY SEVEN",
+      "wordCount": 21819
+    },
+    {
+      "title": "Dr. STONE New World",
+      "wordCount": 21288
+    },
+    {
+      "title": "The World's Finest Assassin Gets Reincarnated in Another World as an Aristocrat",
+      "wordCount": 20556
+    },
+    {
+      "title": "Sword Art Online: Alicization - War of Underworld Part 2",
+      "wordCount": 12501
+    },
+    {
+      "title": "Gate",
+      "wordCount": 20797
+    },
+    {
+      "title": "Sword Art Online the Movie: Ordinal Scale",
+      "wordCount": 7895
+    },
+    {
+      "title": "Kabaneri of the Iron Fortress",
+      "wordCount": 16557
+    },
+    {
+      "title": "Baccano!",
+      "wordCount": 7269
+    },
+    {
+      "title": "A Certain Magical Index",
+      "wordCount": 44643
+    },
+    {
+      "title": "Fate/stay night",
+      "wordCount": 39102
+    },
+    {
+      "title": "JoJo's Bizarre Adventure: STONE OCEAN",
+      "wordCount": 22248
+    },
+    {
+      "title": "Fairy Tail Series 2",
+      "wordCount": 454215
+    },
+    {
+      "title": "Dorohedoro",
+      "wordCount": 25267
+    },
+    {
+      "title": "The Eminence in Shadow Season 2",
+      "wordCount": 25935
+    },
+    {
+      "title": "Hellsing Ultimate",
+      "wordCount": 25278
+    },
+    {
+      "title": "WIND BREAKER",
+      "wordCount": 20389
+    },
+    {
+      "title": "Grimgar of Fantasy and Ash",
+      "wordCount": 17093
+    },
+    {
+      "title": "Wise Man’s Grandchild",
+      "wordCount": 23221
+    },
+    {
+      "title": "Blue Exorcist: Kyoto Saga",
+      "wordCount": 23862
+    },
+    {
+      "title": "Vivy -Fluorite Eye's Song-",
+      "wordCount": 22706
+    },
+    {
+      "title": "BOFURI: I Don't Want to Get Hurt, so I'll Max Out My Defense.",
+      "wordCount": 18663
+    },
+    {
+      "title": "Berserk",
+      "wordCount": 29489
+    },
+    {
+      "title": "Re:ZERO -Starting Life in Another World- Season 3",
+      "wordCount": 25733
+    },
+    {
+      "title": "Darker than Black",
+      "wordCount": 16742
+    },
+    {
+      "title": "INUYASHIKI LAST HERO",
+      "wordCount": 11024
+    },
+    {
+      "title": "My Hero Academia: Heroes Rising",
+      "wordCount": 5955
+    },
+    {
+      "title": "MASHLE: MAGIC AND MUSCLES Season 2",
+      "wordCount": 17871
+    },
+    {
+      "title": "Shangri-La Frontier",
+      "wordCount": 43297
+    },
+    {
+      "title": "Overlord IV",
+      "wordCount": 28389
+    },
+    {
+      "title": "Darwin's Game",
+      "wordCount": 27106
+    },
+    {
+      "title": "My Hero Academia Season 7",
+      "wordCount": 32831
+    },
+    {
+      "title": "InuYasha",
+      "wordCount": 257109
+    },
+    {
+      "title": "Demon Slayer: Kimetsu no Yaiba Infinity Castle",
+      "wordCount": 19517
+    },
+    {
+      "title": "KONOSUBA -God's blessing on this wonderful world! 3",
+      "wordCount": 24139
+    },
+    {
+      "title": "That Time I Got Reincarnated as a Slime Season 3",
+      "wordCount": 54987
+    },
+    {
+      "title": "Ghost in the Shell",
+      "wordCount": 5380
+    },
+    {
+      "title": "The Seven Deadly Sins: Signs of A Holy War",
+      "wordCount": 6196
+    },
+    {
+      "title": "Magi: The Kingdom of Magic",
+      "wordCount": 41519
+    },
+    {
+      "title": "takt op.Destiny",
+      "wordCount": 20090
+    },
+    {
+      "title": "Trigun",
+      "wordCount": 42723
+    },
+    {
+      "title": "Sword Art Online Alternative: Gun Gale Online",
+      "wordCount": 19901
+    },
+    {
+      "title": "Kizumonogatari Part 1: Tekketsu",
+      "wordCount": 2507
+    },
+    {
+      "title": "BTOOOM!",
+      "wordCount": 18512
+    },
+    {
+      "title": "The Millionaire Detective - Balance: UNLIMITED",
+      "wordCount": 14210
+    },
+    {
+      "title": "TSUKIMICHI -Moonlit Fantasy-",
+      "wordCount": 23198
+    },
+    {
+      "title": "Akudama Drive",
+      "wordCount": 20966
+    },
+    {
+      "title": "Made in Abyss: Dawn of the Deep Soul",
+      "wordCount": 7432
+    },
+    {
+      "title": "Attack on Titan Final Season THE FINAL CHAPTERS Special 2",
+      "wordCount": 4889
+    },
+    {
+      "title": "The Testament of Sister New Devil",
+      "wordCount": 38162
+    },
+    {
+      "title": "Land of the Lustrous",
+      "wordCount": 14948
+    },
+    {
+      "title": "Yu Yu Hakusho: Ghostfiles",
+      "wordCount": 161643
+    },
+    {
+      "title": "The Asterisk War",
+      "wordCount": 46884
+    },
+    {
+      "title": "A Certain Scientific Railgun",
+      "wordCount": 41917
+    },
+    {
+      "title": "The Familiar of Zero",
+      "wordCount": 25459
+    },
+    {
+      "title": "Attack on Titan: No Regrets",
+      "wordCount": 2505
+    },
+    {
+      "title": "Gleipnir",
+      "wordCount": 20499
+    },
+    {
+      "title": "So I'm a Spider, So What?",
+      "wordCount": 42431
+    },
+    {
+      "title": "Wistoria: Wand and Sword",
+      "wordCount": 12852
+    },
+    {
+      "title": "Date A Live II",
+      "wordCount": 18134
+    },
+    {
+      "title": "Kizumonogatari Part 3: Reiketsu",
+      "wordCount": 5016
+    },
+    {
+      "title": "Pokémon",
+      "wordCount": 265309
+    },
+    {
+      "title": "One-Punch Man Season 3",
+      "wordCount": 22910
+    },
+    {
+      "title": "Fate/stay night [Heaven's Feel] I. presage flower",
+      "wordCount": 5314
+    },
+    {
+      "title": "The Rising of the Shield Hero Season 3",
+      "wordCount": 17713
+    },
+    {
+      "title": "Kaiju No. 8 Season 2",
+      "wordCount": 14367
+    },
+    {
+      "title": "Evangelion: 1.0 You Are (Not) Alone",
+      "wordCount": 7580
+    },
+    {
+      "title": "Kizumonogatari Part 2: Nekketsu",
+      "wordCount": 3358
+    },
+    {
+      "title": "Sentenced to Be a Hero",
+      "wordCount": 25021
+    },
+    {
+      "title": "The Last: Naruto the Movie",
+      "wordCount": 5930
+    },
+    {
+      "title": "Fairy Tail Final Season",
+      "wordCount": 69213
+    },
+    {
+      "title": "I Got a Cheat Skill in Another World and Became Unrivaled in The Real World, Too",
+      "wordCount": 20836
+    },
+    {
+      "title": "Blood Lad",
+      "wordCount": 13150
+    },
+    {
+      "title": "PSYCHO-PASS 2",
+      "wordCount": 17553
+    },
+    {
+      "title": "Tokyo Revengers Season 2",
+      "wordCount": 20943
+    },
+    {
+      "title": "Megalobox",
+      "wordCount": 22595
+    },
+    {
+      "title": "Myriad Colors Phantom World",
+      "wordCount": 29204
+    },
+    {
+      "title": "The Seven Deadly Sins: Dragon's Judgement",
+      "wordCount": 34711
+    },
+    {
+      "title": "The Daily Life of the Immortal King",
+      "wordCount": 12402
+    },
+    {
+      "title": "Plunderer",
+      "wordCount": 33833
+    },
+    {
+      "title": "BAKI",
+      "wordCount": 27258
+    },
+    {
+      "title": "Golden Kamuy",
+      "wordCount": 20222
+    },
+    {
+      "title": "Re:CREATORS",
+      "wordCount": 42281
+    },
+    {
+      "title": "Katanagatari",
+      "wordCount": 53282
+    },
+    {
+      "title": "High-Rise Invasion",
+      "wordCount": 20398
+    },
+    {
+      "title": "Death March to the Parallel World Rhapsody",
+      "wordCount": 21412
+    },
+    {
+      "title": "Seirei Gensouki: Spirit Chronicles",
+      "wordCount": 20432
+    },
+    {
+      "title": "How a Realist Hero Rebuilt the Kingdom",
+      "wordCount": 27034
+    },
+    {
+      "title": "Evangelion: 2.0 You Can (Not) Advance",
+      "wordCount": 9317
+    },
+    {
+      "title": "Accel World",
+      "wordCount": 41792
+    },
+    {
+      "title": "BLUE LOCK Season 2",
+      "wordCount": 32333
+    },
+    {
+      "title": "DRIFTERS",
+      "wordCount": 20593
+    },
+    {
+      "title": "Fate/Apocrypha",
+      "wordCount": 38941
+    },
+    {
+      "title": "BLEACH: Thousand-Year Blood War - The Separation",
+      "wordCount": 20442
+    },
+    {
+      "title": "Infinite Stratos",
+      "wordCount": 36472
+    },
+    {
+      "title": "Attack on Titan OVA",
+      "wordCount": 1690
+    },
+    {
+      "title": "Log Horizon 2",
+      "wordCount": 48612
+    },
+    {
+      "title": "Dr. STONE New World Part 2",
+      "wordCount": 18416
+    },
+    {
+      "title": "BNA",
+      "wordCount": 20160
+    },
+    {
+      "title": "Fate/stay night [Heaven's Feel] II. lost butterfly",
+      "wordCount": 4897
+    },
+    {
+      "title": "Dragon Ball GT",
+      "wordCount": 74984
+    },
+    {
+      "title": "Arifureta: From Commonplace to World's Strongest Season 2",
+      "wordCount": 19270
+    },
+    {
+      "title": "Strike the Blood",
+      "wordCount": 47037
+    },
+    {
+      "title": "Record of Ragnarok",
+      "wordCount": 15023
+    },
+    {
+      "title": "Undead Unluck",
+      "wordCount": 36602
+    },
+    {
+      "title": "Kemono Jihen",
+      "wordCount": 22157
+    },
+    {
+      "title": "The Hidden Dungeon Only I Can Enter",
+      "wordCount": 18605
+    },
+    {
+      "title": "Is It Wrong to Try to Pick Up Girls in a Dungeon? IV",
+      "wordCount": 15903
+    },
+    {
+      "title": "Buddy Daddies",
+      "wordCount": 16481
+    },
+    {
+      "title": "Twin Star Exorcists",
+      "wordCount": 69290
+    },
+    {
+      "title": "AJIN: Demi-Human",
+      "wordCount": 19361
+    },
+    {
+      "title": "Problem Children Are Coming From Another World, Aren't They?",
+      "wordCount": 18901
+    },
+    {
+      "title": "Fire Force Season 3",
+      "wordCount": 20179
+    },
+    {
+      "title": "Evangelion: 3.0 You Can (Not) Redo",
+      "wordCount": 7134
+    },
+    {
+      "title": "Dragon Ball Super: Broly",
+      "wordCount": 5528
+    },
+    {
+      "title": "Banished from the Hero’s Party, I Decided to Live a Quiet Life in the Countryside",
+      "wordCount": 24664
+    },
+    {
+      "title": "Combatants Will Be Dispatched!",
+      "wordCount": 16550
+    },
+    {
+      "title": "Absolute Duo",
+      "wordCount": 18952
+    },
+    {
+      "title": "SPY x FAMILY Season 3",
+      "wordCount": 24612
+    },
+    {
+      "title": "Tower of God Season 2",
+      "wordCount": 34899
+    },
+    {
+      "title": "Gintama Season 3",
+      "wordCount": 104556
+    },
+    {
+      "title": "NieR:Automata Ver1.1a",
+      "wordCount": 16825
+    },
+    {
+      "title": "JoJo's Bizarre Adventure: STONE OCEAN Part 2",
+      "wordCount": 47891
+    },
+    {
+      "title": "Claymore",
+      "wordCount": 32337
+    },
+    {
+      "title": "Magi: Adventure of Sinbad",
+      "wordCount": 23684
+    },
+    {
+      "title": "Dr. STONE Special Episode – RYUSUI",
+      "wordCount": 4923
+    },
+    {
+      "title": "The Wrong Way to Use Healing Magic",
+      "wordCount": 23624
+    },
+    {
+      "title": "World Trigger",
+      "wordCount": 148132
+    },
+    {
+      "title": "Fate/stay night [Heaven’s Feel] III. spring song",
+      "wordCount": 5941
+    },
+    {
+      "title": "My Hero Academia FINAL SEASON",
+      "wordCount": 15746
+    },
+    {
+      "title": "To Be Hero X",
+      "wordCount": 34147
+    },
+    {
+      "title": "Trapped in a Dating Sim: The World of Otome Games Is Tough for Mobs",
+      "wordCount": 22292
+    },
+    {
+      "title": "GOBLIN SLAYER II",
+      "wordCount": 20453
+    },
+    {
+      "title": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "wordCount": 12558
+    },
+    {
+      "title": "Blast of Tempest",
+      "wordCount": 48917
+    },
+    {
+      "title": "Is this a Zombie?",
+      "wordCount": 21964
+    },
+    {
+      "title": "Summer Wars",
+      "wordCount": 7736
+    },
+    {
+      "title": "Initial D 1st Stage",
+      "wordCount": 49671
+    },
+    {
+      "title": "The Irregular at Magic High School: Visitor Arc",
+      "wordCount": 21940
+    },
+    {
+      "title": "God Eater",
+      "wordCount": 16959
+    },
+    {
+      "title": "TSUKIMICHI -Moonlit Fantasy- Season 2",
+      "wordCount": 50878
+    },
+    {
+      "title": "Panty & Stocking with Garterbelt",
+      "wordCount": 26697
+    },
+    {
+      "title": "Date A Live III",
+      "wordCount": 18750
+    },
+    {
+      "title": "Durarara!! X2",
+      "wordCount": 24544
+    },
+    {
+      "title": "the Garden of sinners Chapter 1: Thanatos. (Overlooking View)",
+      "wordCount": 2640
+    },
+    {
+      "title": "The Boy and The Beast",
+      "wordCount": 7620
+    },
+    {
+      "title": "Blood Blockade Battlefront & Beyond",
+      "wordCount": 17210
+    },
+    {
+      "title": "Promare",
+      "wordCount": 6604
+    },
+    {
+      "title": "Gintama Season 2",
+      "wordCount": 116414
+    },
+    {
+      "title": "Reincarnated as a Sword",
+      "wordCount": 21624
+    },
+    {
+      "title": "LAZARUS",
+      "wordCount": 18397
+    },
+    {
+      "title": "Skeleton Knight in Another World",
+      "wordCount": 17573
+    },
+    {
+      "title": "The Greatest Demon Lord Is Reborn as a Typical Nobody",
+      "wordCount": 20917
+    },
+    {
+      "title": "Nausicaä of the Valley of the Wind",
+      "wordCount": 5351
+    },
+    {
+      "title": "Chained Soldier",
+      "wordCount": 20724
+    },
+    {
+      "title": "Bungo Stray Dogs 4",
+      "wordCount": 25305
+    },
+    {
+      "title": "Ragna Crimson",
+      "wordCount": 6615
+    },
+    {
+      "title": "Dr. STONE SCIENCE FUTURE",
+      "wordCount": 21173
+    },
+    {
+      "title": "Beelzebub",
+      "wordCount": 106418
+    },
+    {
+      "title": "Black Lagoon: The Second Barrage",
+      "wordCount": 23240
+    },
+    {
+      "title": "I'm Quitting Heroing",
+      "wordCount": 25416
+    },
+    {
+      "title": "The Faraway Paladin",
+      "wordCount": 26628
+    },
+    {
+      "title": "SSSS.GRIDMAN",
+      "wordCount": 19701
+    },
+    {
+      "title": "BLEACH: Thousand-Year Blood War - The Conflict",
+      "wordCount": 17681
+    },
+    {
+      "title": "ALDNOAH.ZERO",
+      "wordCount": 18014
+    },
+    {
+      "title": "Sailor Moon",
+      "wordCount": 66359
+    },
+    {
+      "title": "No.6",
+      "wordCount": 14856
+    },
+    {
+      "title": "The Asterisk War 2",
+      "wordCount": 22646
+    },
+    {
+      "title": "Shangri-La Frontier Season 2",
+      "wordCount": 17838
+    },
+    {
+      "title": "A Certain Magical Index II",
+      "wordCount": 49335
+    },
+    {
+      "title": "B: The Beginning",
+      "wordCount": 18245
+    },
+    {
+      "title": "Tokyo Ravens",
+      "wordCount": 42466
+    },
+    {
+      "title": "BURN THE WITCH",
+      "wordCount": 4345
+    },
+    {
+      "title": "My Hero Academia: World Heroes' Mission",
+      "wordCount": 6651
+    },
+    {
+      "title": "That Time I Got Reincarnated as a Slime the Movie: Scarlet Bond",
+      "wordCount": 7639
+    },
+    {
+      "title": "DECA-DENCE",
+      "wordCount": 18412
+    },
+    {
+      "title": "PLUTO",
+      "wordCount": 31418
+    },
+    {
+      "title": "SPY x FAMILY CODE: White",
+      "wordCount": 7436
+    },
+    {
+      "title": "Demon King Daimao",
+      "wordCount": 25381
+    },
+    {
+      "title": "The Case Study of Vanitas Part 2",
+      "wordCount": 17182
+    },
+    {
+      "title": "Sword Art Online the Movie -Progressive- Aria of a Starless Night",
+      "wordCount": 5938
+    },
+    {
+      "title": "Blood-C",
+      "wordCount": 11902
+    },
+    {
+      "title": "GOBLIN SLAYER -GOBLIN’S CROWN-",
+      "wordCount": 3400
+    },
+    {
+      "title": "Boruto: Naruto the Movie",
+      "wordCount": 5063
+    },
+    {
+      "title": "Isekai Cheat Magician",
+      "wordCount": 20522
+    },
+    {
+      "title": "I'm Standing on a Million Lives",
+      "wordCount": 18178
+    },
+    {
+      "title": "Armed Girl's Machiavellism",
+      "wordCount": 19041
+    },
+    {
+      "title": "A Certain Scientific Railgun S",
+      "wordCount": 46475
+    },
+    {
+      "title": "Dragon Ball Z Kai",
+      "wordCount": 204529
+    },
+    {
+      "title": "Sword Oratoria: Is it Wrong to Try to Pick Up Girls in a Dungeon? On the Side",
+      "wordCount": 19435
+    },
+    {
+      "title": "Black Clover: Sword of the Wizard King",
+      "wordCount": 7685
+    },
+    {
+      "title": "Dead Mount Death Play",
+      "wordCount": 23703
+    },
+    {
+      "title": "Saga of Tanya the Evil - the Movie -",
+      "wordCount": 6803
+    },
+    {
+      "title": "SAKAMOTO DAYS Part 2",
+      "wordCount": 15670
+    },
+    {
+      "title": "Full Metal Panic!",
+      "wordCount": 33744
+    },
+    {
+      "title": "Is It Wrong to Try to Pick Up Girls in a Dungeon? IV Part 2",
+      "wordCount": 14046
+    },
+    {
+      "title": "WIND BREAKER Season 2",
+      "wordCount": 21976
+    },
+    {
+      "title": "Berserk of Gluttony",
+      "wordCount": 19210
+    },
+    {
+      "title": "The Reincarnation of the Strongest Exorcist in Another World",
+      "wordCount": 26044
+    },
+    {
+      "title": "The Strongest Sage with the Weakest Crest",
+      "wordCount": 24452
+    },
+    {
+      "title": "Rage of Bahamut: Genesis",
+      "wordCount": 14664
+    },
+    {
+      "title": "Cells at Work!!",
+      "wordCount": 12295
+    },
+    {
+      "title": "The Eden of Grisaia",
+      "wordCount": 22081
+    },
+    {
+      "title": "The Seven Deadly Sins the Movie: Prisoners of the Sky",
+      "wordCount": 5414
+    },
+    {
+      "title": "Rurouni Kenshin",
+      "wordCount": 154187
+    },
+    {
+      "title": "Engage Kiss",
+      "wordCount": 21398
+    },
+    {
+      "title": "EDENS ZERO",
+      "wordCount": 43869
+    },
+    {
+      "title": "Bungo Stray Dogs: DEAD APPLE",
+      "wordCount": 5803
+    },
+    {
+      "title": "Durarara!! X2 The Second Arc",
+      "wordCount": 53770
+    },
+    {
+      "title": "The Future Diary: Redial",
+      "wordCount": 2347
+    },
+    {
+      "title": "The Beginning After the End",
+      "wordCount": 18812
+    },
+    {
+      "title": "Failure Frame: I Became the Strongest and Annihilated Everything with Low-Level Spells",
+      "wordCount": 26003
+    },
+    {
+      "title": "Eureka Seven",
+      "wordCount": 76754
+    },
+    {
+      "title": "Jormungand",
+      "wordCount": 49310
+    },
+    {
+      "title": "TRIGUN STAMPEDE",
+      "wordCount": 14931
+    },
+    {
+      "title": "BOFURI: I Don't Want to Get Hurt, so I'll Max Out My Defense. Season 2",
+      "wordCount": 18374
+    },
+    {
+      "title": "How a Realist Hero Rebuilt the Kingdom Part 2",
+      "wordCount": 28871
+    },
+    {
+      "title": "Girls und Panzer",
+      "wordCount": 19759
+    },
+    {
+      "title": "Afro Samurai",
+      "wordCount": 4692
+    },
+    {
+      "title": "Do You Love Your Mom and Her Two-Hit Multi-Target Attacks?",
+      "wordCount": 25869
+    },
+    {
+      "title": "Gintama Season 2 Part 2",
+      "wordCount": 27769
+    },
+    {
+      "title": "The Elusive Samurai",
+      "wordCount": 21297
+    },
+    {
+      "title": "Cowboy Bebop: The Movie - Knockin' on Heaven's Door",
+      "wordCount": 6209
+    },
+    {
+      "title": "That Time I Got Reincarnated as a Slime OAD",
+      "wordCount": 9031
+    },
+    {
+      "title": "I Parry Everything",
+      "wordCount": 17756
+    },
+    {
+      "title": "Fate/Grand Order Absolute Demonic Front: Babylonia",
+      "wordCount": 38570
+    },
+    {
+      "title": "The Water Magician",
+      "wordCount": 21906
+    },
+    {
+      "title": "Sabikui Bisco",
+      "wordCount": 19101
+    },
+    {
+      "title": "Devils' Line",
+      "wordCount": 21846
+    },
+    {
+      "title": "KamiKatsu: Working for God in a Godless World",
+      "wordCount": 19181
+    },
+    {
+      "title": "Gintama Season 4",
+      "wordCount": 23466
+    },
+    {
+      "title": "Hundred",
+      "wordCount": 70474
+    },
+    {
+      "title": "Full Dive: This Ultimate Next-Gen Full Dive RPG Is Even Shittier than Real Life!",
+      "wordCount": 25797
+    },
+    {
+      "title": "Tokyo Revengers Season 2 Part 2",
+      "wordCount": 20665
+    },
+    {
+      "title": "Infinite Stratos 2",
+      "wordCount": 15078
+    },
+    {
+      "title": "Ghost in the Shell: Stand Alone Complex",
+      "wordCount": 45853
+    },
+    {
+      "title": "Date A Live IV",
+      "wordCount": 19482
+    },
+    {
+      "title": "Durarara!! X2 The Third Arc",
+      "wordCount": 26749
+    },
+    {
+      "title": "The Kingdoms of Ruin",
+      "wordCount": 15237
+    },
+    {
+      "title": "Is It Wrong To Try To Pick Up Girls in a Dungeon? V",
+      "wordCount": 16739
+    },
+    {
+      "title": "SHAMAN KING (2021)",
+      "wordCount": 104963
+    },
+    {
+      "title": "The Aristocrat’s Otherworldly Adventure: Serving Gods Who Go Too Far",
+      "wordCount": 23032
+    },
+    {
+      "title": "Sword Art Online EXTRA EDITION",
+      "wordCount": 6696
+    },
+    {
+      "title": "The Unwanted Undead Adventurer",
+      "wordCount": 21095
+    },
+    {
+      "title": "Bungo Stray Dogs 5",
+      "wordCount": 20470
+    },
+    {
+      "title": "Dr. STONE SCIENCE FUTURE Cour 2",
+      "wordCount": 19134
+    },
+    {
+      "title": "Go! Go! Loser Ranger!",
+      "wordCount": 23063
+    },
+    {
+      "title": "Alderamin on the Sky",
+      "wordCount": 27542
+    },
+    {
+      "title": "Demon Lord, Retry!",
+      "wordCount": 21700
+    },
+    {
+      "title": "One Piece Film: Red",
+      "wordCount": 9054
+    },
+    {
+      "title": "Sekirei",
+      "wordCount": 46497
+    },
+    {
+      "title": "Porco Rosso",
+      "wordCount": 6106
+    },
+    {
+      "title": "The Heroic Legend of Arslan",
+      "wordCount": 40356
+    },
+    {
+      "title": "Aria the Scarlet Ammo",
+      "wordCount": 20623
+    },
+    {
+      "title": "Gargantia on the Verdurous Planet",
+      "wordCount": 1671
+    },
+    {
+      "title": "Clevatess",
+      "wordCount": 22269
+    },
+    {
+      "title": "Dragon Ball Z: Battle of Gods",
+      "wordCount": 5940
+    },
+    {
+      "title": "The Ossan Newbie Adventurer, Trained to Death by the Most Powerful Party, Became Invincible",
+      "wordCount": 22277
+    },
+    {
+      "title": "A Certain Magical Index III",
+      "wordCount": 43751
+    },
+    {
+      "title": "The Iceblade Sorcerer Shall Rule the World",
+      "wordCount": 17139
+    },
+    {
+      "title": "Tales of Zestiria the X",
+      "wordCount": 39022
+    },
+    {
+      "title": "From Old Country Bumpkin to Master Swordsman",
+      "wordCount": 22145
+    },
+    {
+      "title": "PSYCHO-PASS 3",
+      "wordCount": 26234
+    },
+    {
+      "title": "An Archdemon's Dilemma: How to Love Your Elf Bride",
+      "wordCount": 22563
+    },
+    {
+      "title": "Road to Ninja: Naruto the Movie",
+      "wordCount": 5561
+    },
+    {
+      "title": "Anti-Magic Academy: The 35th Test Platoon",
+      "wordCount": 21389
+    },
+    {
+      "title": "Mobile Suit Gundam: The Witch from Mercury",
+      "wordCount": 19101
+    },
+    {
+      "title": "Battle Game in 5 Seconds",
+      "wordCount": 22040
+    },
+    {
+      "title": "My Instant Death Ability is Overpowered",
+      "wordCount": 23755
+    },
+    {
+      "title": "Arifureta: From Commonplace to World's Strongest Season 3",
+      "wordCount": 16636
+    },
+    {
+      "title": "A Certain Scientific Accelerator",
+      "wordCount": 19495
+    },
+    {
+      "title": "The Executioner and Her Way of Life",
+      "wordCount": 21076
+    },
+    {
+      "title": "Digimon: Digital Monsters",
+      "wordCount": 75283
+    },
+    {
+      "title": "Fate/kaleid liner Prisma☆Illya",
+      "wordCount": 14291
+    },
+    {
+      "title": "Princess Principal",
+      "wordCount": 20305
+    },
+    {
+      "title": "A Certain Scientific Railgun T",
+      "wordCount": 48243
+    },
+    {
+      "title": "Log Horizon: Destruction of the Round Table",
+      "wordCount": 24941
+    },
+    {
+      "title": "Sirius the Jaeger",
+      "wordCount": 19481
+    },
+    {
+      "title": "Akiba Maid War",
+      "wordCount": 18640
+    },
+    {
+      "title": "Is It Wrong to Try to Pick Up Girls in a Dungeon?: Arrow of the Orion",
+      "wordCount": 4707
+    },
+    {
+      "title": "TOUGEN ANKI",
+      "wordCount": 18958
+    },
+    {
+      "title": "Grimoire of Zero",
+      "wordCount": 22994
+    },
+    {
+      "title": "ZENSHU",
+      "wordCount": 18664
+    },
+    {
+      "title": "Seirei Gensouki: Spirit Chronicles Season 2",
+      "wordCount": 16604
+    },
+    {
+      "title": "Reign of the Seven Spellblades",
+      "wordCount": 28070
+    },
+    {
+      "title": "My Hero Academia: Vigilantes",
+      "wordCount": 23708
+    },
+    {
+      "title": "Mission: Yozakura Family",
+      "wordCount": 62597
+    },
+    {
+      "title": "Black Rock Shooter",
+      "wordCount": 8877
+    },
+    {
+      "title": "Beyond the Boundary -I'LL BE HERE-: Future",
+      "wordCount": 4684
+    },
+    {
+      "title": "Unbreakable Machine-Doll",
+      "wordCount": 21270
+    },
+    {
+      "title": "STEEL BALL RUN JoJo's Bizarre Adventure 1st STAGE",
+      "wordCount": 3752
+    },
+    {
+      "title": "The Brilliant Healer's New Life in the Shadows",
+      "wordCount": 26997
+    },
+    {
+      "title": "Didn't I Say to Make My Abilities Average in the Next Life?!",
+      "wordCount": 21560
+    },
+    {
+      "title": "Mobile Suit GUNDAM Iron Blooded Orphans",
+      "wordCount": 51958
+    },
+    {
+      "title": "May I Ask for One Final Thing?",
+      "wordCount": 25102
+    },
+    {
+      "title": "The Rising of the Shield Hero Season 4",
+      "wordCount": 20684
+    },
+    {
+      "title": "Boku no Hero Academia: Sukue! Kyuujo Kunren!",
+      "wordCount": 2116
+    },
+    {
+      "title": "Is this A Zombie? of the Dead",
+      "wordCount": 17283
+    },
+    {
+      "title": "PSYCHO-PASS: The Movie",
+      "wordCount": 6673
+    },
+    {
+      "title": "The Witch and the Beast",
+      "wordCount": 20443
+    },
+    {
+      "title": "The Misfit of Demon King Academy II (Cour 2)",
+      "wordCount": 24063
+    },
+    {
+      "title": "Cells at Work! CODE BLACK",
+      "wordCount": 21076
+    },
+    {
+      "title": "Spy Classroom",
+      "wordCount": 23706
+    },
+    {
+      "title": "K: RETURN OF KINGS",
+      "wordCount": 24486
+    },
+    {
+      "title": "Re:Monster",
+      "wordCount": 23735
+    },
+    {
+      "title": "Black Lagoon: Roberta's Blood Trail",
+      "wordCount": 14782
+    },
+    {
+      "title": "Blood+",
+      "wordCount": 69527
+    },
+    {
+      "title": "RADIANT",
+      "wordCount": 36130
+    },
+    {
+      "title": "the Garden of sinners Chapter 2: …and nothing heart. (Murder Speculation Part A)",
+      "wordCount": 2685
+    },
+    {
+      "title": "Let This Grieving Soul Retire",
+      "wordCount": 24011
+    },
+    {
+      "title": "[C] - CONTROL - The Money and Soul of Possibility",
+      "wordCount": 18248
+    },
+    {
+      "title": "A Returner's Magic Should Be Special",
+      "wordCount": 12982
+    },
+    {
+      "title": "Hunter x Hunter: Phantom Rouge",
+      "wordCount": 4019
+    },
+    {
+      "title": "Golden Kamuy Season 2",
+      "wordCount": 19386
+    },
+    {
+      "title": "Darker than Black: Gemini of the Meteor",
+      "wordCount": 17967
+    },
+    {
+      "title": "Love of Kill",
+      "wordCount": 14074
+    },
+    {
+      "title": "OVERLORD: The Sacred Kingdom",
+      "wordCount": 10573
+    },
+    {
+      "title": "One Piece Film: Z",
+      "wordCount": 7038
+    },
+    {
+      "title": "AJIN: Demi-Human 2",
+      "wordCount": 18215
+    },
+    {
+      "title": "Michiko & Hatchin",
+      "wordCount": 1766
+    },
+    {
+      "title": "Fate/EXTRA Last Encore",
+      "wordCount": 21915
+    },
+    {
+      "title": "Ranma1/2 (2024)",
+      "wordCount": 17699
+    },
+    {
+      "title": "I May Be a Guild Receptionist, but I’ll Solo Any Boss to Clock Out on Time",
+      "wordCount": 20106
+    },
+    {
+      "title": "Suicide Squad ISEKAI",
+      "wordCount": 15429
+    },
+    {
+      "title": "The Idaten Deities Know Only Peace",
+      "wordCount": 25300
+    },
+    {
+      "title": "Gantz",
+      "wordCount": 18200
+    },
+    {
+      "title": "Pokémon: The First Movie",
+      "wordCount": 7254
+    },
+    {
+      "title": "the Garden of sinners Chapter 3: ever cry, never life. (Remaining Sense of Pain)",
+      "wordCount": 3792
+    },
+    {
+      "title": "the Garden of sinners Chapter 5: Paradox Paradigm",
+      "wordCount": 7563
+    },
+    {
+      "title": "One Piece: Stampede",
+      "wordCount": 6690
+    },
+    {
+      "title": "Devil May Cry",
+      "wordCount": 16683
+    },
+    {
+      "title": "Riddle Story of Devil",
+      "wordCount": 18413
+    },
+    {
+      "title": "Loner Life in Another World",
+      "wordCount": 16650
+    },
+    {
+      "title": "No Guns Life",
+      "wordCount": 21796
+    },
+    {
+      "title": "Blue Exorcist -Shimane Illuminati Saga-",
+      "wordCount": 20496
+    },
+    {
+      "title": "Angel Beats! Specials",
+      "wordCount": 2026
+    },
+    {
+      "title": "Gintama.: Silver Soul Arc",
+      "wordCount": 23682
+    },
+    {
+      "title": "Record of Ragnarok II",
+      "wordCount": 17414
+    },
+    {
+      "title": "Baki Hanma",
+      "wordCount": 17093
+    },
+    {
+      "title": "Jack-of-All-Trades, Party of None",
+      "wordCount": 22485
+    },
+    {
+      "title": "Reborn to Master the Blade: From Hero-King to Extraordinary Squire",
+      "wordCount": 23084
+    },
+    {
+      "title": "Dragon Ball Z: Resurrection 'F'",
+      "wordCount": 5374
+    },
+    {
+      "title": "Rurouni Kenshin (2023)",
+      "wordCount": 42638
+    },
+    {
+      "title": "Sword Art Online the Movie -Progressive- Scherzo of Deep Night",
+      "wordCount": 6774
+    },
+    {
+      "title": "Initial D 2nd Stage",
+      "wordCount": 22711
+    },
+    {
+      "title": "UQ Holder!",
+      "wordCount": 23666
+    },
+    {
+      "title": "MEGALOBOX 2: NOMAD",
+      "wordCount": 20959
+    },
+    {
+      "title": "Naruto Shippuden the Movie",
+      "wordCount": 5625
+    },
+    {
+      "title": "Persona 4 the Animation",
+      "wordCount": 17142
+    },
+    {
+      "title": "the Garden of sinners Chapter 4: garan-no-dou. (The Hollow Shrine)",
+      "wordCount": 2011
+    },
+    {
+      "title": "Dragon Ball DAIMA",
+      "wordCount": 15583
+    },
+    {
+      "title": "Infinite Dendrogram",
+      "wordCount": 23067
+    },
+    {
+      "title": "Kingdom",
+      "wordCount": 74479
+    },
+    {
+      "title": "One Piece Film: Gold",
+      "wordCount": 7220
+    },
+    {
+      "title": "Naruto Shippuden the Movie: Blood Prison",
+      "wordCount": 5268
+    },
+    {
+      "title": "DEMON LORD 2099",
+      "wordCount": 9290
+    },
+    {
+      "title": "Banished from the Hero’s Party, I Decided to Live a Quiet Life in the Countryside Season 2",
+      "wordCount": 22469
+    },
+    {
+      "title": "Tsugumomo",
+      "wordCount": 19955
+    },
+    {
+      "title": "Scissor Seven",
+      "wordCount": 5566
+    },
+    {
+      "title": "FAIRY TAIL 100 YEARS QUEST",
+      "wordCount": 94314
+    },
+    {
+      "title": "Even Given the Worthless “Appraiser” Class, I’m Actually the Strongest",
+      "wordCount": 22102
+    },
+    {
+      "title": "Fullmetal Alchemist: The Movie - Conqueror of Shamballa",
+      "wordCount": 6156
+    },
+    {
+      "title": "Gintama.: Silver Soul Arc - Second Half War",
+      "wordCount": 24612
+    },
+    {
+      "title": "Gintama: The Final Chapter - Be Forever Yorozuya",
+      "wordCount": 9854
+    },
+    {
+      "title": "THE NEW GATE",
+      "wordCount": 24642
+    },
+    {
+      "title": "One Piece Film: Strong World",
+      "wordCount": 5654
+    },
+    {
+      "title": "Date A Live Mayuri Judgement",
+      "wordCount": 4548
+    },
+    {
+      "title": "The Dawn of the Witch",
+      "wordCount": 22964
+    },
+    {
+      "title": "Why Does Nobody Remember Me in This World?",
+      "wordCount": 17834
+    },
+    {
+      "title": "My Hero Academia: Make It! Do-or-Die Survival Training",
+      "wordCount": 3790
+    },
+    {
+      "title": "Naruto Shippuden the Movie: The Lost Tower",
+      "wordCount": 4412
+    },
+    {
+      "title": "The Strongest Magician in the Demon Lord's Army was a Human",
+      "wordCount": 14687
+    },
+    {
+      "title": "Baki: The Great Raitai Tournament Saga",
+      "wordCount": 17740
+    },
+    {
+      "title": "Big Order",
+      "wordCount": 2126
+    },
+    {
+      "title": "Fate/stay night: Unlimited Blade Works (Movie)",
+      "wordCount": 5873
+    },
+    {
+      "title": "Ranma ½",
+      "wordCount": 22497
+    },
+    {
+      "title": "Pokémon Origins",
+      "wordCount": 7077
+    },
+    {
+      "title": "The Irregular at Magic High School Season 3",
+      "wordCount": 24307
+    },
+    {
+      "title": "Gintama: THE VERY FINAL",
+      "wordCount": 6799
+    },
+    {
+      "title": "the Garden of sinners Chapter 7: ……not nothing heart. (Murder Speculation Part B)",
+      "wordCount": 5821
+    },
+    {
+      "title": "ONE PIECE FAN LETTER",
+      "wordCount": 2377
+    },
+    {
+      "title": "Berserk: The Golden Age Arc I - The Egg of the King",
+      "wordCount": 3448
+    },
+    {
+      "title": "Magical Warfare",
+      "wordCount": 17127
+    },
+    {
+      "title": "Rage of Bahamut: Virgin Soul",
+      "wordCount": 24253
+    },
+    {
+      "title": "Classroom for Heroes",
+      "wordCount": 20664
+    },
+    {
+      "title": "Sword of the Demon Hunter: Kijin Gentosho",
+      "wordCount": 21965
+    },
+    {
+      "title": "My Gift Lvl 9999 Unlimited Gacha: Backstabbed in a Backwater Dungeon, I'm Out for Revenge!",
+      "wordCount": 19356
+    },
+    {
+      "title": "Dragon Ball Z Kai: The Final Chapters",
+      "wordCount": 81520
+    },
+    {
+      "title": "Puella Magi Madoka Magica the Movie Part 1: Beginnings",
+      "wordCount": 8994
+    },
+    {
+      "title": "Yu☆Gi☆Oh!",
+      "wordCount": 7212
+    },
+    {
+      "title": "Ranking of Kings: The Treasure Chest of Courage",
+      "wordCount": 10856
+    },
+    {
+      "title": "KENGAN ASHURA Part I",
+      "wordCount": 22796
+    },
+    {
+      "title": "Gintama.: Slip Arc",
+      "wordCount": 30860
+    },
+    {
+      "title": "the Garden of sinners Chapter 6: Fairy Tale. (Oblivion Recording)",
+      "wordCount": 3029
+    },
+    {
+      "title": "Golden Kamuy Season 3",
+      "wordCount": 17083
+    },
+    {
+      "title": "The Most Notorious \"Talker\" Runs the World's Greatest Clan",
+      "wordCount": 19968
+    },
+    {
+      "title": "Vampire Hunter D: Bloodlust",
+      "wordCount": 3710
+    },
+    {
+      "title": "KOKKOKU",
+      "wordCount": 17805
+    },
+    {
+      "title": "Puella Magi Madoka Magica the Movie Part 2: Eternal",
+      "wordCount": 6490
+    },
+    {
+      "title": "Cross Ange: Rondo of Angel and Dragon",
+      "wordCount": 39835
+    },
+    {
+      "title": "Hunter x Hunter: The Last Mission",
+      "wordCount": 4816
+    },
+    {
+      "title": "I'm Standing on a Million Lives Season 2",
+      "wordCount": 19506
+    },
+    {
+      "title": "Black Butler: Book of the Atlantic",
+      "wordCount": 6656
+    },
+    {
+      "title": "Naruto the Movie: Ninja Clash in the Land of Snow",
+      "wordCount": 5184
+    },
+    {
+      "title": "Gurren Lagann The Movie: The Lights in the Sky are Stars",
+      "wordCount": 8121
+    },
+    {
+      "title": "InuYasha: The Final Act",
+      "wordCount": 48701
+    },
+    {
+      "title": "SSSS.DYNAZENON",
+      "wordCount": 17500
+    },
+    {
+      "title": "Dragon Ball Super: SUPER HERO",
+      "wordCount": 7840
+    },
+    {
+      "title": "Pokémon the Series: XY",
+      "wordCount": 178193
+    },
+    {
+      "title": "Berserk: The Golden Age Arc III - The Advent",
+      "wordCount": 3339
+    },
+    {
+      "title": "The Seven Deadly Sins OVA",
+      "wordCount": 86874
+    },
+    {
+      "title": "The Vexations of a Shut-In Vampire Princess",
+      "wordCount": 22891
+    },
+    {
+      "title": "Kenichi: The Mightiest Disciple",
+      "wordCount": 123349
+    },
+    {
+      "title": "Revue Starlight",
+      "wordCount": 14532
+    },
+    {
+      "title": "Bungo Stray Dogs 2: Walking Alone",
+      "wordCount": 1704
+    },
+    {
+      "title": "Nura: Rise of the Yokai Clan",
+      "wordCount": 78554
+    },
+    {
+      "title": "Naruto Shippuden the Movie: Bonds",
+      "wordCount": 4140
+    },
+    {
+      "title": "My Home Hero",
+      "wordCount": 17112
+    },
+    {
+      "title": "HIGH CARD",
+      "wordCount": 17752
+    },
+    {
+      "title": "Tiger & Bunny",
+      "wordCount": 44850
+    },
+    {
+      "title": "Initial D 3rd Stage",
+      "wordCount": 8212
+    },
+    {
+      "title": "Berserk: The Golden Age Arc II - The Battle for Doldrey",
+      "wordCount": 4053
+    },
+    {
+      "title": "I Left My A-Rank Party to Help My Former Students Reach the Dungeon Depths!",
+      "wordCount": 49048
+    },
+    {
+      "title": "Yuki Yuna is a Hero",
+      "wordCount": 18154
+    },
+    {
+      "title": "ISHURA",
+      "wordCount": 20407
+    },
+    {
+      "title": "Cosmic Princess Kaguya!",
+      "wordCount": 9956
+    },
+    {
+      "title": "Rail Wars!",
+      "wordCount": 17543
+    },
+    {
+      "title": "Initial D 4th Stage",
+      "wordCount": 49950
+    },
+    {
+      "title": "Kabaneri of the Iron Fortress: The Battle of Unato",
+      "wordCount": 4519
+    },
+    {
+      "title": "Pokémon the Series: Ruby and Sapphire",
+      "wordCount": 418627
+    },
+    {
+      "title": "Metallic Rouge",
+      "wordCount": 19205
+    },
+    {
+      "title": "Knights of Sidonia",
+      "wordCount": 19921
+    },
+    {
+      "title": "Gunbuster",
+      "wordCount": 9371
+    },
+    {
+      "title": "BLUE LOCK THE MOVIE -EPISODE NAGI-",
+      "wordCount": 5864
+    },
+    {
+      "title": "Izetta: The Last Witch",
+      "wordCount": 40025
+    },
+    {
+      "title": "Lookism",
+      "wordCount": 8188
+    },
+    {
+      "title": "Naruto Shippuden the Movie: The Will of Fire",
+      "wordCount": 5129
+    },
+    {
+      "title": "Samurai X: Trust and Betrayal",
+      "wordCount": 7494
+    },
+    {
+      "title": "Fairy Tail: Dragon Cry",
+      "wordCount": 4274
+    },
+    {
+      "title": "Ushio and Tora (TV)",
+      "wordCount": 46917
+    },
+    {
+      "title": "Ga-Rei-Zero",
+      "wordCount": 12817
+    },
+    {
+      "title": "Symphogear",
+      "wordCount": 20626
+    },
+    {
+      "title": "Bleach the Movie: Memories of Nobody",
+      "wordCount": 4989
+    },
+    {
+      "title": "Yu-Gi-Oh! GX",
+      "wordCount": 74590
+    },
+    {
+      "title": "The Faraway Paladin: The Lord of Rust Mountains",
+      "wordCount": 20191
+    },
+    {
+      "title": "Naruto the Movie: Legend of the Stone of Gelel",
+      "wordCount": 5845
+    },
+    {
+      "title": "FLCL Progressive",
+      "wordCount": 6895
+    },
+    {
+      "title": "Joker Game",
+      "wordCount": 19290
+    },
+    {
+      "title": "Dead Mount Death Play Part 2",
+      "wordCount": 26174
+    },
+    {
+      "title": "That Time I Got Reincarnated as a Slime: Visions of Coleus",
+      "wordCount": 6462
+    },
+    {
+      "title": "Date A Live V",
+      "wordCount": 18698
+    },
+    {
+      "title": "Pokémon the Movie 2000",
+      "wordCount": 3482
+    },
+    {
+      "title": "Mob Psycho 100 II: The First Spirits and Such Company Trip ~A Journey that Mends the Heart and Heals the Soul~",
+      "wordCount": 2182
+    },
+    {
+      "title": "Full Metal Panic? Fumoffu",
+      "wordCount": 24036
+    },
+    {
+      "title": "Fairy Tail: Phoenix Priestess",
+      "wordCount": 4397
+    },
+    {
+      "title": "World Trigger 2nd Season",
+      "wordCount": 22413
+    },
+    {
+      "title": "Fate/kaleid liner Prisma☆Illya 2wei!",
+      "wordCount": 18143
+    },
+    {
+      "title": "APPARE-RANMAN!",
+      "wordCount": 22254
+    },
+    {
+      "title": "Terra Formars",
+      "wordCount": 14883
+    },
+    {
+      "title": "Moribito: Guardian of the Spirit",
+      "wordCount": 35694
+    },
+    {
+      "title": "Helck",
+      "wordCount": 35833
+    },
+    {
+      "title": "Aoharu x Machinegun",
+      "wordCount": 20369
+    },
+    {
+      "title": "7SEEDS",
+      "wordCount": 24787
+    },
+    {
+      "title": "Ghost in the Shell: Stand Alone Complex 2nd GIG",
+      "wordCount": 47063
+    },
+    {
+      "title": "Ultramarine Magmell",
+      "wordCount": 13561
+    },
+    {
+      "title": "The Daily Life of the Immortal King Season 3",
+      "wordCount": 10569
+    },
+    {
+      "title": "Princess Connect! Re:Dive Season 2",
+      "wordCount": 15087
+    },
+    {
+      "title": "Bleach the Movie: Hell Verse",
+      "wordCount": 5012
+    },
+    {
+      "title": "Mobile Suit Gundam: The Witch from Mercury Season 2",
+      "wordCount": 18499
+    },
+    {
+      "title": "Tatsuki Fujimoto 17-26",
+      "wordCount": 7482
+    },
+    {
+      "title": "Gurren Lagann The Movie: Childhood's End",
+      "wordCount": 6966
+    },
+    {
+      "title": "Hakata Tonkotsu Ramens",
+      "wordCount": 22294
+    },
+    {
+      "title": "BEATLESS",
+      "wordCount": 46033
+    },
+    {
+      "title": "RWBY: Ice Queendom",
+      "wordCount": 15484
+    },
+    {
+      "title": "Pokémon 3: The Movie",
+      "wordCount": 3453
+    },
+    {
+      "title": "Gunslinger Girl",
+      "wordCount": 18331
+    },
+    {
+      "title": "The Healer Who Was Banished From His Party, Is, in Fact, the Strongest",
+      "wordCount": 17843
+    },
+    {
+      "title": "BUCCHIGIRI?!",
+      "wordCount": 19899
+    },
+    {
+      "title": "Mobile Suit Gundam 00",
+      "wordCount": 47584
+    },
+    {
+      "title": "Jormungand: Perfect Order",
+      "wordCount": 24619
+    },
+    {
+      "title": "Pokémon the Series: Diamond and Pearl",
+      "wordCount": 411409
+    },
+    {
+      "title": "Hayate the Combat Butler",
+      "wordCount": 45113
+    },
+    {
+      "title": "Dragon Ball Z: Fusion Reborn",
+      "wordCount": 2375
+    },
+    {
+      "title": "Full Metal Panic! The Second Raid",
+      "wordCount": 22021
+    },
+    {
+      "title": "Bleach the Movie: The DiamondDust Rebellion",
+      "wordCount": 5034
+    },
+    {
+      "title": "Initial D Fifth Stage",
+      "wordCount": 29571
+    },
+    {
+      "title": "Pokémon the Series: XYZ",
+      "wordCount": 84358
+    },
+    {
+      "title": "Naruto the Movie: Guardians of the Crescent Moon Kingdom",
+      "wordCount": 4843
+    },
+    {
+      "title": "Gonna be the Twin-Tail!!",
+      "wordCount": 19680
+    },
+    {
+      "title": "The Unaware Atelier Meister",
+      "wordCount": 22564
+    },
+    {
+      "title": "Dragon Ball Z: Broly - The Legendary Super Saiyan",
+      "wordCount": 3406
+    },
+    {
+      "title": "Star Wars: Visions",
+      "wordCount": 5822
+    },
+    {
+      "title": "To the Abandoned Sacred Beasts",
+      "wordCount": 15941
+    },
+    {
+      "title": "Sword Art Online Alternative: Gun Gale Online II",
+      "wordCount": 16440
+    },
+    {
+      "title": "Berserk 2",
+      "wordCount": 22515
+    },
+    {
+      "title": "The Daily Life of a Middle-Aged Online Shopper in Another World",
+      "wordCount": 27729
+    },
+    {
+      "title": "Bleach the Movie: Fade to Black",
+      "wordCount": 4882
+    },
+    {
+      "title": "Hero Without a Class: Who Even Needs Skills?!",
+      "wordCount": 23957
+    },
+    {
+      "title": "Baki Hanma Season 2",
+      "wordCount": 38949
+    },
+    {
+      "title": "Karneval (TV)",
+      "wordCount": 20461
+    },
+    {
+      "title": "Ghost in the Shell 2: Innocence",
+      "wordCount": 5863
+    },
+    {
+      "title": "Strike Witches",
+      "wordCount": 16172
+    },
+    {
+      "title": "Gintama - The Movie",
+      "wordCount": 8542
+    },
+    {
+      "title": "Initial D Final Stage",
+      "wordCount": 8271
+    },
+    {
+      "title": "Fullmetal Alchemist: The Sacred Star of Milos",
+      "wordCount": 7608
+    },
+    {
+      "title": "Super Crooks",
+      "wordCount": 21284
+    },
+    {
+      "title": "Horizon in the Middle of Nowhere",
+      "wordCount": 26847
+    },
+    {
+      "title": "Pokémon 4Ever",
+      "wordCount": 3144
+    },
+    {
+      "title": "Fate/kaleid liner Prisma☆Illya 2wei! Herz!",
+      "wordCount": 20915
+    },
+    {
+      "title": "Rozen Maiden",
+      "wordCount": 18954
+    },
+    {
+      "title": "Valkyrie Drive: Mermaid",
+      "wordCount": 15927
+    },
+    {
+      "title": "Cop Craft",
+      "wordCount": 3808
+    },
+    {
+      "title": "Tomorrow's Joe",
+      "wordCount": 70263
+    },
+    {
+      "title": "Saint Seiya: Knights of the Zodiac",
+      "wordCount": 184523
+    },
+    {
+      "title": "Seraph of the End: Kyuuketsuki Shahal",
+      "wordCount": 1870
+    },
+    {
+      "title": "Mobile Suit GUNDAM Iron Blooded Orphans 2",
+      "wordCount": 53824
+    },
+    {
+      "title": "Beyond the Boundary: Daybreak",
+      "wordCount": 1551
+    },
+    {
+      "title": "11eyes",
+      "wordCount": 9095
+    },
+    {
+      "title": "I'm the Evil Lord of an Intergalactic Empire!",
+      "wordCount": 24115
+    },
+    {
+      "title": "Boku no Hero Academia: Training of the Dead",
+      "wordCount": 1734
+    },
+    {
+      "title": "Toilet-bound Hanako-kun Season 2",
+      "wordCount": 23079
+    },
+    {
+      "title": "Dragon Ball Z: Cooler's Revenge",
+      "wordCount": 2055
+    },
+    {
+      "title": "Dog Days",
+      "wordCount": 38644
+    },
+    {
+      "title": "The Seven Deadly Sins: Cursed by Light",
+      "wordCount": 5239
+    },
+    {
+      "title": "Pokémon the Series: Sun & Moon",
+      "wordCount": 187863
+    },
+    {
+      "title": "New PANTY & STOCKING with GARTERBELT",
+      "wordCount": 27361
+    },
+    {
+      "title": "Fate/kaleid liner Prisma☆Illya 3rei!!",
+      "wordCount": 19710
+    },
+    {
+      "title": "Sweet Reincarnation",
+      "wordCount": 21265
+    },
+    {
+      "title": "Viral Hit",
+      "wordCount": 23981
+    },
+    {
+      "title": "The Testament of Sister New Devil: Tojo Basara's Hard, Sweet Daily Life",
+      "wordCount": 40143
+    },
+    {
+      "title": "Heavy Object",
+      "wordCount": 50590
+    },
+    {
+      "title": "Burning Kabaddi",
+      "wordCount": 21403
+    },
+    {
+      "title": "Mob Psycho 100 REIGEN The Miraculous Unknown Psychic",
+      "wordCount": 5008
+    },
+    {
+      "title": "Code Geass: Akito the Exiled - The Wyvern Arrives",
+      "wordCount": 17433
+    },
+    {
+      "title": "The Fable",
+      "wordCount": 44525
+    },
+    {
+      "title": "Scott Pilgrim Takes Off",
+      "wordCount": 10515
+    },
+    {
+      "title": "Magical Destroyers",
+      "wordCount": 17602
+    },
+    {
+      "title": "The Banished Former Hero Lives as He Pleases",
+      "wordCount": 21741
+    },
+    {
+      "title": "Dusk Beyond the End of the World",
+      "wordCount": 20617
+    },
+    {
+      "title": "Yashahime: Princess Half-Demon",
+      "wordCount": 40353
+    },
+    {
+      "title": "Chrome Shelled Regios",
+      "wordCount": 40247
+    },
+    {
+      "title": "Dragon Ball Z: Wrath of the Dragon",
+      "wordCount": 2360
+    },
+    {
+      "title": "The Prince of Tennis",
+      "wordCount": 236775
+    },
+    {
+      "title": "Pokémon Journeys: The Series",
+      "wordCount": 124551
+    },
+    {
+      "title": "Persona 3 the Movie: #1 Spring of Birth",
+      "wordCount": 6488
+    },
+    {
+      "title": "Samurai Flamenco",
+      "wordCount": 40930
+    },
+    {
+      "title": "Outlaw Star",
+      "wordCount": 3027
+    },
+    {
+      "title": "Utawarerumono",
+      "wordCount": 35856
+    },
+    {
+      "title": "A Certain Magical Index: The Miracle of Endymion",
+      "wordCount": 6652
+    },
+    {
+      "title": "Scooped Up by an S-Rank Adventurer!",
+      "wordCount": 18760
+    },
+    {
+      "title": "World Trigger 3rd Season",
+      "wordCount": 27324
+    },
+    {
+      "title": "Dies irae",
+      "wordCount": 18517
+    },
+    {
+      "title": "Good Bye, Dragon Life",
+      "wordCount": 15442
+    },
+    {
+      "title": "Blue Exorcist -Beyond the Snow Saga-",
+      "wordCount": 14594
+    },
+    {
+      "title": "Unlimited Fafnir",
+      "wordCount": 15632
+    },
+    {
+      "title": "FLCL Alternative",
+      "wordCount": 7854
+    },
+    {
+      "title": "NieR:Automata Ver1.1a Cour 2",
+      "wordCount": 16213
+    },
+    {
+      "title": "Dragon Ball Z: Broly - Second Coming",
+      "wordCount": 1692
+    },
+    {
+      "title": "Golden Kamuy Season 4",
+      "wordCount": 26235
+    },
+    {
+      "title": "Sailor Moon R",
+      "wordCount": 58949
+    },
+    {
+      "title": "A Playthrough of a Certain Dude's VRMMO Life",
+      "wordCount": 22267
+    },
+    {
+      "title": "Lunar Legend Tsukihime",
+      "wordCount": 11773
+    },
+    {
+      "title": "Magic Maker: How to Make Magic in Another World",
+      "wordCount": 20593
+    },
+    {
+      "title": "SHY",
+      "wordCount": 19678
+    },
+    {
+      "title": "ONE PIECE: The Movie",
+      "wordCount": 4121
+    },
+    {
+      "title": "C3",
+      "wordCount": 18797
+    },
+    {
+      "title": "Kuromukuro",
+      "wordCount": 39809
+    },
+    {
+      "title": "Eden of the East the Movie I: The King of Eden",
+      "wordCount": 5345
+    },
+    {
+      "title": "The Strongest Tank's Labyrinth Raids -A Tank with a Rare 9999 Resistance Skill Got Kicked from the Hero's Party-",
+      "wordCount": 24518
+    },
+    {
+      "title": "Tekkonkinkreet",
+      "wordCount": 5935
+    },
+    {
+      "title": "Sailor Moon Crystal",
+      "wordCount": 34853
+    },
+    {
+      "title": "The Banished Court Magician Aims to Become the Strongest",
+      "wordCount": 19596
+    },
+    {
+      "title": "Code Geass: Rozé of the Recapture",
+      "wordCount": 21213
+    },
+    {
+      "title": "Revenger",
+      "wordCount": 18448
+    },
+    {
+      "title": "Eyeshield 21",
+      "wordCount": 196482
+    },
+    {
+      "title": "Arpeggio of Blue Steel",
+      "wordCount": 19744
+    },
+    {
+      "title": "HUNTER×HUNTER: Greed Island",
+      "wordCount": 19904
+    },
+    {
+      "title": "Dragon Ball Z: The Return of Cooler",
+      "wordCount": 1357
+    },
+    {
+      "title": "Basilisk",
+      "wordCount": 22831
+    },
+    {
+      "title": "Mobile Suit Gundam GQuuuuuuX",
+      "wordCount": 19989
+    },
+    {
+      "title": "Dragon Ball Z: Bojack Unbound",
+      "wordCount": 2142
+    },
+    {
+      "title": "Pokémon Heroes",
+      "wordCount": 3010
+    },
+    {
+      "title": "Dragon Ball Z: Bio-Broly",
+      "wordCount": 2225
+    },
+    {
+      "title": "DRAMAtical Murder",
+      "wordCount": 17962
+    },
+    {
+      "title": "Fist of the North Star",
+      "wordCount": 47227
+    },
+    {
+      "title": "Dragon Ball Z: The Tree of Might",
+      "wordCount": 2170
+    },
+    {
+      "title": "Pokémon: Black & White",
+      "wordCount": 167225
+    },
+    {
+      "title": "PSYCHO-PASS 3: First Inspector",
+      "wordCount": 8072
+    },
+    {
+      "title": "Ayakashi Triangle",
+      "wordCount": 20597
+    },
+    {
+      "title": "Sailor Moon S",
+      "wordCount": 49134
+    },
+    {
+      "title": "Beheneko: The Elf-Girl's Cat is Secretly an S-Ranked Monster!",
+      "wordCount": 17397
+    },
+    {
+      "title": "KENGAN ASHURA Part II",
+      "wordCount": 20565
+    },
+    {
+      "title": "Vampire in the Garden",
+      "wordCount": 5731
+    },
+    {
+      "title": "Lupin The 3rd: The Castle of Cagliostro",
+      "wordCount": 36131
+    },
+    {
+      "title": "Hinomaru Sumo",
+      "wordCount": 45968
+    },
+    {
+      "title": "Pokémon: Lucario and the Mystery of Mew",
+      "wordCount": 5116
+    },
+    {
+      "title": "High School Fleet",
+      "wordCount": 42317
+    },
+    {
+      "title": "Dragon Ball: Episode of Bardock",
+      "wordCount": 978
+    },
+    {
+      "title": "Girls und Panzer der Film",
+      "wordCount": 9582
+    },
+    {
+      "title": "Go! Go! Loser Ranger! Season 2",
+      "wordCount": 19537
+    },
+    {
+      "title": "BASTARD!! -Heavy Metal, Dark Fantasy-",
+      "wordCount": 41679
+    },
+    {
+      "title": "Yu-Gi-Oh! 5D's",
+      "wordCount": 193790
+    },
+    {
+      "title": "Level 1 Demon Lord and One Room Hero",
+      "wordCount": 22149
+    },
+    {
+      "title": "Atelier Ryza: Ever Darkness & the Secret Hideout The Animation",
+      "wordCount": 21856
+    },
+    {
+      "title": "Macross",
+      "wordCount": 56807
+    },
+    {
+      "title": "Mobile Suit Gundam Seed",
+      "wordCount": 73064
+    },
+    {
+      "title": "Mobile Suit Gundam Wing",
+      "wordCount": 82955
+    },
+    {
+      "title": "Super Cube",
+      "wordCount": 4567
+    },
+    {
+      "title": "Xam'd: Lost Memories",
+      "wordCount": 5816
+    },
+    {
+      "title": "The Seven Deadly Sins: Four Knights of the Apocalypse",
+      "wordCount": 37545
+    },
+    {
+      "title": "Pokémon: The Rise of Darkrai",
+      "wordCount": 4694
+    },
+    {
+      "title": "Black Butler: Public School Arc",
+      "wordCount": 17645
+    },
+    {
+      "title": "Gintama: THE SEMI-FINAL",
+      "wordCount": 3688
+    },
+    {
+      "title": "BLACKFOX",
+      "wordCount": 3878
+    },
+    {
+      "title": "Dragon Crisis",
+      "wordCount": 81897
+    },
+    {
+      "title": "A Nobody's Way Up to an Exploration Hero",
+      "wordCount": 19674
+    },
+    {
+      "title": "Dragon Ball Z: Super Android 13!",
+      "wordCount": 1321
+    },
+    {
+      "title": "Yasuke",
+      "wordCount": 5910
+    },
+    {
+      "title": "Pokémon: Destiny Deoxys",
+      "wordCount": 4520
+    },
+    {
+      "title": "Attack on Titan Part II: Wings of Freedom",
+      "wordCount": 7560
+    },
+    {
+      "title": "Übel Blatt",
+      "wordCount": 19178
+    },
+    {
+      "title": "JORAN THE PRINCESS OF SNOW AND BLOOD",
+      "wordCount": 14860
+    },
+    {
+      "title": "The Mystic Archives of Dantalian",
+      "wordCount": 23001
+    },
+    {
+      "title": "Devil Survivor 2: The Animation",
+      "wordCount": 22566
+    },
+    {
+      "title": "Shironeko Project ZERO CHRONICLE",
+      "wordCount": 14185
+    },
+    {
+      "title": "Let This Grieving Soul Retire Cour 2",
+      "wordCount": 21885
+    },
+    {
+      "title": "Sengoku Youko",
+      "wordCount": 21471
+    },
+    {
+      "title": "Scissor Seven Season 2",
+      "wordCount": 6093
+    },
+    {
+      "title": "Garo: The Animation",
+      "wordCount": 27875
+    },
+    {
+      "title": "Dragon Ball Z: Dead Zone",
+      "wordCount": 1588
+    },
+    {
+      "title": "Dragon Ball Z: Lord Slug",
+      "wordCount": 2058
+    },
+    {
+      "title": "BLAME!",
+      "wordCount": 4280
+    },
+    {
+      "title": "07-Ghost",
+      "wordCount": 31540
+    },
+    {
+      "title": "Blue Archive The Animation",
+      "wordCount": 22241
+    },
+    {
+      "title": "Ranma1/2 (2024) Season 2",
+      "wordCount": 23168
+    },
+    {
+      "title": "Macross Frontier",
+      "wordCount": 37212
+    },
+    {
+      "title": "Attack on Titan Part I: Crimson Bow and Arrow",
+      "wordCount": 6978
+    },
+    {
+      "title": "Noir",
+      "wordCount": 17454
+    },
+    {
+      "title": "Laughing Under the Clouds",
+      "wordCount": 18539
+    },
+    {
+      "title": "Code Geass: Lelouch of the Rebellion III - Glorification",
+      "wordCount": 12449
+    },
+    {
+      "title": "Dragon Pilot: Hisone & Masotan",
+      "wordCount": 20652
+    },
+    {
+      "title": "The Heroic Legend of Arslan: Dust Storm Dance",
+      "wordCount": 13385
+    },
+    {
+      "title": "Final Fantasy VII: Advent Children",
+      "wordCount": 3322
+    },
+    {
+      "title": "EDENS ZERO Season 2",
+      "wordCount": 39216
+    },
+    {
+      "title": "Is It Wrong to Try to Pick Up Girls in a Dungeon? III: Is It Wrong to Try to Find a Hot Spring in Orario? -Bath God Forever-",
+      "wordCount": 2237
+    },
+    {
+      "title": "Dragon Ball Z: Bardock – The Father of Goku",
+      "wordCount": 2068
+    },
+    {
+      "title": "The Red Ranger Becomes an Adventurer in Another World",
+      "wordCount": 26022
+    },
+    {
+      "title": "Eden of the East the Movie II: Paradise Lost",
+      "wordCount": 6103
+    },
+    {
+      "title": "Dragon Ball Z: The History of Trunks",
+      "wordCount": 1863
+    },
+    {
+      "title": "B: The Beginning: Succession",
+      "wordCount": 5849
+    },
+    {
+      "title": "Magical Girl Lyrical Nanoha",
+      "wordCount": 18304
+    },
+    {
+      "title": "Fate/Grand Order Absolute Demonic Front: Babylonia - Initium Iter",
+      "wordCount": 2096
+    },
+    {
+      "title": "Bakugan Battle Brawlers",
+      "wordCount": 49660
+    },
+    {
+      "title": "The Big O",
+      "wordCount": 14896
+    },
+    {
+      "title": "Bye Bye, Earth",
+      "wordCount": 17525
+    },
+    {
+      "title": "Coppelion",
+      "wordCount": 24663
+    },
+    {
+      "title": "Kingdom Season 2",
+      "wordCount": 73745
+    },
+    {
+      "title": "Dream Eater Merry",
+      "wordCount": 17374
+    },
+    {
+      "title": "The World Ends with You The Animation",
+      "wordCount": 18247
+    },
+    {
+      "title": "The Rolling Girls",
+      "wordCount": 7946
+    },
+    {
+      "title": "Scissor Seven Season 3",
+      "wordCount": 6638
+    },
+    {
+      "title": "Dragon Raja -The Blazing Dawn-",
+      "wordCount": 29304
+    },
+    {
+      "title": "Pokémon: Jirachi Wish Maker",
+      "wordCount": 4241
+    },
+    {
+      "title": "Senyuu",
+      "wordCount": 12740
+    },
+    {
+      "title": "Toriko",
+      "wordCount": 236218
+    },
+    {
+      "title": "Pokémon: Giratina and the Sky Warrior",
+      "wordCount": 5119
+    },
+    {
+      "title": "Legend of the Galactic Heroes: Die Neue These",
+      "wordCount": 22128
+    },
+    {
+      "title": "GOOD NIGHT WORLD",
+      "wordCount": 19791
+    },
+    {
+      "title": "Gantz: Second Stage",
+      "wordCount": 16324
+    },
+    {
+      "title": "THE LAST SUMMONER",
+      "wordCount": 13709
+    },
+    {
+      "title": "Arms Alchemy",
+      "wordCount": 47636
+    },
+    {
+      "title": "Pokémon: Arceus and the Jewel of Life",
+      "wordCount": 4475
+    },
+    {
+      "title": "BLOOD-C: The Last Dark",
+      "wordCount": 4947
+    },
+    {
+      "title": "Dragon Ball Z: The World's Strongest",
+      "wordCount": 2589
+    },
+    {
+      "title": "One Piece: Clockwork Island Adventure",
+      "wordCount": 3994
+    },
+    {
+      "title": "Malevolent Spirits: Mononogatari",
+      "wordCount": 1289
+    },
+    {
+      "title": "City Hunter",
+      "wordCount": 88188
+    },
+    {
+      "title": "Sengoku Basara: Samurai Kings",
+      "wordCount": 21124
+    },
+    {
+      "title": "Mobile Suit Gundam 00 Second Season",
+      "wordCount": 44399
+    },
+    {
+      "title": "Blue Exorcist -The Blue Night Saga-",
+      "wordCount": 19385
+    },
+    {
+      "title": "Rewrite: Moon and Terra",
+      "wordCount": 25777
+    },
+    {
+      "title": "Persona 3 the Movie: #2 Midsummer Knight's Dream",
+      "wordCount": 6306
+    },
+    {
+      "title": "Digimon Adventure tri. Chapter 1: Reunion",
+      "wordCount": 4988
+    },
+    {
+      "title": "UNDER NINJA",
+      "wordCount": 19110
+    },
+    {
+      "title": "Corpse Princess: Aka",
+      "wordCount": 20553
+    },
+    {
+      "title": "Full Metal Panic! Invisible Victory",
+      "wordCount": 17420
+    },
+    {
+      "title": "Star Driver",
+      "wordCount": 38189
+    },
+    {
+      "title": "Kingdom Season 3",
+      "wordCount": 46688
+    },
+    {
+      "title": "Ushio and Tora 2 (TV)",
+      "wordCount": 21854
+    },
+    {
+      "title": "HYPNOSISMIC -Division Rap Battle- Rhyme Anima",
+      "wordCount": 22214
+    },
+    {
+      "title": "MONSTERS: 103 Mercies Dragon Damnation",
+      "wordCount": 2053
+    },
+    {
+      "title": "Grisaia: Phantom Trigger THE ANIMATION",
+      "wordCount": 33261
+    },
+    {
+      "title": "Utawarerumono The False Faces",
+      "wordCount": 37082
+    },
+    {
+      "title": "Sailor Moon SuperS",
+      "wordCount": 55623
+    },
+    {
+      "title": "One Piece The Movie: The Dead End Adventure",
+      "wordCount": 7596
+    },
+    {
+      "title": "Magical Girl Ore",
+      "wordCount": 21341
+    },
+    {
+      "title": "Mobile Suit Gundam UC",
+      "wordCount": 27821
+    },
+    {
+      "title": "Mecha Ude: Mechanical Arms",
+      "wordCount": 24169
+    },
+    {
+      "title": "Mobile Suit Gundam: The Origin",
+      "wordCount": 9824
+    },
+    {
+      "title": "Macross Delta",
+      "wordCount": 43175
+    },
+    {
+      "title": "Tojima Wants to Be a Kamen Rider",
+      "wordCount": 14265
+    },
+    {
+      "title": "Alice in Borderland",
+      "wordCount": 15709
+    },
+    {
+      "title": "Saga of Tanya the Evil: Operation Desert Pasta",
+      "wordCount": 1250
+    },
+    {
+      "title": "NiNoKuni",
+      "wordCount": 6698
+    },
+    {
+      "title": "Knights of Sidonia: Battle for Planet Nine",
+      "wordCount": 15068
+    },
+    {
+      "title": "Moonrise",
+      "wordCount": 20755
+    },
+    {
+      "title": "Symphogear G",
+      "wordCount": 20251
+    },
+    {
+      "title": "Dragon Quest: The Adventure of Dai",
+      "wordCount": 165102
+    },
+    {
+      "title": "No Guns Life Season 2",
+      "wordCount": 20643
+    },
+    {
+      "title": "One Piece 3D2Y: Overcome Ace’s Death! Luffy’s Vow to his Friends",
+      "wordCount": 8027
+    },
+    {
+      "title": "Pokémon Ranger and the Temple of the Sea",
+      "wordCount": 5580
+    },
+    {
+      "title": "Sonic X",
+      "wordCount": 68129
+    },
+    {
+      "title": "Persona 3 the Movie: #3 Falling Down",
+      "wordCount": 6560
+    },
+    {
+      "title": "Aria the Scarlet Ammo AA",
+      "wordCount": 16825
+    },
+    {
+      "title": "The Empire of Corpses",
+      "wordCount": 6802
+    },
+    {
+      "title": "Pokémon Horizons: The Series",
+      "wordCount": 183285
+    },
+    {
+      "title": "GANTZ:O",
+      "wordCount": 3710
+    },
+    {
+      "title": "Godzilla Singular Point",
+      "wordCount": 31188
+    },
+    {
+      "title": "Persona 3 the Movie: #4 Winter of Rebirth",
+      "wordCount": 6030
+    },
+    {
+      "title": "The Severing Crime Edge",
+      "wordCount": 7828
+    },
+    {
+      "title": "Pokémon: Zoroark—Master of Illusions",
+      "wordCount": 4643
+    },
+    {
+      "title": "Rurouni Kenshin -Kyoto Disturbance-",
+      "wordCount": 13729
+    },
+    {
+      "title": "Sorcerous Stabber Orphen",
+      "wordCount": 22768
+    },
+    {
+      "title": "Ao no Exorcist: Kyoto Fujouou-hen OVA",
+      "wordCount": 3968
+    },
+    {
+      "title": "One Piece: Chopper’s Kingdom on the Island of Strange Animals",
+      "wordCount": 4545
+    },
+    {
+      "title": "Lucifer and the Biscuit Hammer",
+      "wordCount": 36328
+    },
+    {
+      "title": "Reincarnated as a Dragon Hatchling",
+      "wordCount": 18307
+    },
+    {
+      "title": "SWORDGAI The Animation",
+      "wordCount": 17107
+    },
+    {
+      "title": "Fuuto PI",
+      "wordCount": 22872
+    },
+    {
+      "title": "Blade & Soul",
+      "wordCount": 13588
+    },
+    {
+      "title": "The Law of Ueki",
+      "wordCount": 47217
+    },
+    {
+      "title": "YAIBA: Samurai Legend",
+      "wordCount": 23811
+    },
+    {
+      "title": "Lupin the Third: The Woman Called Fujiko Mine",
+      "wordCount": 16570
+    },
+    {
+      "title": "BEM",
+      "wordCount": 16116
+    },
+    {
+      "title": "Samurai 7",
+      "wordCount": 37039
+    },
+    {
+      "title": "Digimon Adventure:",
+      "wordCount": 64959
+    },
+    {
+      "title": "The Shy Hero and the Assassin Princesses",
+      "wordCount": 20356
+    },
+    {
+      "title": "Requiem of the Rose King",
+      "wordCount": 41932
+    },
+    {
+      "title": "BURN THE WITCH #0.8",
+      "wordCount": 4904
+    },
+    {
+      "title": "Kemonozume",
+      "wordCount": 17287
+    },
+    {
+      "title": "Caligula",
+      "wordCount": 20211
+    },
+    {
+      "title": "Batman Ninja",
+      "wordCount": 3897
+    },
+    {
+      "title": "Touken Ranbu - Hanamaru",
+      "wordCount": 44544
+    },
+    {
+      "title": "Synduality Noir",
+      "wordCount": 13242
+    },
+    {
+      "title": "Black Butler: Emerald Witch Arc",
+      "wordCount": 17434
+    },
+    {
+      "title": "GREAT PRETENDER razbliuto",
+      "wordCount": 5697
+    },
+    {
+      "title": "YATAGARASU: The Raven Does Not Choose Its Master",
+      "wordCount": 39810
+    },
+    {
+      "title": "Pokémon: Mewtwo Returns",
+      "wordCount": 5136
+    },
+    {
+      "title": "Tomorrow's Joe 2",
+      "wordCount": 80976
+    },
+    {
+      "title": "Turn A Gundam",
+      "wordCount": 105885
+    },
+    {
+      "title": "One Piece: The Curse of the Sacred Sword",
+      "wordCount": 6690
+    },
+    {
+      "title": "Hakkenden: Eight Dogs of the East",
+      "wordCount": 20798
+    },
+    {
+      "title": "Precure",
+      "wordCount": 69558
+    },
+    {
+      "title": "Heroic Age",
+      "wordCount": 38462
+    },
+    {
+      "title": "Pokémon BW: Rival Destinies",
+      "wordCount": 48548
+    },
+    {
+      "title": "Steamboy",
+      "wordCount": 8439
+    },
+    {
+      "title": "Phi Brain: Puzzle of God",
+      "wordCount": 119114
+    },
+    {
+      "title": "7SEEDS Part 2",
+      "wordCount": 24187
+    },
+    {
+      "title": "Revue Starlight: The Movie",
+      "wordCount": 6266
+    },
+    {
+      "title": "PSYCHO-PASS: Providence",
+      "wordCount": 6055
+    },
+    {
+      "title": "Buddy Complex",
+      "wordCount": 24028
+    },
+    {
+      "title": "Yu-Gi-Oh! Zexal",
+      "wordCount": 263109
+    },
+    {
+      "title": "Yu-Gi-Oh!: The Dark Side of Dimensions",
+      "wordCount": 8469
+    },
+    {
+      "title": "My Hero Academia Season 5 OVA",
+      "wordCount": 2840
+    },
+    {
+      "title": "Rokudo's Bad Girls",
+      "wordCount": 23529
+    },
+    {
+      "title": "Pokémon the Movie: I Choose You!",
+      "wordCount": 5929
+    },
+    {
+      "title": "Lagrange: The Flower of Rin-ne",
+      "wordCount": 47207
+    },
+    {
+      "title": "Symphogear GX",
+      "wordCount": 21430
+    },
+    {
+      "title": "Toilet-Bound Hanako-kun Season 2 Part 2",
+      "wordCount": 20525
+    },
+    {
+      "title": "YOUR FORMA",
+      "wordCount": 23752
+    },
+    {
+      "title": "Bubblegum Crisis",
+      "wordCount": 2873
+    },
+    {
+      "title": "The Fire Hunter",
+      "wordCount": 14627
+    },
+    {
+      "title": "Girls und Panzer das Finale - Part 1",
+      "wordCount": 8613
+    },
+    {
+      "title": "NARUTO Spin-Off: Rock Lee & His Ninja Pals",
+      "wordCount": 101169
+    },
+    {
+      "title": "Kekkaishi",
+      "wordCount": 94169
+    },
+    {
+      "title": "Brotherhood Final Fantasy XV",
+      "wordCount": 2616
+    },
+    {
+      "title": "Captain Tsubasa (2018)",
+      "wordCount": 277216
+    },
+    {
+      "title": "Golden Kamuy Final Season",
+      "wordCount": 20947
+    },
+    {
+      "title": "AYAKA",
+      "wordCount": 20119
+    },
+    {
+      "title": "Gundam Build Fighters",
+      "wordCount": 40900
+    },
+    {
+      "title": "Arifureta - From Commonplace to World's Strongest: The Miraculous Meeting and the Phantasmagorical Adventure",
+      "wordCount": 3113
+    },
+    {
+      "title": "Toaru Kagaku no Railgun: Misaka-san wa Ima Chuumoku no Mato Desukara",
+      "wordCount": 2828
+    },
+    {
+      "title": "Wicked City",
+      "wordCount": 4286
+    },
+    {
+      "title": "Cells at Work!: The Common Cold",
+      "wordCount": 1018
+    },
+    {
+      "title": "Accel World: Infinite∞Burst",
+      "wordCount": 5326
+    },
+    {
+      "title": "Mobile Suit Gundam Hathaway",
+      "wordCount": 6888
+    },
+    {
+      "title": "Eureka Seven AO",
+      "wordCount": 37654
+    },
+    {
+      "title": "Mobile Suit Gundam Seed Destiny",
+      "wordCount": 73626
+    },
+    {
+      "title": "Gridman Universe",
+      "wordCount": 7217
+    },
+    {
+      "title": "Revisions",
+      "wordCount": 30284
+    },
+    {
+      "title": "Spy Classroom Season 2",
+      "wordCount": 23670
+    },
+    {
+      "title": "Aquarion EVOL",
+      "wordCount": 31331
+    },
+    {
+      "title": "Mobile Suit Gundam Thunderbolt",
+      "wordCount": 3308
+    },
+    {
+      "title": "Digimon Adventure tri. Chapter 2: Determination",
+      "wordCount": 5150
+    },
+    {
+      "title": "Symphogear XV",
+      "wordCount": 21558
+    },
+    {
+      "title": "Strike Witches 2",
+      "wordCount": 17625
+    },
+    {
+      "title": "Higurashi no Naku Koro ni Kaku: Outbreak",
+      "wordCount": 50060
+    },
+    {
+      "title": "Mechanical Marie",
+      "wordCount": 19150
+    },
+    {
+      "title": "The Legend of Hei",
+      "wordCount": 5412
+    },
+    {
+      "title": "Lupin the 3rd Part IV",
+      "wordCount": 37408
+    },
+    {
+      "title": "Mushibugyo",
+      "wordCount": 35639
+    },
+    {
+      "title": "Kingdom Season 4",
+      "wordCount": 44537
+    },
+    {
+      "title": "Mobile Suit Gundam I",
+      "wordCount": 9561
+    },
+    {
+      "title": "Pokémon the Movie: Diancie and the Cocoon of Destruction",
+      "wordCount": 3743
+    },
+    {
+      "title": "SPRIGGAN (ONA)",
+      "wordCount": 21028
+    },
+    {
+      "title": "Mobile Fighter G Gundam",
+      "wordCount": 71227
+    },
+    {
+      "title": "Mardock Scramble: The First Compression",
+      "wordCount": 4680
+    },
+    {
+      "title": "HIGH CARD Season 2",
+      "wordCount": 19280
+    },
+    {
+      "title": "Aquarion",
+      "wordCount": 15892
+    },
+    {
+      "title": "One Piece: The Desert Princess and the Pirates, Adventures in Alabasta",
+      "wordCount": 6166
+    },
+    {
+      "title": "Magilumiere Magical Girls Inc.",
+      "wordCount": 19217
+    },
+    {
+      "title": "ONE PIECE: Episode of Nami - Koukaishi no Namida to Nakama no Kizuna",
+      "wordCount": 8586
+    },
+    {
+      "title": "Dragon Ball: Curse of the Blood Rubies",
+      "wordCount": 2432
+    },
+    {
+      "title": "Ansatsu Kyoushitsu 2: Kagaijugyou-hen",
+      "wordCount": 4127
+    },
+    {
+      "title": "Girls und Panzer: This is the Real Anzio Battle!",
+      "wordCount": 3205
+    },
+    {
+      "title": "Godzilla: Planet of the Monsters",
+      "wordCount": 7214
+    },
+    {
+      "title": "Symphogear AXZ",
+      "wordCount": 22053
+    },
+    {
+      "title": "Digimon Adventure tri. Chapter 3: Confession",
+      "wordCount": 5919
+    },
+    {
+      "title": "Pokémon the Movie: Genesect and the Legend Awakened",
+      "wordCount": 3231
+    },
+    {
+      "title": "ISHURA Season 2",
+      "wordCount": 24310
+    },
+    {
+      "title": "Brave Bang Bravern!",
+      "wordCount": 16619
+    },
+    {
+      "title": "KENGAN ASHURA Season 2",
+      "wordCount": 16672
+    },
+    {
+      "title": "Macross Plus",
+      "wordCount": 7029
+    },
+    {
+      "title": "Initial D Extra Stage",
+      "wordCount": 8959
+    },
+    {
+      "title": "Sailor Moon Crystal Season 3",
+      "wordCount": 16798
+    },
+    {
+      "title": "Kimagure Orange☆Road",
+      "wordCount": 86589
+    },
+    {
+      "title": "Angolmois: Record of Mongol Invasion",
+      "wordCount": 19595
+    },
+    {
+      "title": "Macross: Do You Remember Love?",
+      "wordCount": 4640
+    },
+    {
+      "title": "One Piece: Episode Of Chopper +: The Miracle Winter Cherry Blossom",
+      "wordCount": 8233
+    },
+    {
+      "title": "Drifting Dragons",
+      "wordCount": 19557
+    },
+    {
+      "title": "Yu-Gi-Oh! ARC-V",
+      "wordCount": 235695
+    },
+    {
+      "title": "Phantasy Star Online 2 The Animation",
+      "wordCount": 16796
+    },
+    {
+      "title": "The Seven Deadly Sins: Four Knights of the Apocalypse Season 2",
+      "wordCount": 18056
+    },
+    {
+      "title": "s-CRY-ed",
+      "wordCount": 43513
+    },
+    {
+      "title": "Muhyo & Roji's Bureau of Supernatural Investigation",
+      "wordCount": 20116
+    },
+    {
+      "title": "Pokémon BW: Adventures in Unova",
+      "wordCount": 28830
+    },
+    {
+      "title": "The Legend of Heroes: Trails of Cold Steel - Northern War",
+      "wordCount": 8655
+    },
+    {
+      "title": "Royal Space Force: The Wings of Honnêamise",
+      "wordCount": 7390
+    },
+    {
+      "title": "Ghost in the Shell: Arise - Border:1 Ghost Pain",
+      "wordCount": 15221
+    },
+    {
+      "title": "Genocidal Organ",
+      "wordCount": 8390
+    },
+    {
+      "title": "Magical Girl Lyrical Nanoha A's",
+      "wordCount": 18128
+    },
+    {
+      "title": "Brave Witches",
+      "wordCount": 18842
+    },
+    {
+      "title": "Japan Anima(tor)’s Exhibition",
+      "wordCount": 398
+    },
+    {
+      "title": "Crest of the Stars",
+      "wordCount": 24752
+    },
+    {
+      "title": "Gun x Sword",
+      "wordCount": 46286
+    },
+    {
+      "title": "Legend of the Galactic Heroes: My Conquest Is the Sea of Stars",
+      "wordCount": 266103
+    },
+    {
+      "title": "The Deer King",
+      "wordCount": 5670
+    },
+    {
+      "title": "Girls und Panzer das Finale - Part 2",
+      "wordCount": 4766
+    },
+    {
+      "title": "Dragon Ball: The Path to Power",
+      "wordCount": 3624
+    },
+    {
+      "title": "Dragon Ball: Sleeping Princess in Devil's Castle",
+      "wordCount": 1893
+    },
+    {
+      "title": "Pokémon the Movie: Hoopa and the Clash of Ages",
+      "wordCount": 3347
+    },
+    {
+      "title": "Attack on Titan Picture Drama",
+      "wordCount": 8318
+    },
+    {
+      "title": "Digimon Adventure tri. Chapter 4: Loss",
+      "wordCount": 4017
+    },
+    {
+      "title": "Dragon Ball Z Kai: Peace for the Future! The Spirit of Goku is Forever",
+      "wordCount": 1190
+    },
+    {
+      "title": "One Piece: Episode of Merry - The Tale of One More Friend",
+      "wordCount": 7458
+    },
+    {
+      "title": "Pokémon BW: Adventures in Unova and Beyond",
+      "wordCount": 42304
+    },
+    {
+      "title": "Mobile Suit Gundam 00 the Movie: A Wakening of the Trailblazer",
+      "wordCount": 10058
+    },
+    {
+      "title": "The Book of Bantorra",
+      "wordCount": 38666
+    },
+    {
+      "title": "Scissor Seven Season 4",
+      "wordCount": 5062
+    },
+    {
+      "title": "The Seven Deadly Sins: Grudge of Edinburgh Part 1",
+      "wordCount": 3193
+    },
+    {
+      "title": "Strike the Blood FINAL",
+      "wordCount": 8858
+    },
+    {
+      "title": "Lupin the 3rd Part V",
+      "wordCount": 37744
+    },
+    {
+      "title": "Baki Hanma VS Kengan Ashura",
+      "wordCount": 4047
+    },
+    {
+      "title": "Sailor Moon R: The Movie",
+      "wordCount": 2931
+    },
+    {
+      "title": "TRILLION GAME",
+      "wordCount": 20781
+    },
+    {
+      "title": "Toward the Terra (TV)",
+      "wordCount": 41531
+    },
+    {
+      "title": "Pokémon the Movie: White—Victini and Zekrom",
+      "wordCount": 7648
+    },
+    {
+      "title": "Lupin the IIIrd: Goemon's Blood Spray",
+      "wordCount": 3326
+    },
+    {
+      "title": "Bayonetta: Bloody Fate",
+      "wordCount": 4383
+    },
+    {
+      "title": "Kingdom Season 5",
+      "wordCount": 26353
+    },
+    {
+      "title": "Dragon Ball: Mystical Adventure",
+      "wordCount": 2991
+    },
+    {
+      "title": "Kingsglaive Final Fantasy XV",
+      "wordCount": 4507
+    },
+    {
+      "title": "Mobile Suit Gundam II: Soldiers of Sorrow",
+      "wordCount": 10268
+    },
+    {
+      "title": "Pokémon the Movie: The Power of Us",
+      "wordCount": 7682
+    },
+    {
+      "title": "One Piece 3D: Mugiwara Chase",
+      "wordCount": 1676
+    },
+    {
+      "title": "Blood Blockade Battlefront: King of Kings Restaurant Fit for a King",
+      "wordCount": 1700
+    },
+    {
+      "title": "Heartcatch Precure!",
+      "wordCount": 59066
+    },
+    {
+      "title": "Digimon Adventure tri. Chapter 5: Coexistance",
+      "wordCount": 4874
+    },
+    {
+      "title": "Mobile Suit Gundam III: Encounters in Space",
+      "wordCount": 10029
+    },
+    {
+      "title": "Black Jack",
+      "wordCount": 23178
+    },
+    {
+      "title": "One Piece Log: Fish-Man Island Saga",
+      "wordCount": 13699
+    },
+    {
+      "title": "Pokémon the Movie: Kyurem VS. The Sword of Justice",
+      "wordCount": 6271
+    },
+    {
+      "title": "Corpse Princess: Kuro",
+      "wordCount": 19573
+    },
+    {
+      "title": "BLACK ROCK SHOOTER DAWN FALL",
+      "wordCount": 18181
+    },
+    {
+      "title": "Aria the Scarlet Ammo Special",
+      "wordCount": 1413
+    },
+    {
+      "title": "Yashahime: Princess Half-Demon - The Second Act",
+      "wordCount": 36735
+    },
+    {
+      "title": "The Girl in Twilight",
+      "wordCount": 23410
+    },
+    {
+      "title": "Cannon Busters",
+      "wordCount": 20900
+    },
+    {
+      "title": "Saint Seiya: The Lost Canvas 2",
+      "wordCount": 41360
+    },
+    {
+      "title": "Inazuma Eleven Ares",
+      "wordCount": 49929
+    },
+    {
+      "title": "Pokémon: To Be a Pokémon Master: Ultimate Journeys: The Series",
+      "wordCount": 8510
+    },
+    {
+      "title": "Digimon Adventure tri. Chapter 6: Our Future",
+      "wordCount": 3764
+    },
+    {
+      "title": "Grimm's Notes The Animation",
+      "wordCount": 24029
+    },
+    {
+      "title": "Last Period: the journey to the end of the despair",
+      "wordCount": 25256
+    },
+    {
+      "title": "Galilei Donna",
+      "wordCount": 15846
+    },
+    {
+      "title": "Cagaster of an Insect Cage",
+      "wordCount": 22024
+    },
+    {
+      "title": "Napping Princess",
+      "wordCount": 5516
+    },
+    {
+      "title": "Cowboy Bebop: Yoseatsume Blues",
+      "wordCount": 2127
+    },
+    {
+      "title": "My Hero Academia UA BATTLE HEROES",
+      "wordCount": 1998
+    },
+    {
+      "title": "DIGIMON BEATBREAK",
+      "wordCount": 18467
+    },
+    {
+      "title": "Pokémon the Movie: Black—Victini and Reshiram",
+      "wordCount": 7102
+    },
+    {
+      "title": "The Magnificent KOTOBUKI",
+      "wordCount": 21200
+    },
+    {
+      "title": "Devilman",
+      "wordCount": 25747
+    },
+    {
+      "title": "Ghost in the Shell: SAC_2045",
+      "wordCount": 20152
+    },
+    {
+      "title": "Magical Girl Lyrical Nanoha StrikerS",
+      "wordCount": 42265
+    },
+    {
+      "title": "Case Closed: The Jet Black Chaser",
+      "wordCount": 9864
+    },
+    {
+      "title": "Dragon Ball: Yo! Son Goku and His Friends Return!!",
+      "wordCount": 2068
+    },
+    {
+      "title": "Cardfight Vanguard",
+      "wordCount": 101055
+    },
+    {
+      "title": "Momentary Lily",
+      "wordCount": 24937
+    },
+    {
+      "title": "Hell Teacher: Jigoku Sensei Nube (2025)",
+      "wordCount": 18685
+    },
+    {
+      "title": "Okamikakushi ~ Masque of the Wolf",
+      "wordCount": 17325
+    },
+    {
+      "title": "Malevolent Spirits: Mononogatari Cour 2",
+      "wordCount": 17101
+    },
+    {
+      "title": "Initial D Legend 1: Awakening",
+      "wordCount": 4428
+    },
+    {
+      "title": "SHY Season 2",
+      "wordCount": 25858
+    },
+    {
+      "title": "One Piece: Episode of Luffy - Hand Island Adventure",
+      "wordCount": 7646
+    },
+    {
+      "title": "Yu-Gi-Oh! VRAINS",
+      "wordCount": 4487
+    },
+    {
+      "title": "Case Closed: The Lost Ship in the Sky",
+      "wordCount": 7492
+    },
+    {
+      "title": "Seven Days War",
+      "wordCount": 7008
+    },
+    {
+      "title": "The Prince of Tennis II",
+      "wordCount": 9704
+    },
+    {
+      "title": "Captain Harlock Space Pirate",
+      "wordCount": 47297
+    },
+    {
+      "title": "Case Closed: Crossroad in the Ancient Capital",
+      "wordCount": 9817
+    },
+    {
+      "title": "Initial D EXTRA STAGE 2",
+      "wordCount": 3800
+    },
+    {
+      "title": "Firefighter Daigo: Rescuer in Orange",
+      "wordCount": 28013
+    },
+    {
+      "title": "Reborn as a Vending Machine, I Now Wander the Dungeon Season 3",
+      "wordCount": 24089
+    },
+    {
+      "title": "Lance N' Masques",
+      "wordCount": 15153
+    },
+    {
+      "title": "Lupin the 3rd Part 2",
+      "wordCount": 203815
+    },
+    {
+      "title": "Pokémon the Movie: Secrets of the Jungle",
+      "wordCount": 6661
+    },
+    {
+      "title": "Blood Blockade Battlefront & Beyond OVA",
+      "wordCount": 1366
+    },
+    {
+      "title": "Digimon Fusion",
+      "wordCount": 31880
+    },
+    {
+      "title": "Sengoku Youko: The Thousandfold Chaos Arc",
+      "wordCount": 26491
+    },
+    {
+      "title": "Godzilla: City on the Edge of Battle",
+      "wordCount": 9044
+    },
+    {
+      "title": "Pokémon the Movie: Volcanion and the Mechanical Marvel",
+      "wordCount": 5127
+    },
+    {
+      "title": "Beyblade Burst",
+      "wordCount": 65217
+    },
+    {
+      "title": "Scar on the Praeter",
+      "wordCount": 22216
+    },
+    {
+      "title": "Karas",
+      "wordCount": 15888
+    },
+    {
+      "title": "Golden Kamuy OVA",
+      "wordCount": 1935
+    },
+    {
+      "title": "Ghost in the Shell: The New Movie",
+      "wordCount": 5970
+    },
+    {
+      "title": "Legend of the Galactic Heroes: Die Neue These Second",
+      "wordCount": 20989
+    },
+    {
+      "title": "Scissor Seven Extras",
+      "wordCount": 1358
+    },
+    {
+      "title": "Armored Trooper Votoms",
+      "wordCount": 67997
+    },
+    {
+      "title": "Strike Witches: The Movie",
+      "wordCount": 5162
+    },
+    {
+      "title": "Appleseed (Movie)",
+      "wordCount": 5003
+    },
+    {
+      "title": "Sengoku Basara: Samurai Kings 2",
+      "wordCount": 19757
+    },
+    {
+      "title": "Macross 7",
+      "wordCount": 73608
+    },
+    {
+      "title": "Tekken: Bloodline",
+      "wordCount": 5018
+    },
+    {
+      "title": "DOUBLE DECKER! DOUG & KIRILL",
+      "wordCount": 26279
+    },
+    {
+      "title": "Giant Robo the Animation: The Day the Earth Stood Still",
+      "wordCount": 21631
+    },
+    {
+      "title": "Case Closed: The Sniper from Another Dimension",
+      "wordCount": 10247
+    },
+    {
+      "title": "KamiErabi GOD.app",
+      "wordCount": 19606
+    },
+    {
+      "title": "GUILTY GEAR STRIVE: DUAL RULERS",
+      "wordCount": 10452
+    },
+    {
+      "title": "SHAMAN KING FLOWERS",
+      "wordCount": 19645
+    },
+    {
+      "title": "KENGAN ASHURA Season 2 Part.2",
+      "wordCount": 23889
+    },
+    {
+      "title": "MOBILE SUIT GUNDAM UNICORN RE:0096",
+      "wordCount": 32239
+    },
+    {
+      "title": "Lupin the IIIrd: Jigen's Gravestone",
+      "wordCount": 3459
+    },
+    {
+      "title": "Sailor Moon S Movie: Hearts in Ice",
+      "wordCount": 2938
+    },
+    {
+      "title": "Modest Heroes: Ponoc Short Films Theatre, Volume 1",
+      "wordCount": 1107
+    },
+    {
+      "title": "TERMINATOR ZERO",
+      "wordCount": 10118
+    },
+    {
+      "title": "Macross Zero",
+      "wordCount": 8130
+    },
+    {
+      "title": "Agent Aika",
+      "wordCount": 86308
+    },
+    {
+      "title": "Gundam: Reconguista in G",
+      "wordCount": 48572
+    },
+    {
+      "title": "Case Closed: The Darkest Nightmare",
+      "wordCount": 9705
+    },
+    {
+      "title": "Case Closed: Sunflowers of Inferno",
+      "wordCount": 11636
+    },
+    {
+      "title": "Saint Seiya: The Hades Chapter - Inferno",
+      "wordCount": 55364
+    },
+    {
+      "title": "Golgo 13 (TV)",
+      "wordCount": 75434
+    },
+    {
+      "title": "Yuki Yuna is a Hero: The Great Mankai Chapter",
+      "wordCount": 2225
+    },
+    {
+      "title": "One Piece - Episode of Sabo: Bond of Three Brothers - A Miraculous Reunion and an Inherited Will",
+      "wordCount": 7682
+    },
+    {
+      "title": "Hotel Inhumans",
+      "wordCount": 16116
+    },
+    {
+      "title": "Kirby: Right Back at Ya!",
+      "wordCount": 122414
+    },
+    {
+      "title": "Initial D Legend 2: Racer",
+      "wordCount": 14792
+    },
+    {
+      "title": "Mobile Suit Gundam Narrative",
+      "wordCount": 6189
+    },
+    {
+      "title": "Star Blazers: The Quest for Iscandar",
+      "wordCount": 35333
+    },
+    {
+      "title": "Tasuketsu -Fate of the Majority-",
+      "wordCount": 38816
+    },
+    {
+      "title": "Ranma ½ (1989)",
+      "wordCount": 226575
+    },
+    {
+      "title": "Ajin OVA",
+      "wordCount": 4081
+    },
+    {
+      "title": "Pokémon: Mewtwo Strikes Back—Evolution",
+      "wordCount": 8098
+    },
+    {
+      "title": "Ghost in the Shell Arise: Alternative Architecture",
+      "wordCount": 3398
+    },
+    {
+      "title": "Bastard!!",
+      "wordCount": 25041
+    },
+    {
+      "title": "HERO MASK",
+      "wordCount": 13680
+    },
+    {
+      "title": "Mobile Suit Gundam Thunderbolt: December Sky",
+      "wordCount": 3382
+    },
+    {
+      "title": "MFKZ",
+      "wordCount": 3902
+    },
+    {
+      "title": "Godzilla: The Planet Eater",
+      "wordCount": 6079
+    },
+    {
+      "title": "SWORDGAI The Animation Part II",
+      "wordCount": 15731
+    },
+    {
+      "title": "Initial D Legend 3: Dream",
+      "wordCount": 4698
+    },
+    {
+      "title": "Case Closed: The Fist of Blue Sapphire",
+      "wordCount": 8229
+    },
+    {
+      "title": "Tsubasa: Spring Thunder Chronicles",
+      "wordCount": 5683
+    },
+    {
+      "title": "Brave Story",
+      "wordCount": 5591
+    },
+    {
+      "title": "Sand Land: The Series",
+      "wordCount": 22761
+    },
+    {
+      "title": "Mujin Wakusei Survive",
+      "wordCount": 70468
+    },
+    {
+      "title": "ULTRAMAN",
+      "wordCount": 16669
+    },
+    {
+      "title": "Lupin the 3rd Vs Detective Conan",
+      "wordCount": 8143
+    },
+    {
+      "title": "Ingress: The Animation",
+      "wordCount": 14845
+    },
+    {
+      "title": "HEROMAN",
+      "wordCount": 27431
+    },
+    {
+      "title": "Phi Brain ~ Puzzle of God: The Orpheus Order",
+      "wordCount": 37241
+    },
+    {
+      "title": "Zegapain",
+      "wordCount": 40469
+    },
+    {
+      "title": "Mobile Suit Gundam Wing: Endless Waltz",
+      "wordCount": 5329
+    },
+    {
+      "title": "Saint Seiya: The Hades Chapter - Elysion",
+      "wordCount": 11248
+    },
+    {
+      "title": "Sailor Moon SuperS the Movie: Black Dream Hole",
+      "wordCount": 3100
+    },
+    {
+      "title": "HUGtto! Precure",
+      "wordCount": 62964
+    },
+    {
+      "title": "Samurai X: The Motion Picture",
+      "wordCount": 5729
+    },
+    {
+      "title": "Kingdom Season 6",
+      "wordCount": 28722
+    },
+    {
+      "title": "LUPIN THE 3rd PART 6",
+      "wordCount": 25563
+    },
+    {
+      "title": "Magical Girl Lyrical Nanoha: The Movie 1st",
+      "wordCount": 5929
+    },
+    {
+      "title": "Knights of Sidonia: Love Woven in the Stars",
+      "wordCount": 7798
+    },
+    {
+      "title": "Mobile Suit Gundam AGE",
+      "wordCount": 72742
+    },
+    {
+      "title": "Space Adventure Cobra",
+      "wordCount": 5326
+    },
+    {
+      "title": "Shonen Onmyoji",
+      "wordCount": 25091
+    },
+    {
+      "title": "Sakuna: Of Rice and Ruin",
+      "wordCount": 21198
+    },
+    {
+      "title": "Digimon Ghost Game",
+      "wordCount": 82958
+    },
+    {
+      "title": "Busou Shinki: Armored War Goddess",
+      "wordCount": 16317
+    },
+    {
+      "title": "The Seven Deadly Sins: Grudge of Edinburgh Part 2",
+      "wordCount": 3279
+    },
+    {
+      "title": "Golden Kamuy 2nd Season OVA",
+      "wordCount": 2052
+    },
+    {
+      "title": "Lupin the 3rd Vs Detective Conan: The Movie",
+      "wordCount": 9425
+    },
+    {
+      "title": "Cat's Eye",
+      "wordCount": 10481
+    },
+    {
+      "title": "Bye Bye, Earth Season 2",
+      "wordCount": 18345
+    },
+    {
+      "title": "Zoids",
+      "wordCount": 73740
+    },
+    {
+      "title": "Mardock Scramble: The Third Exhaust",
+      "wordCount": 4683
+    },
+    {
+      "title": "Banner of the Stars",
+      "wordCount": 26056
+    },
+    {
+      "title": "FUSE - Memoirs of the Hunter Girl",
+      "wordCount": 6661
+    },
+    {
+      "title": "Go! Princess Precure",
+      "wordCount": 60200
+    },
+    {
+      "title": "Tiger & Bunny: The Movie - The Rising",
+      "wordCount": 9927
+    },
+    {
+      "title": "Stand My Heroes: Piece of Truth",
+      "wordCount": 21128
+    },
+    {
+      "title": "GOD EATER Prologue",
+      "wordCount": 449
+    },
+    {
+      "title": "Guin Saga",
+      "wordCount": 39820
+    },
+    {
+      "title": "Macross Frontier: The False Songstress",
+      "wordCount": 6642
+    },
+    {
+      "title": "FLAG",
+      "wordCount": 19948
+    },
+    {
+      "title": "Dragon's Dogma",
+      "wordCount": 11081
+    },
+    {
+      "title": "Strike Witches Operation Victory Arrow",
+      "wordCount": 5246
+    },
+    {
+      "title": "Monochrome Factor",
+      "wordCount": 21102
+    },
+    {
+      "title": "Arpeggio of Blue Steel - Cadenza",
+      "wordCount": 6124
+    },
+    {
+      "title": "TIGER & BUNNY 2",
+      "wordCount": 22989
+    },
+    {
+      "title": "Case Closed: The Scarlet Bullet",
+      "wordCount": 10532
+    },
+    {
+      "title": "Getter Robo: Armageddon",
+      "wordCount": 1562
+    },
+    {
+      "title": "Muhyo & Roji’s Bureau of Supernatural Investigation Season 2",
+      "wordCount": 16616
+    },
+    {
+      "title": "Pocket Monsters Diamond & Pearl Tokubetsu-hen",
+      "wordCount": 4133
+    },
+    {
+      "title": "Pokémon the Series: XY Mega Evolution Specials",
+      "wordCount": 5999
+    },
+    {
+      "title": "Tennis no Ouji-sama: Zenkoku Taikai-hen",
+      "wordCount": 35634
+    },
+    {
+      "title": "Yu Yu Hakusho OVA: \"Two Shots\" and \"All or Nothing\"",
+      "wordCount": 2264
+    },
+    {
+      "title": "Touken Ranbu: Hanamaru 2",
+      "wordCount": 23090
+    },
+    {
+      "title": "Saint Seiya Soul of Gold",
+      "wordCount": 19444
+    },
+    {
+      "title": "Tropical-Rouge! Precure",
+      "wordCount": 62621
+    },
+    {
+      "title": "Asura",
+      "wordCount": 8931
+    },
+    {
+      "title": "Lupin the IIIrd: Fujiko's Lie",
+      "wordCount": 3681
+    },
+    {
+      "title": "Robot Girls Z",
+      "wordCount": 4742
+    },
+    {
+      "title": "Macross Frontier: The Wings of Farewell",
+      "wordCount": 6404
+    },
+    {
+      "title": "RD Sennou Chousashitsu",
+      "wordCount": 4007
+    },
+    {
+      "title": "Star Blazers: Space Battleship Yamato 2202",
+      "wordCount": 35858
+    },
+    {
+      "title": "Witchy Precure!",
+      "wordCount": 73614
+    },
+    {
+      "title": "HUMAN LOST",
+      "wordCount": 6254
+    },
+    {
+      "title": "Dies irae: To the ring reincarnation",
+      "wordCount": 8628
+    },
+    {
+      "title": "Golgo 13: The Professional",
+      "wordCount": 75292
+    },
+    {
+      "title": "Sakura Wars the Animation",
+      "wordCount": 17325
+    },
+    {
+      "title": "PreCure Max Heart",
+      "wordCount": 62322
+    },
+    {
+      "title": "Beyblade Burst Evolution",
+      "wordCount": 87005
+    },
+    {
+      "title": "Arpeggio of Blue Steel - DC",
+      "wordCount": 5770
+    },
+    {
+      "title": "Soaring Sky! Precure",
+      "wordCount": 60303
+    },
+    {
+      "title": "Mobile Suit Gundam SEED FREEDOM",
+      "wordCount": 8922
+    },
+    {
+      "title": "Phi-Brain ~ Puzzle of God Season 3",
+      "wordCount": 41650
+    },
+    {
+      "title": "Re:Monster 2nd Season",
+      "wordCount": 111354
+    },
+    {
+      "title": "Digimon Xros Wars: The Evil Death Generals and the Seven Kingdoms",
+      "wordCount": 38494
+    },
+    {
+      "title": "Yes! Precure 5",
+      "wordCount": 7294
+    },
+    {
+      "title": "Dandelion",
+      "wordCount": 24812
+    },
+    {
+      "title": "Ninja Vs. Gokudo",
+      "wordCount": 20713
+    },
+    {
+      "title": "Freedom",
+      "wordCount": 11617
+    },
+    {
+      "title": "IDOLM@STER: XENOGLOSSIA",
+      "wordCount": 45514
+    },
+    {
+      "title": "Healin' Good Precure",
+      "wordCount": 69282
+    },
+    {
+      "title": "Arve Rezzle: Kikaijikake no Yousei-tachi",
+      "wordCount": 1652
+    },
+    {
+      "title": "Detective Conan: The Bride of Halloween",
+      "wordCount": 10529
+    },
+    {
+      "title": "Saint Seiya: LEGEND of SANCTUARY",
+      "wordCount": 5290
+    },
+    {
+      "title": "Mobile Suit Gundam Thunderbolt: Bandit Flower",
+      "wordCount": 4286
+    },
+    {
+      "title": "Mazinger Z",
+      "wordCount": 130800
+    },
+    {
+      "title": "Digimon Xros Wars: The Young Hunters Who Leapt Through Time",
+      "wordCount": 43945
+    },
+    {
+      "title": "Pretty Guardian Sailor Moon Cosmos The Movie: Part 1",
+      "wordCount": 5734
+    },
+    {
+      "title": "Stellvia of the Universe",
+      "wordCount": 43980
+    },
+    {
+      "title": "Zipang",
+      "wordCount": 47545
+    },
+    {
+      "title": "Buddy Complex: Into the Skies of Tomorrow",
+      "wordCount": 3489
+    },
+    {
+      "title": "Ginga: Nagareboshi Gin",
+      "wordCount": 32494
+    },
+    {
+      "title": "OVERMAN King Gainer",
+      "wordCount": 50674
+    },
+    {
+      "title": "Onimusha",
+      "wordCount": 12099
+    },
+    {
+      "title": "Tokyo BABYLON",
+      "wordCount": 23280
+    },
+    {
+      "title": "Resident Evil: Infinite Darkness",
+      "wordCount": 3852
+    },
+    {
+      "title": "Suite Precure♪",
+      "wordCount": 61003
+    },
+    {
+      "title": "Heart and Yummie",
+      "wordCount": 2337
+    },
+    {
+      "title": "Rurouni Kenshin: New Kyoto Arc",
+      "wordCount": 7426
+    },
+    {
+      "title": "Meiji Gekken: 1874",
+      "wordCount": 14528
+    },
+    {
+      "title": "Tiger & Bunny: The Movie - The Beginning",
+      "wordCount": 7707
+    },
+    {
+      "title": "Delicious Party Precure",
+      "wordCount": 55944
+    },
+    {
+      "title": "Beyblade Burst Turbo",
+      "wordCount": 66976
+    },
+    {
+      "title": ".hack//G.U. Trilogy",
+      "wordCount": 3281
+    },
+    {
+      "title": "Sengoku Basara - Samurai Kings: The Movie",
+      "wordCount": 5578
+    },
+    {
+      "title": "X-Men",
+      "wordCount": 15979
+    },
+    {
+      "title": "Laughing Under the Clouds: Gaiden Part 1",
+      "wordCount": 2796
+    },
+    {
+      "title": "Macross Plus Movie Edition",
+      "wordCount": 5116
+    },
+    {
+      "title": "PreCure Splash Star",
+      "wordCount": 68052
+    },
+    {
+      "title": "Thunderbolt Fantasy: Sword Travels in the East",
+      "wordCount": 28100
+    },
+    {
+      "title": "Star Wars: Visions Volume 3",
+      "wordCount": 7808
+    },
+    {
+      "title": "Major: Yuujou no Ikkyuu",
+      "wordCount": 7176
+    },
+    {
+      "title": "Sorcerous Stabber Orphen: Chaos in Urbanrama",
+      "wordCount": 24581
+    },
+    {
+      "title": "Fist of the North Star Movie",
+      "wordCount": 5019
+    },
+    {
+      "title": "TOUKEN RANBU KAI KYODEN",
+      "wordCount": 14318
+    },
+    {
+      "title": "Appleseed: Ex Machina",
+      "wordCount": 5204
+    },
+    {
+      "title": "Detective Conan: Zero's Tea Time",
+      "wordCount": 3756
+    },
+    {
+      "title": "Ghost in the Shell: SAC_2045 Season 2",
+      "wordCount": 14331
+    },
+    {
+      "title": "Utawarerumono OVA",
+      "wordCount": 894
+    },
+    {
+      "title": "Betterman",
+      "wordCount": 36055
+    },
+    {
+      "title": "Samurai X Special",
+      "wordCount": 775
+    },
+    {
+      "title": "The Fire Hunter Season 2",
+      "wordCount": 15114
+    },
+    {
+      "title": "Luger Code 1951",
+      "wordCount": 1487
+    },
+    {
+      "title": "Pop in Q",
+      "wordCount": 5937
+    },
+    {
+      "title": "Princess-Session Orchestra",
+      "wordCount": 74557
+    },
+    {
+      "title": "The Prince of Tennis II: U-17 World Cup",
+      "wordCount": 20573
+    },
+    {
+      "title": "Sand Land",
+      "wordCount": 8324
+    },
+    {
+      "title": "SI-VIS: The Sound of Heroes",
+      "wordCount": 22707
+    },
+    {
+      "title": "The Prince of Tennis II OVA vs Genius 10",
+      "wordCount": 13836
+    },
+    {
+      "title": "City Hunter: Shinjuku Private Eyes",
+      "wordCount": 5011
+    },
+    {
+      "title": "Pokémon: The Arceus Chronicles",
+      "wordCount": 3734
+    },
+    {
+      "title": "Pokémon the Series: XYZ Specials",
+      "wordCount": 3659
+    },
+    {
+      "title": "Beautiful World",
+      "wordCount": 22574
+    },
+    {
+      "title": "Digimon Universe App Monsters",
+      "wordCount": 80663
+    },
+    {
+      "title": "Yes! Precure 5 GoGo!",
+      "wordCount": 66771
+    },
+    {
+      "title": "You and Idol Precure ♪",
+      "wordCount": 33725
+    },
+    {
+      "title": "Duel Masters",
+      "wordCount": 39676
+    },
+    {
+      "title": "Saint Seiya: Evil Goddess Eris",
+      "wordCount": 2580
+    },
+    {
+      "title": "Inazuma Eleven GO vs Danball Senki W",
+      "wordCount": 58481
+    },
+    {
+      "title": "Cyborg 009 vs Devilman",
+      "wordCount": 5064
+    },
+    {
+      "title": "Cardfight!! Vanguard G",
+      "wordCount": 59355
+    },
+    {
+      "title": "The Super Dimension Fortress Macross II: Lovers Again",
+      "wordCount": 7799
+    },
+    {
+      "title": "Astro Boy (1980)",
+      "wordCount": 6276
+    },
+    {
+      "title": "Pretty Guardian Sailor Moon Cosmos The Movie: Part 2",
+      "wordCount": 5288
+    },
+    {
+      "title": "RYO",
+      "wordCount": 2472
+    },
+    {
+      "title": "Appleseed Alpha",
+      "wordCount": 3646
+    },
+    {
+      "title": "#COMPASS2.0 ANIMATION PROJECT",
+      "wordCount": 15636
+    },
+    {
+      "title": "Master of Martial Hearts",
+      "wordCount": 2137
+    },
+    {
+      "title": "Beyond the Heavens",
+      "wordCount": 42348
+    },
+    {
+      "title": "TIGER & BUNNY 2 Part 2",
+      "wordCount": 18640
+    },
+    {
+      "title": "Angel Heart",
+      "wordCount": 64749
+    },
+    {
+      "title": "Garouden: The Way of the Lone Wolf",
+      "wordCount": 12736
+    },
+    {
+      "title": "Power of Hope ~Precure Full Bloom~",
+      "wordCount": 19798
+    },
+    {
+      "title": "BIRTH",
+      "wordCount": 5314
+    },
+    {
+      "title": "Resident Evil: Death Island",
+      "wordCount": 2947
+    },
+    {
+      "title": "BEYBLADE X",
+      "wordCount": 84843
+    },
+    {
+      "title": "Shinkalion: Change the World",
+      "wordCount": 43307
+    },
+    {
+      "title": "Sonic X: The Metarex Saga",
+      "wordCount": 35030
+    },
+    {
+      "title": "GUNDAM BUILD FIGHTERS TRY: Island Wars",
+      "wordCount": 3974
+    },
+    {
+      "title": "Honoo no Tenkousei",
+      "wordCount": 14810
+    },
+    {
+      "title": "Sorcerous Stabber Orphen: Celestial Artifacts",
+      "wordCount": 1426
+    },
+    {
+      "title": "Dinosaur King Season 2",
+      "wordCount": 47248
+    },
+    {
+      "title": "Heartcatch Precure! Hana no Miyako de Fashion Show... Desu ka!?",
+      "wordCount": 4156
+    },
+    {
+      "title": "Grendizer U",
+      "wordCount": 18076
+    },
+    {
+      "title": "Top wo Nerae! & Top wo Nerae 2! Gattai Movie!!",
+      "wordCount": 12378
+    },
+    {
+      "title": "Blue Comet SPT Layzner",
+      "wordCount": 9326
+    },
+    {
+      "title": "HERO MASK part II",
+      "wordCount": 9610
+    },
+    {
+      "title": "Shounan Bakusouzoku",
+      "wordCount": 46962
+    },
+    {
+      "title": "Laughing Under the Clouds: Gaiden Part 3",
+      "wordCount": 3280
+    },
+    {
+      "title": "GANGLION",
+      "wordCount": 4188
+    },
+    {
+      "title": "Crayon Shin-chan: Jungle That Invites Storm",
+      "wordCount": 5804
+    },
+    {
+      "title": "Mazinger Z: INFINITY",
+      "wordCount": 6498
+    },
+    {
+      "title": "Crayon Shin-chan: Action Mask vs. Leotard Devil",
+      "wordCount": 6912
+    },
+    {
+      "title": "Hell Teacher: Jigoku Sensei Nube (2025) Part 2",
+      "wordCount": 73757
+    },
+    {
+      "title": "KamiErabi GOD.app Season 2",
+      "wordCount": 16886
+    },
+    {
+      "title": "Futari wa Precure: Max Heart (Movie)",
+      "wordCount": 4280
+    },
+    {
+      "title": "ULTRAMAN Season 2",
+      "wordCount": 7698
+    },
+    {
+      "title": "Sorcerous Stabber Orphen: Doom of Dragon's Sanctuary",
+      "wordCount": 24006
+    },
+    {
+      "title": "Kinnikuman Perfect Origin Arc",
+      "wordCount": 19363
+    },
+    {
+      "title": "Pocket Monsters Best Wishes! Season 2: Decolora Adventure Specials",
+      "wordCount": 3682
+    },
+    {
+      "title": "Future Card Buddyfight",
+      "wordCount": 115812
+    },
+    {
+      "title": "Altered Carbon: Resleeved",
+      "wordCount": 4041
+    },
+    {
+      "title": "Macross 7: The Galaxy is Calling Me!",
+      "wordCount": 1771
+    },
+    {
+      "title": "Urusei Yatsura Movie 6: Always My Darling",
+      "wordCount": 4464
+    },
+    {
+      "title": "Lupin the Third: Island of Assassins",
+      "wordCount": 5370
+    },
+    {
+      "title": "Macross 7 Encore",
+      "wordCount": 5019
+    },
+    {
+      "title": "Lupin The 3rd: Tokyo Crisis",
+      "wordCount": 5482
+    },
+    {
+      "title": "Fist of the North Star: The Legend of the True Savior: Legend of Raoh: Chapter of Death in Love",
+      "wordCount": 5683
+    },
+    {
+      "title": "Futari wa Precure: Max Heart 2 - Yukizora no Tomodachi",
+      "wordCount": 3558
+    },
+    {
+      "title": "Cardfight!! Vanguard G Next",
+      "wordCount": 59826
+    },
+    {
+      "title": "Inazuma Eleven: Outer Code",
+      "wordCount": 192116
+    },
+    {
+      "title": "Getter Robo Arc",
+      "wordCount": 20314
+    },
+    {
+      "title": "A Herbivorous Dragon of 5,000 Years Gets Unfairly Villainized Season 2",
+      "wordCount": 10180
+    },
+    {
+      "title": "Little Bunny Cue!!",
+      "wordCount": 41320
+    },
+    {
+      "title": "Android Kikaider - The Animation",
+      "wordCount": 1731
+    },
+    {
+      "title": "Fist of the North Star: The Legend of the True Savior: Legend of Kenshiro",
+      "wordCount": 4924
+    },
+    {
+      "title": "Ghost in the Shell: Arise - Another Mission",
+      "wordCount": 19139
+    },
+    {
+      "title": "Yu-Gi-Oh! CARD GAME: THE CHRONICLES (2025)",
+      "wordCount": 263799
+    },
+    {
+      "title": "Mobile Suit Gundam 0083: The Afterglow Of Zeon",
+      "wordCount": 6728
+    },
+    {
+      "title": "City Hunter: Bay City Wars",
+      "wordCount": 2492
+    },
+    {
+      "title": "Saiyuuki Gaiden",
+      "wordCount": 4067
+    },
+    {
+      "title": "Nadia: The Secret of Blue Water - The Motion Picture",
+      "wordCount": 66923
+    },
+    {
+      "title": "Tenkuu Senki Shurato",
+      "wordCount": 46741
+    },
+    {
+      "title": "HUGtto! Precure ♡ Futari wa Precure All Stars Memories",
+      "wordCount": 3828
+    },
+    {
+      "title": "Precure All Stars New Stage: Mirai no Tomodachi",
+      "wordCount": 3156
+    },
+    {
+      "title": "City Hunter The Movie: Angel Dust",
+      "wordCount": 5563
+    },
+    {
+      "title": "Precure All Stars DX2: Kibou no Hikari☆Rainbow Jewel wo Mamore!",
+      "wordCount": 3561
+    },
+    {
+      "title": "Lupin the 3rd - Italian Game",
+      "wordCount": 6800
+    },
+    {
+      "title": "Mobile Suit Gundam Wing: Operation Meteor",
+      "wordCount": 17909
+    },
+    {
+      "title": "Precure All Stars DX: Minna Tomodachi☆Kiseki no Zenin Daishuugou!",
+      "wordCount": 3421
+    },
+    {
+      "title": "Mobile Suit Gundam Seed Special Edition",
+      "wordCount": 15790
+    },
+    {
+      "title": "Yes! Precure 5: Kagami no Kuni no Miracle Daibouken!",
+      "wordCount": 4106
+    },
+    {
+      "title": "Monsuno: World Master",
+      "wordCount": 79056
+    },
+    {
+      "title": "Mobile Suit Gundam 00 Special Edition",
+      "wordCount": 17496
+    },
+    {
+      "title": "ICE",
+      "wordCount": 19799
+    },
+    {
+      "title": "Precure All Stars F",
+      "wordCount": 3727
+    },
+    {
+      "title": "The Prince of Tennis II U-17 World Cup Semifinal",
+      "wordCount": 15780
+    },
+    {
+      "title": "Mobile Suit Gundam Seed Destiny Special Edition",
+      "wordCount": 22063
+    },
+    {
+      "title": "Fist of the North Star: The Legend of the True Savior: Legend of Raoh: Chapter of Fierce Fighting",
+      "wordCount": 5113
+    },
+    {
+      "title": "LUPIN THE 3rd vs. CAT’S EYE",
+      "wordCount": 7370
+    },
+    {
+      "title": "Lupin the 3rd: The Columbus Files",
+      "wordCount": 6575
+    },
+    {
+      "title": "Ghost in the Shell: SAC_2045 Sustainable War",
+      "wordCount": 9362
+    },
+    {
+      "title": "Tomorrow's Joe: The Movie",
+      "wordCount": 9524
+    },
+    {
+      "title": "Precure All Stars DX3: Mirai ni Todoke! Sekai wo Tsunagu☆Niji-iro no Hana",
+      "wordCount": 4170
+    },
+    {
+      "title": "Fist of the North Star: The Legend of the True Savior: Legend of Yuria",
+      "wordCount": 3754
+    },
+    {
+      "title": "Lupin the 3rd: From Siberia with Love",
+      "wordCount": 6178
+    },
+    {
+      "title": "City Hunter: Million Dollar Conspiracy",
+      "wordCount": 3743
+    },
+    {
+      "title": "REIDEEN",
+      "wordCount": 28816
+    },
+    {
+      "title": "Meitantei Conan: Hiiro no Fuzai Shoumei",
+      "wordCount": 7322
+    },
+    {
+      "title": "Genesis of Aquarion OVA",
+      "wordCount": 13009
+    },
+    {
+      "title": "Yes! Precure 5 GoGo! Okashi no Kuni no Happy Birthday♪",
+      "wordCount": 3974
+    },
+    {
+      "title": "Suite Precure♪: Torimodose! Kokoro ga Tsunagu Kiseki no Melody♪",
+      "wordCount": 4281
+    },
+    {
+      "title": "Futari wa Precure: Splash☆Star - Tick Tack Kiki Ippatsu!",
+      "wordCount": 3258
+    },
+    {
+      "title": "BUTA",
+      "wordCount": 23725
+    },
+    {
+      "title": "Fist of the North Star: The Legend of the True Savior: Legend of Toki",
+      "wordCount": 3061
+    },
+    {
+      "title": "Urusei Yatsura: Haru da, Tobidase!",
+      "wordCount": 91860
+    },
+    {
+      "title": "Dragon Warrior",
+      "wordCount": 59758
+    },
+    {
+      "title": "COBRA THE ANIMATION",
+      "wordCount": 16260
+    },
+    {
+      "title": "Precure Dream Stars!",
+      "wordCount": 3529
+    },
+    {
+      "title": "DOUBLE DECKER! DOUG & KIRILL EX",
+      "wordCount": 2394
+    },
+    {
+      "title": "Precure All Stars: Minna de Utau♪ Kiseki no Mahou!",
+      "wordCount": 3460
+    },
+    {
+      "title": "ULTRAMAN: The Final Season",
+      "wordCount": 16788
+    },
+    {
+      "title": "Tropical-Rouge! Precure: Yuki no Princess to Kiseki no Yubiwa!",
+      "wordCount": 3753
+    },
+    {
+      "title": "Toki no Tabibito: Time Stranger",
+      "wordCount": 5399
+    },
+    {
+      "title": "Precure Super Stars!",
+      "wordCount": 3467
+    },
+    {
+      "title": "CARDFIGHT!! VANGUARD Divinez",
+      "wordCount": 18745
+    },
+    {
+      "title": "Galaxy Express 999: Eternal Fantasy",
+      "wordCount": 2883
+    },
+    {
+      "title": "GAMERA -Rebirth-",
+      "wordCount": 16103
+    },
+    {
+      "title": "Marvel Disk Wars: The Avengers",
+      "wordCount": 67885
+    },
+    {
+      "title": "Danball Senki W",
+      "wordCount": 77043
+    },
+    {
+      "title": "Lupin the 3rd: Seven Days Rhapsody",
+      "wordCount": 7176
+    },
+    {
+      "title": "Bright: Samurai Soul",
+      "wordCount": 3873
+    },
+    {
+      "title": "Toriko 3D: Kaimaku Gourmet Adventure!!",
+      "wordCount": 3079
+    },
+    {
+      "title": "Mokei Senshi Gunpla Builders Beginning G",
+      "wordCount": 2350
+    },
+    {
+      "title": "LUPIN THE IIIRD: Zenigata and the Two Lupins",
+      "wordCount": 3633
+    },
+    {
+      "title": "Strike World: Deadverse Reloaded the Anime",
+      "wordCount": 8045
+    },
+    {
+      "title": "COBRA THE ANIMATION: The Psycho-Gun",
+      "wordCount": 5735
+    },
+    {
+      "title": "Mobile Suit Gundam AGE: Memory of Eden",
+      "wordCount": 9232
+    },
+    {
+      "title": "Qi Refining for 3000 Years",
+      "wordCount": 15514
+    },
+    {
+      "title": "∀ Gundam I: Earth Light",
+      "wordCount": 11408
+    },
+    {
+      "title": "Yuusha Tokkyuu Might Gaine",
+      "wordCount": 67128
+    },
+    {
+      "title": "Tenkai Knights",
+      "wordCount": 72804
+    },
+    {
+      "title": "∀ Gundam II: Moonlight Butterfly",
+      "wordCount": 10085
+    },
+    {
+      "title": "Yakitori: Soldiers of Misfortune",
+      "wordCount": 12417
+    },
+    {
+      "title": "Koutetsu Jeeg",
+      "wordCount": 56787
+    },
+    {
+      "title": "Chousoku Henkei Gyrozetter",
+      "wordCount": 81732
+    },
+    {
+      "title": "TO",
+      "wordCount": 24070
+    },
+    {
+      "title": "Bokurano (Music)",
+      "wordCount": 33510
+    },
+    {
+      "title": "Cardfight!! Vanguard will+Dress Season 3",
+      "wordCount": 19710
+    },
+    {
+      "title": "Future Card Buddyfight Triple D",
+      "wordCount": 155485
+    },
+    {
+      "title": "Danball Senki Wars",
+      "wordCount": 49653
+    },
+    {
+      "title": "Cobra Time Drive",
+      "wordCount": 3198
+    },
+    {
+      "title": "Future Card Buddyfight X",
+      "wordCount": 85861
+    },
+    {
+      "title": "Battle Spirits: Brave",
+      "wordCount": 49386
+    },
+    {
+      "title": "Idol Land PriPara",
+      "wordCount": 172800
+    },
+    {
+      "title": "CARDFIGHT!! VANGUARD Divinez Season 2",
+      "wordCount": 24483
+    },
+    {
+      "title": "Onmyou Tai Senki",
+      "wordCount": 89500
+    },
+    {
+      "title": "Kinnikuman Perfect Origin Arc Season 2",
+      "wordCount": 18499
+    },
+    {
+      "title": "Babel II",
+      "wordCount": 4848
+    },
+    {
+      "title": "THE IDOLM@STER CINDERELLA GIRLS: Spin-off!",
+      "wordCount": 45775
+    },
+    {
+      "title": "Golden Bat",
+      "wordCount": 3321
+    },
+    {
+      "title": "Getter Robo Go",
+      "wordCount": 61083
+    },
+    {
+      "title": "Battle Spirits: Burning Soul",
+      "wordCount": 69052
+    },
+    {
+      "title": "Paroru's Future Island",
+      "wordCount": 1428
+    },
+    {
+      "title": "Shin Seiki GPX Cyber Formula ZERO",
+      "wordCount": 6476
+    },
+    {
+      "title": "Jigoku Sensei Nube THE OVA",
+      "wordCount": 6060
+    },
+    {
+      "title": "Monster Strike The Movie: Sora no Kanata",
+      "wordCount": 5613
+    },
+    {
+      "title": "Great Mazinger tai Getter Robo",
+      "wordCount": 1540
+    },
+    {
+      "title": "Mazinger Z tai Ankoku Daishogun",
+      "wordCount": 2111
+    },
+    {
+      "title": "Appleseed XIII: Ouranos",
+      "wordCount": 33388
+    },
+    {
+      "title": "Kikaider 01: The Animation",
+      "wordCount": 976
+    },
+    {
+      "title": "Battle Spirits: Sword Eyes",
+      "wordCount": 53597
+    },
+    {
+      "title": "Kemurikusa",
+      "wordCount": 19756
+    },
+    {
+      "title": "Kung Fu Liao Li Niang",
+      "wordCount": 167
+    },
+    {
+      "title": "Hell Teacher Nube: Summer Holiday of Fear! Legend of the Sea of Suspicion",
+      "wordCount": 2476
+    },
+    {
+      "title": "Juusenshi Gulkeeva",
+      "wordCount": 37770
+    },
+    {
+      "title": "Great Mazinger vs. Getter Robo G: Kuuchuu Dai-Gekitotsu",
+      "wordCount": 1356
+    },
+    {
+      "title": "Hero Bank",
+      "wordCount": 81622
+    },
+    {
+      "title": "Gaist Crusher",
+      "wordCount": 78870
+    },
+    {
+      "title": "Battle Spirits: Heroes",
+      "wordCount": 96792
+    },
+    {
+      "title": "Kameari Park Precinct",
+      "wordCount": 7108
+    },
+    {
+      "title": "Arabian Nights: Sinbad's Adventures",
+      "wordCount": 2015
+    },
+    {
+      "title": "Samurai Spirits 2",
+      "wordCount": 2716
+    },
+    {
+      "title": "Baku TECH! Bakugan",
+      "wordCount": 36654
+    },
+    {
+      "title": "Battle Spirits: Sword Eyes Fierce Battle Legend",
+      "wordCount": 36979
+    },
+    {
+      "title": "MASHIN CREATOR WATARU",
+      "wordCount": 41148
+    },
+    {
+      "title": "Shin chan Spin-off: Toy Wars",
+      "wordCount": 6096
+    },
+    {
+      "title": "Duel Masters VSRF",
+      "wordCount": 65371
+    },
+    {
+      "title": "Mars",
+      "wordCount": 16623
+    },
+    {
+      "title": "Shu",
+      "wordCount": 5689
+    },
+    {
+      "title": "Duel Masters VSR",
+      "wordCount": 67824
+    },
+    {
+      "title": "Spooky Kitaro: Giant Sea Monster",
+      "wordCount": 92723
+    },
+    {
+      "title": "Battle Spirits: Double Drive",
+      "wordCount": 70950
+    },
+    {
+      "title": "Duel Masters VS",
+      "wordCount": 86507
+    },
+    {
+      "title": "Sangokushi",
+      "wordCount": 30158
+    },
+    {
+      "title": "Kamen Rider Fourze X Crayon Shin-chan",
+      "wordCount": 1054609
+    },
+    {
+      "title": "Elle",
+      "wordCount": 1911
+    },
+    {
+      "title": "Spooky Kitaro: Japan Explodes!!",
+      "wordCount": 5136
+    },
+    {
+      "title": "Bottleman",
+      "wordCount": 8872
+    },
+    {
+      "title": "Duel Masters Victory",
+      "wordCount": 674
+    },
+    {
+      "title": "Beast Saga",
+      "wordCount": 28354
+    },
+    {
+      "title": "Shin chan Spin-Off: Lone Wolf and Family",
+      "wordCount": 7065
+    },
+    {
+      "title": "Duel Masters Victory V3",
+      "wordCount": 93600
+    },
+    {
+      "title": "DUEL MASTERS King!",
+      "wordCount": 95804
+    },
+    {
+      "title": "Play Ball",
+      "wordCount": 21155
+    },
+    {
+      "title": "Duel Masters WIN",
+      "wordCount": 3312
+    },
+    {
+      "title": "Duel Masters Victory V",
+      "wordCount": 46853
+    },
+    {
+      "title": "Duel Masters WIN: Duel Wars",
+      "wordCount": 53994
+    },
+    {
+      "title": "Kuiba: Shiwanhuoji",
+      "wordCount": 6507
+    },
+    {
+      "title": "The Red",
+      "wordCount": 19996
+    },
+    {
+      "title": "Cap Kakumei Bottleman DX",
+      "wordCount": 50564
+    },
+    {
+      "title": "Great Conquest: The Romance of Three Kingdoms",
+      "wordCount": 44152
+    },
+    {
+      "title": "Duel Masters King MAX",
+      "wordCount": 28188
+    },
+    {
+      "title": "Sangokushi Daisanbu Harukanaru Taichi",
+      "wordCount": 9434
+    },
+    {
+      "title": "Train Heroes",
+      "wordCount": 37321
+    },
+    {
+      "title": "Ark",
+      "wordCount": 21835
+    },
+    {
+      "title": "Play Ball 2nd",
+      "wordCount": 22216
+    },
+    {
+      "title": "Defenders of Space",
+      "wordCount": 18636
+    },
+    {
+      "title": "GON 2nd Season",
+      "wordCount": 19118
+    },
+    {
+      "title": "Sai-Kyo-Oh! Zukan: The Ultimate Tournament",
+      "wordCount": 10508
+    },
+    {
+      "title": "HOWL",
+      "wordCount": 5632
+    },
+    {
+      "title": "Solar I.II.III",
+      "wordCount": 940
+    }
+  ]
+}

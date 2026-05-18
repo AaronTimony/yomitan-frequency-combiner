@@ -1,5 +1,5 @@
 import { downloadBlob, mergeJitenDecks } from "./combiner";
-import { MEDIA_TYPES, fetchDecks, fetchDeckYomitanZip, mediaTypeLabel, type FetchDecksResult, type JitenDeck } from "./jitenApi";
+import { MEDIA_TYPES, fetchDecks, fetchDeckYomitanZip, mapPool, mediaTypeLabel, type FetchDecksResult, type JitenDeck } from "./jitenApi";
 
 type TitleLang = "original" | "romaji" | "english";
 
@@ -422,7 +422,13 @@ async function mergeDeckSelection(mc: MergeControls, decks: JitenDeck[], title: 
   mc.mergeBtn.disabled = true;
   mc.mergeBtn.textContent = "Downloading…";
   try {
-    const blobs = await Promise.all(decks.map((d) => fetchDeckYomitanZip(d)));
+    mc.mergeBtn.textContent = `Downloading 0/${decks.length}…`;
+    const blobs = await mapPool(
+      decks,
+      4,
+      (d) => fetchDeckYomitanZip(d),
+      (done, total) => { mc.mergeBtn.textContent = `Downloading ${done}/${total}…`; },
+    );
     const files = blobs.map((blob, i) => new File([blob], `deck_${decks[i].deckId}.zip`));
     mc.mergeBtn.textContent = "Merging…";
     const blob = await mergeJitenDecks(files, title);

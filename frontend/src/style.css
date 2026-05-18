@@ -175,3 +175,27 @@ html.light .pagination-page-btn:hover {
 #added-panel::-webkit-scrollbar { width: 6px; }
 #added-panel::-webkit-scrollbar-track { background: #2a2a2a; }
 #added-panel::-webkit-scrollbar-thumb { background: #5a5a5a; border-radius: 3px; }
+
+/* Sources dropdown scrollbar */
+.sources-list {
+  scrollbar-color: #5a5a5a transparent;
+  scrollbar-width: thin;
+}
+.sources-list::-webkit-scrollbar { width: 4px; }
+.sources-list::-webkit-scrollbar-track { background: transparent; }
+.sources-list::-webkit-scrollbar-thumb { background: #5a5a5a; border-radius: 2px; }
+.sources-list::-webkit-scrollbar-thumb:hover { background: #6a6a6a; }
+html.light .sources-list { scrollbar-color: #aaa transparent; }
+html.light .sources-list::-webkit-scrollbar-thumb { background: #aaa; }
+
+/* Selected genres cart scrollbar */
+.genre-cart-list {
+  scrollbar-color: #5a5a5a transparent;
+  scrollbar-width: thin;
+}
+.genre-cart-list::-webkit-scrollbar { width: 6px; }
+.genre-cart-list::-webkit-scrollbar-track { background: transparent; }
+.genre-cart-list::-webkit-scrollbar-thumb { background: #5a5a5a; border-radius: 3px; }
+.genre-cart-list::-webkit-scrollbar-thumb:hover { background: #6a6a6a; }
+html.light .genre-cart-list { scrollbar-color: #aaa transparent; }
+html.light .genre-cart-list::-webkit-scrollbar-thumb { background: #aaa; }
