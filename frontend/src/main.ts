@@ -3,7 +3,6 @@ import { $ } from "./dom";
 import { FileManager } from "./fileManager";
 import { setupPages } from "./pages";
 import { setupCreatePage } from "./searchPage";
-import { setupGenrePage } from "./genrePage";
 import { setupRecommendedPage } from "./recommendedPage";
 import { averageZips, downloadBlob } from "./combiner";
 
@@ -28,7 +27,6 @@ document.getElementById("theme-toggle")?.addEventListener("click", () => {
 
 setupPages($("top-nav"));
 setupCreatePage($("page-create"));
-setupGenrePage($("page-genre"));
 setupRecommendedPage();
 
 const fileManager = new FileManager({

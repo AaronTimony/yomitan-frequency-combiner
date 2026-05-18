@@ -1,4 +1,4 @@
-const ORDER = ["recommended", "create", "combiner", "genre"];
+const ORDER = ["recommended", "create", "combiner"];
 function pathKey() {
     const segment = location.pathname.replace(/^\//, "");
     if (ORDER.includes(segment))
