@@ -18,15 +18,9 @@ Run a single test file:
 npx vitest run src/combiner.test.ts
 ```
 
-## Critical: JS and TS files must stay in sync
+## Type checking
 
-Every `src/*.ts` module has a corresponding `src/*.js` file that Vite resolves first (`.js` takes priority over `.ts` in Vite's default extension order). **After editing any `.ts` file, regenerate the JS files:**
-
-```bash
-npx tsc
-```
-
-Skipping this means your changes are silently ignored at runtime.
+`tsc` is configured with `noEmit: true` — it acts as a type-checker only, no `.js` output. Vite consumes `.ts` files directly at dev time and through esbuild at build time. Run `npx tsc` after edits to catch type errors.
 
 ## Architecture
 

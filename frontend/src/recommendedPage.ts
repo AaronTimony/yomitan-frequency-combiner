@@ -219,13 +219,13 @@ const ALL_GENRES = [
   "Sci-Fi", "Slice of Life", "Sports", "Supernatural", "Thriller", "Adult Only",
 ];
 
-const MEDIA_TYPES: { id: string; label: string; fileLabel: string; prefix: string }[] = [
+const MEDIA_TYPES: { id: string; label: string; fileLabel: string; prefix: string; genres?: readonly string[] }[] = [
   { id: "anime", label: "Anime", fileLabel: "Anime", prefix: "anime_dicts/" },
   { id: "manga", label: "Manga", fileLabel: "Manga", prefix: "manga_dicts/" },
-  { id: "drama", label: "Drama", fileLabel: "Drama", prefix: "drama_dicts/" },
+  { id: "drama", label: "Drama", fileLabel: "Drama", prefix: "drama_dicts/", genres: ["Action", "Comedy", "Drama", "Mystery", "Sci-Fi"] },
   { id: "novel", label: "Novel", fileLabel: "Novel", prefix: "novel_dicts/" },
-  { id: "videogame", label: "Video Game", fileLabel: "Video_Game", prefix: "videogame_dicts/" },
-  { id: "visualnovel", label: "Visual Novel", fileLabel: "Visual_Novel", prefix: "visualnovel_dicts/" },
+  { id: "videogame", label: "Video Game", fileLabel: "Video_Game", prefix: "videogame_dicts/", genres: ["Action", "Adventure", "Comedy", "Fantasy", "Mystery", "Sci-Fi", "Sports", "Thriller"] },
+  { id: "visualnovel", label: "Visual Novel", fileLabel: "Visual_Novel", prefix: "visualnovel_dicts/", genres: ["Action", "Adult Only", "Comedy", "Drama", "Fantasy", "Horror", "Mecha", "Music", "Mystery", "Psychological", "Romance", "Sci-Fi", "Slice of Life", "Sports", "Thriller"] },
 ];
 
 const DICT_BASE_URL = "https://dicts.yomitanfrequencies.org";
@@ -239,7 +239,11 @@ function populateFeaturedGrids(): void {
   document.querySelectorAll<HTMLElement>("[data-featured-grid]").forEach((grid) => {
     const media = mediaById.get(grid.dataset.featuredGrid!);
     if (!media) return;
-    const genres = (grid.dataset.featuredGenres ?? "").split(",").map((g) => g.trim()).filter(Boolean);
+    const allowed = media.genres ? new Set(media.genres) : null;
+    const genres = (grid.dataset.featuredGenres ?? "")
+      .split(",")
+      .map((g) => g.trim())
+      .filter((g) => g && (!allowed || allowed.has(g)));
     grid.innerHTML = "";
     for (const genre of genres) {
       const baseName = `${genreFileSlug(genre)}_${media.fileLabel}_genre`;
@@ -272,7 +276,8 @@ function populateAllGenresSections(): void {
     const container = document.getElementById(`${media.id}-all-genres`);
     if (!container) continue;
     container.innerHTML = "";
-    for (const genre of ALL_GENRES) {
+    const genres = media.genres ?? ALL_GENRES;
+    for (const genre of genres) {
       const baseName = `${genreFileSlug(genre)}_${media.fileLabel}_genre`;
       const sourcesUrl = `${DICT_BASE_URL}/${media.prefix}${baseName}_sources.json`;
       const zipUrl = `${DICT_BASE_URL}/${media.prefix}${baseName}.zip`;
@@ -315,12 +320,12 @@ function setupMediaDropdowns(): void {
       if (isOpen) {
         list.classList.add("hidden");
         list.classList.remove("flex");
-        if (label) label.textContent = "Browse genres";
+        if (label) label.textContent = "Show All Genres";
         chevron?.classList.remove("rotate-180");
       } else {
         list.classList.remove("hidden");
         list.classList.add("flex");
-        if (label) label.textContent = "Hide genres";
+        if (label) label.textContent = "Hide Genres";
         chevron?.classList.add("rotate-180");
         list.querySelectorAll<HTMLElement>("[data-genre-url]").forEach((row) => {
           if (!row.dataset.loaded) {

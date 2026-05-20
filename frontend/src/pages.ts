@@ -3,10 +3,8 @@ export type PageKey = "recommended" | "create" | "combiner";
 const ORDER: PageKey[] = ["recommended", "create", "combiner"];
 
 function pathKey(): PageKey {
-  const segment = location.pathname.replace(/^\//, "") as PageKey;
+  const segment = location.pathname.replace(/^\//, "").replace(/\/$/, "") as PageKey;
   if (ORDER.includes(segment)) return segment;
-  // If the server redirected us to / (losing the original path), fall back to
-  // whatever page was last active so a refresh doesn't silently switch pages.
   const stored = sessionStorage.getItem("active-page") as PageKey | null;
   return stored && ORDER.includes(stored) ? stored : "create";
 }
@@ -40,14 +38,8 @@ export function setupPages(navEl: HTMLElement): void {
     if (nextBtn) nextBtn.hidden = idx >= ORDER.length - 1;
 
     if (push) {
-      // When navigating to the create page, restore the last saved search params
-      // so the user's filters survive in-app navigation (not just refresh).
       const savedSearch = key === "create" ? (sessionStorage.getItem("create-search") ?? "") : "";
       history.pushState(null, "", `/${key}${savedSearch}`);
-    } else {
-      // On initial load / popstate: preserve whatever search params are already
-      // in the URL — this is what makes refresh work.
-      history.replaceState(null, "", `/${key}${location.search}`);
     }
   }
 
