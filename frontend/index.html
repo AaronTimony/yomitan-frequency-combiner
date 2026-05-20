@@ -35,124 +35,134 @@
           class="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-xl bg-transparent border-0 cursor-pointer text-[rgba(230,250,252,0.7)] hover:text-[#E6FAFC] transition-colors duration-150"></button>
       </nav>
 
-      <section id="page-recommended" class="page flex flex-col gap-7 px-48" hidden>
+      <section id="page-recommended" class="page flex flex-col gap-7" hidden>
 
         <header class="text-center">
           <h1 class="text-4xl font-black tracking-tight">Recommended Dictionaries</h1>
           <p class="mt-3 text-[rgba(230,250,252,0.85)] text-[1.15rem]">Pre-combined frequency dictionaries ready to import into Yomitan.</p>
         </header>
 
-        <div class="flex flex-col gap-4">
+        <div class="flex gap-6 items-start">
 
-          <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex flex-col gap-5 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
-            <div class="flex items-center justify-between gap-8">
-              <div class="flex flex-col gap-2 min-w-0">
-                <h3 class="text-[#E6FAFC] text-xl font-bold">Jiten Global Frequency</h3>
-                <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Combined from all Jiten frequency sources. Broad coverage across novels, web text, subtitles, and more.</p>
+          <div class="flex-1 min-w-0 flex flex-col gap-4" data-media-articles>
+
+            <!-- ANIME -->
+            <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex flex-col gap-5 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
+              <div class="flex items-center justify-between gap-8">
+                <div class="flex flex-col gap-2 min-w-0">
+                  <h3 class="text-[#E6FAFC] text-xl font-bold">Anime</h3>
+                  <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Combined frequency dictionary built from all Jiten anime decks, plus category breakdowns by genre.</p>
+                </div>
+                <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/jiten_freq_Anime.zip" download class="shrink-0 px-7 py-3 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-wide cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] hover:from-[#8ff5b3] hover:to-[#1fd98d] no-underline">Download</a>
               </div>
-              <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/jiten_freq_global.zip" download class="shrink-0 px-7 py-3 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-wide cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] hover:from-[#8ff5b3] hover:to-[#1fd98d] no-underline">Download</a>
-            </div>
-            <div>
-<div class="grid grid-cols-5 gap-2.5">
-                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
-                  <span class="text-[#E6FAFC] text-sm font-semibold">Anime</span>
-                  <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/jiten_freq_Anime.zip" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
-                </div>
-                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
-                  <span class="text-[#E6FAFC] text-sm font-semibold">Audio</span>
-                  <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/jiten_freq_Audio.zip" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
-                </div>
-                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
-                  <span class="text-[#E6FAFC] text-sm font-semibold">Drama</span>
-                  <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/jiten_freq_Drama.zip" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
-                </div>
-                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
-                  <span class="text-[#E6FAFC] text-sm font-semibold">Manga</span>
-                  <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/jiten_freq_Manga.zip" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
-                </div>
-                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
-                  <span class="text-[#E6FAFC] text-sm font-semibold">Movie</span>
-                  <a href="#" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
-                </div>
-                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
-                  <span class="text-[#E6FAFC] text-sm font-semibold">Non-Fiction</span>
-                  <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/jiten_freq_NonFiction.zip" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
-                </div>
-                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
-                  <span class="text-[#E6FAFC] text-sm font-semibold">Novel</span>
-                  <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/jiten_freq_Novel.zip" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
-                </div>
-                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
-                  <span class="text-[#E6FAFC] text-sm font-semibold">Video Game</span>
-                  <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/jiten_freq_VideoGame.zip" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
-                </div>
-                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
-                  <span class="text-[#E6FAFC] text-sm font-semibold">Visual Novel</span>
-                  <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/jiten_freq_VisualNovel.zip" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
-                </div>
-                <div class="bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2.5">
-                  <span class="text-[#E6FAFC] text-sm font-semibold">Web Novel</span>
-                  <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/jiten_freq_WebNovel.zip" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
-                </div>
+              <div class="grid grid-cols-5 gap-2.5" data-featured-grid="anime" data-featured-genres="Action,Romance,Comedy,Slice of Life,Fantasy"></div>
+              <div class="border-t border-[#5a5a5a] pt-4 flex flex-col gap-3">
+                <button data-media-toggle="anime-all-genres" class="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.85)] text-sm font-bold cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.5)] hover:text-[#FB923C]">
+                  <span data-toggle-label>Show All Genres</span>
+                  <svg data-toggle-chevron xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div id="anime-all-genres" class="hidden flex-col gap-2"></div>
               </div>
-            </div>
-          </article>
+            </article>
 
-          <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex items-center justify-between gap-8 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
-            <div class="flex flex-col gap-2 min-w-0">
-              <h3 class="text-[#E6FAFC] text-xl font-bold">JPDB v2.2 Frequency Kana</h3>
-              <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Sourced from JPDB's global frequency data. Strong coverage of anime, manga, visual novel, and light novel vocabulary.</p>
-            </div>
-            <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/JPDB_v2.2_Frequency_Kana_2024-10-13.zip" download class="shrink-0 px-7 py-3 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-wide cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] hover:from-[#8ff5b3] hover:to-[#1fd98d] no-underline">Download</a>
-          </article>
-
-          <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex flex-col gap-5 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
-            <div class="flex items-center justify-between gap-8">
-              <div class="flex flex-col gap-2 min-w-0">
-                <h3 class="text-[#E6FAFC] text-xl font-bold">Anime by Genre</h3>
-                <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Genre-specific frequency dictionaries built from top Jiten anime decks.</p>
-              </div>
-              <button data-media-toggle="anime-genre-list" class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.85)] text-sm font-bold cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.5)] hover:text-[#FB923C]">
-                <span data-toggle-label>Browse genres</span>
-                <svg data-toggle-chevron xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200"><polyline points="6 9 12 15 18 9"/></svg>
-              </button>
-            </div>
-            <div id="anime-genre-list" class="hidden gap-6">
-
-              <div id="genre-rows" class="flex flex-col gap-2 flex-1 min-w-0">
-
-                <div class="grid grid-cols-[1fr_auto_auto_auto_auto] items-center gap-x-6 px-4 py-3 rounded-xl bg-[#3a3a3a] border border-[#5a5a5a]" data-genre-url="/sources/Action_Anime_sources.json" data-zip-url="/dicts/Action_Anime.zip">
-                  <span data-genre-name class="text-[#E6FAFC] font-semibold text-sm">Action</span>
-                  <div class="flex flex-col items-end gap-0.5">
-                    <span class="text-[#FB923C] text-[0.6rem] font-bold uppercase tracking-wider">Words</span>
-                    <span data-stat="words" class="text-[#E6FAFC] font-bold text-sm">…</span>
-                  </div>
-                  <div class="flex flex-col items-end gap-0.5">
-                    <span class="text-[#FB923C] text-[0.6rem] font-bold uppercase tracking-wider">Decks</span>
-                    <span data-stat="decks" class="text-[#E6FAFC] font-bold text-sm">…</span>
-                  </div>
-                  <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/Action_Anime.zip" download class="text-xs font-bold text-center px-4 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
-                  <button data-add-genre disabled class="text-xs font-bold text-center px-4 py-1.5 rounded-lg bg-[#4a4a4a] border border-[#5a5a5a] text-[rgba(230,250,252,0.85)] cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.6)] hover:text-[#FB923C] disabled:opacity-40 disabled:cursor-not-allowed">Add to list</button>
+            <!-- MANGA -->
+            <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex flex-col gap-5 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
+              <div class="flex items-center justify-between gap-8">
+                <div class="flex flex-col gap-2 min-w-0">
+                  <h3 class="text-[#E6FAFC] text-xl font-bold">Manga</h3>
+                  <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Combined frequency dictionary built from all Jiten manga decks, plus category breakdowns by genre.</p>
                 </div>
-
-                <div class="grid grid-cols-[1fr_auto_auto_auto_auto] items-center gap-x-6 px-4 py-3 rounded-xl bg-[#3a3a3a] border border-[#5a5a5a]" data-genre-url="/sources/Slice_of_Life_Anime_sources.json" data-zip-url="/dicts/Slice_of_Life_Anime.zip">
-                  <span data-genre-name class="text-[#E6FAFC] font-semibold text-sm">Slice of Life</span>
-                  <div class="flex flex-col items-end gap-0.5">
-                    <span class="text-[#FB923C] text-[0.6rem] font-bold uppercase tracking-wider">Words</span>
-                    <span data-stat="words" class="text-[#E6FAFC] font-bold text-sm">…</span>
-                  </div>
-                  <div class="flex flex-col items-end gap-0.5">
-                    <span class="text-[#FB923C] text-[0.6rem] font-bold uppercase tracking-wider">Decks</span>
-                    <span data-stat="decks" class="text-[#E6FAFC] font-bold text-sm">…</span>
-                  </div>
-                  <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/Slice.of.Life.Anime.zip" download class="text-xs font-bold text-center px-4 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
-                  <button data-add-genre disabled class="text-xs font-bold text-center px-4 py-1.5 rounded-lg bg-[#4a4a4a] border border-[#5a5a5a] text-[rgba(230,250,252,0.85)] cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.6)] hover:text-[#FB923C] disabled:opacity-40 disabled:cursor-not-allowed">Add to list</button>
-                </div>
-
+                <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/jiten_freq_Manga.zip" download class="shrink-0 px-7 py-3 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-wide cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] hover:from-[#8ff5b3] hover:to-[#1fd98d] no-underline">Download</a>
               </div>
+              <div class="grid grid-cols-5 gap-2.5" data-featured-grid="manga" data-featured-genres="Action,Romance,Comedy,Slice of Life,Fantasy"></div>
+              <div class="border-t border-[#5a5a5a] pt-4 flex flex-col gap-3">
+                <button data-media-toggle="manga-all-genres" class="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.85)] text-sm font-bold cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.5)] hover:text-[#FB923C]">
+                  <span data-toggle-label>Show All Genres</span>
+                  <svg data-toggle-chevron xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div id="manga-all-genres" class="hidden flex-col gap-2"></div>
+              </div>
+            </article>
 
-            </div>
-          </article>
+            <!-- DRAMA -->
+            <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex flex-col gap-5 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
+              <div class="flex items-center justify-between gap-8">
+                <div class="flex flex-col gap-2 min-w-0">
+                  <h3 class="text-[#E6FAFC] text-xl font-bold">Drama</h3>
+                  <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Combined frequency dictionary built from all Jiten drama decks, plus category breakdowns by genre.</p>
+                </div>
+                <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/jiten_freq_Drama.zip" download class="shrink-0 px-7 py-3 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-wide cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] hover:from-[#8ff5b3] hover:to-[#1fd98d] no-underline">Download</a>
+              </div>
+              <div class="grid grid-cols-5 gap-2.5" data-featured-grid="drama" data-featured-genres="Drama,Romance,Comedy,Mystery,Thriller"></div>
+              <div class="border-t border-[#5a5a5a] pt-4 flex flex-col gap-3">
+                <button data-media-toggle="drama-all-genres" class="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.85)] text-sm font-bold cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.5)] hover:text-[#FB923C]">
+                  <span data-toggle-label>Show All Genres</span>
+                  <svg data-toggle-chevron xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div id="drama-all-genres" class="hidden flex-col gap-2"></div>
+              </div>
+            </article>
+
+            <!-- NOVEL -->
+            <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex flex-col gap-5 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
+              <div class="flex items-center justify-between gap-8">
+                <div class="flex flex-col gap-2 min-w-0">
+                  <h3 class="text-[#E6FAFC] text-xl font-bold">Novel</h3>
+                  <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Combined frequency dictionary built from all Jiten novel decks, plus category breakdowns by genre.</p>
+                </div>
+                <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/jiten_freq_Novel.zip" download class="shrink-0 px-7 py-3 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-wide cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] hover:from-[#8ff5b3] hover:to-[#1fd98d] no-underline">Download</a>
+              </div>
+              <div class="grid grid-cols-5 gap-2.5" data-featured-grid="novel" data-featured-genres="Fantasy,Romance,Mystery,Sci-Fi,Drama"></div>
+              <div class="border-t border-[#5a5a5a] pt-4 flex flex-col gap-3">
+                <button data-media-toggle="novel-all-genres" class="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.85)] text-sm font-bold cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.5)] hover:text-[#FB923C]">
+                  <span data-toggle-label>Show All Genres</span>
+                  <svg data-toggle-chevron xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div id="novel-all-genres" class="hidden flex-col gap-2"></div>
+              </div>
+            </article>
+
+            <!-- VIDEO GAME -->
+            <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex flex-col gap-5 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
+              <div class="flex items-center justify-between gap-8">
+                <div class="flex flex-col gap-2 min-w-0">
+                  <h3 class="text-[#E6FAFC] text-xl font-bold">Video Game</h3>
+                  <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Combined frequency dictionary built from all Jiten video game decks, plus category breakdowns by genre.</p>
+                </div>
+                <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/jiten_freq_VideoGame.zip" download class="shrink-0 px-7 py-3 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-wide cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] hover:from-[#8ff5b3] hover:to-[#1fd98d] no-underline">Download</a>
+              </div>
+              <div class="grid grid-cols-5 gap-2.5" data-featured-grid="videogame" data-featured-genres="Action,Adventure,Fantasy,Sci-Fi,Mystery"></div>
+              <div class="border-t border-[#5a5a5a] pt-4 flex flex-col gap-3">
+                <button data-media-toggle="videogame-all-genres" class="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.85)] text-sm font-bold cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.5)] hover:text-[#FB923C]">
+                  <span data-toggle-label>Show All Genres</span>
+                  <svg data-toggle-chevron xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div id="videogame-all-genres" class="hidden flex-col gap-2"></div>
+              </div>
+            </article>
+
+            <!-- VISUAL NOVEL -->
+            <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex flex-col gap-5 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
+              <div class="flex items-center justify-between gap-8">
+                <div class="flex flex-col gap-2 min-w-0">
+                  <h3 class="text-[#E6FAFC] text-xl font-bold">Visual Novel</h3>
+                  <p class="text-[rgba(230,250,252,0.7)] text-sm leading-relaxed">Combined frequency dictionary built from all Jiten visual novel decks, plus category breakdowns by genre.</p>
+                </div>
+                <a href="https://github.com/AaronTimony/yomitan-frequency-combiner/releases/download/dictionary/jiten_freq_VisualNovel.zip" download class="shrink-0 px-7 py-3 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-wide cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] hover:from-[#8ff5b3] hover:to-[#1fd98d] no-underline">Download</a>
+              </div>
+              <div class="grid grid-cols-5 gap-2.5" data-featured-grid="visualnovel" data-featured-genres="Romance,Drama,Mystery,Fantasy,Slice of Life"></div>
+              <div class="border-t border-[#5a5a5a] pt-4 flex flex-col gap-3">
+                <button data-media-toggle="visualnovel-all-genres" class="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#3a3a3a] border border-[#5a5a5a] text-[rgba(230,250,252,0.85)] text-sm font-bold cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.5)] hover:text-[#FB923C]">
+                  <span data-toggle-label>Show All Genres</span>
+                  <svg data-toggle-chevron xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div id="visualnovel-all-genres" class="hidden flex-col gap-2"></div>
+              </div>
+            </article>
+
+          </div>
+
+          <aside id="genre-cart-mount" class="sticky top-6 self-start max-h-[calc(100vh-3rem)] flex flex-col overflow-hidden" style="flex: 0 0 20rem; min-width: 0;"></aside>
 
         </div>
 
