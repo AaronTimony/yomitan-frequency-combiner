@@ -439,6 +439,109 @@ describe("mergeJitenDecks – output format", () => {
   });
 });
 
+describe("mergeJitenDecks – absolute mode", () => {
+  it("emits the raw value for a single entry, not a rank", async () => {
+    const file = await makeZipFile([["春", "freq", { reading: "はる", frequency: { value: 500, displayValue: "500" } }]]);
+    const bank = await readOutputBank(await mergeJitenDecks([file], "Out", "absolute"));
+
+    expect(rankOf(bank, "春", "はる", false)).toBe(500);
+  });
+
+  it("sums the same word's counts across dicts", async () => {
+    // 春: 100 + 400 = 500, 夏: 300 + 100 = 400
+    const file1 = await makeZipFile([
+      ["春", "freq", { reading: "はる", frequency: { value: 100, displayValue: "100" } }],
+      ["夏", "freq", { reading: "なつ", frequency: { value: 300, displayValue: "300" } }],
+    ], "Dict1");
+    const file2 = await makeZipFile([
+      ["春", "freq", { reading: "はる", frequency: { value: 400, displayValue: "400" } }],
+      ["夏", "freq", { reading: "なつ", frequency: { value: 100, displayValue: "100" } }],
+    ], "Dict2");
+    const bank = await readOutputBank(await mergeJitenDecks([file1, file2], "Out", "absolute"));
+
+    expect(rankOf(bank, "春", "はる", false)).toBe(500);
+    expect(rankOf(bank, "夏", "なつ", false)).toBe(400);
+  });
+
+  it("treats missing values as 0 in the sum", async () => {
+    // 春: only in Dict1 (50); 夏: 20 + 20 = 40
+    const file1 = await makeZipFile([
+      ["春", "freq", { reading: "はる", frequency: { value: 50, displayValue: "50" } }],
+      ["夏", "freq", { reading: "なつ", frequency: { value: 20, displayValue: "20" } }],
+    ], "Dict1");
+    const file2 = await makeZipFile([
+      ["夏", "freq", { reading: "なつ", frequency: { value: 20, displayValue: "20" } }],
+    ], "Dict2");
+    const bank = await readOutputBank(await mergeJitenDecks([file1, file2], "Out", "absolute"));
+
+    expect(rankOf(bank, "春", "はる", false)).toBe(50);
+    expect(rankOf(bank, "夏", "なつ", false)).toBe(40);
+  });
+
+  it("does not produce consecutive ranks (absolute values can have gaps)", async () => {
+    // Three entries with values 100, 200, 300 → absolute output preserves those numbers
+    const file = await makeZipFile([
+      ["春", "freq", { reading: "はる", frequency: { value: 100, displayValue: "100" } }],
+      ["夏", "freq", { reading: "なつ", frequency: { value: 200, displayValue: "200" } }],
+      ["秋", "freq", { reading: "あき", frequency: { value: 300, displayValue: "300" } }],
+    ]);
+    const bank = await readOutputBank(await mergeJitenDecks([file], "Out", "absolute"));
+
+    expect(rankOf(bank, "春", "はる", false)).toBe(100);
+    expect(rankOf(bank, "夏", "なつ", false)).toBe(200);
+    expect(rankOf(bank, "秋", "あき", false)).toBe(300);
+  });
+
+  it("sums kanji-rank and kana-rank entries for the same word independently", async () => {
+    // kanji-rank sum: 200 + 100 = 300; kana-rank sum: 50 (only in Dict1)
+    const file1 = await makeZipFile([
+      ["春", "freq", { reading: "はる", frequency: { value: 200, displayValue: "200" } }],
+      ["春", "freq", { reading: "はる", frequency: { value: 50, displayValue: "50㋕" } }],
+    ], "Dict1");
+    const file2 = await makeZipFile([
+      ["春", "freq", { reading: "はる", frequency: { value: 100, displayValue: "100" } }],
+    ], "Dict2");
+    const bank = await readOutputBank(await mergeJitenDecks([file1, file2], "Out", "absolute"));
+
+    expect(rankOf(bank, "春", "はる", false)).toBe(300);
+    expect(rankOf(bank, "春", "はる", true)).toBe(50);
+  });
+
+  it("preserves the ㋕ marker on standalone kana entries", async () => {
+    const file = await makeZipFile([["はる", "freq", { value: 7762, displayValue: "7762㋕" }]]);
+    const bank = await readOutputBank(await mergeJitenDecks([file], "Out", "absolute"));
+
+    const entry = kanaEntry(bank, "はる")!;
+    const d = entry[2] as { value: number; displayValue: string };
+    expect(d.value).toBe(7762);
+    expect(d.displayValue).toContain("㋕");
+  });
+
+  it("preserves the ㋕ marker on kana-rank entries in displayValue", async () => {
+    const file = await makeZipFile([["春", "freq", { reading: "はる", frequency: { value: 9977, displayValue: "9977㋕" } }]]);
+    const bank = await readOutputBank(await mergeJitenDecks([file], "Out", "absolute"));
+
+    const entry = readingEntry(bank, "春", "はる", true)!;
+    const display = (entry[2] as { reading: string; frequency: { displayValue: string } }).frequency.displayValue;
+    expect(display).toContain("㋕");
+  });
+
+  it("differs from ranked mode for the same input", async () => {
+    // Two entries — ranked mode emits 1 and 2; absolute mode emits 500 and 100
+    const file = await makeZipFile([
+      ["春", "freq", { reading: "はる", frequency: { value: 500, displayValue: "500" } }],
+      ["夏", "freq", { reading: "なつ", frequency: { value: 100, displayValue: "100" } }],
+    ]);
+    const ranked = await readOutputBank(await mergeJitenDecks([file], "Out", "ranked"));
+    const absolute = await readOutputBank(await mergeJitenDecks([file], "Out", "absolute"));
+
+    expect(rankOf(ranked, "春", "はる", false)).toBe(1);
+    expect(rankOf(ranked, "夏", "なつ", false)).toBe(2);
+    expect(rankOf(absolute, "春", "はる", false)).toBe(500);
+    expect(rankOf(absolute, "夏", "なつ", false)).toBe(100);
+  });
+});
+
 describe("combineZips – raw concatenation", () => {
   it("includes all entries from all dicts", async () => {
     const file1 = await makeZipFile([["春", "freq", { reading: "はる", frequency: { value: 1000, displayValue: "1000" } }]], "Dict1");

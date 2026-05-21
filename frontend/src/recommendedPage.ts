@@ -93,6 +93,32 @@ interface CartEntry {
   words: number;
   decks: number;
   row: HTMLElement;
+  isMedia?: boolean;
+}
+
+function applyAddedStyle(btn: HTMLButtonElement, added: boolean): void {
+  btn.textContent = added ? "✓ Added" : "Add to list";
+  // Default = solid orange. Added = orange ghost (transparent bg, orange text)
+  // so the swap is the same hue — no jarring green/orange flip.
+  // The border-[#FB923C] in the base classes stays on in both states.
+  btn.classList.toggle("bg-[#FB923C]", !added);
+  btn.classList.toggle("text-white", !added);
+  btn.classList.toggle("hover:bg-[#FBB36F]", !added);
+  btn.classList.toggle("hover:border-[#FBB36F]", !added);
+  btn.classList.toggle("bg-transparent", added);
+  btn.classList.toggle("text-[#FB923C]", added);
+}
+
+function toggleMediaAdded(article: HTMLElement, added: boolean): void {
+  article.toggleAttribute("data-media-added", added);
+  // Keep the header (children[0]) visible — title, description, Download and
+  // the Add to list pill. Hide everything below: featured 5-genre grid and
+  // the Show All Genres section. Once the full media is in the cart, the
+  // per-genre breakdown is redundant.
+  const children = Array.from(article.children) as HTMLElement[];
+  for (let i = 1; i < children.length; i++) {
+    children[i].hidden = added;
+  }
 }
 
 function setupGenreCart(): void {
@@ -150,11 +176,14 @@ function setupGenreCart(): void {
     // list — update every row that points at this zip so their buttons stay
     // in sync regardless of which one the user interacted with.
     scope!.querySelectorAll<HTMLElement>(`[data-zip-url="${CSS.escape(zipUrl)}"]`).forEach((r) => {
-      const btn = r.querySelector<HTMLButtonElement>("[data-add-genre]");
+      // Media-level articles have [data-add-media]; per-genre rows have
+      // [data-add-genre]. Prefer media so the article's own pill is updated
+      // even though it also contains nested per-genre buttons.
+      const btn = r.querySelector<HTMLButtonElement>("[data-add-media]")
+               ?? r.querySelector<HTMLButtonElement>("[data-add-genre]");
       if (!btn) return;
-      btn.textContent = added ? "✓ Added" : "Add to list";
-      btn.classList.toggle("border-[#1abc7e]", added);
-      btn.classList.toggle("text-[#1abc7e]", added);
+      applyAddedStyle(btn, added);
+      if (btn.dataset.addMedia !== undefined) toggleMediaAdded(r, added);
     });
   }
 
@@ -169,7 +198,7 @@ function setupGenreCart(): void {
         item.innerHTML = `
           <div class="flex flex-col min-w-0">
             <span class="text-[#E6FAFC] font-semibold text-sm truncate">${esc(e.name)}</span>
-            <span class="text-[rgba(230,250,252,0.85)] text-xs">${e.words.toLocaleString()} words · ${e.decks.toLocaleString()} decks</span>
+            <span class="text-[rgba(230,250,252,0.85)] text-xs">${e.isMedia ? "All decks" : `${e.words.toLocaleString()} words · ${e.decks.toLocaleString()} decks`}</span>
           </div>
           <button data-remove class="shrink-0 text-[rgba(230,250,252,0.35)] hover:text-[#fb7185] text-lg leading-none bg-transparent border-0 cursor-pointer transition-colors duration-150" aria-label="Remove ${esc(e.name)}">×</button>
         `;
@@ -193,13 +222,27 @@ function setupGenreCart(): void {
     clearBtn.classList.toggle("hidden", entries.size === 0);
     mergeBtn.disabled = entries.size < 2;
 
+    // Disable an article's media-add button when any of its per-genre rows is
+    // already in the cart — adding the full media on top would double-count
+    // those genres at merge time.
+    scope!.querySelectorAll<HTMLElement>(".rec-article").forEach((article) => {
+      const mediaBtn = article.querySelector<HTMLButtonElement>("[data-add-media]");
+      if (!mediaBtn) return;
+      let hasGenreInCart = false;
+      for (const entry of entries.values()) {
+        if (entry.isMedia) continue;
+        if (article.contains(entry.row)) { hasGenreInCart = true; break; }
+      }
+      mediaBtn.disabled = hasGenreInCart;
+    });
+
     if (entries.size === 0) statusEl.textContent = "Add at least 2 dictionaries to merge.";
     else if (entries.size === 1) statusEl.textContent = "Add 1 more dictionary to merge.";
     else statusEl.textContent = `${entries.size} dictionaries ready to merge.`;
   }
 
   scope.addEventListener("click", (ev) => {
-    const btn = (ev.target as HTMLElement).closest<HTMLButtonElement>("[data-add-genre]");
+    const btn = (ev.target as HTMLElement).closest<HTMLButtonElement>("[data-add-genre], [data-add-media]");
     if (!btn || btn.disabled) return;
     const row = btn.closest<HTMLElement>("[data-zip-url]");
     if (!row) return;
@@ -209,12 +252,17 @@ function setupGenreCart(): void {
       entries.delete(key);
       setRowAdded(row, false);
     } else {
+      const isMedia = btn.dataset.addMedia !== undefined;
+      const name = isMedia
+        ? `${row.querySelector<HTMLElement>("h3")?.textContent?.trim() ?? "Media"} (All)`
+        : row.querySelector<HTMLElement>("[data-genre-name]")?.textContent?.trim() ?? "Genre";
       entries.set(key, {
         zipUrl: key,
-        name: row.querySelector<HTMLElement>("[data-genre-name]")?.textContent?.trim() ?? "Genre",
+        name,
         words: Number(row.dataset.words ?? "0"),
         decks: Number(row.dataset.decks ?? "0"),
         row,
+        isMedia,
       });
       setRowAdded(row, true);
     }
@@ -313,7 +361,7 @@ function populateFeaturedGrids(): void {
           <span><span data-stat="words" class="text-[#E6FAFC] font-bold">…</span> words</span>
           <span><span data-stat="decks" class="text-[#E6FAFC] font-bold">…</span> decks</span>
         </div>
-        <button data-add-genre disabled class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-[#4a4a4a] border border-[#5a5a5a] text-[rgba(230,250,252,0.85)] cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.6)] hover:text-[#FB923C] disabled:opacity-40 disabled:cursor-not-allowed">Add to list</button>
+        <button data-add-genre disabled class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-[#FB923C] border border-[#FB923C] text-white cursor-pointer transition-all duration-150 hover:bg-[#FBB36F] hover:border-[#FBB36F] disabled:opacity-40 disabled:cursor-not-allowed">Add to list</button>
         <a href="${downloadUrl}" download data-umami-event="download-genre" data-umami-event-media="${esc(media.label)}" data-umami-event-genre="${esc(genre)}" class="inline-flex items-center justify-center gap-1.5 text-xs font-bold px-2 py-1.5 rounded-lg bg-[#5a5a5a] text-[#E6FAFC] hover:bg-[#6a6a6a] transition-colors duration-150 no-underline"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M5 15l7 7 7-7"/><line x1="3" y1="22" x2="21" y2="22"/></svg>Download</a>
         <div data-sources class="empty:hidden"></div>
       `;
@@ -352,7 +400,7 @@ function populateAllGenresSections(): void {
             <span data-stat="decks" class="text-[#E6FAFC] font-bold text-sm">…</span>
           </div>
           <a href="${downloadUrl}" download data-umami-event="download-genre" data-umami-event-media="${esc(media.label)}" data-umami-event-genre="${esc(genre)}" class="inline-flex items-center justify-center gap-1.5 text-xs font-bold px-4 py-1.5 rounded-lg bg-[#5a5a5a] text-[#E6FAFC] hover:bg-[#6a6a6a] transition-colors duration-150 no-underline"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M5 15l7 7 7-7"/><line x1="3" y1="22" x2="21" y2="22"/></svg>Download</a>
-          <button data-add-genre disabled class="text-xs font-bold text-center px-4 py-1.5 rounded-lg bg-[#4a4a4a] border border-[#5a5a5a] text-[rgba(230,250,252,0.85)] cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.6)] hover:text-[#FB923C] disabled:opacity-40 disabled:cursor-not-allowed">Add to list</button>
+          <button data-add-genre disabled class="text-xs font-bold text-center px-4 py-1.5 rounded-lg bg-[#FB923C] border border-[#FB923C] text-white cursor-pointer transition-all duration-150 hover:bg-[#FBB36F] hover:border-[#FBB36F] disabled:opacity-40 disabled:cursor-not-allowed">Add to list</button>
         </div>
         <div data-sources class="px-4 pb-3 empty:hidden"></div>
       `;
@@ -393,9 +441,37 @@ function setupMediaDropdowns(): void {
   });
 }
 
+function setupMediaAddButtons(): void {
+  // Walk every <article class="rec-article">, copy the Download anchor's href
+  // onto the article as data-zip-url (so the cart can find it the same way it
+  // finds per-genre rows), and inject an "Add to list" button next to Download.
+  document.querySelectorAll<HTMLElement>(".rec-article").forEach((article) => {
+    const dl = article.querySelector<HTMLAnchorElement>("a[download]");
+    if (!dl) return;
+    article.dataset.zipUrl = dl.href;
+
+    // Group Download + Add to list together on the right side of the header.
+    // The header is a justify-between flex, so without a wrapper a third child
+    // would spread them out awkwardly. The wrapper keeps them paired.
+    const wrap = document.createElement("div");
+    wrap.className = "flex items-center gap-2 shrink-0";
+    dl.replaceWith(wrap);
+    // Download has no border; the Add button has a 1px orange border (used for
+    // the ghost "Added" state). Add a transparent matching border to Download
+    // so both buttons render at the same exact height.
+    dl.classList.add("border", "border-transparent");
+    const btn = document.createElement("button");
+    btn.dataset.addMedia = "";
+    btn.className = "inline-flex items-center gap-2 px-7 py-3 rounded-2xl bg-[#FB923C] border border-[#FB923C] text-white text-sm font-bold tracking-wide cursor-pointer transition-all duration-150 hover:bg-[#FBB36F] hover:border-[#FBB36F] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#FB923C] disabled:hover:border-[#FB923C]";
+    btn.textContent = "Add to list";
+    wrap.append(dl, btn);
+  });
+}
+
 export function setupRecommendedPage(): void {
   populateAllGenresSections();
   populateFeaturedGrids();
+  setupMediaAddButtons();
   setupMediaDropdowns();
   setupGenreCart();
 }
