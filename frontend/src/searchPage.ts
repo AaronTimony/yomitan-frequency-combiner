@@ -1,4 +1,4 @@
-import { downloadBlob, mergeJitenDecks } from "./combiner";
+import { downloadBlob, mergeJitenDecks, type MergeMode } from "./combiner";
 import { MEDIA_TYPES, fetchDecks, fetchDeckYomitanZip, mapPool, mediaTypeLabel, type FetchDecksResult, type JitenDeck } from "./jitenApi";
 
 type TitleLang = "original" | "romaji" | "english";
@@ -94,7 +94,9 @@ export function setupCreatePage(searchEl: HTMLElement): void {
 
   mc.mergeBtn.addEventListener("click", () => {
     const title = dictTitleInput.value.trim() || "Combined Frequency";
-    void mergeDeckSelection(mc, addedDecks, title);
+    void promptMergeMode().then((mode) => {
+      if (mode) void mergeDeckSelection(mc, addedDecks, title, mode);
+    });
   });
 
   // Restore state from URL so a page refresh doesn't reset filters/search/page.
@@ -123,7 +125,11 @@ export function setupCreatePage(searchEl: HTMLElement): void {
     const s = params.toString();
     const search = s ? `?${s}` : "";
     sessionStorage.setItem("create-search", search);
-    history.replaceState(null, "", `/create${search}`);
+    // Only touch the URL if /create is the active page — otherwise we'd clobber
+    // the URL of whatever page the user actually refreshed on (e.g. /combiner).
+    if (location.pathname === "/create") {
+      history.replaceState(null, "", `/create${search}`);
+    }
   }
 
   function goToPage(page: number, scroll = true): void {
@@ -397,7 +403,7 @@ function makeAddedRow(
 
   const dlBtn = document.createElement("button");
   dlBtn.className =
-    "shrink-0 py-1.5 px-2.5 border-0 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-[0.75rem] font-bold cursor-pointer disabled:opacity-40";
+    "shrink-0 py-1.5 px-2.5 border-0 rounded-lg bg-[#5a5a5a] hover:bg-[#6a6a6a] text-[#E6FAFC] text-[0.75rem] font-bold cursor-pointer transition-colors duration-150 disabled:opacity-40";
   dlBtn.title = "Download Yomitan";
   dlBtn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M5 15l7 7 7-7"/><line x1="3" y1="22" x2="21" y2="22"/></svg>`;
   dlBtn.addEventListener("click", () => downloadDeck(dlBtn, deck, title));
@@ -417,7 +423,7 @@ function makeAddedRow(
   return row;
 }
 
-async function mergeDeckSelection(mc: MergeControls, decks: JitenDeck[], title: string): Promise<void> {
+async function mergeDeckSelection(mc: MergeControls, decks: JitenDeck[], title: string, mode: MergeMode): Promise<void> {
   if (decks.length === 0) return;
   mc.mergeBtn.disabled = true;
   mc.mergeBtn.textContent = "Downloading…";
@@ -431,8 +437,9 @@ async function mergeDeckSelection(mc: MergeControls, decks: JitenDeck[], title: 
     );
     const files = blobs.map((blob, i) => new File([blob], `deck_${decks[i].deckId}.zip`));
     mc.mergeBtn.textContent = "Merging…";
-    const blob = await mergeJitenDecks(files, title);
-    downloadBlob(blob, `${safeFilename(title)}.zip`);
+    const blob = await mergeJitenDecks(files, title, mode);
+    const suffix = mode === "absolute" ? "_counts" : "";
+    downloadBlob(blob, `${safeFilename(title)}${suffix}.zip`);
   } catch (err) {
     alert(`Merge failed: ${err instanceof Error ? err.message : String(err)}`);
   } finally {
@@ -606,6 +613,59 @@ function minusIcon(): string {
 
 function safeFilename(name: string): string {
   return name.replace(/[\\/:*?"<>|]/g, "_").trim() || "deck";
+}
+
+function promptMergeMode(): Promise<MergeMode | null> {
+  return new Promise((resolve) => {
+    const backdrop = document.createElement("div");
+    backdrop.className = "fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm";
+
+    const modal = document.createElement("div");
+    modal.className = "bg-[#2a2a2a] border border-[#5a5a5a] rounded-2xl p-6 max-w-md w-[92%] flex flex-col gap-4 shadow-2xl";
+    modal.innerHTML = `
+      <div class="flex flex-col gap-1">
+        <h2 class="text-[#E6FAFC] text-xl font-black">Output Format</h2>
+        <p class="text-[rgba(230,250,252,0.65)] text-sm">Choose how frequency values are written into the dictionary.</p>
+      </div>
+      <div class="flex flex-col gap-2.5">
+        <button data-mode="ranked"
+          class="text-left bg-[#3a3a3a] hover:bg-[#4a4a4a] border-2 border-[#5a5a5a] hover:border-[#FB923C] rounded-xl px-4 py-3 cursor-pointer transition-all duration-150">
+          <div class="text-[#E6FAFC] font-bold text-sm mb-0.5">Ranked</div>
+          <div class="text-[rgba(230,250,252,0.6)] text-xs">Words are numbered 1, 2, 3… by combined frequency. Best for Yomitan display.</div>
+        </button>
+        <button data-mode="absolute"
+          class="text-left bg-[#3a3a3a] hover:bg-[#4a4a4a] border-2 border-[#5a5a5a] hover:border-[#FB923C] rounded-xl px-4 py-3 cursor-pointer transition-all duration-150">
+          <div class="text-[#E6FAFC] font-bold text-sm mb-0.5">Absolute counts</div>
+          <div class="text-[rgba(230,250,252,0.6)] text-xs">Each word keeps its raw summed occurrence count across selected decks.</div>
+        </button>
+      </div>
+      <button data-cancel
+        class="self-end text-[rgba(230,250,252,0.5)] hover:text-[#E6FAFC] text-sm font-semibold bg-transparent border-0 cursor-pointer transition-colors">
+        Cancel
+      </button>
+    `;
+
+    function close(result: MergeMode | null): void {
+      backdrop.remove();
+      document.removeEventListener("keydown", onKey);
+      resolve(result);
+    }
+    function onKey(e: KeyboardEvent): void {
+      if (e.key === "Escape") close(null);
+    }
+
+    modal.querySelectorAll<HTMLButtonElement>("button[data-mode]").forEach((btn) => {
+      btn.addEventListener("click", () => close(btn.dataset.mode as MergeMode));
+    });
+    modal.querySelector<HTMLButtonElement>("button[data-cancel]")!.addEventListener("click", () => close(null));
+    backdrop.addEventListener("click", (e) => {
+      if (e.target === backdrop) close(null);
+    });
+    document.addEventListener("keydown", onKey);
+
+    backdrop.append(modal);
+    document.body.append(backdrop);
+  });
 }
 
 function escapeHtml(s: string): string {

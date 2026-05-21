@@ -107,11 +107,18 @@ function setupGenreCart(): void {
   const entries = new Map<string, CartEntry>();
 
   function setRowAdded(row: HTMLElement, added: boolean): void {
-    const btn = row.querySelector<HTMLButtonElement>("[data-add-genre]");
-    if (!btn) return;
-    btn.textContent = added ? "✓ Added" : "Add to list";
-    btn.classList.toggle("border-[#1abc7e]", added);
-    btn.classList.toggle("text-[#1abc7e]", added);
+    const zipUrl = row.dataset.zipUrl;
+    if (!zipUrl) return;
+    // Same genre appears in both the featured grid and the "Show All Genres"
+    // list — update every row that points at this zip so their buttons stay
+    // in sync regardless of which one the user interacted with.
+    scope!.querySelectorAll<HTMLElement>(`[data-zip-url="${CSS.escape(zipUrl)}"]`).forEach((r) => {
+      const btn = r.querySelector<HTMLButtonElement>("[data-add-genre]");
+      if (!btn) return;
+      btn.textContent = added ? "✓ Added" : "Add to list";
+      btn.classList.toggle("border-[#1abc7e]", added);
+      btn.classList.toggle("text-[#1abc7e]", added);
+    });
   }
 
   function render(): void {

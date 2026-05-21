@@ -6,7 +6,7 @@ function pathKey(): PageKey {
   const segment = location.pathname.replace(/^\//, "").replace(/\/$/, "") as PageKey;
   if (ORDER.includes(segment)) return segment;
   const stored = sessionStorage.getItem("active-page") as PageKey | null;
-  return stored && ORDER.includes(stored) ? stored : "create";
+  return stored && ORDER.includes(stored) ? stored : "recommended";
 }
 
 export function setupPages(navEl: HTMLElement): void {

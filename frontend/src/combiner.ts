@@ -170,7 +170,9 @@ function pushOut(
   }
 }
 
-function buildSummedAndRankedEntries(data: FrequencyData): OutEntry[] {
+export type MergeMode = "ranked" | "absolute";
+
+function buildSummedAndRankedEntries(data: FrequencyData, mode: MergeMode): OutEntry[] {
   const summed = [...data.entries].map(([, entry]) => ({
     entry,
     sum: entry.freqs.reduce<number>((acc, f) => acc + (f ?? 0), 0),
@@ -180,26 +182,31 @@ function buildSummedAndRankedEntries(data: FrequencyData): OutEntry[] {
 
   const outEntries: OutEntry[] = [];
   for (let i = 0; i < summed.length; i++) {
-    const rank = i + 1;
-    const { entry } = summed[i];
+    const { entry, sum } = summed[i];
+    const value = mode === "ranked" ? i + 1 : sum;
     if (entry.reading !== null) {
       pushOut(
         outEntries,
         entry.expression,
-        { reading: entry.reading, frequency: { value: rank, displayValue: entry.hasMarker ? `${rank}㋕` : String(rank) } },
+        { reading: entry.reading, frequency: { value, displayValue: entry.hasMarker ? `${value}㋕` : String(value) } },
         entry.sequence,
       );
     } else {
-      pushOut(outEntries, entry.expression, { value: rank, displayValue: `${rank}㋕` }, entry.sequence);
+      pushOut(outEntries, entry.expression, { value, displayValue: `${value}㋕` }, entry.sequence);
     }
   }
   return outEntries;
 }
 
-export async function mergeJitenDecks(files: readonly File[], title: string, sources?: DictSource[]): Promise<Blob> {
+export async function mergeJitenDecks(
+  files: readonly File[],
+  title: string,
+  mode: MergeMode = "ranked",
+  sources?: DictSource[],
+): Promise<Blob> {
   if (files.length === 0) throw new Error("No files to merge");
   const data = await readFrequencies(files);
-  const outEntries = buildSummedAndRankedEntries(data);
+  const outEntries = buildSummedAndRankedEntries(data, mode);
   const outIndex: IndexJson = {
     ...data.baseIndex,
     title,
