@@ -142,6 +142,17 @@ html.light .hover\:border-\[rgba\(251\,146\,60\,0\.35\)\]:hover { border-color: 
  * Map #6a6a6a (the dark-mode hover) to a darker-than-base light grey so the
  * hover state is actually visible in light mode. */
 html.light .hover\:bg-\[\#6a6a6a\]:hover { background-color: #b8bec6; }
+/* Big per-article Download button — pairs with hover:brightness-110, so the
+ * light-mode hover bg goes LIGHTER (matches the dark-mode direction) instead
+ * of darker, otherwise the two effects cancel and the hover looks dead. */
+html.light .hover\:bg-\[\#7a7a7a\]:hover { background-color: #e8ebef; }
+
+/* Light mode — orange hover text.
+ * html.light .text-[rgba(230,250,252,0.85)] (0,2,1) beats hover:text-[#FB923C]
+ * (0,2,0); bump specificity so Show All Genres + Add to list buttons highlight
+ * orange on hover in light mode just like dark mode. */
+html.light .hover\:text-\[\#FB923C\]:hover { color: #FB923C; }
+html.light .hover\:text-\[\#fb7185\]:hover { color: #fb7185; }
 
 /* Drop zone hover & JS-toggled drag-over class */
 #drop-zone:hover,

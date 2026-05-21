@@ -615,7 +615,7 @@ function safeFilename(name: string): string {
   return name.replace(/[\\/:*?"<>|]/g, "_").trim() || "deck";
 }
 
-function promptMergeMode(): Promise<MergeMode | null> {
+export function promptMergeMode(): Promise<MergeMode | null> {
   return new Promise((resolve) => {
     const backdrop = document.createElement("div");
     backdrop.className = "fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm";
@@ -629,8 +629,11 @@ function promptMergeMode(): Promise<MergeMode | null> {
       </div>
       <div class="flex flex-col gap-2.5">
         <button data-mode="ranked"
-          class="text-left bg-[#3a3a3a] hover:bg-[#4a4a4a] border-2 border-[#5a5a5a] hover:border-[#FB923C] rounded-xl px-4 py-3 cursor-pointer transition-all duration-150">
-          <div class="text-[#E6FAFC] font-bold text-sm mb-0.5">Ranked</div>
+          class="text-left bg-[#3a3a3a] hover:bg-[#4a4a4a] border-2 border-[#FB923C]/60 hover:border-[#FB923C] rounded-xl px-4 py-3 cursor-pointer transition-all duration-150">
+          <div class="flex items-center gap-2 mb-0.5">
+            <span class="text-[#E6FAFC] font-bold text-sm">Ranked</span>
+            <span class="text-[10px] font-bold text-[#FB923C] bg-[#FB923C]/15 border border-[#FB923C]/40 rounded-full px-2 py-0.5 uppercase tracking-wider">Default</span>
+          </div>
           <div class="text-[rgba(230,250,252,0.6)] text-xs">Words are numbered 1, 2, 3… by combined frequency. Best for Yomitan display.</div>
         </button>
         <button data-mode="absolute"
