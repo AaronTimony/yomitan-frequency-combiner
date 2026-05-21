@@ -425,6 +425,7 @@ function makeAddedRow(
 
 async function mergeDeckSelection(mc: MergeControls, decks: JitenDeck[], title: string, mode: MergeMode): Promise<void> {
   if (decks.length === 0) return;
+  window.umami?.track("merge-decks", { mode, count: decks.length });
   mc.mergeBtn.disabled = true;
   mc.mergeBtn.textContent = "Downloading…";
   try {
@@ -629,24 +630,45 @@ export function promptMergeMode(): Promise<MergeMode | null> {
       </div>
       <div class="flex flex-col gap-2.5">
         <button data-mode="ranked"
-          class="text-left bg-[#3a3a3a] hover:bg-[#4a4a4a] border-2 border-[#FB923C]/60 hover:border-[#FB923C] rounded-xl px-4 py-3 cursor-pointer transition-all duration-150">
+          class="text-left bg-[#3a3a3a] border-2 rounded-xl px-4 py-3 cursor-pointer transition-all duration-150">
           <div class="flex items-center gap-2 mb-0.5">
             <span class="text-[#E6FAFC] font-bold text-sm">Ranked</span>
-            <span class="text-[10px] font-bold text-[#FB923C] bg-[#FB923C]/15 border border-[#FB923C]/40 rounded-full px-2 py-0.5 uppercase tracking-wider">Default</span>
+            <span class="text-[10px] font-bold text-[#FB923C] bg-[#FB923C]/15 border border-[#FB923C]/40 rounded-full px-2 py-0.5">Default</span>
           </div>
           <div class="text-[rgba(230,250,252,0.6)] text-xs">Words are numbered 1, 2, 3… by combined frequency. Best for Yomitan display.</div>
         </button>
         <button data-mode="absolute"
-          class="text-left bg-[#3a3a3a] hover:bg-[#4a4a4a] border-2 border-[#5a5a5a] hover:border-[#FB923C] rounded-xl px-4 py-3 cursor-pointer transition-all duration-150">
+          class="text-left bg-[#3a3a3a] border-2 rounded-xl px-4 py-3 cursor-pointer transition-all duration-150">
           <div class="text-[#E6FAFC] font-bold text-sm mb-0.5">Absolute counts</div>
           <div class="text-[rgba(230,250,252,0.6)] text-xs">Each word keeps its raw summed occurrence count across selected decks.</div>
         </button>
       </div>
-      <button data-cancel
-        class="self-end text-[rgba(230,250,252,0.5)] hover:text-[#E6FAFC] text-sm font-semibold bg-transparent border-0 cursor-pointer transition-colors">
-        Cancel
-      </button>
+      <div class="flex items-center justify-end gap-3">
+        <button data-cancel
+          class="text-[rgba(230,250,252,0.5)] hover:text-[#E6FAFC] text-sm font-semibold bg-transparent border-0 cursor-pointer transition-colors">
+          Cancel
+        </button>
+        <button data-submit
+          class="py-2 px-5 border-0 rounded-xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] hover:from-[#8ff5b3] hover:to-[#1fd98d] text-white text-sm font-bold cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] transition-all duration-200">
+          Submit
+        </button>
+      </div>
     `;
+
+    let selected: MergeMode = "ranked";
+    const modeBtns = modal.querySelectorAll<HTMLButtonElement>("button[data-mode]");
+
+    function syncSelection(): void {
+      modeBtns.forEach((btn) => {
+        const active = btn.dataset.mode === selected;
+        btn.classList.toggle("border-[#FB923C]", active);
+        btn.classList.toggle("bg-[#4a4a4a]", active);
+        btn.classList.toggle("border-[#5a5a5a]", !active);
+        btn.classList.toggle("hover:border-[#FB923C]/60", !active);
+        btn.classList.toggle("hover:bg-[#4a4a4a]", !active);
+      });
+    }
+    syncSelection();
 
     function close(result: MergeMode | null): void {
       backdrop.remove();
@@ -655,11 +677,16 @@ export function promptMergeMode(): Promise<MergeMode | null> {
     }
     function onKey(e: KeyboardEvent): void {
       if (e.key === "Escape") close(null);
+      else if (e.key === "Enter") close(selected);
     }
 
-    modal.querySelectorAll<HTMLButtonElement>("button[data-mode]").forEach((btn) => {
-      btn.addEventListener("click", () => close(btn.dataset.mode as MergeMode));
+    modeBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        selected = btn.dataset.mode as MergeMode;
+        syncSelection();
+      });
     });
+    modal.querySelector<HTMLButtonElement>("button[data-submit]")!.addEventListener("click", () => close(selected));
     modal.querySelector<HTMLButtonElement>("button[data-cancel]")!.addEventListener("click", () => close(null));
     backdrop.addEventListener("click", (e) => {
       if (e.target === backdrop) close(null);

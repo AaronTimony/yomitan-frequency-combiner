@@ -43,6 +43,7 @@ const outputName = $<HTMLInputElement>("output-name");
 combineBtn.addEventListener("click", async () => {
   const files = fileManager.getFiles();
   if (files.length === 0) return;
+  window.umami?.track("combine-zips", { count: files.length });
 
   const title = (outputName.value.trim() || "combined");
   const originalLabel = combineBtn.textContent;

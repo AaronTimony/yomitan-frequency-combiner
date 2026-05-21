@@ -123,9 +123,9 @@ function setupGenreCart(): void {
         </div>
       </div>
       <input data-name type="text" placeholder="Dictionary name…" maxlength="80"
-        class="w-full bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl py-2 px-3 text-[#E6FAFC] text-sm placeholder:text-[rgba(230,250,252,0.3)] outline-none focus:border-[#1abc7e]/60 transition-colors duration-150" />
+        class="w-full bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl py-2 px-3 text-[#E6FAFC] text-sm placeholder:text-[rgba(230,250,252,0.3)] outline-none focus:border-[#FB923C]/60 transition-colors duration-150" />
       <button data-merge disabled
-        class="w-full py-3 border-0 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-[0.01em] cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none">
+        class="w-full py-3 border-0 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] hover:from-[#8ff5b3] hover:to-[#1fd98d] text-white text-sm font-extrabold tracking-[0.01em] cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] hover:shadow-[0_4px_20px_rgba(26,188,126,0.6)] transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none">
         Merge &amp; Download
       </button>
       <p data-status class="text-sm text-[rgba(230,250,252,0.85)] text-center -mt-0.5">Add at least 2 dictionaries to merge.</p>
@@ -233,6 +233,7 @@ function setupGenreCart(): void {
     if (!mode) return;
 
     const selected = [...entries.values()];
+    window.umami?.track("merge-dictionaries", { mode, count: selected.length });
     mergeBtn.disabled = true;
     try {
       // Always fetch the _count variant — it carries raw per-genre occurrence
@@ -313,7 +314,7 @@ function populateFeaturedGrids(): void {
           <span><span data-stat="decks" class="text-[#E6FAFC] font-bold">…</span> decks</span>
         </div>
         <button data-add-genre disabled class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-[#4a4a4a] border border-[#5a5a5a] text-[rgba(230,250,252,0.85)] cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.6)] hover:text-[#FB923C] disabled:opacity-40 disabled:cursor-not-allowed">Add to list</button>
-        <a href="${downloadUrl}" download class="inline-flex items-center justify-center gap-1.5 text-xs font-bold px-2 py-1.5 rounded-lg bg-[#5a5a5a] text-[#E6FAFC] hover:bg-[#6a6a6a] transition-colors duration-150 no-underline"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M5 15l7 7 7-7"/><line x1="3" y1="22" x2="21" y2="22"/></svg>Download</a>
+        <a href="${downloadUrl}" download data-umami-event="download-genre" data-umami-event-media="${esc(media.label)}" data-umami-event-genre="${esc(genre)}" class="inline-flex items-center justify-center gap-1.5 text-xs font-bold px-2 py-1.5 rounded-lg bg-[#5a5a5a] text-[#E6FAFC] hover:bg-[#6a6a6a] transition-colors duration-150 no-underline"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M5 15l7 7 7-7"/><line x1="3" y1="22" x2="21" y2="22"/></svg>Download</a>
         <div data-sources class="empty:hidden"></div>
       `;
       grid.append(card);
@@ -350,7 +351,7 @@ function populateAllGenresSections(): void {
             <span class="text-[#FB923C] text-[0.6rem] font-bold uppercase tracking-wider">Decks</span>
             <span data-stat="decks" class="text-[#E6FAFC] font-bold text-sm">…</span>
           </div>
-          <a href="${downloadUrl}" download class="inline-flex items-center justify-center gap-1.5 text-xs font-bold px-4 py-1.5 rounded-lg bg-[#5a5a5a] text-[#E6FAFC] hover:bg-[#6a6a6a] transition-colors duration-150 no-underline"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M5 15l7 7 7-7"/><line x1="3" y1="22" x2="21" y2="22"/></svg>Download</a>
+          <a href="${downloadUrl}" download data-umami-event="download-genre" data-umami-event-media="${esc(media.label)}" data-umami-event-genre="${esc(genre)}" class="inline-flex items-center justify-center gap-1.5 text-xs font-bold px-4 py-1.5 rounded-lg bg-[#5a5a5a] text-[#E6FAFC] hover:bg-[#6a6a6a] transition-colors duration-150 no-underline"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M5 15l7 7 7-7"/><line x1="3" y1="22" x2="21" y2="22"/></svg>Download</a>
           <button data-add-genre disabled class="text-xs font-bold text-center px-4 py-1.5 rounded-lg bg-[#4a4a4a] border border-[#5a5a5a] text-[rgba(230,250,252,0.85)] cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.6)] hover:text-[#FB923C] disabled:opacity-40 disabled:cursor-not-allowed">Add to list</button>
         </div>
         <div data-sources class="px-4 pb-3 empty:hidden"></div>
