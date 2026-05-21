@@ -61,18 +61,18 @@ interface CartEntry {
 function setupGenreCart(): void {
   const mount = document.getElementById("genre-cart-mount");
   if (!mount) return;
-  const scope = document.getElementById("page-recommended");
+  const scope = document.getElementById("page-dictionaries");
   if (!scope) return;
 
   const cart = document.createElement("div");
   cart.className = "flex flex-col gap-3 w-full min-h-0 flex-1";
   cart.innerHTML = `
     <div class="flex items-center justify-between shrink-0">
-      <h2 class="text-[#FB923C] text-[0.7rem] font-bold uppercase tracking-[0.12em]">Selected Lists</h2>
+      <h2 class="text-[#FB923C] text-[0.7rem] font-bold">Selected Decks</h2>
       <button data-clear class="hidden text-xs text-[rgba(230,250,252,0.35)] hover:text-[#fb7185] font-semibold cursor-pointer border-0 bg-transparent p-0 transition-colors duration-150">Clear All</button>
     </div>
     <div data-cart-list class="genre-cart-list flex flex-col gap-2 overflow-y-auto flex-1 min-h-[6rem] pr-1">
-      <span class="text-[rgba(230,250,252,0.4)] text-sm">No lists added yet.</span>
+      <span class="text-[rgba(230,250,252,0.4)] text-sm">No dictionaries added yet.</span>
     </div>
     <div class="flex flex-col gap-2.5 border-t border-[#5a5a5a] pt-3 shrink-0">
       <div class="flex items-stretch gap-2">
@@ -91,7 +91,7 @@ function setupGenreCart(): void {
         class="w-full py-3 border-0 rounded-2xl bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-sm font-extrabold tracking-[0.01em] cursor-pointer shadow-[0_4px_15px_rgba(26,188,126,0.4)] transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none">
         Merge &amp; Download
       </button>
-      <p data-status class="text-xs text-[rgba(230,250,252,0.55)] text-center -mt-0.5">Add at least 2 lists to merge.</p>
+      <p data-status class="text-sm text-[rgba(230,250,252,0.4)] text-center -mt-0.5">Add at least 2 dictionaries to merge.</p>
     </div>
   `;
   mount.append(cart);
@@ -124,7 +124,7 @@ function setupGenreCart(): void {
   function render(): void {
     cartList.innerHTML = "";
     if (entries.size === 0) {
-      cartList.innerHTML = `<span class="text-[rgba(230,250,252,0.4)] text-sm">No lists added yet.</span>`;
+      cartList.innerHTML = `<span class="text-[rgba(230,250,252,0.4)] text-sm">No dictionaries added yet.</span>`;
     } else {
       for (const [key, e] of entries) {
         const item = document.createElement("div");
@@ -132,7 +132,7 @@ function setupGenreCart(): void {
         item.innerHTML = `
           <div class="flex flex-col min-w-0">
             <span class="text-[#E6FAFC] font-semibold text-sm truncate">${esc(e.name)}</span>
-            <span class="text-[rgba(230,250,252,0.5)] text-xs">${e.words.toLocaleString()} words · ${e.decks.toLocaleString()} decks</span>
+            <span class="text-[rgba(230,250,252,0.7)] text-xs">${e.words.toLocaleString()} words · ${e.decks.toLocaleString()} decks</span>
           </div>
           <button data-remove class="shrink-0 text-[rgba(230,250,252,0.35)] hover:text-[#fb7185] text-lg leading-none bg-transparent border-0 cursor-pointer transition-colors duration-150" aria-label="Remove ${esc(e.name)}">×</button>
         `;
@@ -156,9 +156,9 @@ function setupGenreCart(): void {
     clearBtn.classList.toggle("hidden", entries.size === 0);
     mergeBtn.disabled = entries.size < 2;
 
-    if (entries.size === 0) statusEl.textContent = "Add at least 2 lists to merge.";
-    else if (entries.size === 1) statusEl.textContent = "Add 1 more list to merge.";
-    else statusEl.textContent = `${entries.size} lists ready to merge.`;
+    if (entries.size === 0) statusEl.textContent = "Add at least 2 dictionaries to merge.";
+    else if (entries.size === 1) statusEl.textContent = "Add 1 more dictionary to merge.";
+    else statusEl.textContent = `${entries.size} dictionaries ready to merge.`;
   }
 
   scope.addEventListener("click", (ev) => {
@@ -231,7 +231,7 @@ const MEDIA_TYPES: { id: string; label: string; fileLabel: string; prefix: strin
   { id: "manga", label: "Manga", fileLabel: "Manga", prefix: "manga_dicts/" },
   { id: "drama", label: "Drama", fileLabel: "Drama", prefix: "drama_dicts/", genres: ["Action", "Comedy", "Drama", "Mystery", "Sci-Fi"] },
   { id: "novel", label: "Novel", fileLabel: "Novel", prefix: "novel_dicts/" },
-  { id: "videogame", label: "Video Game", fileLabel: "Video_Game", prefix: "videogame_dicts/", genres: ["Action", "Adventure", "Comedy", "Fantasy", "Mystery", "Sci-Fi", "Sports", "Thriller"] },
+  { id: "videogame", label: "Video Games", fileLabel: "Video_Game", prefix: "videogame_dicts/", genres: ["Action", "Adventure", "Comedy", "Fantasy", "Mystery", "Sci-Fi", "Sports", "Thriller"] },
   { id: "visualnovel", label: "Visual Novel", fileLabel: "Visual_Novel", prefix: "visualnovel_dicts/", genres: ["Action", "Adult Only", "Comedy", "Drama", "Fantasy", "Horror", "Mecha", "Music", "Mystery", "Psychological", "Romance", "Sci-Fi", "Slice of Life", "Sports", "Thriller"] },
 ];
 
@@ -257,7 +257,7 @@ function populateFeaturedGrids(): void {
       const sourcesUrl = `${DICT_BASE_URL}/${media.prefix}${baseName}_sources.json`;
       const zipUrl = `${DICT_BASE_URL}/${media.prefix}${baseName}.zip`;
       const downloadUrl = zipUrl;
-      const displayName = `${genre} ${media.label}`;
+      const displayName = genre === media.label ? genre : `${genre} ${media.label}`;
 
       const card = document.createElement("div");
       card.className = "bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2";
@@ -270,7 +270,7 @@ function populateFeaturedGrids(): void {
           <span><span data-stat="decks" class="text-[#E6FAFC] font-bold">…</span> decks</span>
         </div>
         <button data-add-genre disabled class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-[#4a4a4a] border border-[#5a5a5a] text-[rgba(230,250,252,0.85)] cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.6)] hover:text-[#FB923C] disabled:opacity-40 disabled:cursor-not-allowed">Add to list</button>
-        <a href="${downloadUrl}" download class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
+        <a href="${downloadUrl}" download class="inline-flex items-center justify-center gap-1.5 text-xs font-bold px-2 py-1.5 rounded-lg bg-[#5a5a5a] text-[#E6FAFC] hover:bg-[#6a6a6a] transition-colors duration-150 no-underline"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M5 15l7 7 7-7"/><line x1="3" y1="22" x2="21" y2="22"/></svg>Download</a>
       `;
       grid.append(card);
       loadGenreRow(card);
@@ -289,7 +289,7 @@ function populateAllGenresSections(): void {
       const sourcesUrl = `${DICT_BASE_URL}/${media.prefix}${baseName}_sources.json`;
       const zipUrl = `${DICT_BASE_URL}/${media.prefix}${baseName}.zip`;
       const downloadUrl = zipUrl;
-      const displayName = `${genre} ${media.label}`;
+      const displayName = genre === media.label ? genre : `${genre} ${media.label}`;
 
       const row = document.createElement("div");
       row.className = "grid grid-cols-[1fr_auto_auto_auto_auto] items-center gap-x-6 px-4 py-3 rounded-xl bg-[#3a3a3a] border border-[#5a5a5a]";
@@ -305,7 +305,7 @@ function populateAllGenresSections(): void {
           <span class="text-[#FB923C] text-[0.6rem] font-bold uppercase tracking-wider">Decks</span>
           <span data-stat="decks" class="text-[#E6FAFC] font-bold text-sm">…</span>
         </div>
-        <a href="${downloadUrl}" download class="text-xs font-bold text-center px-4 py-1.5 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white shadow-[0_2px_8px_rgba(26,188,126,0.35)] hover:shadow-[0_2px_12px_rgba(26,188,126,0.55)] transition-all duration-150 no-underline">Download</a>
+        <a href="${downloadUrl}" download class="inline-flex items-center justify-center gap-1.5 text-xs font-bold px-4 py-1.5 rounded-lg bg-[#5a5a5a] text-[#E6FAFC] hover:bg-[#6a6a6a] transition-colors duration-150 no-underline"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M5 15l7 7 7-7"/><line x1="3" y1="22" x2="21" y2="22"/></svg>Download</a>
         <button data-add-genre disabled class="text-xs font-bold text-center px-4 py-1.5 rounded-lg bg-[#4a4a4a] border border-[#5a5a5a] text-[rgba(230,250,252,0.85)] cursor-pointer transition-all duration-150 hover:border-[rgba(251,146,60,0.6)] hover:text-[#FB923C] disabled:opacity-40 disabled:cursor-not-allowed">Add to list</button>
       `;
       container.append(row);

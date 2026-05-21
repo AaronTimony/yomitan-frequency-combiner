@@ -40,7 +40,7 @@ export function setupCreatePage(searchEl: HTMLElement): void {
         </div>
         <div id="pagination"></div>
       </div>
-      <div style="flex: 0 0 22rem; min-width: 0;" class="sticky top-6 self-start max-h-[calc(100vh-3rem)] flex flex-col gap-3 overflow-hidden">
+      <div style="flex: 0 0 24rem; min-width: 0;" class="sticky top-6 self-start max-h-[calc(100vh-3rem)] flex flex-col gap-3 overflow-hidden">
         <div class="flex items-center justify-between shrink-0">
           <h2 class="text-[#FB923C] text-[0.7rem] font-bold">Selected Decks</h2>
           <button id="reset-all-btn" class="text-xs text-[rgba(230,250,252,0.35)] hover:text-[#fb7185] font-semibold cursor-pointer border-0 bg-transparent p-0 transition-colors duration-150">Reset All</button>
@@ -403,7 +403,7 @@ function makeAddedRow(
 
   const dlBtn = document.createElement("button");
   dlBtn.className =
-    "shrink-0 py-1.5 px-2.5 border-0 rounded-lg bg-[#5a5a5a] hover:bg-[#6a6a6a] text-[#E6FAFC] text-[0.75rem] font-bold cursor-pointer transition-colors duration-150 disabled:opacity-40";
+    "shrink-0 py-1.5 px-2.5 border-0 rounded-lg bg-gradient-to-b from-[#7deda4] to-[#1abc7e] text-white text-[0.75rem] font-bold cursor-pointer disabled:opacity-40";
   dlBtn.title = "Download Yomitan";
   dlBtn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M5 15l7 7 7-7"/><line x1="3" y1="22" x2="21" y2="22"/></svg>`;
   dlBtn.addEventListener("click", () => downloadDeck(dlBtn, deck, title));

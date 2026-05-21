@@ -1,12 +1,12 @@
-export type PageKey = "recommended" | "create" | "combiner";
+export type PageKey = "dictionaries" | "create" | "combiner";
 
-const ORDER: PageKey[] = ["recommended", "create", "combiner"];
+const ORDER: PageKey[] = ["dictionaries", "create", "combiner"];
 
 function pathKey(): PageKey {
   const segment = location.pathname.replace(/^\//, "").replace(/\/$/, "") as PageKey;
   if (ORDER.includes(segment)) return segment;
   const stored = sessionStorage.getItem("active-page") as PageKey | null;
-  return stored && ORDER.includes(stored) ? stored : "recommended";
+  return stored && ORDER.includes(stored) ? stored : "dictionaries";
 }
 
 export function setupPages(navEl: HTMLElement): void {

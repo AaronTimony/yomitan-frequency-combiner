@@ -50,6 +50,7 @@ html.light .hover\:text-\[\#E6FAFC\]:hover { color: #1a1a1a; }
 
 /* Light mode — placeholder */
 html.light .placeholder\:text-\[rgba\(230\,250\,252\,0\.4\)\]::placeholder { color: rgba(0,0,0,0.35); }
+html.light .placeholder\:text-\[rgba\(230\,250\,252\,0\.3\)\]::placeholder { color: rgba(0,0,0,0.3); }
 
 /* Light mode — drop zone */
 html.light #drop-zone:hover,
@@ -128,6 +129,19 @@ html.light .pagination-nav-btn:hover,
 html.light .pagination-page-btn:hover {
   background-color: rgba(251, 146, 60, 0.3);
 }
+
+/* Light mode — orange hover border on cards/buttons.
+ * html.light .border-[#5a5a5a] (specificity 0,2,1) beats the plain Tailwind
+ * hover:border-[...] rule (0,2,0); add html.light here to bump specificity. */
+html.light .hover\:border-\[rgba\(251\,146\,60\,0\.6\)\]:hover { border-color: rgba(251, 146, 60, 0.6); }
+html.light .hover\:border-\[rgba\(251\,146\,60\,0\.5\)\]:hover { border-color: rgba(251, 146, 60, 0.5); }
+html.light .hover\:border-\[rgba\(251\,146\,60\,0\.35\)\]:hover { border-color: rgba(251, 146, 60, 0.35); }
+
+/* Light mode — per-genre Download button hover.
+ * Same specificity story: html.light .bg-[#5a5a5a] beats hover:bg-[#6a6a6a].
+ * Map #6a6a6a (the dark-mode hover) to a darker-than-base light grey so the
+ * hover state is actually visible in light mode. */
+html.light .hover\:bg-\[\#6a6a6a\]:hover { background-color: #b8bec6; }
 
 /* Drop zone hover & JS-toggled drag-over class */
 #drop-zone:hover,
