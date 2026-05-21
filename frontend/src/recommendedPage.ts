@@ -329,8 +329,66 @@ const MEDIA_TYPES: { id: string; label: string; fileLabel: string; prefix: strin
 
 const DICT_BASE_URL = "https://dicts.yomitanfrequencies.org";
 
+// Jiten only hosts N1–N3 right now. Append N4/N5 here (and bump grid-cols-3 in
+// index.html to grid-cols-5) once they're harvested and uploaded to R2.
+const JLPT_LEVELS = ["N1", "N2", "N3"] as const;
+
 function genreFileSlug(genre: string): string {
   return genre.replace(/\s+/g, "_");
+}
+
+function populateJlptGrid(): void {
+  const grid = document.querySelector<HTMLElement>("[data-jlpt-grid]");
+  if (!grid) return;
+  grid.innerHTML = "";
+  for (const level of JLPT_LEVELS) {
+    const sourcesUrl = `${DICT_BASE_URL}/jlpt_dicts/${level}_sources.json`;
+    const zipUrl = `${DICT_BASE_URL}/jlpt_dicts/${level}.zip`;
+
+    const card = document.createElement("div");
+    card.className = "bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl p-3 flex flex-col gap-2";
+    card.dataset.genreUrl = sourcesUrl;
+    card.dataset.zipUrl = zipUrl;
+    // Each JLPT level is a single Jiten deck — there's no "X decks" stat worth
+    // showing and no sources list to expand. Mark decks="1" so the cart's
+    // total-decks counter sums correctly when JLPT levels are added.
+    card.dataset.decks = "1";
+    card.innerHTML = `
+      <span data-genre-name class="text-[#E6FAFC] text-sm font-semibold">JLPT ${esc(level)}</span>
+      <div class="flex gap-3 text-[0.65rem] text-[rgba(230,250,252,0.6)]">
+        <span><span data-stat="words" class="text-[#E6FAFC] font-bold">…</span> words</span>
+      </div>
+      <button data-add-genre disabled class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-[#FB923C] border border-[#FB923C] text-white cursor-pointer transition-all duration-150 hover:bg-[#FBB36F] hover:border-[#FBB36F] disabled:opacity-40 disabled:cursor-not-allowed">Add to list</button>
+      <a href="${zipUrl}" download data-umami-event="download-jlpt" data-umami-event-level="${esc(level)}" class="inline-flex items-center justify-center gap-1.5 text-xs font-bold px-2 py-1.5 rounded-lg bg-[#5a5a5a] text-[#E6FAFC] hover:bg-[#6a6a6a] transition-colors duration-150 no-underline"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M5 15l7 7 7-7"/><line x1="3" y1="22" x2="21" y2="22"/></svg>Download</a>
+    `;
+    grid.append(card);
+    loadJlptCard(card);
+  }
+}
+
+async function loadJlptCard(card: HTMLElement): Promise<void> {
+  const sourcesUrl = card.dataset.genreUrl!;
+  const cacheKey = `sources-v1-${sourcesUrl}`;
+  const wordsEl = card.querySelector<HTMLElement>('[data-stat="words"]')!;
+  const addBtn = card.querySelector<HTMLButtonElement>("[data-add-genre]");
+
+  try {
+    let data: SourcesJson;
+    const cached = sessionStorage.getItem(cacheKey);
+    if (cached) {
+      data = JSON.parse(cached) as SourcesJson;
+    } else {
+      const res = await fetch(sourcesUrl);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      data = await res.json() as SourcesJson;
+      sessionStorage.setItem(cacheKey, JSON.stringify(data));
+    }
+    wordsEl.textContent = data.totalWords.toLocaleString();
+    card.dataset.words = String(data.totalWords);
+    if (addBtn) addBtn.disabled = false;
+  } catch {
+    wordsEl.textContent = "—";
+  }
 }
 
 function populateFeaturedGrids(): void {
@@ -448,6 +506,11 @@ function setupMediaAddButtons(): void {
   document.querySelectorAll<HTMLElement>(".rec-article").forEach((article) => {
     const dl = article.querySelector<HTMLAnchorElement>("a[download]");
     if (!dl) return;
+    // Articles without a media-level download (e.g. the JLPT card) only have
+    // per-level download links inside their card grid. Skip those — picking up
+    // the first per-card link would graft it onto the article header and tag
+    // the whole article with that single level's zipUrl.
+    if (dl.closest("[data-featured-grid], [data-jlpt-grid]")) return;
     article.dataset.zipUrl = dl.href;
 
     // Group Download + Add to list together on the right side of the header.
@@ -471,6 +534,7 @@ function setupMediaAddButtons(): void {
 export function setupRecommendedPage(): void {
   populateAllGenresSections();
   populateFeaturedGrids();
+  populateJlptGrid();
   setupMediaAddButtons();
   setupMediaDropdowns();
   setupGenreCart();

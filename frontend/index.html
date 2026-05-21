@@ -162,6 +162,18 @@
               </div>
             </article>
 
+            <!-- JLPT -->
+            <article class="rec-article w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-2xl px-10 py-7 flex flex-col gap-5 transition-all duration-150 hover:border-[rgba(251,146,60,0.35)]">
+              <div class="flex items-center justify-between gap-8">
+                <div class="flex flex-col gap-2 min-w-0">
+                  <h3 class="text-[#FB923C] text-xl font-bold">JLPT</h3>
+                  <p class="text-[rgba(230,250,252,0.85)] text-base leading-relaxed">Japanese Language Proficiency Test vocabulary frequency lists, broken down by level.</p>
+                </div>
+                <a href="https://dicts.yomitanfrequencies.org/jlpt_dicts/JLPT_Frequency.zip" download data-umami-event="download-media" data-umami-event-media="JLPT" class="shrink-0 inline-flex items-center gap-2 px-7 py-3 rounded-2xl bg-[#5a5a5a] text-[#E6FAFC] text-sm font-bold tracking-wide cursor-pointer transition-colors duration-150 hover:bg-[#6a6a6a] no-underline"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M5 15l7 7 7-7"/><line x1="3" y1="22" x2="21" y2="22"/></svg>Download</a>
+              </div>
+              <div class="grid grid-cols-3 gap-2.5" data-jlpt-grid></div>
+            </article>
+
           </div>
 
           <aside id="genre-cart-mount" class="sticky top-6 self-start max-h-[calc(100vh-3rem)] flex flex-col overflow-hidden" style="flex: 0 0 24rem; min-width: 0;"></aside>

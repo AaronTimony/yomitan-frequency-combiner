@@ -1,32 +1,30 @@
-# Yomitan Frequency Combiner
+# Yomitan Frequency
 
 A browser-based tool for building custom Japanese frequency dictionaries for
 [Yomitan](https://github.com/themoeway/yomitan). Create your own custom frequency 
 dictionary based on what you are interested in.
 
-## What is the Yomitan Frequency Combiner?
+## What does Yomitan Frequency Do?
 
-Yomitan's built-in frequency dictionaries order definitions by how common
-words are in general Japanese. The problem: a "common" word in newspapers
-isn't necessarily common in the anime, manga, novels or visual novels you
-actually read. This tool lets you build a frequency dictionary that matches
-your media diet. This is especially helpful for those who use sentence mining,
-as sometimes it's difficult to know whether a word is worth adding to anki, but now
-you can see exactly how useful a given word is to your goals and interests.
+The currently recommended yomitan frequency dictionaries span large corpuses across many domains (manga, novels, non-fiction, aozora bunko etc.).
+This may seem fine at first, but in general, learners do not wish to learn every single word in a language, and would prefer to learn vocabulary
+that will be relevant to their goals and interests. To do this, they would benefit strongly from having a frequency list that is specified to the 
+areas of Japanese that they care about. This is what Yomitan Frequency does. You can combine and merge all areas of Japanese that you are interested
+in into one dictionary and import it to yomitan for use. So when you aren't sure whether to mine a word or not, you will be able to make a more informed
+decision.
 
 It offers three workflows:
 
-- **Dictionaries** — One-click downloads of pre-built dictionaries covering
+- **Dictionaries** - One-click downloads of pre-built dictionaries covering
   Anime, Manga, Drama, Novel, Video Game and Visual Novel plus per-genre breakdowns.
-- **Create** — Search Jiten's deck catalogue, pick specific titles you've
-  watched or read, and merge them into a single Yomitan dictionary weighted
-  toward those works.
-- **Combiner** — Drag-and-drop any Yomitan frequency `.zip` files you
+- **Create** - Search Jiten's deck catalogue, pick specific titles you've
+  watched or read, and merge them into a single Yomitan dictionary.
+- **Combiner** - Drag-and-drop any Yomitan frequency `.zip` files you
   already have and average them into one.
 
 ## Installation
 
-The combiner is a website — no install needed. Open it in your browser.
+The combiner is a website, no install needed. Open it in your browser.
 
 ## Building
 
