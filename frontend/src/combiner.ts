@@ -378,6 +378,21 @@ function byBankNumber(a: string, b: string): number {
   return num(a) - num(b);
 }
 
+export async function downloadRenamedZip(url: string, newTitle: string, filename: string): Promise<void> {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const zip = await JSZip.loadAsync(await res.blob());
+  const indexFile = zip.file("index.json");
+  if (indexFile) {
+    const index = JSON.parse(await indexFile.async("string")) as IndexJson;
+    index.title = newTitle;
+    index.revision = `${newTitle} ${new Date().toISOString().slice(0, 10)}`;
+    zip.file("index.json", JSON.stringify(index));
+  }
+  const out = await zip.generateAsync({ type: "blob", compression: "DEFLATE" });
+  downloadBlob(out, filename);
+}
+
 export function downloadBlob(blob: Blob, filename: string): void {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");

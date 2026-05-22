@@ -1,4 +1,4 @@
-import { downloadBlob, mergeJitenDecks, type MergeMode } from "./combiner";
+import { downloadBlob, downloadRenamedZip, mergeJitenDecks, type MergeMode } from "./combiner";
 import { promptMergeMode } from "./searchPage";
 
 interface SourceEntry {
@@ -318,12 +318,12 @@ const ALL_GENRES = [
   "Sci-Fi", "Slice of Life", "Sports", "Supernatural", "Thriller", "Adult Only",
 ];
 
-const MEDIA_TYPES: { id: string; label: string; fileLabel: string; prefix: string; genres?: readonly string[] }[] = [
+const MEDIA_TYPES: { id: string; label: string; singularLabel?: string; fileLabel: string; prefix: string; genres?: readonly string[] }[] = [
   { id: "anime", label: "Anime", fileLabel: "Anime", prefix: "anime_dicts/" },
   { id: "manga", label: "Manga", fileLabel: "Manga", prefix: "manga_dicts/" },
   { id: "drama", label: "Drama", fileLabel: "Drama", prefix: "drama_dicts/", genres: ["Action", "Comedy", "Drama", "Mystery", "Sci-Fi"] },
   { id: "novel", label: "Novel", fileLabel: "Novel", prefix: "novel_dicts/" },
-  { id: "videogame", label: "Video Games", fileLabel: "Video_Game", prefix: "videogame_dicts/", genres: ["Action", "Adventure", "Comedy", "Fantasy", "Mystery", "Sci-Fi", "Sports", "Thriller"] },
+  { id: "videogame", label: "Video Games", singularLabel: "Video Game", fileLabel: "Video_Game", prefix: "videogame_dicts/", genres: ["Action", "Adventure", "Comedy", "Fantasy", "Mystery", "Sci-Fi", "Sports", "Thriller"] },
   { id: "visualnovel", label: "Visual Novel", fileLabel: "Visual_Novel", prefix: "visualnovel_dicts/", genres: ["Action", "Adult Only", "Comedy", "Drama", "Fantasy", "Horror", "Mecha", "Music", "Mystery", "Psychological", "Romance", "Sci-Fi", "Slice of Life", "Sports", "Thriller"] },
 ];
 
@@ -335,6 +335,30 @@ const JLPT_LEVELS = ["N1", "N2", "N3"] as const;
 
 function genreFileSlug(genre: string): string {
   return genre.replace(/\s+/g, "_");
+}
+
+function genreDictTitle(genre: string, media: typeof MEDIA_TYPES[number]): string {
+  const mediaName = media.singularLabel ?? media.label;
+  return genre === media.label ? genre : `${genre} (${mediaName})`;
+}
+
+function attachRenameDownload(anchor: HTMLAnchorElement, title: string): void {
+  anchor.addEventListener("click", (e) => {
+    e.preventDefault();
+    const url = anchor.href;
+    // Preserve the original filename from the URL — only the dict title inside
+    // the zip changes. Falls back to a safe-filename of the title only if the
+    // URL has no usable path segment.
+    const urlFilename = url.split("/").pop()?.split("?")[0] || `${safeFilename(title)}.zip`;
+    const original = anchor.innerHTML;
+    anchor.style.pointerEvents = "none";
+    downloadRenamedZip(url, title, urlFilename)
+      .catch((err) => alert(`Download failed: ${err instanceof Error ? err.message : String(err)}`))
+      .finally(() => {
+        anchor.innerHTML = original;
+        anchor.style.pointerEvents = "";
+      });
+  });
 }
 
 function populateJlptGrid(): void {
@@ -361,6 +385,8 @@ function populateJlptGrid(): void {
       <button data-add-genre disabled class="text-xs font-bold text-center px-2 py-1.5 rounded-lg bg-[#FB923C] border border-[#FB923C] text-white cursor-pointer transition-all duration-150 hover:bg-[#FBB36F] hover:border-[#FBB36F] disabled:opacity-40 disabled:cursor-not-allowed">Add to list</button>
       <a href="${zipUrl}" download data-umami-event="download-jlpt" data-umami-event-level="${esc(level)}" class="inline-flex items-center justify-center gap-1.5 text-xs font-bold px-2 py-1.5 rounded-lg bg-[#5a5a5a] text-[#E6FAFC] hover:bg-[#6a6a6a] transition-colors duration-150 no-underline"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M5 15l7 7 7-7"/><line x1="3" y1="22" x2="21" y2="22"/></svg>Download</a>
     `;
+    const dlAnchor = card.querySelector<HTMLAnchorElement>("a[download]")!;
+    attachRenameDownload(dlAnchor, `JLPT ${level}`);
     grid.append(card);
     loadJlptCard(card);
   }
@@ -423,6 +449,8 @@ function populateFeaturedGrids(): void {
         <a href="${downloadUrl}" download data-umami-event="download-genre" data-umami-event-media="${esc(media.label)}" data-umami-event-genre="${esc(genre)}" class="inline-flex items-center justify-center gap-1.5 text-xs font-bold px-2 py-1.5 rounded-lg bg-[#5a5a5a] text-[#E6FAFC] hover:bg-[#6a6a6a] transition-colors duration-150 no-underline"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M5 15l7 7 7-7"/><line x1="3" y1="22" x2="21" y2="22"/></svg>Download</a>
         <div data-sources class="empty:hidden"></div>
       `;
+      const dlAnchor = card.querySelector<HTMLAnchorElement>("a[download]")!;
+      attachRenameDownload(dlAnchor, genreDictTitle(genre, media));
       grid.append(card);
       loadGenreRow(card);
     }
@@ -462,6 +490,8 @@ function populateAllGenresSections(): void {
         </div>
         <div data-sources class="px-4 pb-3 empty:hidden"></div>
       `;
+      const dlAnchor = row.querySelector<HTMLAnchorElement>("a[download]")!;
+      attachRenameDownload(dlAnchor, genreDictTitle(genre, media));
       container.append(row);
     }
   }
@@ -531,6 +561,17 @@ function setupMediaAddButtons(): void {
   });
 }
 
+function setupJlptGeneralizedRename(): void {
+  // The generalised JLPT download is a static anchor in index.html. Intercept
+  // it to rewrite the dict title to "JLPT" (also fixes the upstream "frequncy"
+  // typo since we overwrite the title). Per-level JLPT cards live inside
+  // [data-jlpt-grid] and keep their original titles.
+  document.querySelectorAll<HTMLAnchorElement>('a[data-umami-event-media="JLPT"]').forEach((a) => {
+    if (a.closest("[data-jlpt-grid]")) return;
+    attachRenameDownload(a, "JLPT");
+  });
+}
+
 export function setupRecommendedPage(): void {
   populateAllGenresSections();
   populateFeaturedGrids();
@@ -538,4 +579,5 @@ export function setupRecommendedPage(): void {
   setupMediaAddButtons();
   setupMediaDropdowns();
   setupGenreCart();
+  setupJlptGeneralizedRename();
 }

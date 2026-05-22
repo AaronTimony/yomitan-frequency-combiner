@@ -18,7 +18,7 @@ export function setupCreatePage(searchEl: HTMLElement): void {
   searchEl.innerHTML = `
     <header class="text-center">
       <h1 class="text-4xl font-black tracking-tight">Create Dictionary</h1>
-      <p class="mt-3 text-[rgba(230,250,252,0.85)] text-[1.15rem]">Select media decks to build a combined Yomitan frequency dictionary.</p>
+      <p class="mt-3 text-[rgba(230,250,252,0.85)] text-[1.15rem]">Select from thousands of media to create your own fully customized Dictionary.</p>
     </header>
     <div class="flex gap-6 flex-1 min-h-0">
       <div class="flex flex-col gap-4 flex-1 min-w-0">
