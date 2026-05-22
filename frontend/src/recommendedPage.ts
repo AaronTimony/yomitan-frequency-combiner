@@ -288,7 +288,11 @@ function setupGenreCart(): void {
       const blobs: Blob[] = [];
       for (let i = 0; i < selected.length; i++) {
         statusEl.textContent = `Downloading ${i + 1}/${selected.length}: ${selected[i].name}…`;
-        const res = await fetch(selected[i].zipUrl);
+        // cache: "no-store" — bypass the browser disk cache. If the user
+        // previously clicked the plain Download anchor for this URL, the
+        // browser cached a no-Origin response (no CORS headers); a subsequent
+        // fetch() would reuse that cached entry and get blocked by CORS.
+        const res = await fetch(selected[i].zipUrl, { cache: "no-store" });
         if (!res.ok) throw new Error(`HTTP ${res.status} — could not fetch ${selected[i].name} from ${DICT_BASE_URL}`);
         blobs.push(await res.blob());
       }
