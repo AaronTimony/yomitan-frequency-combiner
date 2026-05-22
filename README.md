@@ -22,6 +22,8 @@ It offers three workflows:
 - **Combiner** - Drag-and-drop any Yomitan frequency `.zip` files you
   already have and average them into one.
 
+![Yomitan Frequency example](./img/README_example.png)
+
 ## Installation
 
 The combiner is a website, no install needed. Open it in your browser.
