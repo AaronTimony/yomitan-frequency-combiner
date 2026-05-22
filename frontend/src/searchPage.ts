@@ -17,35 +17,35 @@ export function setupCreatePage(searchEl: HTMLElement): void {
 
   searchEl.innerHTML = `
     <header class="text-center">
-      <h1 class="text-4xl font-black tracking-tight">Create Dictionary</h1>
-      <p class="mt-3 text-[rgba(230,250,252,0.85)] text-[1.15rem]">Select from thousands of media to create your own fully customized Dictionary.</p>
+      <h1 class="text-2xl sm:text-4xl font-black tracking-tight">Create Dictionary</h1>
+      <p class="mt-2 sm:mt-3 text-[rgba(230,250,252,0.85)] text-base sm:text-[1.15rem]">Select from thousands of media to create your own fully customized Dictionary.</p>
     </header>
-    <div class="flex gap-6 flex-1 min-h-0">
+    <div class="flex flex-col lg:flex-row gap-6 flex-1 min-h-0">
       <div class="flex flex-col gap-4 flex-1 min-w-0">
-        <div class="flex items-stretch bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl overflow-hidden">
-          <div class="flex flex-col gap-2 px-3 py-2.5">
+        <div class="flex flex-col sm:flex-row sm:items-stretch bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl overflow-hidden">
+          <div class="flex flex-col gap-2 px-3 py-2.5 min-w-0">
             <span class="text-[#FB923C] text-[0.65rem] font-bold">Media Type</span>
             <div id="media-type-chips" class="flex flex-wrap gap-1.5"></div>
           </div>
-          <div class="w-px bg-[#5a5a5a] shrink-0"></div>
+          <div class="h-px sm:h-auto sm:w-px bg-[#5a5a5a] shrink-0"></div>
           <div class="flex flex-col gap-2 px-3 py-2.5 shrink-0">
             <span class="text-[#FB923C] text-[0.65rem] font-bold">Title Language</span>
-            <div id="title-lang-chips" class="flex gap-1.5"></div>
+            <div id="title-lang-chips" class="flex gap-1.5 flex-wrap"></div>
           </div>
         </div>
         <input id="jiten-search" type="text" placeholder="Search decks…"
-          class="w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-xl py-3 px-4 text-[#E6FAFC] text-[0.95rem] placeholder:text-[rgba(230,250,252,0.4)] outline-none focus:border-[#FB923C]/60 transition-colors duration-150" />
+          class="w-full bg-[#4a4a4a] border-2 border-[#5a5a5a] rounded-xl py-3 px-4 text-[#E6FAFC] text-base sm:text-[0.95rem] placeholder:text-[rgba(230,250,252,0.4)] outline-none focus:border-[#FB923C]/60 transition-colors duration-150" />
         <div id="deck-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           <div class="col-span-full text-[rgba(230,250,252,0.6)] text-sm">Loading…</div>
         </div>
         <div id="pagination"></div>
       </div>
-      <div style="flex: 0 0 24rem; min-width: 0;" class="sticky top-6 self-start max-h-[calc(100vh-3rem)] flex flex-col gap-3 overflow-hidden">
+      <div class="w-full lg:w-96 lg:shrink-0 lg:sticky lg:top-6 lg:self-start lg:max-h-[calc(100vh-3rem)] flex flex-col gap-3 lg:overflow-hidden">
         <div class="flex items-center justify-between shrink-0">
           <h2 class="text-[#FB923C] text-[0.7rem] font-bold">Selected Decks</h2>
           <button id="reset-all-btn" class="text-xs text-[rgba(230,250,252,0.35)] hover:text-[#fb7185] font-semibold cursor-pointer border-0 bg-transparent p-0 transition-colors duration-150">Reset All</button>
         </div>
-        <div id="added-panel" class="flex flex-col gap-2 overflow-y-auto flex-1 min-h-0 bg-[#2a2a2a]">
+        <div id="added-panel" class="flex flex-col gap-2 overflow-y-auto flex-1 min-h-[6rem] lg:min-h-0 max-h-72 lg:max-h-none bg-[#2a2a2a]">
           <span class="text-[rgba(230,250,252,0.4)] text-sm">No decks selected.</span>
         </div>
         <div class="flex flex-col gap-2.5 border-t border-[#5a5a5a] pt-3 shrink-0">
@@ -141,8 +141,8 @@ export function setupCreatePage(searchEl: HTMLElement): void {
   }
 
   resetAllBtn.addEventListener("click", () => {
-    cardResets.forEach((reset) => reset());
     addedDecks.length = 0;
+    cardResets.forEach((reset) => reset());
     syncPanel(panel, addedDecks, cardResets, mc, currentTitleLang);
   });
 
@@ -258,7 +258,7 @@ function makeDeckCard(
 
   const overlay = document.createElement("div");
   overlay.className =
-    "absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/30 transition-all duration-200";
+    "hidden sm:flex absolute inset-0 items-center justify-center bg-black/0 group-hover:bg-black/30 transition-all duration-200";
 
   const addBtn = document.createElement("button");
   const baseClasses = [
@@ -270,36 +270,41 @@ function makeDeckCard(
   const redClasses =
     "cursor-pointer bg-gradient-to-b from-[#fb7185] to-[#be123c] hover:from-[#f43f5e] hover:to-[#9f1239] shadow-[0_4px_15px_rgba(190,18,60,0.35)] hover:shadow-[0_4px_20px_rgba(190,18,60,0.5)]";
 
-  function markAdded(): void {
-    addBtn.className = `${baseClasses} ${redClasses}`;
-    addBtn.innerHTML = minusIcon();
-    addBtn.title = "Remove from selected decks";
+  // Mobile-only always-visible button below the stats — hover doesn't exist on
+  // touch, so the desktop overlay is unreachable there.
+  const mobileBtn = document.createElement("button");
+  const mobileBaseClasses =
+    "sm:hidden w-full py-2.5 px-3 border-0 text-white text-xs font-bold cursor-pointer transition-colors duration-150 flex items-center justify-center gap-1.5";
+  const mobileAddClasses = "bg-gradient-to-b from-[#7deda4] to-[#1abc7e]";
+  const mobileRemoveClasses = "bg-gradient-to-b from-[#fb7185] to-[#be123c]";
+
+  function isAdded(): boolean {
+    return addedDecks.some((d) => d.deckId === deck.deckId);
   }
-  function markRemoved(): void {
-    addBtn.className = `${baseClasses} ${greenClasses}`;
-    addBtn.innerHTML = plusIcon();
-    addBtn.title = "Add to selected decks";
+  function syncButtons(): void {
+    const added = isAdded();
+    addBtn.className = `${baseClasses} ${added ? redClasses : greenClasses}`;
+    addBtn.innerHTML = added ? minusIcon() : plusIcon();
+    addBtn.title = added ? "Remove from selected decks" : "Add to selected decks";
+    mobileBtn.className = `${mobileBaseClasses} ${added ? mobileRemoveClasses : mobileAddClasses}`;
+    mobileBtn.textContent = added ? "Remove" : "Add to list";
   }
 
-  if (addedDecks.some((d) => d.deckId === deck.deckId)) {
-    markAdded();
-  } else {
-    markRemoved();
-  }
+  syncButtons();
+  cardResets.set(deck.deckId, syncButtons);
 
-  cardResets.set(deck.deckId, markRemoved);
-
-  addBtn.addEventListener("click", (e) => {
+  function toggleSelection(e: Event): void {
     e.stopPropagation();
-    if (addedDecks.some((d) => d.deckId === deck.deckId)) {
+    if (isAdded()) {
       addedDecks.splice(addedDecks.findIndex((d) => d.deckId === deck.deckId), 1);
-      markRemoved();
     } else {
       addedDecks.push(deck);
-      markAdded();
     }
+    syncButtons();
     syncPanel(panel, addedDecks, cardResets, mc, titleLang);
-  });
+  }
+  addBtn.addEventListener("click", toggleSelection);
+  mobileBtn.addEventListener("click", toggleSelection);
 
   overlay.append(addBtn);
   imgWrap.append(overlay);
@@ -312,7 +317,7 @@ function makeDeckCard(
     statItem("Type", mediaTypeLabel(deck.mediaType)),
   );
 
-  card.append(titleRow, imgWrap, stats);
+  card.append(titleRow, imgWrap, stats, mobileBtn);
   return card;
 }
 

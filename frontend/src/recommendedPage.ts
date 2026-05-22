@@ -475,18 +475,20 @@ function populateAllGenresSections(): void {
       row.dataset.genreUrl = sourcesUrl;
       row.dataset.zipUrl = zipUrl;
       row.innerHTML = `
-        <div class="grid grid-cols-[1fr_auto_auto_auto_auto] items-center gap-x-6 px-4 py-3">
+        <div class="flex flex-col sm:grid sm:grid-cols-[1fr_auto_auto_auto_auto] sm:items-center gap-3 sm:gap-x-6 px-4 py-3">
           <span data-genre-name class="text-[#E6FAFC] font-semibold text-sm">${esc(displayName)}</span>
-          <div class="flex flex-col items-end gap-0.5">
-            <span class="text-[#FB923C] text-[0.6rem] font-bold uppercase tracking-wider">Words</span>
-            <span data-stat="words" class="text-[#E6FAFC] font-bold text-sm">…</span>
+          <div class="flex items-center justify-between gap-3 sm:contents">
+            <div class="flex sm:flex-col items-center sm:items-end gap-1 sm:gap-0.5">
+              <span class="text-[#FB923C] text-[0.6rem] font-bold uppercase tracking-wider">Words</span>
+              <span data-stat="words" class="text-[#E6FAFC] font-bold text-sm">…</span>
+            </div>
+            <div class="flex sm:flex-col items-center sm:items-end gap-1 sm:gap-0.5">
+              <span class="text-[#FB923C] text-[0.6rem] font-bold uppercase tracking-wider">Decks</span>
+              <span data-stat="decks" class="text-[#E6FAFC] font-bold text-sm">…</span>
+            </div>
+            <a href="${downloadUrl}" download data-umami-event="download-genre" data-umami-event-media="${esc(media.label)}" data-umami-event-genre="${esc(genre)}" class="inline-flex items-center justify-center gap-1.5 text-xs font-bold px-4 py-1.5 rounded-lg bg-[#5a5a5a] text-[#E6FAFC] hover:bg-[#6a6a6a] transition-colors duration-150 no-underline"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M5 15l7 7 7-7"/><line x1="3" y1="22" x2="21" y2="22"/></svg>Download</a>
+            <button data-add-genre disabled class="text-xs font-bold text-center px-4 py-1.5 rounded-lg bg-[#FB923C] border border-[#FB923C] text-white cursor-pointer transition-all duration-150 hover:bg-[#FBB36F] hover:border-[#FBB36F] disabled:opacity-40 disabled:cursor-not-allowed">Add to list</button>
           </div>
-          <div class="flex flex-col items-end gap-0.5">
-            <span class="text-[#FB923C] text-[0.6rem] font-bold uppercase tracking-wider">Decks</span>
-            <span data-stat="decks" class="text-[#E6FAFC] font-bold text-sm">…</span>
-          </div>
-          <a href="${downloadUrl}" download data-umami-event="download-genre" data-umami-event-media="${esc(media.label)}" data-umami-event-genre="${esc(genre)}" class="inline-flex items-center justify-center gap-1.5 text-xs font-bold px-4 py-1.5 rounded-lg bg-[#5a5a5a] text-[#E6FAFC] hover:bg-[#6a6a6a] transition-colors duration-150 no-underline"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M5 15l7 7 7-7"/><line x1="3" y1="22" x2="21" y2="22"/></svg>Download</a>
-          <button data-add-genre disabled class="text-xs font-bold text-center px-4 py-1.5 rounded-lg bg-[#FB923C] border border-[#FB923C] text-white cursor-pointer transition-all duration-150 hover:bg-[#FBB36F] hover:border-[#FBB36F] disabled:opacity-40 disabled:cursor-not-allowed">Add to list</button>
         </div>
         <div data-sources class="px-4 pb-3 empty:hidden"></div>
       `;

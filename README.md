@@ -53,7 +53,8 @@ or you can open an issue yourself and we will get to it whenever possible.
 - [Privacy policy](./PRIVACY-POLICY.md) — no personal data is collected or
   transmitted; everything runs locally. The site uses Umami for anonymous,
   aggregate analytics.
-- Licensed under the terms in [LICENSE](./LICENSE).
+- Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/);
+  see [LICENSE](./LICENSE) for the full text.
 
 ## Third-Party Libraries
 
@@ -69,4 +70,6 @@ or you can open an issue yourself and we will get to it whenever possible.
 | esbuild           | MIT                     | https://github.com/evanw/esbuild              |
 
 Frequency data and per-deck Yomitan zips are sourced from
-[Jiten](https://jiten.moe) via its public API.
+[Jiten](https://jiten.moe) via its [public API](https://api.jiten.moe), used
+and adapted (merged across decks, re-ranked into a single Yomitan dictionary)
+under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).

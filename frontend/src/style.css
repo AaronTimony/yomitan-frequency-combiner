@@ -1,8 +1,26 @@
 @import "tailwindcss";
 @source "../src/searchPage.ts";
+@source "../src/recommendedPage.ts";
 
 html {
   scrollbar-gutter: stable;
+}
+
+/* iOS Safari zooms in on focus when an input's font-size is < 16px.
+ * Force 16px on all form controls on small screens to suppress that. */
+@media (max-width: 767px) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
+/* Prevent accidental horizontal scroll on phones from any rogue overflowing
+ * child. Desktop is unaffected. */
+@media (max-width: 1023px) {
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
 }
 
 :root {
