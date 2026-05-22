@@ -20,7 +20,7 @@ export function setupCreatePage(searchEl: HTMLElement): void {
       <h1 class="text-2xl sm:text-4xl font-black tracking-tight">Create Dictionary</h1>
       <p class="mt-2 sm:mt-3 text-[rgba(230,250,252,0.85)] text-base sm:text-[1.15rem]">Select from thousands of media to create your own fully customized Dictionary.</p>
     </header>
-    <div class="flex flex-col lg:flex-row gap-6 flex-1 min-h-0">
+    <div class="flex flex-col-reverse lg:flex-row gap-6 flex-1 min-h-0">
       <div class="flex flex-col gap-4 flex-1 min-w-0">
         <div class="flex flex-col sm:flex-row sm:items-stretch bg-[#3a3a3a] border border-[#5a5a5a] rounded-xl overflow-hidden">
           <div class="flex flex-col gap-2 px-3 py-2.5 min-w-0">

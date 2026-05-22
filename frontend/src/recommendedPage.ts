@@ -1,5 +1,4 @@
-import { downloadBlob, downloadRenamedZip, mergeJitenDecks, type MergeMode } from "./combiner";
-import { promptMergeMode } from "./searchPage";
+import { averageZips, downloadBlob, downloadRenamedZip } from "./combiner";
 
 interface SourceEntry {
   title: string;
@@ -277,21 +276,19 @@ function setupGenreCart(): void {
 
   mergeBtn.addEventListener("click", async () => {
     if (entries.size < 2) return;
-    const mode: MergeMode | null = await promptMergeMode();
-    if (!mode) return;
 
     const selected = [...entries.values()];
-    window.umami?.track("merge-dictionaries", { mode, count: selected.length });
+    window.umami?.track("merge-dictionaries", { count: selected.length });
     mergeBtn.disabled = true;
     try {
-      // Always fetch the _count variant — it carries raw per-genre occurrence
-      // counts, which mergeJitenDecks needs to sum (and then re-rank when the
-      // user picked the ranked output mode).
+      // Fetch the ranked .zip for each selection and average the ranks. The
+      // overall-media dicts don't have _count.zip companions on R2, so summing
+      // raw counts isn't an option here; averaging existing ranks works for
+      // both media-All and per-genre entries uniformly.
       const blobs: Blob[] = [];
       for (let i = 0; i < selected.length; i++) {
         statusEl.textContent = `Downloading ${i + 1}/${selected.length}: ${selected[i].name}…`;
-        const countUrl = selected[i].zipUrl.replace(/\.zip$/, "_count.zip");
-        const res = await fetch(countUrl);
+        const res = await fetch(selected[i].zipUrl);
         if (!res.ok) throw new Error(`HTTP ${res.status} — could not fetch ${selected[i].name} from ${DICT_BASE_URL}`);
         blobs.push(await res.blob());
       }
@@ -299,7 +296,7 @@ function setupGenreCart(): void {
       statusEl.textContent = "Merging…";
       const name = nameInput.value.trim() || "Combined Frequency";
       const files = blobs.map((blob, i) => new File([blob], `dict_${i}.zip`));
-      const result = await mergeJitenDecks(files, name, mode);
+      const result = await averageZips(files, name);
       downloadBlob(result, `${safeFilename(name)}.zip`);
       statusEl.textContent = "Done! Downloaded.";
     } catch (err) {
