@@ -24,10 +24,6 @@ It offers three workflows:
 
 ![Yomitan Frequency example](./img/README_example.png)
 
-## Installation
-
-The combiner is a website, no install needed. Open it in your browser.
-
 ## Building
 
 Install [Node.js](https://nodejs.org/) and npm.
@@ -50,7 +46,7 @@ local `Jiten.Api`, append `?api=…` to the URL (e.g.
 
 New contributors welcome. Browse the
 [issue tracker](https://github.com/AaronTimony/yomitan-frequency-combiner/issues)
-or you can open an issue yourself and I will get to it whenever possible.
+or you can open an issue yourself and we will get to it whenever possible.
 
 ## Privacy & License
 
