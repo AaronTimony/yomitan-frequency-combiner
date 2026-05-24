@@ -29,7 +29,7 @@ export function setupCreatePage(searchEl: HTMLElement): void {
           </div>
           <div class="h-px sm:h-auto sm:w-px bg-[#5a5a5a] shrink-0"></div>
           <div class="flex flex-col gap-2 px-3 py-2.5 shrink-0">
-            <span class="text-[#FB923C] text-[0.65rem] font-bold">Title Language</span>
+            <span class="text-[#FB923C] text-[0.65rem] font-bold">Title Display</span>
             <div id="title-lang-chips" class="flex gap-1.5 flex-wrap"></div>
           </div>
         </div>
