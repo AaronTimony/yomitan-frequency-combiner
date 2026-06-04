@@ -211,6 +211,7 @@ export async function mergeJitenDecks(
     ...data.baseIndex,
     title,
     revision: `${title} ${new Date().toISOString().slice(0, 10)}`,
+    frequencyMode: mode === "ranked" ? "rank-based" : "occurrence-based",
     ...(sources && {
       sources,
       totalWords: sources.reduce((sum, s) => sum + s.wordCount, 0),
